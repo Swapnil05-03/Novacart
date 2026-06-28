@@ -39,9 +39,17 @@ export const orderService = {
     const { error: itemsError } = await supabase.from('order_items').insert(orderItems)
     if (itemsError) throw itemsError
 
-    await supabase.from('cart_items').delete().eq('user_id', userId)
+    // Cart is intentionally NOT cleared here. With a payment step now
+    // between order creation and success, clearing the cart immediately
+    // would lose the customer's items if the payment attempt fails. Call
+    // clearCartAfterPayment() only once payment has actually succeeded.
 
     return order
+  },
+
+  async clearCartAfterPayment(userId) {
+    const { error } = await supabase.from('cart_items').delete().eq('user_id', userId)
+    if (error) throw error
   },
 
   async getOrderById(id) {
