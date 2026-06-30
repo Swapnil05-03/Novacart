@@ -53,7 +53,10 @@ export default function CategoryTabs({ categories = [], activeCategoryId, onSele
   return (
     <nav className="sticky top-16 z-30 w-full bg-surface dark:bg-surface-dark border-b border-ink-200 dark:border-ink-800">
       <div className="container-page">
-        <div className="flex items-center gap-6 overflow-x-auto pb-px">
+        <div
+          className="flex items-center gap-6 overflow-x-auto pb-px w-full"
+          style={{ overscrollBehaviorX: 'contain' }}
+        >
           <Tab
             icon={Sparkles}
             label="For You"

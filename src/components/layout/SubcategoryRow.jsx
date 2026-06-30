@@ -64,7 +64,7 @@ export default function SubcategoryRow({ category, activeSubcategory, onSelectSu
 
   return (
     <div className="container-page mb-6">
-      <div className="flex items-center gap-3 overflow-x-auto pb-1">
+      <div className="flex items-center gap-3 overflow-x-auto pb-1" style={{ overscrollBehaviorX: 'contain' }}>
         {subcategories.map((label) => {
           const Icon = getIconForTile(label)
           const active = activeSubcategory === label

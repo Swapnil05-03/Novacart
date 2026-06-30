@@ -24,7 +24,7 @@ export default function ScrollRow({ title, variant = 'product', items = [], cate
         </Link>
       </div>
 
-      <div className="flex items-stretch gap-3 overflow-x-auto pb-1">
+      <div className="flex items-stretch gap-3 overflow-x-auto pb-1" style={{ overscrollBehaviorX: 'contain' }}>
         {variant === 'sponsor'
           ? items.map((sponsorGroup) => (
               <div
