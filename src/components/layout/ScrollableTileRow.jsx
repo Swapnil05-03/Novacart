@@ -91,7 +91,7 @@ export default function ScrollableTileRow({ title, tiles, images, items, categor
             'flex overflow-x-auto scroll-smooth pb-1',
             isCard ? 'gap-4' : 'items-center gap-4'
           )}
-          style={{ overscrollBehaviorX: 'contain' }}
+          style={{ overscrollBehaviorX: 'contain', overscrollBehaviorY: 'contain' }}
         >
           {entries.map((entry) => (
             <Link

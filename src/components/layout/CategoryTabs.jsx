@@ -55,7 +55,7 @@ export default function CategoryTabs({ categories = [], activeCategoryId, onSele
       <div className="container-page">
         <div
           className="flex items-center gap-6 overflow-x-auto pb-px w-full"
-          style={{ overscrollBehaviorX: 'contain' }}
+          style={{ overscrollBehaviorX: 'contain', overscrollBehaviorY: 'contain' }}
         >
           <Tab
             icon={Sparkles}
