@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowRight, Sparkles, Star } from 'lucide-react'
+import { ArrowRight, Sparkles, Star, Truck, ShieldCheck, RotateCcw } from 'lucide-react'
 import { ROUTES } from '@/constants'
 import Button from '@/components/ui/Button'
 import SlideCarousel from '@/components/layout/SlideCarousel'
@@ -53,25 +53,31 @@ const SLIDES = [
   },
 ]
 
+const TRUST_ITEMS = [
+  { icon: Truck, label: 'Free Shipping' },
+  { icon: ShieldCheck, label: 'Secure Payment' },
+  { icon: RotateCcw, label: 'Easy Returns' },
+]
+
 function renderHeroSlide(slide) {
   return (
-    <div className="grid sm:grid-cols-[1fr_auto] gap-10 items-center">
+    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 lg:gap-4">
       {/* Copy column */}
-      <div className="max-w-md">
+      <div className="max-w-lg text-center sm:text-left sm:ml-4 lg:ml-8">
         <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-medium text-ink-300 mb-5">
           <span className="h-1.5 w-1.5 rounded-full bg-brand-400 animate-pulse" />
           {slide.badge}
         </span>
 
-        <h1 className="font-display text-3xl sm:text-4xl lg:text-[2.75rem] font-bold tracking-tight text-white leading-[1.1]">
+        <h1 className="font-display text-4xl sm:text-5xl lg:text-[3.25rem] font-bold tracking-tight text-white leading-[1.08]">
           {slide.heading[0]}
           <br />
           <span className="text-brand-400">{slide.heading[1]}</span>
         </h1>
 
-        <p className="mt-4 text-base text-ink-300 max-w-sm">{slide.description}</p>
+        <p className="mt-3 text-base sm:text-lg text-ink-300 max-w-sm">{slide.description}</p>
 
-        <div className="mt-7 flex flex-wrap items-center gap-3">
+        <div className="mt-5 flex flex-wrap items-center justify-center sm:justify-start gap-3">
           <Link to={slide.primaryCta.to}>
             <Button variant="brand" size="md" rightIcon={<ArrowRight className="h-4 w-4" />}>
               {slide.primaryCta.label}
@@ -83,15 +89,25 @@ function renderHeroSlide(slide) {
             </Button>
           </Link>
         </div>
+
+        {/* Trust-icons strip */}
+        <div className="mt-4 flex flex-wrap items-center justify-center sm:justify-start gap-x-4 gap-y-1.5">
+          {TRUST_ITEMS.map(({ icon: Icon, label }) => (
+            <div key={label} className="flex items-center gap-1.5 text-ink-300">
+              <Icon className="h-3.5 w-3.5 text-brand-400 shrink-0" />
+              <span className="text-xs font-medium whitespace-nowrap">{label}</span>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Product visual + floating badges */}
-      <div className="relative hidden sm:block w-56 lg:w-72 shrink-0">
+      <div className="relative hidden sm:block w-80 lg:w-[26rem] shrink-0 sm:mr-4 lg:mr-8">
         <div className="absolute inset-0 scale-90 rounded-[2rem] bg-brand-500/30 blur-3xl" />
         <motion.div
           animate={{ y: [0, -10, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-          className="relative z-10 overflow-hidden rounded-2xl aspect-[4/5] bg-ink-900 shadow-glass"
+          className="relative z-10 overflow-hidden rounded-2xl h-[17.5rem] lg:h-[22.5rem] w-full bg-ink-900 shadow-glass"
         >
           <img
             src={slide.image}
@@ -133,7 +149,7 @@ export default function Hero() {
       slides={SLIDES}
       renderSlide={renderHeroSlide}
       className="flex-1 min-w-0"
-      contentClassName="px-6 sm:px-10 py-14 sm:py-20"
+      contentClassName="px-8 sm:px-12 lg:px-14 py-8 sm:py-10"
     />
   )
 }

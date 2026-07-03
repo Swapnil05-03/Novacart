@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight, Sparkles, Star, Clock } from 'lucide-react'
+import { ArrowRight, Sparkles, Star, Clock, Truck, RotateCcw, ShieldCheck } from 'lucide-react'
 import { ROUTES } from '@/constants'
 import { productService } from '@/services/productService'
 import { useCountdown } from '@/hooks/useCountdown'
@@ -58,23 +58,23 @@ function expandSlides(definition, category) {
 
 function renderCategorySlide(slide) {
   return (
-    <div className="grid sm:grid-cols-[1fr_auto] gap-10 items-center">
+    <div className="flex flex-col sm:flex-row items-center justify-center gap-8 lg:gap-14">
       {/* Copy column */}
-      <div className="max-w-md">
-        <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-medium text-ink-300 mb-5">
+      <div className="max-w-lg">
+        <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-medium text-ink-300 mb-3">
           <span className="h-1.5 w-1.5 rounded-full bg-brand-400 animate-pulse" />
           {slide.badge}
         </span>
 
-        <h2 className="font-display text-3xl sm:text-4xl lg:text-[2.75rem] font-bold tracking-tight text-white leading-[1.1]">
+        <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1]">
           {slide.heading[0]}
           <br />
           <span className="text-brand-400">{slide.heading[1]}</span>
         </h2>
 
-        <p className="mt-4 text-base text-ink-300 max-w-sm">{slide.description}</p>
+        <p className="mt-3 text-lg text-ink-300 max-w-md">{slide.description}</p>
 
-        <div className="mt-7 flex flex-wrap items-center gap-3">
+        <div className="mt-5 flex flex-wrap items-center gap-3">
           <Link to={slide.primaryCta.to}>
             <Button variant="brand" size="md" rightIcon={<ArrowRight className="h-4 w-4" />}>
               {slide.primaryCta.label}
@@ -86,15 +86,27 @@ function renderCategorySlide(slide) {
             </Button>
           </Link>
         </div>
+
+        <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-ink-300">
+          <span className="flex items-center gap-1.5">
+            <Truck className="h-3.5 w-3.5 text-brand-400" /> Free Shipping
+          </span>
+          <span className="flex items-center gap-1.5">
+            <RotateCcw className="h-3.5 w-3.5 text-brand-400" /> Easy Returns
+          </span>
+          <span className="flex items-center gap-1.5">
+            <ShieldCheck className="h-3.5 w-3.5 text-brand-400" /> Secure Payments
+          </span>
+        </div>
       </div>
 
       {/* Product visual + floating badges */}
-      <div className="relative hidden sm:block w-56 lg:w-72 shrink-0">
+      <div className="relative hidden sm:block w-80 lg:w-[26rem] xl:w-[30rem] shrink-0">
         <div className="absolute inset-0 scale-90 rounded-[2rem] bg-brand-500/30 blur-3xl" />
         <motion.div
           animate={{ y: [0, -10, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-          className="relative z-10 overflow-hidden rounded-2xl aspect-[4/5] bg-ink-900 shadow-glass"
+          className="relative z-10 overflow-hidden rounded-2xl h-64 lg:h-72 bg-ink-900 shadow-glass"
         >
           <img
             src={slide.image}
@@ -225,8 +237,8 @@ export default function CategoryShowcase({ activeCategory }) {
         <SlideCarousel
           slides={slides}
           renderSlide={renderCategorySlide}
-          className="mb-8"
-          contentClassName="px-6 sm:px-10 py-14 sm:py-20"
+          className="mb-6"
+          contentClassName="px-14 sm:px-16 py-10 sm:py-14"
         />
 
         <TrustBadges />
