@@ -10,6 +10,22 @@ import {
 } from 'lucide-react'
 import { ROUTES } from '@/constants'
 import { productService } from '@/services/productService'
+import acImg from '@/assets/images/deals/Air Conditioners.jpg'
+import refrigeratorsImg from '@/assets/images/deals/Refrigerator.jpg'
+import microwavesImg from '@/assets/images/deals/Microwave.jpg'
+import washingMachinesImg from '@/assets/images/deals/Washing Machines.webp'
+import cushionCoversImg from '@/assets/images/deals/Cushion Covers.jpg'
+import figurinesVasesImg from '@/assets/images/deals/Figurines Vases.jpg'
+import homeStorageImg from '@/assets/images/deals/Home Storage.webp'
+import lightingSolutionsImg from '@/assets/images/deals/Lighting Solutions.jpg'
+import cleaningSuppliesImg from '@/assets/images/deals/Cleaning Supplies.jpg'
+import bathroomEssentialsImg from '@/assets/images/deals/Bathroom Essentials.webp'
+import homeToolsImg from '@/assets/images/deals/Home Tools.jpg'
+import officeSuppliesImg from '@/assets/images/deals/Office Supplies.jpg'
+import wirelessEarbudsImg from '@/assets/images/deals/Wireless Earbuds.jpg'
+import overEarHeadphonesImg from '@/assets/images/deals/OverEar Headphones.jpg'
+import neckbandAudioImg from '@/assets/images/deals/Neckband Audio.webp'
+import trueWirelessImg from '@/assets/images/deals/True Wireless.jpg'
 
 // Static promo content — purely visual deal tiles. Each item/card is tagged
 // with the real category NAME it belongs to (matching the `categories`
@@ -24,10 +40,10 @@ const DEALS = [
     icon: Truck,
     categoryName: 'Appliances',
     items: [
-      { label: 'Air conditioners', price: '₹24,999', image: 'https://images.unsplash.com/photo-1581275299192-3c47b0c89e26?w=300&q=80' },
-      { label: 'Refrigerators', price: '₹18,999', image: 'https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=300&q=80' },
-      { label: 'Microwaves', price: '₹6,499', image: 'https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?w=300&q=80' },
-      { label: 'Washing machines', price: '₹14,999', image: 'https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=300&q=80' },
+      { label: 'Air conditioners', price: '₹24,999', image: acImg },
+      { label: 'Refrigerators', price: '₹18,999', image: refrigeratorsImg },
+      { label: 'Microwaves', price: '₹6,499', image: microwavesImg },
+      { label: 'Washing machines', price: '₹14,999', image: washingMachinesImg },
     ],
   },
   {
@@ -37,10 +53,10 @@ const DEALS = [
     icon: Sofa,
     categoryName: 'Home & Living',
     items: [
-      { label: 'Cushion covers & more', price: '₹399', image: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=300&q=80' },
-      { label: 'Figurines & vases', price: '₹599', image: 'https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=300&q=80' },
-      { label: 'Home storage', price: '₹1,999', image: 'https://images.unsplash.com/photo-1558997519-83ea9252edf8?w=300&q=80' },
-      { label: 'Lighting solutions', price: '₹799', image: 'https://images.unsplash.com/photo-1524634126442-357e0eac3c14?w=300&q=80' },
+      { label: 'Cushion covers & more', price: '₹399', image: cushionCoversImg },
+      { label: 'Figurines & vases', price: '₹599', image: figurinesVasesImg },
+      { label: 'Home storage', price: '₹1,999', image: homeStorageImg },
+      { label: 'Lighting solutions', price: '₹799', image: lightingSolutionsImg },
     ],
   },
   {
@@ -50,10 +66,10 @@ const DEALS = [
     icon: Briefcase,
     categoryName: 'Food & Household',
     items: [
-      { label: 'Cleaning supplies', price: '₹199', image: 'https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=300&q=80' },
-      { label: 'Bathroom essentials', price: '₹499', image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=300&q=80', categoryName: 'Home & Living' },
-      { label: 'Home tools', price: '₹349', image: 'https://images.unsplash.com/photo-1581147036324-c1c89c2c8e2b?w=300&q=80', categoryName: 'Appliances' },
-      { label: 'Office supplies', price: '₹249', image: 'https://images.unsplash.com/photo-1568205612837-017257d2310a?w=300&q=80', categoryName: 'Office' },
+      { label: 'Cleaning supplies', price: '₹199', image: cleaningSuppliesImg },
+      { label: 'Bathroom essentials', price: '₹499', image: bathroomEssentialsImg, categoryName: 'Home & Living' },
+      { label: 'Home tools', price: '₹349', image: homeToolsImg, categoryName: 'Appliances' },
+      { label: 'Office supplies', price: '₹249', image: officeSuppliesImg, categoryName: 'Office' },
     ],
   },
   {
@@ -63,10 +79,10 @@ const DEALS = [
     icon: Headphones,
     categoryName: 'Electronics',
     items: [
-      { label: 'Wireless earbuds', price: '₹1,499', image: 'https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=300&q=80' },
-      { label: 'Over-ear headphones', price: '₹2,999', image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&q=80' },
-      { label: 'Neckband audio', price: '₹899', image: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=300&q=80' },
-      { label: 'True wireless', price: '₹1,299', image: 'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=300&q=80' },
+      { label: 'Wireless earbuds', price: '₹1,499', image: wirelessEarbudsImg },
+      { label: 'Over-ear headphones', price: '₹2,999', image: overEarHeadphonesImg },
+      { label: 'Neckband audio', price: '₹899', image: neckbandAudioImg },
+      { label: 'True wireless', price: '₹1,299', image: trueWirelessImg },
     ],
   },
 ]
