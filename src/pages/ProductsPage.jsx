@@ -121,11 +121,18 @@ export default function ProductsPage() {
     const mapped = {}
     if ('categoryId' in updates) {
       mapped.category = updates.categoryId
-      // Switching category should drop any subcategory filter from the
-      // previous category — otherwise a stale term like "Skincare" stays
-      // applied as a search filter inside an unrelated category and
-      // produces a false "no products found".
+      // Switching category should drop any subcategory filter, any
+      // "featured/trending/best-sellers" preset, AND any leftover free-text
+      // search — all three are easy to carry over from wherever the user
+      // arrived from (a subcategory chip, a "Today's Deals" link, or simply
+      // typing a search term earlier) and silently AND with the new
+      // category. If the new category has no matches for that leftover
+      // term, the page falsely shows "no products found" even though the
+      // category itself has products.
       mapped.subcategory = null
+      mapped.filter = null
+      mapped.search = null
+      setSearchInput('')
     }
     if ('minPrice' in updates) mapped.minPrice = updates.minPrice
     if ('maxPrice' in updates) mapped.maxPrice = updates.maxPrice
