@@ -7,6 +7,75 @@
 // of stock images, a handful of headline/subtitle pairs, and a tile list.
 // expandSlides() below turns each definition into 5-6 full slide objects so
 // every category gets a richer carousel without hand-writing ~90 objects.
+
+// --- Furniture: locally-hosted images, one dedicated folder per homepage
+// section, so each section can be swapped independently by replacing files
+// in src/assets/images/categories/furniture/<section>/ — no code changes
+// needed. Other categories still use the shared Unsplash image pool below
+// until they get the same treatment.
+import furnitureSliderSofas from '@/assets/images/categories/furniture/slider/Sofas.avif'
+import furnitureSliderBeds from '@/assets/images/categories/furniture/slider/Beds.webp'
+import furnitureSliderDesksAndChairs from '@/assets/images/categories/furniture/slider/DesksAndChairs.jpg'
+import furnitureSliderFurnishEveryRooms from '@/assets/images/categories/furniture/slider/FurnishEveryRooms.webp'
+import furnitureSliderYourSpaceYourStyle from '@/assets/images/categories/furniture/slider/YourSpaceYourStyle.webp'
+
+import sbcBarStools from '@/assets/images/categories/furniture/shopBycategory/Bar Stools.jpg'
+import sbcBeanBags from '@/assets/images/categories/furniture/shopBycategory/Bean Bags.jpg'
+import sbcBeds from '@/assets/images/categories/furniture/shopBycategory/Beds.webp'
+import sbcBookshelves from '@/assets/images/categories/furniture/shopBycategory/Bookshelves.webp'
+import sbcCoffeeTables from '@/assets/images/categories/furniture/shopBycategory/Coffee Tables.jpg'
+import sbcDesksChairs from '@/assets/images/categories/furniture/shopBycategory/Desks & Chairs.jpg'
+import sbcDiningSets from '@/assets/images/categories/furniture/shopBycategory/Dining Sets.jpg'
+import sbcKidsFurniture from '@/assets/images/categories/furniture/shopBycategory/Kids Furniture.jpg'
+import sbcOutdoorFurniture from '@/assets/images/categories/furniture/shopBycategory/Outdoor Furniture.jpg'
+import sbcRecliners from '@/assets/images/categories/furniture/shopBycategory/Recliners.jpg'
+import sbcShoeRacks from '@/assets/images/categories/furniture/shopBycategory/Shoe Racks.jpg'
+import sbcSofas from '@/assets/images/categories/furniture/shopBycategory/Sofas.avif'
+import sbcStorageUnits from '@/assets/images/categories/furniture/shopBycategory/Storage Units.webp'
+import sbcTvUnits from '@/assets/images/categories/furniture/shopBycategory/TV Units.jpg'
+import sbcWardrobes from '@/assets/images/categories/furniture/shopBycategory/Wardrobes.jpg'
+
+import bannerFurnishAndSave from '@/assets/images/categories/furniture/banners/Furnish and Save.jpg'
+import bannerDeskSetup from '@/assets/images/categories/furniture/banners/Desk Setup.jpg'
+
+import dealsSofa from '@/assets/images/categories/furniture/furnishYourHomeDeals/3SeaterFabricSofa.jpg'
+import dealsBookshelf from '@/assets/images/categories/furniture/furnishYourHomeDeals/Four Tier book shelf.webp'
+import dealsPatioChair from '@/assets/images/categories/furniture/furnishYourHomeDeals/Outdoor patio chair.jpg'
+import dealsBed from '@/assets/images/categories/furniture/furnishYourHomeDeals/Queen size bed.jpg'
+import dealsStudyDesk from '@/assets/images/categories/furniture/furnishYourHomeDeals/Study desk and chairs.avif'
+import dealsTvUnit from '@/assets/images/categories/furniture/furnishYourHomeDeals/TV entertainment unit.jpg'
+
+import spotlightBarStools from '@/assets/images/categories/furniture/designerSpotlights/bar stools.jpg'
+import spotlightBeanBags from '@/assets/images/categories/furniture/designerSpotlights/bean bags.jpg'
+import spotlightBeds from '@/assets/images/categories/furniture/designerSpotlights/beds.jpg'
+import spotlightBookshelves from '@/assets/images/categories/furniture/designerSpotlights/bookshelves.jpg'
+import spotlightCoffeeTables from '@/assets/images/categories/furniture/designerSpotlights/coffee tables.jpg'
+import spotlightDesksAndChairs from '@/assets/images/categories/furniture/designerSpotlights/desks and chairs.jpg'
+import spotlightDiningSets from '@/assets/images/categories/furniture/designerSpotlights/dining sets.jpg'
+import spotlightKids from '@/assets/images/categories/furniture/designerSpotlights/Kids.jpg'
+import spotlightOutdoorFurniture from '@/assets/images/categories/furniture/designerSpotlights/outdoor furniture.jpg'
+import spotlightRecliners from '@/assets/images/categories/furniture/designerSpotlights/recliners.jpg'
+import spotlightShoeRacks from '@/assets/images/categories/furniture/designerSpotlights/shoe racks.jpg'
+import spotlightSofas from '@/assets/images/categories/furniture/designerSpotlights/sofas.jpg'
+import spotlightStorageUnits from '@/assets/images/categories/furniture/designerSpotlights/storage units.jpg'
+import spotlightTvUnits from '@/assets/images/categories/furniture/designerSpotlights/tv units.jpg'
+import spotlightWardrobes from '@/assets/images/categories/furniture/designerSpotlights/wardrobes.jpg'
+
+import brandAmberlight from '@/assets/images/categories/furniture/featuredBrands/Amberlight.jpg'
+import brandAurelle from '@/assets/images/categories/furniture/featuredBrands/Aurelle.jpg'
+import brandBirchline from '@/assets/images/categories/furniture/featuredBrands/birchline.jpg'
+import brandCascade from '@/assets/images/categories/furniture/featuredBrands/cascade.jpg'
+import brandCobaltCo from '@/assets/images/categories/furniture/featuredBrands/cobalt co.jpg'
+import brandDriftwood from '@/assets/images/categories/furniture/featuredBrands/driftwood.jpg'
+import brandFernway from '@/assets/images/categories/furniture/featuredBrands/fernway.webp'
+import brandHalcyon from '@/assets/images/categories/furniture/featuredBrands/halcyon.jpg'
+import brandMeridian from '@/assets/images/categories/furniture/featuredBrands/meridian.jpg'
+import brandNorthWind from '@/assets/images/categories/furniture/featuredBrands/NorthWind.jpg'
+import brandSolace from '@/assets/images/categories/furniture/featuredBrands/solace.jpg'
+import brandStonewell from '@/assets/images/categories/furniture/featuredBrands/stonewell.jpg'
+import brandVerdeCo from '@/assets/images/categories/furniture/featuredBrands/verde co.jpg'
+import brandWildgrove from '@/assets/images/categories/furniture/featuredBrands/wildgrove.jpg'
+
 const CATEGORY_DEFINITIONS = {
   fashion: {
     images: [
@@ -148,7 +217,7 @@ const CATEGORY_DEFINITIONS = {
     ],
     tiles: ['Headphones', 'Laptops', 'Smartwatches', 'Speakers', 'Cameras', 'Power Banks', 'Smart Home', 'Gaming Gear', 'Tablets', 'Monitors', 'Printers', 'Routers', 'External Drives', 'Webcams', 'Drones'],
   },
-  'home & living': {
+  home: {
     images: [
       'https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=900&q=80',
       'https://images.unsplash.com/photo-1524634126442-357e0eac3c14?w=900&q=80',
@@ -429,7 +498,12 @@ const CATEGORY_DEFINITIONS = {
     tiles: ['Fiction', 'Notebooks', 'Pens & Pencils', "Kids' Books", 'Non-Fiction', 'Art Supplies', 'Planners', 'Comics & Manga', 'Academic Books', 'Self-Help', 'Sticky Notes', 'Highlighters', 'File Organizers', 'Greeting Cards', 'Calculators'],
   },
   furniture: {
+    // Locally-hosted images, one folder per homepage section. Replace the
+    // files in src/assets/images/categories/furniture/<section>/ to change
+    // what shows up — no code changes needed.
     images: [
+      // Fallback pool only — used if a specific section image is ever
+      // missing. Kept as the old Unsplash pool for safety.
       'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=900&q=80',
       'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=900&q=80',
       'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=900&q=80',
@@ -446,11 +520,89 @@ const CATEGORY_DEFINITIONS = {
       'https://picsum.photos/seed/1048/900/900',
       'https://images.unsplash.com/photo-1616627561839-074385245ff6?w=900&q=80',
     ],
+    // Hero slider — 5 slides, order matches headlines below (Sofas, Beds,
+    // Desks & Chairs, Furnish every room, Your space your style)
+    sliderImages: [
+      furnitureSliderSofas,
+      furnitureSliderBeds,
+      furnitureSliderDesksAndChairs,
+      furnitureSliderFurnishEveryRooms,
+      furnitureSliderYourSpaceYourStyle,
+    ],
+    // "Shop by Category" tile row — keyed by tile name
+    shopByCategoryImages: {
+      Sofas: sbcSofas,
+      Beds: sbcBeds,
+      'Desks & Chairs': sbcDesksChairs,
+      'Storage Units': sbcStorageUnits,
+      'Dining Sets': sbcDiningSets,
+      Bookshelves: sbcBookshelves,
+      'TV Units': sbcTvUnits,
+      'Outdoor Furniture': sbcOutdoorFurniture,
+      Wardrobes: sbcWardrobes,
+      Recliners: sbcRecliners,
+      'Coffee Tables': sbcCoffeeTables,
+      'Bean Bags': sbcBeanBags,
+      'Shoe Racks': sbcShoeRacks,
+      'Bar Stools': sbcBarStools,
+      'Kids Furniture': sbcKidsFurniture,
+    },
+    // The 2 promo banners — order matches promos below (Furnish & Save, Desk Setup Picks)
+    promoImages: [bannerFurnishAndSave, bannerDeskSetup],
+    // "Furnish Your Home Deals" row — a small curated list of specific
+    // deal items (distinct from the 15 sub-category tiles), matching what
+    // was actually uploaded for this section.
+    dealsItems: [
+      { label: '3-Seater Fabric Sofa', image: dealsSofa },
+      { label: 'Four-Tier Bookshelf', image: dealsBookshelf },
+      { label: 'Outdoor Patio Chair', image: dealsPatioChair },
+      { label: 'Queen Size Bed', image: dealsBed },
+      { label: 'Study Desk & Chair', image: dealsStudyDesk },
+      { label: 'TV Entertainment Unit', image: dealsTvUnit },
+    ],
+    // "Designer Spotlights" row — keyed by tile name
+    spotlightImages: {
+      Sofas: spotlightSofas,
+      Beds: spotlightBeds,
+      'Desks & Chairs': spotlightDesksAndChairs,
+      'Storage Units': spotlightStorageUnits,
+      'Dining Sets': spotlightDiningSets,
+      Bookshelves: spotlightBookshelves,
+      'TV Units': spotlightTvUnits,
+      'Outdoor Furniture': spotlightOutdoorFurniture,
+      Wardrobes: spotlightWardrobes,
+      Recliners: spotlightRecliners,
+      'Coffee Tables': spotlightCoffeeTables,
+      'Bean Bags': spotlightBeanBags,
+      'Shoe Racks': spotlightShoeRacks,
+      'Bar Stools': spotlightBarStools,
+      'Kids Furniture': spotlightKids,
+    },
+    // "Featured Brands" row — keyed by BRAND name (not tile name), since
+    // this row shows placeholder store fronts rather than sub-categories.
+    // 'Lumio' and 'Tidemark' weren't uploaded, so they fall back to the
+    // shared image pool automatically.
+    brandImages: {
+      Northwind: brandNorthWind,
+      Aurelle: brandAurelle,
+      'Cascade Co.': brandCascade,
+      'Verde & Co': brandVerdeCo,
+      Halcyon: brandHalcyon,
+      Driftwood: brandDriftwood,
+      Solace: brandSolace,
+      Meridian: brandMeridian,
+      Birchline: brandBirchline,
+      Amberlight: brandAmberlight,
+      Stonewell: brandStonewell,
+      Fernway: brandFernway,
+      'Cobalt & Co': brandCobaltCo,
+      Wildgrove: brandWildgrove,
+    },
     headlines: [
-      ['Furnish every', 'room.'],
       ['Sofas built', 'for comfort.'],
       ['Beds for', 'better sleep.'],
       ['Desks & chairs', 'for focused work.'],
+      ['Furnish every', 'room.'],
       ['Your space,', 'your style.'],
     ],
     discounts: [45, 35, 30, 25],

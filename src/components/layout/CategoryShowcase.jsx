@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight, Sparkles, Star, Clock, Truck, RotateCcw, ShieldCheck } from 'lucide-react'
+import { ArrowRight, Sparkles, Star, Clock, Heart } from 'lucide-react'
 import { ROUTES } from '@/constants'
 import { productService } from '@/services/productService'
 import { useCountdown } from '@/hooks/useCountdown'
@@ -26,18 +26,46 @@ const PLACEHOLDER_BRANDS = [
   'Fernway', 'Cobalt & Co', 'Wildgrove', 'Tidemark',
 ]
 
-function buildBrandRow(definition, categoryName) {
-  return definition.tiles.map((tile, i) => ({
-    label: `${PLACEHOLDER_BRANDS[i % PLACEHOLDER_BRANDS.length]} ${categoryName.split(' ')[0]}`,
-    image: definition.images[i % definition.images.length],
-  }))
+// Builds an image array aligned 1:1 with `tiles`, preferring a named image
+// map (e.g. { Sofas: sofaImg, Beds: bedImg }) when the category definition
+// provides one for this section, falling back to the shared image pool
+// (cycled by index) for categories that don't have per-section images yet.
+function getSectionImages(definition, tiles, mapKey) {
+  const map = definition[mapKey]
+  return tiles.map((tile, i) => {
+    if (map && map[tile]) return map[tile]
+    return definition.images[i % definition.images.length]
+  })
 }
 
+function buildBrandRow(definition, categoryName) {
+  return definition.tiles.map((tile, i) => {
+    const brandName = PLACEHOLDER_BRANDS[i % PLACEHOLDER_BRANDS.length]
+    const image = (definition.brandImages && definition.brandImages[brandName]) || definition.images[i % definition.images.length]
+    return {
+      label: `${brandName} ${categoryName.split(' ')[0]}`,
+      image,
+    }
+  })
+}
+
+// "Furnish Your Home Deals"-style fallback row. If the category provides a
+// curated `dealsItems` list (specific named deal items, e.g. "3-Seater
+// Fabric Sofa"), use that directly. Otherwise fall back to cycling through
+// the generic sub-category tiles, matched to images by tile name.
 function buildProductRow(definition, tiles) {
+  if (definition.dealsItems?.length) {
+    return definition.dealsItems.map((item, i) => ({
+      title: item.label,
+      tag: `${definition.discounts[i % definition.discounts.length]}% off`,
+      image: item.image,
+    }))
+  }
+  const dealsImages = getSectionImages(definition, tiles, 'dealsImages')
   return tiles.map((tile, i) => ({
     title: tile,
     tag: `${definition.discounts[i % definition.discounts.length]}% off`,
-    image: definition.images[i % definition.images.length],
+    image: dealsImages[i],
   }))
 }
 
@@ -45,12 +73,13 @@ function buildProductRow(definition, tiles) {
 function expandSlides(definition, category) {
   const count = definition.headlines.length
   const categoryUrl = `${ROUTES.PRODUCTS}?category=${category.id}`
+  const slideImages = definition.sliderImages || definition.images
   return Array.from({ length: count }, (_, i) => ({
     badge: i === 0 ? 'Featured' : 'In ' + category.name,
     heading: definition.headlines[i],
     description: definition.description,
     discount: definition.discounts[i] ?? definition.discounts[0],
-    image: definition.images[i % definition.images.length],
+    image: slideImages[i % slideImages.length],
     primaryCta: { label: 'Shop now', to: categoryUrl },
     secondaryCta: { label: `View all ${category.name}`, to: categoryUrl },
   }))
@@ -85,18 +114,6 @@ function renderCategorySlide(slide) {
               {slide.secondaryCta.label}
             </Button>
           </Link>
-        </div>
-
-        <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-ink-300">
-          <span className="flex items-center gap-1.5">
-            <Truck className="h-3.5 w-3.5 text-brand-400" /> Free Shipping
-          </span>
-          <span className="flex items-center gap-1.5">
-            <RotateCcw className="h-3.5 w-3.5 text-brand-400" /> Easy Returns
-          </span>
-          <span className="flex items-center gap-1.5">
-            <ShieldCheck className="h-3.5 w-3.5 text-brand-400" /> Secure Payments
-          </span>
         </div>
       </div>
 
@@ -144,6 +161,7 @@ function renderCategorySlide(slide) {
 
 function PromoBannerPair({ definition, categoryId }) {
   if (!definition.promos?.length) return null
+  const promoImages = definition.promoImages || definition.images
 
   return (
     <section className="grid sm:grid-cols-2 gap-4 mb-8">
@@ -154,7 +172,7 @@ function PromoBannerPair({ definition, categoryId }) {
           className="group relative overflow-hidden rounded-2xl min-h-[140px] flex items-center p-6"
         >
           <img
-            src={definition.images[i % definition.images.length]}
+            src={promoImages[i % promoImages.length]}
             alt={promo.title}
             loading="lazy"
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -170,6 +188,46 @@ function PromoBannerPair({ definition, categoryId }) {
         </Link>
       ))}
     </section>
+  )
+}
+
+// Bigger grid-style card for curated deal items (e.g. "Furnish Your Home
+// Deals"), visually matching the ProductCard grid layout — image, discount
+// badge, wishlist heart, category label, and title — since curated
+// dealsItems only carry title/tag/image (no live price data).
+function CuratedDealCard({ item, categoryName, categoryId }) {
+  return (
+    <Link
+      to={`${ROUTES.PRODUCTS}?category=${categoryId}&search=${encodeURIComponent(item.title)}`}
+      className="group block rounded-2xl overflow-hidden border border-ink-200 dark:border-ink-800 bg-white dark:bg-ink-900"
+    >
+      <div className="relative aspect-square overflow-hidden bg-ink-100 dark:bg-ink-800">
+        <img
+          src={item.image}
+          alt={item.title}
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+        />
+        {item.tag && (
+          <span className="absolute top-3 left-3 rounded-md bg-ink-950/70 backdrop-blur px-2 py-1 text-xs font-bold text-amber-400">
+            {item.tag}
+          </span>
+        )}
+        <button
+          type="button"
+          onClick={(e) => e.preventDefault()}
+          className="absolute top-3 right-3 flex items-center justify-center h-8 w-8 rounded-full bg-ink-950/50 text-white hover:bg-ink-950/70 transition-colors"
+        >
+          <Heart className="h-4 w-4" />
+        </button>
+      </div>
+      <div className="px-3.5 py-3">
+        <p className="text-[11px] font-semibold uppercase tracking-wide text-ink-400 dark:text-ink-500 mb-1">
+          {categoryName}
+        </p>
+        <p className="text-sm font-bold text-ink-900 dark:text-white truncate">{item.title}</p>
+      </div>
+    </Link>
   )
 }
 
@@ -220,9 +278,24 @@ export default function CategoryShowcase({ activeCategory }) {
   const dealsProducts = categoryProducts.slice(0, 8)
   const trendingProducts = categoryProducts.slice(8, 16)
   const hasRealProducts = categoryProducts.length > 0
+
+  // If this category has a curated `dealsItems` list (specific named deal
+  // items with hand-picked images, e.g. Furniture's "Furnish Your Home
+  // Deals"), that curated row always takes priority over real DB products
+  // in this particular section — otherwise the curated images we uploaded
+  // would never actually show up whenever the category also has real
+  // products in the database.
+  const hasCuratedDeals = Boolean(definition.dealsItems?.length)
+  const showRealDealsProducts = hasRealProducts && !hasCuratedDeals
+
+  // "Shop by Category" images, aligned with definition.tiles
+  const shopByCategoryImages = getSectionImages(definition, definition.tiles, 'shopByCategoryImages')
+
   // Fall back to placeholder tile rows only when this category genuinely
   // has no products yet in the database, so the page is never empty.
   const trendingTiles = [...definition.tiles].reverse()
+  const spotlightImagesAll = getSectionImages(definition, definition.tiles, 'spotlightImages')
+  const trendingImages = [...spotlightImagesAll].reverse()
 
   return (
     <AnimatePresence mode="wait">
@@ -246,14 +319,16 @@ export default function CategoryShowcase({ activeCategory }) {
         <ScrollableTileRow
           title="Shop by Category"
           tiles={definition.tiles}
-          images={definition.images}
+          images={shopByCategoryImages}
           categoryId={activeCategory.id}
           variant="card"
         />
 
         <PromoBannerPair definition={definition} categoryId={activeCategory.id} />
 
-        {/* Today's Best Deals — real products from this category */}
+        {/* Today's Best Deals — real products from this category, unless a
+            curated dealsItems row (e.g. "Furnish Your Home Deals") exists,
+            in which case that curated content always wins here. */}
         <section className="mb-8">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-3">
@@ -268,12 +343,23 @@ export default function CategoryShowcase({ activeCategory }) {
             </Link>
           </div>
 
-          {productsLoading ? (
+          {productsLoading && !hasCuratedDeals ? (
             <ProductGridSkeleton count={4} />
-          ) : hasRealProducts ? (
+          ) : showRealDealsProducts ? (
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
               {dealsProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          ) : hasCuratedDeals ? (
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+              {buildProductRow(definition, definition.tiles).map((item) => (
+                <CuratedDealCard
+                  key={item.title}
+                  item={item}
+                  categoryName={activeCategory.name}
+                  categoryId={activeCategory.id}
+                />
               ))}
             </div>
           ) : (
@@ -310,7 +396,7 @@ export default function CategoryShowcase({ activeCategory }) {
           <ScrollableTileRow
             title={definition.spotlightLabel}
             tiles={trendingTiles}
-            images={definition.images}
+            images={trendingImages}
             categoryId={activeCategory.id}
             variant="circle"
           />
