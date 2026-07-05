@@ -61,20 +61,21 @@ import spotlightStorageUnits from '@/assets/images/categories/furniture/designer
 import spotlightTvUnits from '@/assets/images/categories/furniture/designerSpotlights/tv units.jpg'
 import spotlightWardrobes from '@/assets/images/categories/furniture/designerSpotlights/wardrobes.jpg'
 
-import brandAmberlight from '@/assets/images/categories/furniture/featuredBrands/Amberlight.jpg'
-import brandAurelle from '@/assets/images/categories/furniture/featuredBrands/Aurelle.jpg'
-import brandBirchline from '@/assets/images/categories/furniture/featuredBrands/birchline.jpg'
-import brandCascade from '@/assets/images/categories/furniture/featuredBrands/cascade.jpg'
-import brandCobaltCo from '@/assets/images/categories/furniture/featuredBrands/cobalt co.jpg'
-import brandDriftwood from '@/assets/images/categories/furniture/featuredBrands/driftwood.jpg'
-import brandFernway from '@/assets/images/categories/furniture/featuredBrands/fernway.webp'
-import brandHalcyon from '@/assets/images/categories/furniture/featuredBrands/halcyon.jpg'
-import brandMeridian from '@/assets/images/categories/furniture/featuredBrands/meridian.jpg'
-import brandNorthWind from '@/assets/images/categories/furniture/featuredBrands/NorthWind.jpg'
-import brandSolace from '@/assets/images/categories/furniture/featuredBrands/solace.jpg'
-import brandStonewell from '@/assets/images/categories/furniture/featuredBrands/stonewell.jpg'
-import brandVerdeCo from '@/assets/images/categories/furniture/featuredBrands/verde co.jpg'
-import brandWildgrove from '@/assets/images/categories/furniture/featuredBrands/wildgrove.jpg'
+import brandDurian from '@/assets/images/categories/furniture/featuredBrands/durian.avif'
+import brandFabindia from '@/assets/images/categories/furniture/featuredBrands/fabindia.avif'
+import brandFendiCasa from '@/assets/images/categories/furniture/featuredBrands/fendi-casa.jpg'
+import brandGodrejInterio from '@/assets/images/categories/furniture/featuredBrands/godrej-interio.webp'
+import brandHausLuxuriant from '@/assets/images/categories/furniture/featuredBrands/haus-luxuriant.jpg'
+import brandHermanMiller from '@/assets/images/categories/furniture/featuredBrands/herman-millar.jpg'
+import brandIkea from '@/assets/images/categories/furniture/featuredBrands/Ikea.webp'
+import brandKartell from '@/assets/images/categories/furniture/featuredBrands/kartell.jpg'
+import brandNilkamal from '@/assets/images/categories/furniture/featuredBrands/Nilkamal.webp'
+import brandPepperfry from '@/assets/images/categories/furniture/featuredBrands/pepperfry.jpg'
+import brandRocheBobois from '@/assets/images/categories/furniture/featuredBrands/roche bobois.jpg'
+import brandSteelcase from '@/assets/images/categories/furniture/featuredBrands/steelcase.jpg'
+import brandUrbanLadder from '@/assets/images/categories/furniture/featuredBrands/Urban-ladder.webp'
+import brandWakefit from '@/assets/images/categories/furniture/featuredBrands/wakefit.jpg'
+import brandWoodenStreet from '@/assets/images/categories/furniture/featuredBrands/wooden-furniture.jpg'
 
 const CATEGORY_DEFINITIONS = {
   fashion: {
@@ -111,6 +112,7 @@ const CATEGORY_DEFINITIONS = {
       { title: 'Footwear Edit', subtitle: 'Starting at $29', ctaLabel: 'Explore Now' },
     ],
     tiles: ['T-Shirts', 'Jeans', 'Sports Shoes', 'Watches', "Kids' Clothing", 'Luggage', 'Kurtas', 'Summer Wear', 'Dresses', 'Formal Wear', 'Ethnic Wear', 'Innerwear', 'Sleepwear', 'Maternity Wear', 'Winter Wear'],
+    brands: ['Zara', 'H&M', "Levi's", 'Nike', 'Adidas', 'Puma', 'Uniqlo', 'Gap', 'Tommy Hilfiger', 'Calvin Klein', 'Ralph Lauren', 'Zudio', 'Allen Solly', 'Van Heusen', 'Forever 21'],
   },
   mobiles: {
     images: [
@@ -146,6 +148,7 @@ const CATEGORY_DEFINITIONS = {
       { title: 'Premium Accessories', subtitle: 'Cases, chargers & more', ctaLabel: 'Explore Now' },
     ],
     tiles: ['iPhone', 'Galaxy', 'OPPO', 'POCO', 'Redmi', 'Infinix', 'Nothing', 'Pixel', 'OnePlus', 'Vivo', 'Realme', 'Phone Cases', 'Chargers', 'Earphones', 'Screen Guards'],
+    brands: ['iPhone', 'Samsung Galaxy', 'OPPO', 'Vivo', 'OnePlus', 'Xiaomi Redmi', 'Realme', 'Nothing', 'Google Pixel', 'Infinix', 'POCO', 'Motorola', 'Honor', 'iQOO', 'Tecno'],
   },
   beauty: {
     images: [
@@ -181,6 +184,7 @@ const CATEGORY_DEFINITIONS = {
       { title: 'Premium Fragrances', subtitle: 'Starting at $29', ctaLabel: 'Explore Now' },
     ],
     tiles: ['Skincare', 'Makeup', 'Haircare', 'Fragrance', "Men's Grooming", 'Wellness', 'Bath & Body', 'Tools & Brushes', 'Sunscreen', 'Lip Care', 'Nail Care', 'Hair Color', 'Face Masks', 'Body Lotion', 'Deodorants'],
+    brands: ['Lakmé', 'Maybelline', "L'Oréal", 'Nykaa', 'MAC', 'Dove', 'Nivea', "Pond's", 'Garnier', 'The Body Shop', 'Himalaya', 'Biotique', 'Mamaearth', 'WOW Skin Science', 'Neutrogena'],
   },
   electronics: {
     images: [
@@ -216,8 +220,9 @@ const CATEGORY_DEFINITIONS = {
       { title: 'Smart Home Picks', subtitle: 'Starting at $19', ctaLabel: 'Explore Now' },
     ],
     tiles: ['Headphones', 'Laptops', 'Smartwatches', 'Speakers', 'Cameras', 'Power Banks', 'Smart Home', 'Gaming Gear', 'Tablets', 'Monitors', 'Printers', 'Routers', 'External Drives', 'Webcams', 'Drones'],
+    brands: ['Sony', 'JBL', 'Bose', 'boAt', 'Samsung', 'LG', 'Dell', 'HP', 'Lenovo', 'Apple', 'Sennheiser', 'Logitech', 'ASUS', 'Acer', 'Canon'],
   },
-  home: {
+  'home & living': {
     images: [
       'https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=900&q=80',
       'https://images.unsplash.com/photo-1524634126442-357e0eac3c14?w=900&q=80',
@@ -251,6 +256,7 @@ const CATEGORY_DEFINITIONS = {
     ],
     discounts: [35, 28, 20, 30, 38],
     tiles: ['Cushion Covers', 'Figurines & Vases', 'Storage', 'Lighting', 'Wall Decor', 'Rugs', 'Curtains', 'Kitchen Linen', 'Bedsheets', 'Mirrors', 'Clocks', 'Planters', 'Photo Frames', 'Door Mats', 'Shower Curtains'],
+    brands: ['IKEA', 'Urban Ladder', 'Pepperfry', 'Home Centre', 'Fabindia', 'Bombay Dyeing', 'Spaces', "D'décor", 'Portico', 'Wakefit', 'Nilkamal', 'Home Town', 'Evok', 'Godrej Interio', 'Durian'],
   },
   appliances: {
     images: [
@@ -286,6 +292,7 @@ const CATEGORY_DEFINITIONS = {
       { title: 'Cooling Essentials', subtitle: 'Starting at $99', ctaLabel: 'Explore Now' },
     ],
     tiles: ['Air Conditioners', 'Refrigerators', 'Microwaves', 'Washing Machines', 'Water Purifiers', 'Mixers & Grinders', 'Vacuum Cleaners', 'Geysers', 'Dishwashers', 'Air Purifiers', 'Toasters', 'Electric Kettles', 'Induction Cooktops', 'Coffee Makers', 'Ceiling Fans'],
+    brands: ['Samsung', 'LG', 'Whirlpool', 'Bosch', 'IFB', 'Voltas', 'Haier', 'Panasonic', 'Godrej', 'Philips', 'Hitachi', 'Daikin', 'Havells', 'Bajaj', 'Prestige'],
   },
   'toys & games': {
     images: [
@@ -321,6 +328,7 @@ const CATEGORY_DEFINITIONS = {
       { title: 'Board Game Picks', subtitle: 'Starting at $14', ctaLabel: 'Explore Now' },
     ],
     tiles: ['Action Figures', 'Board Games', 'RC Cars', 'Soft Toys', 'Building Blocks', 'Puzzles', 'Outdoor Play', 'Educational Toys', 'Dolls', 'Art & Craft Kits', 'Musical Toys', 'Card Games', 'Ride-Ons', 'Science Kits', 'Party Supplies'],
+    brands: ['LEGO', 'Hasbro', 'Mattel', 'Fisher-Price', 'Hot Wheels', 'Barbie', 'Funskool', 'NERF', 'Hamleys', 'Chicco', 'VTech', 'Play-Doh', 'Monopoly', 'Crayola', 'Disney'],
   },
   'food & household': {
     images: [
@@ -356,6 +364,7 @@ const CATEGORY_DEFINITIONS = {
       { title: 'Cleaning Essentials', subtitle: 'Starting at $5', ctaLabel: 'Explore Now' },
     ],
     tiles: ['Snacks', 'Beverages', 'Cleaning Supplies', 'Personal Care', 'Baby Care', 'Pet Supplies', 'Kitchen Essentials', 'Storage Containers', 'Breakfast Cereals', 'Spices & Masalas', 'Dairy & Bakery', 'Laundry Care', 'Paper Products', 'Air Fresheners', 'Disposables'],
+    brands: ['Nestlé', 'Tata', 'ITC', 'Amul', 'Britannia', 'Colgate', 'Dettol', 'Surf Excel', 'Vim', 'Harpic', 'Lizol', 'Parle', "Haldiram's", 'Patanjali', 'Fortune'],
   },
   'auto accessories': {
     images: [
@@ -391,6 +400,7 @@ const CATEGORY_DEFINITIONS = {
       { title: 'Helmet Collection', subtitle: 'Starting at $39', ctaLabel: 'Explore Now' },
     ],
     tiles: ['Cleaning Accessories', 'Tyre & Rim Care', 'Helmets', 'Vacuum Cleaners', 'Car Covers', 'Seat Covers', 'Dashboard Accessories', 'Air Fresheners', 'Car Chargers', 'Floor Mats', 'Car Perfumes', 'Steering Covers', 'Tool Kits', 'Jump Starters', 'Dash Cams'],
+    brands: ['3M', 'Bosch', 'Michelin', "Meguiar's", 'Armor All', 'Philips', 'CEAT', 'MRF', 'Apollo Tyres', 'Steelbird', 'Vega', 'Studds', 'Motul', 'Castrol', 'Goodyear'],
   },
   'two wheelers': {
     images: [
@@ -426,6 +436,7 @@ const CATEGORY_DEFINITIONS = {
       { title: 'Helmet Edit', subtitle: 'Starting at $49', ctaLabel: 'Explore Now' },
     ],
     tiles: ['Helmets', 'Riding Jackets', 'Bike Accessories', 'Scooters', 'Riding Gloves', 'Bike Covers', 'Saddle Bags', 'Tyres', 'Riding Boots', 'Bike Locks', 'Mobile Holders', 'Knee Guards', 'Bike Lights', 'Seat Covers', 'Mirrors'],
+    brands: ['Hero Splendor', 'Royal Enfield Hunter', 'Bajaj Pulsar', 'TVS Apache', 'Honda Activa', 'Yamaha FZ', 'KTM Duke', 'Suzuki Access', 'Hero Glamour', 'Bajaj Avenger', 'Royal Enfield Classic', 'TVS Ntorq', 'Honda Shine', 'Yamaha R15', 'Suzuki Gixxer'],
   },
   'sports & outdoors': {
     images: [
@@ -461,6 +472,7 @@ const CATEGORY_DEFINITIONS = {
       { title: 'Outdoor Essentials', subtitle: 'Starting at $19', ctaLabel: 'Explore Now' },
     ],
     tiles: ['Yoga Mats', 'Water Bottles', 'Resistance Bands', 'Outdoor Gear', 'Camping Equipment', 'Cycling Gear', 'Team Sports', 'Trekking Gear', 'Swimming Gear', 'Tennis & Badminton', 'Cricket Gear', 'Fitness Trackers', 'Skating Gear', 'Fishing Gear', 'Backpacks'],
+    brands: ['Nike', 'Adidas', 'Puma', 'Decathlon', 'Under Armour', 'Reebok', 'Wilson', 'Yonex', 'SG', 'Cosco', 'Nivia', 'Speedo', 'The North Face', 'Quechua', 'Columbia'],
   },
   'books & stationery': {
     images: [
@@ -496,6 +508,7 @@ const CATEGORY_DEFINITIONS = {
       { title: 'Stationery Edit', subtitle: 'Starting at $4', ctaLabel: 'Explore Now' },
     ],
     tiles: ['Fiction', 'Notebooks', 'Pens & Pencils', "Kids' Books", 'Non-Fiction', 'Art Supplies', 'Planners', 'Comics & Manga', 'Academic Books', 'Self-Help', 'Sticky Notes', 'Highlighters', 'File Organizers', 'Greeting Cards', 'Calculators'],
+    brands: ['Penguin', 'HarperCollins', 'Classmate', 'Camlin', 'Parker', 'Faber-Castell', 'Staedtler', 'Amar Chitra Katha', 'Scholastic', 'Oxford', 'Natraj', 'Doms', 'Reynolds', 'Cello', 'Navneet'],
   },
   furniture: {
     // Locally-hosted images, one folder per homepage section. Replace the
@@ -578,25 +591,25 @@ const CATEGORY_DEFINITIONS = {
       'Bar Stools': spotlightBarStools,
       'Kids Furniture': spotlightKids,
     },
-    // "Featured Brands" row — keyed by BRAND name (not tile name), since
-    // this row shows placeholder store fronts rather than sub-categories.
-    // 'Lumio' and 'Tidemark' weren't uploaded, so they fall back to the
-    // shared image pool automatically.
+    // "Featured Brands" row — keyed by real furniture-retailer brand name,
+    // each mapped to its actual locally-hosted logo/storefront image from
+    // src/assets/images/categories/furniture/featuredBrands/.
     brandImages: {
-      Northwind: brandNorthWind,
-      Aurelle: brandAurelle,
-      'Cascade Co.': brandCascade,
-      'Verde & Co': brandVerdeCo,
-      Halcyon: brandHalcyon,
-      Driftwood: brandDriftwood,
-      Solace: brandSolace,
-      Meridian: brandMeridian,
-      Birchline: brandBirchline,
-      Amberlight: brandAmberlight,
-      Stonewell: brandStonewell,
-      Fernway: brandFernway,
-      'Cobalt & Co': brandCobaltCo,
-      Wildgrove: brandWildgrove,
+      Durian: brandDurian,
+      Fabindia: brandFabindia,
+      'Fendi Casa': brandFendiCasa,
+      'Godrej Interio': brandGodrejInterio,
+      'Haus Luxuriant': brandHausLuxuriant,
+      'Herman Miller': brandHermanMiller,
+      IKEA: brandIkea,
+      Kartell: brandKartell,
+      Nilkamal: brandNilkamal,
+      Pepperfry: brandPepperfry,
+      'Roche Bobois': brandRocheBobois,
+      Steelcase: brandSteelcase,
+      'Urban Ladder': brandUrbanLadder,
+      Wakefit: brandWakefit,
+      'Wooden Street': brandWoodenStreet,
     },
     headlines: [
       ['Sofas built', 'for comfort.'],
@@ -614,6 +627,7 @@ const CATEGORY_DEFINITIONS = {
       { title: 'Desk Setup Picks', subtitle: 'Starting at $79', ctaLabel: 'Explore Now' },
     ],
     tiles: ['Sofas', 'Beds', 'Desks & Chairs', 'Storage Units', 'Dining Sets', 'Bookshelves', 'TV Units', 'Outdoor Furniture', 'Wardrobes', 'Recliners', 'Coffee Tables', 'Bean Bags', 'Shoe Racks', 'Bar Stools', 'Kids Furniture'],
+    brands: ['Durian', 'Fabindia', 'Fendi Casa', 'Godrej Interio', 'Haus Luxuriant', 'Herman Miller', 'IKEA', 'Kartell', 'Nilkamal', 'Pepperfry', 'Roche Bobois', 'Steelcase', 'Urban Ladder', 'Wakefit', 'Wooden Street'],
   },
   accessories: {
     images: [
@@ -649,6 +663,7 @@ const CATEGORY_DEFINITIONS = {
       { title: 'Sunglasses Edit', subtitle: 'Starting at $24', ctaLabel: 'Explore Now' },
     ],
     tiles: ['Bags', 'Watches', 'Wallets', 'Belts', 'Sunglasses', 'Jewelry', 'Hats & Caps', 'Scarves', 'Hair Accessories', 'Ties & Cufflinks', 'Keychains', 'Phone Accessories', 'Umbrellas', 'Gloves', 'Brooches & Pins'],
+    brands: ['Fossil', 'Titan', 'Ray-Ban', 'Fastrack', 'Casio', 'Michael Kors', 'Tommy Hilfiger', 'Wildcraft', 'American Tourister', 'Skybags', 'Da Milano', 'Baggit', 'Woodland', 'Timex', 'Guess'],
   },
   apparel: {
     images: [
@@ -684,6 +699,7 @@ const CATEGORY_DEFINITIONS = {
       { title: 'Outerwear Picks', subtitle: 'Starting at $39', ctaLabel: 'Explore Now' },
     ],
     tiles: ['T-Shirts', 'Hoodies', 'Jackets', 'Pants', 'Outerwear', 'Sweaters', 'Shorts', 'Activewear', 'Polo Shirts', 'Denim', 'Blazers', 'Track Pants', 'Vests', 'Thermal Wear', 'Loungewear'],
+    brands: ["Levi's", 'Nike', 'Adidas', 'Puma', 'H&M', 'Zara', 'Uniqlo', 'Gap', 'US Polo Assn', 'Jack & Jones', 'Pepe Jeans', 'Wrangler', 'Lee', 'Superdry', 'Roadster'],
   },
   fitness: {
     images: [
@@ -719,6 +735,7 @@ const CATEGORY_DEFINITIONS = {
       { title: 'Recovery Picks', subtitle: 'Starting at $14', ctaLabel: 'Explore Now' },
     ],
     tiles: ['Water Bottles', 'Yoga Mats', 'Resistance Bands', 'Dumbbells', 'Foam Rollers', 'Gym Bags', 'Jump Ropes', 'Fitness Trackers', 'Treadmills', 'Kettlebells', 'Pull-Up Bars', 'Massage Guns', 'Protein Shakers', 'Ab Rollers', 'Gym Gloves'],
+    brands: ['Nike', 'Adidas', 'Reebok', 'Under Armour', 'Decathlon', 'Puma', 'HRX', 'Cultsport', 'Boldfit', 'Cosco', 'Wilson', 'Yonex', 'Speedo', 'Domyos', 'Kore'],
   },
   office: {
     images: [
@@ -754,6 +771,7 @@ const CATEGORY_DEFINITIONS = {
       { title: 'Stationery Picks', subtitle: 'Starting at $6', ctaLabel: 'Explore Now' },
     ],
     tiles: ['Notebooks', 'Desk Organizers', 'Keyboards', 'Pens', 'Lighting', 'Monitor Stands', 'Cable Organizers', 'Desk Mats', 'Office Chairs', 'Whiteboards', 'Staplers', 'File Folders', 'Sticky Notes', 'Desk Calendars', 'Laptop Stands'],
+    brands: ['Parker', 'Faber-Castell', 'Camlin', 'Staples', 'Godrej Interio', 'Featherlite', 'Nilkamal', 'Cello', 'Reynolds', 'Classmate', 'Logitech', 'HP', 'Dell', 'Lenovo', 'Xerox'],
   },
 }
 

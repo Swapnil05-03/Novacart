@@ -16,10 +16,12 @@ import { ProductGridSkeleton } from '@/components/ui/Skeleton'
 
 import { getDefinitionForCategory } from '@/data/categoryContent'
 
-// Generic, clearly-fictional placeholder brand names — shared across
-// categories for the "Featured Brands" and "Sponsors" rows. Deliberately
+// Fallback brand pool — only used for categories that don't yet define
+// their own `brands` list in categoryContent.js (e.g. the generic
+// DEFAULT_DEFINITION for an unrecognized category name). Deliberately
 // invented names, not references to any real company, to avoid implying
-// an affiliation with any actual brand.
+// an affiliation with any actual brand when we have no real brand data
+// to show for that category.
 const PLACEHOLDER_BRANDS = [
   'Lumio', 'Northwind', 'Aurelle', 'Cascade Co.', 'Verde & Co', 'Halcyon',
   'Driftwood', 'Solace', 'Meridian', 'Birchline', 'Amberlight', 'Stonewell',
@@ -38,12 +40,18 @@ function getSectionImages(definition, tiles, mapKey) {
   })
 }
 
-function buildBrandRow(definition, categoryName) {
+// Builds the "Featured Brands" row. Each category now supplies its own
+// realistic, category-appropriate `brands` list in categoryContent.js
+// (e.g. mobiles → OPPO/Realme/OnePlus, two wheelers → Hero Splendor/Royal
+// Enfield Hunter). Categories without a `brands` list yet fall back to the
+// shared placeholder pool so the row is never empty.
+function buildBrandRow(definition) {
+  const brandNames = definition.brands || PLACEHOLDER_BRANDS
   return definition.tiles.map((tile, i) => {
-    const brandName = PLACEHOLDER_BRANDS[i % PLACEHOLDER_BRANDS.length]
+    const brandName = brandNames[i % brandNames.length]
     const image = (definition.brandImages && definition.brandImages[brandName]) || definition.images[i % definition.images.length]
     return {
-      label: `${brandName} ${categoryName.split(' ')[0]}`,
+      label: brandName,
       image,
     }
   })
@@ -271,7 +279,7 @@ export default function CategoryShowcase({ activeCategory }) {
   const definition = getDefinitionForCategory(activeCategory.name)
   const slides = expandSlides(definition, activeCategory)
 
-  const brandItems = buildBrandRow(definition, activeCategory.name)
+  const brandItems = buildBrandRow(definition)
 
   // Real products for this category, split into two rows so "Today's Best
   // Deals" and "Trending in X" show different items rather than duplicates.
