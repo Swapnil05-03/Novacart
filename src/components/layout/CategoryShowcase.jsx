@@ -85,7 +85,10 @@ function expandSlides(definition, category) {
   return Array.from({ length: count }, (_, i) => ({
     badge: i === 0 ? 'Featured' : 'In ' + category.name,
     heading: definition.headlines[i],
-    description: definition.description,
+    // Prefer a per-slide description (definition.descriptions[i]) so each
+    // slide reads differently; fall back to the single shared
+    // `description` for categories that haven't defined per-slide copy yet.
+    description: definition.descriptions?.[i % definition.descriptions.length] ?? definition.description,
     discount: definition.discounts[i] ?? definition.discounts[0],
     image: slideImages[i % slideImages.length],
     primaryCta: { label: 'Shop now', to: categoryUrl },
@@ -360,14 +363,15 @@ export default function CategoryShowcase({ activeCategory }) {
               ))}
             </div>
           ) : hasCuratedDeals ? (
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide snap-x snap-mandatory">
               {buildProductRow(definition, definition.tiles).map((item) => (
-                <CuratedDealCard
-                  key={item.title}
-                  item={item}
-                  categoryName={activeCategory.name}
-                  categoryId={activeCategory.id}
-                />
+                <div key={item.title} className="w-56 sm:w-64 shrink-0 snap-start">
+                  <CuratedDealCard
+                    item={item}
+                    categoryName={activeCategory.name}
+                    categoryId={activeCategory.id}
+                  />
+                </div>
               ))}
             </div>
           ) : (
