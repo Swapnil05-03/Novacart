@@ -77,58 +77,72 @@ import brandUrbanLadder from '@/assets/images/categories/furniture/featuredBrand
 import brandWakefit from '@/assets/images/categories/furniture/featuredBrands/wakefit.jpg'
 import brandWoodenStreet from '@/assets/images/categories/furniture/featuredBrands/wooden-furniture.jpg'
 
+// --- Two Wheelers: locally-hosted images, same per-section folder pattern as furniture.
+import twBannerScooterSale from '@/assets/images/categories/twoWheelers/banners/scooter-sale.webp'
+import twBannerCruiserCollection from '@/assets/images/categories/twoWheelers/banners/cruiser-collection.webp'
+
+import twSliderSportsBikes from '@/assets/images/categories/twoWheelers/slider/sports bikes.jpg'
+import twSliderCruisers from '@/assets/images/categories/twoWheelers/slider/cruisers.avif'
+import twSliderAdventureBikes from '@/assets/images/categories/twoWheelers/slider/adventure bikes.webp'
+import twSliderElectricScooters from '@/assets/images/categories/twoWheelers/slider/electric scooters.avif'
+import twSliderFuelEfficient from '@/assets/images/categories/twoWheelers/slider/fuel efficient.avif'
+
+import twSbcSportsBikes from '@/assets/images/categories/twoWheelers/shopByCategory/sports-bikes.jpg'
+import twSbcCruiserBikes from '@/assets/images/categories/twoWheelers/shopByCategory/cruiser.jpg'
+import twSbcAdventureBikes from '@/assets/images/categories/twoWheelers/shopByCategory/adventure.jpg'
+import twSbcCommuterBikes from '@/assets/images/categories/twoWheelers/shopByCategory/commuter-bikes.webp'
+import twSbcElectricScooters from '@/assets/images/categories/twoWheelers/shopByCategory/elctric-scooters.jpg'
+import twSbcScooters from '@/assets/images/categories/twoWheelers/shopByCategory/scooters.png'
+import twSbcMopeds from '@/assets/images/categories/twoWheelers/shopByCategory/mopeds.avif'
+import twSbcOffRoadBikes from '@/assets/images/categories/twoWheelers/shopByCategory/off road.jpg'
+import twSbcCafeRacers from '@/assets/images/categories/twoWheelers/shopByCategory/cafe-racers.jpg'
+import twSbcElectricBikes from '@/assets/images/categories/twoWheelers/shopByCategory/electric-bikes.avif'
+import twSbcTouringBikes from '@/assets/images/categories/twoWheelers/shopByCategory/touring-bikes.jpg'
+import twSbcNakedBikes from '@/assets/images/categories/twoWheelers/shopByCategory/naked-bikes.jpg'
+import twSbcRetroClassicBikes from '@/assets/images/categories/twoWheelers/shopByCategory/retro-classic.jpg'
+import twSbcSportsScooters from '@/assets/images/categories/twoWheelers/shopByCategory/sports-scooters.jpg'
+import twSbcKidsBikes from '@/assets/images/categories/twoWheelers/shopByCategory/kids-bike.jpg'
+
+import twSpotlightSportsBikes from '@/assets/images/categories/twoWheelers/newLaunches/sports-bikes.jpg'
+import twSpotlightCruiserBikes from '@/assets/images/categories/twoWheelers/newLaunches/cruiser.jpg'
+import twSpotlightAdventureBikes from '@/assets/images/categories/twoWheelers/newLaunches/adventure.jpg'
+import twSpotlightCommuterBikes from '@/assets/images/categories/twoWheelers/newLaunches/commuter.jpg'
+import twSpotlightElectricScooters from '@/assets/images/categories/twoWheelers/newLaunches/electric-scooters.jpg'
+import twSpotlightScooters from '@/assets/images/categories/twoWheelers/newLaunches/scooters.jpg'
+import twSpotlightMopeds from '@/assets/images/categories/twoWheelers/newLaunches/mopeds.jpg'
+import twSpotlightOffRoadBikes from '@/assets/images/categories/twoWheelers/newLaunches/off-road.jpg'
+import twSpotlightCafeRacers from '@/assets/images/categories/twoWheelers/newLaunches/cafe-racers.jpg'
+import twSpotlightElectricBikes from '@/assets/images/categories/twoWheelers/newLaunches/electric-bikes.jpg'
+import twSpotlightTouringBikes from '@/assets/images/categories/twoWheelers/newLaunches/touring.jpg'
+import twSpotlightNakedBikes from '@/assets/images/categories/twoWheelers/newLaunches/naked.jpg'
+import twSpotlightRetroClassicBikes from '@/assets/images/categories/twoWheelers/newLaunches/retro.jpg'
+import twSpotlightSportsScooters from '@/assets/images/categories/twoWheelers/newLaunches/sports.jpg'
+import twSpotlightKidsBikes from '@/assets/images/categories/twoWheelers/newLaunches/kids.jpg'
+
+import twBrandHeroSplendor from '@/assets/images/categories/twoWheelers/featuredBrands/hero splender.avif'
+import twBrandRoyalEnfieldHunter from '@/assets/images/categories/twoWheelers/featuredBrands/royal enfield.avif'
+import twBrandBajajPulsar from '@/assets/images/categories/twoWheelers/featuredBrands/bajaj.avif'
+import twBrandTvsApache from '@/assets/images/categories/twoWheelers/featuredBrands/tvs apache.avif'
+import twBrandHondaActiva from '@/assets/images/categories/twoWheelers/featuredBrands/honda activa.jpg'
+import twBrandYamahaFz from '@/assets/images/categories/twoWheelers/featuredBrands/yamaha-fz.jpg'
+import twBrandKtmDuke from '@/assets/images/categories/twoWheelers/featuredBrands/ktm.jpg'
+import twBrandSuzukiAccess from '@/assets/images/categories/twoWheelers/featuredBrands/suzuki.jpg'
+import twBrandHeroGlamour from '@/assets/images/categories/twoWheelers/featuredBrands/hero-glamour.jpg'
+import twBrandBajajAvenger from '@/assets/images/categories/twoWheelers/featuredBrands/bajaj-avenger.jpg'
+import twBrandRoyalEnfieldClassic from '@/assets/images/categories/twoWheelers/featuredBrands/royal-enfield-classic.jpg'
+import twBrandTvsNtorq from '@/assets/images/categories/twoWheelers/featuredBrands/tvs ntorque.webp'
+import twBrandHondaShine from '@/assets/images/categories/twoWheelers/featuredBrands/honda-shine.jpg'
+import twBrandYamahaR15 from '@/assets/images/categories/twoWheelers/featuredBrands/yamaha-r15.jpg'
+import twBrandSuzukiGixxer from '@/assets/images/categories/twoWheelers/featuredBrands/suzuki-gixxer.jpg'
+
+import twDealsHunter350 from '@/assets/images/categories/twoWheelers/riderDeals/hunter 350.webp'
+import twDealsTvsIqube from '@/assets/images/categories/twoWheelers/riderDeals/tvs iQube.jpg'
+import twDealsBajajAvenger from '@/assets/images/categories/twoWheelers/riderDeals/bajaj avenger.jpg'
+import twDealsHondaActiva from '@/assets/images/categories/twoWheelers/riderDeals/honda activa.png'
+import twDealsYamahaFz from '@/assets/images/categories/twoWheelers/riderDeals/yamaha-fz.jpg'
+import twDealsKtmDuke390 from '@/assets/images/categories/twoWheelers/riderDeals/ktm-duke-390.jpg'
+
 const CATEGORY_DEFINITIONS = {
-  fashion: {
-    images: [
-      'https://images.unsplash.com/photo-1610189844303-227b6d2854ab?w=900&q=80',
-      'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=900&q=80',
-      'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=900&q=80',
-      'https://images.unsplash.com/photo-1445205170230-053b83016050?w=900&q=80',
-      'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&q=80',
-      'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=900&q=80',
-      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900&q=80',
-      'https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?w=900&q=80',
-      'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=900&q=80',
-      'https://images.unsplash.com/photo-1551803091-e20673f15770?w=900&q=80',
-      'https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?w=900&q=80',
-      'https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=900&q=80',
-      'https://images.unsplash.com/photo-1542060748-10c28b62716f?w=900&q=80',
-      'https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=900&q=80',
-      'https://picsum.photos/seed/1000/900/900',
-    ],
-    dealsItems: [
-      { label: 'Embroidered Silk Kurta Set', image: 'https://images.unsplash.com/photo-1610189844303-227b6d2854ab?w=900&q=80' },
-      { label: 'Slim-Fit Cotton Blazer', image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=900&q=80' },
-      { label: 'Floral Wrap Maxi Dress', image: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=900&q=80' },
-      { label: 'Distressed Denim Jacket', image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=900&q=80' },
-      { label: 'Pleated A-Line Skirt', image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&q=80' },
-      { label: 'Linen Shirt & Trouser Set', image: 'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=900&q=80' },
-    ],
-    headlines: [
-      ['Twirl into', 'traditions.'],
-      ['Welcome', 'Spring Summer.'],
-      ['New launches,', 'every week.'],
-      ['Layer up for', 'the season.'],
-      ['Style that', 'speaks for you.'],
-    ],
-    descriptions: [
-      'Festive ethnic wear crafted to make every celebration feel special.',
-      'Fresh spring-summer styles in light fabrics and breezy silhouettes.',
-      'New drops every week, so there is always something to discover.',
-      'Jackets and layers designed to keep you stylish through changing weather.',
-      'Everyday and statement pieces that let your personal style shine.',
-    ],
-    discounts: [65, 40, 30, 50, 35],
-    description: 'Curated styles for every season, from everyday basics to statement pieces.',
-    dealsLabel: 'Limited Time Deals',
-    spotlightLabel: 'Style Spotlights',
-    promos: [
-      { title: 'Summer Style Sale', subtitle: 'Up to 50% off on tops & dresses', ctaLabel: 'Shop Now' },
-      { title: 'Footwear Edit', subtitle: 'Starting at $29', ctaLabel: 'Explore Now' },
-    ],
-    tiles: ['T-Shirts', 'Jeans', 'Sports Shoes', 'Watches', "Kids' Clothing", 'Luggage', 'Kurtas', 'Summer Wear', 'Dresses', 'Formal Wear', 'Ethnic Wear', 'Innerwear', 'Sleepwear', 'Maternity Wear', 'Winter Wear'],
-    brands: ['Zara', 'H&M', "Levi's", 'Nike', 'Adidas', 'Puma', 'Uniqlo', 'Gap', 'Tommy Hilfiger', 'Calvin Klein', 'Ralph Lauren', 'Zudio', 'Allen Solly', 'Van Heusen', 'Forever 21'],
-  },
   mobiles: {
     images: [
       'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=900&q=80',
@@ -199,26 +213,26 @@ const CATEGORY_DEFINITIONS = {
       'https://images.unsplash.com/photo-1607602132700-068258431c6e?w=900&q=80',
     ],
     dealsItems: [
-      { label: 'Vitamin C Serum', image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=900&q=80' },
-      { label: 'Matte Liquid Lipstick Set', image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=900&q=80' },
-      { label: 'Keratin Hair Spa Kit', image: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=900&q=80' },
-      { label: 'Eau de Parfum 100ml', image: 'https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=900&q=80' },
-      { label: 'SPF 50 Sunscreen Lotion', image: 'https://images.unsplash.com/photo-1571875257727-256c39da42af?w=900&q=80' },
-      { label: 'Charcoal Face Mask Kit', image: 'https://images.unsplash.com/photo-1585652757173-57de5be9a4a5?w=900&q=80' },
+      { label: "Men's Beard Grooming Kit", image: 'https://images.unsplash.com/photo-1585652757173-57de5be9a4a5?w=900&q=80' },
+      { label: "Women's Matte Liquid Lipstick Set", image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=900&q=80' },
+      { label: "Men's Face Wash & Sunscreen Combo", image: 'https://images.unsplash.com/photo-1571875257727-256c39da42af?w=900&q=80' },
+      { label: "Women's Vitamin C Serum", image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=900&q=80' },
+      { label: "Men's Deodorant & Perfume Set", image: 'https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=900&q=80' },
+      { label: "Women's Keratin Hair Spa Kit", image: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=900&q=80' },
     ],
     headlines: [
-      ['Skincare', 'essentials.'],
-      ['Makeup', 'must-haves.'],
-      ['Haircare,', 'reinvented.'],
+      ["Men's grooming,", 'made simple.'],
+      ["Women's makeup,", 'must-haves.'],
+      ["Men's skincare,", 'daily routine.'],
+      ["Women's haircare,", 'reinvented.'],
       ['Fragrance for', 'every mood.'],
-      ['Sun care', 'essentials.'],
     ],
     descriptions: [
-      'Daily skincare essentials for a routine that actually works.',
-      'Makeup must-haves for a flawless look, day or night.',
-      'Haircare formulas reinvented for stronger, healthier-looking hair.',
+      "Men's grooming essentials for a routine that actually works.",
+      "Women's makeup must-haves for a flawless look, day or night.",
+      "Men's skincare basics, simplified for a daily routine.",
+      "Women's haircare formulas reinvented for stronger, healthier-looking hair.",
       'Signature scents for every mood and every occasion.',
-      'Sun care essentials that protect your skin all year round.',
     ],
     discounts: [40, 35, 30, 25, 20],
     description: 'Skincare, makeup, and grooming essentials trusted by thousands of happy customers.',
@@ -227,6 +241,16 @@ const CATEGORY_DEFINITIONS = {
     promos: [
       { title: 'Summer Beauty Sale', subtitle: 'Up to 50% off on Skincare & Makeup', ctaLabel: 'Shop Now' },
       { title: 'Premium Fragrances', subtitle: 'Starting at $29', ctaLabel: 'Explore Now' },
+    ],
+    tileGroups: [
+      {
+        label: 'Men',
+        tiles: ["Men's Grooming", 'Beard Care', 'Shaving', 'Face Wash', 'Deodorants', 'Hair Styling', 'Body Wash', 'Sunscreen', 'Trimmers', 'Body Lotion', 'Perfume', 'Hair Color', 'Skincare', 'Talc & Powder', 'Wellness'],
+      },
+      {
+        label: 'Women',
+        tiles: ['Makeup', 'Skincare', 'Haircare', 'Fragrance', 'Bath & Body', 'Tools & Brushes', 'Lip Care', 'Nail Care', 'Face Masks', 'Hair Color', 'Body Lotion', 'Deodorants', 'Sunscreen', 'Hair Removal', 'Wellness'],
+      },
     ],
     tiles: ['Skincare', 'Makeup', 'Haircare', 'Fragrance', "Men's Grooming", 'Wellness', 'Bath & Body', 'Tools & Brushes', 'Sunscreen', 'Lip Care', 'Nail Care', 'Hair Color', 'Face Masks', 'Body Lotion', 'Deodorants'],
     brands: ['Lakmé', 'Maybelline', "L'Oréal", 'Nykaa', 'MAC', 'Dove', 'Nivea', "Pond's", 'Garnier', 'The Body Shop', 'Himalaya', 'Biotique', 'Mamaearth', 'WOW Skin Science', 'Neutrogena'],
@@ -555,41 +579,102 @@ const CATEGORY_DEFINITIONS = {
       'https://picsum.photos/seed/1030/900/900',
       'https://picsum.photos/seed/1031/900/900',
     ],
+
+    sliderImages: [
+      twSliderSportsBikes,
+      twSliderCruisers,
+      twSliderAdventureBikes,
+      twSliderElectricScooters,
+      twSliderFuelEfficient,
+    ],
+    shopByCategoryImages: {
+      'Sports Bikes': twSbcSportsBikes,
+      'Cruiser Bikes': twSbcCruiserBikes,
+      'Adventure Bikes': twSbcAdventureBikes,
+      'Commuter Bikes': twSbcCommuterBikes,
+      'Electric Scooters': twSbcElectricScooters,
+      Scooters: twSbcScooters,
+      Mopeds: twSbcMopeds,
+      'Off-Road Bikes': twSbcOffRoadBikes,
+      'Café Racers': twSbcCafeRacers,
+      'Electric Bikes': twSbcElectricBikes,
+      'Touring Bikes': twSbcTouringBikes,
+      'Naked Bikes': twSbcNakedBikes,
+      'Retro & Classic Bikes': twSbcRetroClassicBikes,
+      'Sports Scooters': twSbcSportsScooters,
+      'Kids Bikes': twSbcKidsBikes,
+    },
+    spotlightImages: {
+      'Sports Bikes': twSpotlightSportsBikes,
+      'Cruiser Bikes': twSpotlightCruiserBikes,
+      'Adventure Bikes': twSpotlightAdventureBikes,
+      'Commuter Bikes': twSpotlightCommuterBikes,
+      'Electric Scooters': twSpotlightElectricScooters,
+      Scooters: twSpotlightScooters,
+      Mopeds: twSpotlightMopeds,
+      'Off-Road Bikes': twSpotlightOffRoadBikes,
+      'Café Racers': twSpotlightCafeRacers,
+      'Electric Bikes': twSpotlightElectricBikes,
+      'Touring Bikes': twSpotlightTouringBikes,
+      'Naked Bikes': twSpotlightNakedBikes,
+      'Retro & Classic Bikes': twSpotlightRetroClassicBikes,
+      'Sports Scooters': twSpotlightSportsScooters,
+      'Kids Bikes': twSpotlightKidsBikes,
+    },
+    brandImages: {
+      'Hero Splendor': twBrandHeroSplendor,
+      'Royal Enfield Hunter': twBrandRoyalEnfieldHunter,
+      'Bajaj Pulsar': twBrandBajajPulsar,
+      'TVS Apache': twBrandTvsApache,
+      'Honda Activa': twBrandHondaActiva,
+      'Yamaha FZ': twBrandYamahaFz,
+      'KTM Duke': twBrandKtmDuke,
+      'Suzuki Access': twBrandSuzukiAccess,
+      'Hero Glamour': twBrandHeroGlamour,
+      'Bajaj Avenger': twBrandBajajAvenger,
+      'Royal Enfield Classic': twBrandRoyalEnfieldClassic,
+      'TVS Ntorq': twBrandTvsNtorq,
+      'Honda Shine': twBrandHondaShine,
+      'Yamaha R15': twBrandYamahaR15,
+      'Suzuki Gixxer': twBrandSuzukiGixxer,
+    },
+    promoImages: [twBannerScooterSale, twBannerCruiserCollection],
+
     // Curated "Rider Deals" row — a specific mix of bikes/scooters and
     // gear (distinct from the 15 sub-category tiles), so this section
     // always shows a real two-wheelers mix instead of falling back to
     // whatever happens to exist in the product DB for this category.
     dealsItems: [
-      { label: 'Royal Enfield Hunter 350', image: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=900&q=80' },
-      { label: 'TVS iQube Electric', image: 'https://images.unsplash.com/photo-1622185135505-2d795003994a?w=900&q=80' },
-      { label: 'Bajaj Avenger Cruiser', image: 'https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=900&q=80' },
-      { label: 'Honda Activa 6G', image: 'https://images.unsplash.com/photo-1591637333184-19aa84b3e01f?w=900&q=80' },
-      { label: 'Studds Full-Face Helmet', image: 'https://images.unsplash.com/photo-1601361159752-7e8a6e8b8a7d?w=900&q=80' },
-      { label: 'KTM Duke 390 Adventure', image: 'https://images.unsplash.com/photo-1609778269201-86fb50b3bc55?w=900&q=80' },
+      { label: 'Royal Enfield Hunter 350', image: twDealsHunter350 },
+      { label: 'TVS iQube Electric', image: twDealsTvsIqube },
+      { label: 'Bajaj Avenger Cruiser', image: twDealsBajajAvenger },
+      { label: 'Honda Activa 6G', image: twDealsHondaActiva },
+      { label: 'Yamaha FZ Street Bike', image: twDealsYamahaFz },
+      { label: 'KTM Duke 390 Adventure', image: twDealsKtmDuke390 },
     ],
     headlines: [
       ['Sports bikes,', 'built for speed.'],
       ['Cruisers for', 'the open road.'],
       ['Adventure bikes,', 'ready for anything.'],
       ['Electric scooters,', 'the smart way to ride.'],
-      ['Gear up,', 'ride safe.'],
+      ['City rides,', 'made smooth.'],
     ],
     descriptions: [
       'High-performance sports bikes engineered for speed, control, and adrenaline.',
       'Comfortable, powerful cruisers built for long, relaxed rides.',
       'Rugged adventure bikes ready to take you off the beaten path.',
       'Eco-friendly electric scooters that make city commutes effortless.',
-      'Helmets, jackets, and gear built for riders who never compromise on safety.',
+      'Smooth, fuel-efficient rides built for everyday city commutes.',
     ],
     discounts: [30, 25, 20, 35, 22],
-    description: 'Gear and accessories built for riders who never compromise on safety.',
+    description: 'Bikes and scooters built for every kind of rider and road.',
     dealsLabel: 'Rider Deals',
-    spotlightLabel: 'Gear Spotlights',
+    spotlightLabel: 'New Launches',
     promos: [
-      { title: 'Rider Gear Sale', subtitle: 'Up to 40% off riding gear', ctaLabel: 'Shop Now' },
-      { title: 'Helmet Edit', subtitle: 'Starting at $49', ctaLabel: 'Explore Now' },
+      { title: 'Scooter Sale', subtitle: 'Up to 30% off electric scooters', ctaLabel: 'Shop Now' },
+      { title: 'Cruiser Collection', subtitle: 'Starting at ₹1,12,000', ctaLabel: 'Explore Now' },
     ],
-    tiles: ['Sports Bikes', 'Cruiser Bikes', 'Adventure Bikes', 'Electric Scooters', 'Scooters', 'Commuter Bikes', 'Helmets', 'Riding Jackets', 'Riding Gloves', 'Riding Boots', 'Bike Accessories', 'Saddle Bags', 'Bike Covers', 'Tyres', 'Bike Locks'],
+    tiles: ['Sports Bikes', 'Cruiser Bikes', 'Adventure Bikes', 'Commuter Bikes', 'Electric Scooters', 'Scooters', 'Mopeds', 'Off-Road Bikes', 'Café Racers', 'Electric Bikes', 'Touring Bikes', 'Naked Bikes', 'Retro & Classic Bikes', 'Sports Scooters', 'Kids Bikes'],
     brands: ['Hero Splendor', 'Royal Enfield Hunter', 'Bajaj Pulsar', 'TVS Apache', 'Honda Activa', 'Yamaha FZ', 'KTM Duke', 'Suzuki Access', 'Hero Glamour', 'Bajaj Avenger', 'Royal Enfield Classic', 'TVS Ntorq', 'Honda Shine', 'Yamaha R15', 'Suzuki Gixxer'],
   },
   'sports & outdoors': {
@@ -839,26 +924,26 @@ const CATEGORY_DEFINITIONS = {
       'https://picsum.photos/seed/1055/900/900',
     ],
     dealsItems: [
-      { label: 'Leather Sling Bag', image: 'https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?w=900&q=80' },
-      { label: 'Chronograph Wrist Watch', image: 'https://images.unsplash.com/photo-1611923134239-b9be5816e23c?w=900&q=80' },
-      { label: 'Bifold Leather Wallet', image: 'https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=900&q=80' },
-      { label: 'Polarized Aviator Sunglasses', image: 'https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=900&q=80' },
-      { label: 'Layered Statement Necklace', image: 'https://images.unsplash.com/photo-1591561954557-26941169b49e?w=900&q=80' },
-      { label: 'Wool Blend Beanie', image: 'https://images.unsplash.com/photo-1509941943102-10c232535736?w=900&q=80' },
+      { label: "Men's Chronograph Wrist Watch", image: 'https://images.unsplash.com/photo-1611923134239-b9be5816e23c?w=900&q=80' },
+      { label: "Women's Layered Statement Necklace", image: 'https://images.unsplash.com/photo-1591561954557-26941169b49e?w=900&q=80' },
+      { label: "Men's Bifold Leather Wallet", image: 'https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=900&q=80' },
+      { label: "Women's Structured Handbag", image: 'https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?w=900&q=80' },
+      { label: "Men's Polarized Aviator Sunglasses", image: 'https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=900&q=80' },
+      { label: "Women's Pearl Drop Earrings", image: 'https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?w=900&q=80' },
     ],
     headlines: [
-      ['Small details,', 'big difference.'],
-      ['Carry it', 'well.'],
-      ['Watches built', 'to last.'],
+      ["Men's watches,", 'built to last.'],
+      ["Women's jewelry,", 'new arrivals.'],
+      ["Men's essentials,", 'wallets & belts.'],
+      ["Women's bags,", 'for every day.'],
       ['Finish the', 'look.'],
-      ['Style that', 'speaks volumes.'],
     ],
     descriptions: [
+      "Men's watches built with craftsmanship that lasts for years.",
+      "Women's jewelry with fresh statement pieces added every season.",
+      "Men's everyday essentials — wallets, belts, and more.",
+      "Women's bags built to carry your everyday essentials in style.",
       'Small accessories that make a big difference to any outfit.',
-      'Bags built to carry your everyday essentials in style.',
-      'Watches built with craftsmanship that lasts for years.',
-      'The finishing touches that complete every look.',
-      'Statement accessories that speak volumes about your style.',
     ],
     discounts: [40, 30, 25, 35, 20],
     description: 'Bags, watches, and the small details that finish every outfit.',
@@ -867,6 +952,16 @@ const CATEGORY_DEFINITIONS = {
     promos: [
       { title: 'Accessory Sale', subtitle: 'Up to 40% off bags & watches', ctaLabel: 'Shop Now' },
       { title: 'Sunglasses Edit', subtitle: 'Starting at $24', ctaLabel: 'Explore Now' },
+    ],
+    tileGroups: [
+      {
+        label: 'Men',
+        tiles: ['Watches', 'Wallets', 'Belts', 'Sunglasses', 'Ties & Cufflinks', 'Cufflinks & Tie Pins', 'Caps', 'Bags', 'Keychains', 'Phone Accessories', 'Bracelets', 'Rings', 'Gloves', 'Umbrellas', 'Card Holders'],
+      },
+      {
+        label: 'Women',
+        tiles: ['Handbags', 'Jewelry', 'Sunglasses', 'Scarves', 'Hair Accessories', 'Watches', 'Belts', 'Clutches', 'Brooches & Pins', 'Hair Clips', 'Bracelets', 'Earrings', 'Necklaces', 'Anklets', 'Umbrellas'],
+      },
     ],
     tiles: ['Bags', 'Watches', 'Wallets', 'Belts', 'Sunglasses', 'Jewelry', 'Hats & Caps', 'Scarves', 'Hair Accessories', 'Ties & Cufflinks', 'Keychains', 'Phone Accessories', 'Umbrellas', 'Gloves', 'Brooches & Pins'],
     brands: ['Fossil', 'Titan', 'Ray-Ban', 'Fastrack', 'Casio', 'Michael Kors', 'Tommy Hilfiger', 'Wildcraft', 'American Tourister', 'Skybags', 'Da Milano', 'Baggit', 'Woodland', 'Timex', 'Guess'],
@@ -889,37 +984,59 @@ const CATEGORY_DEFINITIONS = {
       'https://picsum.photos/seed/1061/900/900',
       'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=900&q=80',
     ],
+    // Curated deals — a deliberate Men's/Women's mix so the "Wardrobe
+    // Deals" row itself shows both, not just a unisex/men-leaning set.
     dealsItems: [
-      { label: 'Oversized Cotton Hoodie', image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=900&q=80' },
-      { label: 'Slim-Fit Chino Pants', image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=900&q=80' },
-      { label: 'Quilted Bomber Jacket', image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=900&q=80' },
-      { label: 'Classic Crew Neck Sweater', image: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=900&q=80' },
-      { label: 'Relaxed Fit Denim Jeans', image: 'https://images.unsplash.com/photo-1516257984-b1b4d707412e?w=900&q=80' },
-      { label: 'Everyday Polo Shirt', image: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=900&q=80' },
+      { label: "Men's Oversized Cotton Hoodie", image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=900&q=80' },
+      { label: "Women's Wrap Midi Dress", image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=900&q=80' },
+      { label: "Men's Slim-Fit Chinos", image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=900&q=80' },
+      { label: "Women's Ribbed Knit Sweater", image: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=900&q=80' },
+      { label: "Men's Quilted Bomber Jacket", image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=900&q=80' },
+      { label: "Women's High-Rise Denim Jeans", image: 'https://images.unsplash.com/photo-1516257984-b1b4d707412e?w=900&q=80' },
     ],
     headlines: [
-      ['Everyday', 'essentials.'],
-      ['Layers for', 'every season.'],
-      ['Considered', 'basics.'],
+      ["Men's wear,", 'everyday essentials.'],
+      ["Women's edit,", 'new this season.'],
+      ["Men's layers", 'for every season.'],
+      ["Women's dresses", 'for every occasion.'],
       ['Fits that', 'just work.'],
-      ['Dress for', 'every occasion.'],
     ],
     descriptions: [
-      'Wardrobe essentials you will reach for every single day.',
-      'Layers built to keep you comfortable through every season.',
-      'Considered basics designed to wear in, not out.',
-      'Fits that just work, no matter your body type.',
-      'Pieces that take you from casual days to dressed-up nights.',
+      "Men's wardrobe essentials you will reach for every single day.",
+      "Women's styles refreshed with new arrivals every season.",
+      "Men's jackets and layers built to keep you comfortable through every season.",
+      "Women's dresses that take you from casual days to dressed-up nights.",
+      'Considered basics and fits that just work, for everyone.',
     ],
     discounts: [35, 30, 25, 40, 20],
-    description: 'Heavyweight basics and considered layers, built to wear in, not out.',
+    description: "Men's and women's wardrobe essentials, considered layers, built to wear in, not out.",
     dealsLabel: 'Wardrobe Deals',
     spotlightLabel: 'New This Week',
     promos: [
-      { title: 'Wardrobe Sale', subtitle: 'Up to 35% off basics', ctaLabel: 'Shop Now' },
-      { title: 'Outerwear Picks', subtitle: 'Starting at $39', ctaLabel: 'Explore Now' },
+      { title: "Men's Wardrobe Sale", subtitle: 'Up to 35% off basics', ctaLabel: 'Shop Now' },
+      { title: "Women's Outerwear Picks", subtitle: 'Starting at $39', ctaLabel: 'Explore Now' },
     ],
-    tiles: ['T-Shirts', 'Hoodies', 'Jackets', 'Pants', 'Outerwear', 'Sweaters', 'Shorts', 'Activewear', 'Polo Shirts', 'Denim', 'Blazers', 'Track Pants', 'Vests', 'Thermal Wear', 'Loungewear'],
+    // "Shop by Category" now renders as two distinct grouped rows — one
+    // purely Men's sub-categories, one purely Women's — instead of a single
+    // mixed row. Each list is ordered naturally for its own department, not
+    // mirrored 1:1 against the other, so it doesn't read as a mechanical
+    // alternating pattern.
+    tileGroups: [
+      {
+        label: 'Men',
+        tiles: ["T-Shirts", 'Jeans', 'Formal Shirts', 'Hoodies', 'Track Pants', 'Ethnic Wear', 'Blazers', 'Shorts', 'Activewear', 'Innerwear', 'Thermal Wear', 'Loungewear', 'Polo Shirts', 'Jackets', 'Vests'],
+      },
+      {
+        label: 'Women',
+        tiles: ['Tops', 'Dresses', 'Sweaters', 'Ethnic Wear', 'Skirts', 'Jumpsuits', 'Leggings', 'Co-ord Sets', 'Sarees', 'Kurtis', 'Nightwear', 'Blazers', 'Activewear', 'Innerwear', 'Jackets'],
+      },
+    ],
+    // Flat combined list — still used by other sections on this page
+    // (Trending, Featured Brands) that expect a single tile list.
+    tiles: [
+      "T-Shirts", 'Jeans', 'Formal Shirts', 'Hoodies', 'Track Pants', 'Ethnic Wear', 'Blazers', 'Shorts', 'Activewear', 'Innerwear', 'Thermal Wear', 'Loungewear', 'Polo Shirts', 'Jackets', 'Vests',
+      'Tops', 'Dresses', 'Sweaters', 'Skirts', 'Jumpsuits', 'Leggings', 'Co-ord Sets', 'Sarees', 'Kurtis', 'Nightwear',
+    ],
     brands: ["Levi's", 'Nike', 'Adidas', 'Puma', 'H&M', 'Zara', 'Uniqlo', 'Gap', 'US Polo Assn', 'Jack & Jones', 'Pepe Jeans', 'Wrangler', 'Lee', 'Superdry', 'Roadster'],
   },
   fitness: {

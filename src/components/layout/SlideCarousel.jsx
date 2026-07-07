@@ -15,12 +15,22 @@ const AUTOPLAY_MS = 5000
  *  - renderSlide: (slide, index) => ReactNode
  *  - className: optional extra classes for the outer section (e.g. height)
  *  - contentClassName: optional override for the inner content padding
+ *  - minHeightClassName: optional override for the reserved content height
  */
 export default function SlideCarousel({
   slides = [],
   renderSlide,
   className = '',
   contentClassName = 'px-6 sm:px-10 py-6 sm:py-7',
+  // Reserves enough vertical space for the tallest realistic slide content
+  // (heading + up to a 2-line description + buttons) so switching slides
+  // never changes the carousel's height. Without this, a slide with a
+  // longer/shorter description wraps to a different number of lines, the
+  // section resizes, and everything below it on the page visibly shifts
+  // up or down every time an arrow is pressed. Content is vertically
+  // centered inside this fixed space instead of the box growing/shrinking
+  // per slide.
+  minHeightClassName = 'min-h-[340px] sm:min-h-[380px] lg:min-h-[400px]',
 }) {
   const [activeIndex, setActiveIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
@@ -76,10 +86,11 @@ export default function SlideCarousel({
       />
       <div className="absolute inset-0 [background-image:linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] [background-size:56px_56px]" />
 
-      <div className={`relative z-10 ${contentClassName}`}>
+      <div className={`relative z-10 flex items-center ${minHeightClassName} ${contentClassName}`}>
         <AnimatePresence mode="wait">
           <motion.div
             key={activeIndex}
+            className="w-full"
             initial={{ opacity: 0, x: 24 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -24 }}

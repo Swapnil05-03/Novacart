@@ -9,8 +9,11 @@ const CATEGORY_IMAGES = {
   electronics: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80',
   apparel: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&q=80',
   fashion: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&q=80',
+  mobiles: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&q=80',
   'home & living': 'https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=500&q=80',
   'home-living': 'https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=500&q=80',
+  furniture: 'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=500&q=80',
+  beauty: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=500&q=80',
   accessories: 'https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?w=500&q=80',
   fitness: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=500&q=80',
   office: 'https://images.unsplash.com/photo-1518655048521-f130df041f66?w=500&q=80',
@@ -21,8 +24,43 @@ function getImageForCategory(name = '') {
   return CATEGORY_IMAGES[name.toLowerCase()] || FALLBACK_IMAGE
 }
 
+// The categories table is typically fetched sorted alphabetically, so a
+// plain `categories.slice(0, 6)` ends up showing whichever categories
+// happen to start with the earliest letters (Accessories, Apparel,
+// Appliances, Auto Accessories, Beauty, Books & Stationery) rather than the
+// storefront's actual "main" categories. This priority list lets the most
+// important, highest-traffic categories always appear first in this row,
+// regardless of how they come back from the database. Any category not
+// listed here just falls to the end, sorted alphabetically among themselves,
+// so nothing is ever hidden — it's a reordering, not a filter.
+const PRIORITY_ORDER = [
+  'electronics',
+  'apparel',
+  'mobiles',
+  'beauty',
+  'home & living',
+  'furniture',
+  'fashion',
+  'accessories',
+  'fitness',
+  'office',
+]
+
+function sortByPriority(categories) {
+  return [...categories].sort((a, b) => {
+    const aIndex = PRIORITY_ORDER.indexOf(a.name.toLowerCase())
+    const bIndex = PRIORITY_ORDER.indexOf(b.name.toLowerCase())
+    const aRank = aIndex === -1 ? PRIORITY_ORDER.length : aIndex
+    const bRank = bIndex === -1 ? PRIORITY_ORDER.length : bIndex
+    if (aRank !== bRank) return aRank - bRank
+    return a.name.localeCompare(b.name)
+  })
+}
+
 export default function CategoryGrid({ categories }) {
   if (!categories?.length) return null
+
+  const orderedCategories = sortByPriority(categories)
 
   return (
     <section className="container-page py-16">
@@ -35,7 +73,7 @@ export default function CategoryGrid({ categories }) {
         </Link>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-        {categories.slice(0, 6).map((cat, i) => (
+        {orderedCategories.slice(0, 6).map((cat, i) => (
           <motion.div
             key={cat.id}
             initial={{ opacity: 0, y: 16 }}

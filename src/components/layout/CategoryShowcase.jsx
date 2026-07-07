@@ -106,13 +106,12 @@ function renderCategorySlide(slide) {
           {slide.badge}
         </span>
 
-        <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1]">
-          {slide.heading[0]}
-          <br />
-          <span className="text-brand-400">{slide.heading[1]}</span>
+        <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.15]">
+          <span className="block truncate pb-1">{slide.heading[0]}</span>
+          <span className="block truncate pb-1 text-brand-400">{slide.heading[1]}</span>
         </h2>
 
-        <p className="mt-3 text-lg text-ink-300 max-w-md">{slide.description}</p>
+        <p className="mt-3 text-lg text-ink-300 max-w-md line-clamp-2">{slide.description}</p>
 
         <div className="mt-5 flex flex-wrap items-center gap-3">
           <Link to={slide.primaryCta.to}>
@@ -327,13 +326,26 @@ export default function CategoryShowcase({ activeCategory }) {
 
         <TrustBadges />
 
-        <ScrollableTileRow
-          title="Shop by Category"
-          tiles={definition.tiles}
-          images={shopByCategoryImages}
-          categoryId={activeCategory.id}
-          variant="card"
-        />
+        {definition.tileGroups?.length ? (
+          definition.tileGroups.map((group) => (
+            <ScrollableTileRow
+              key={group.label}
+              title={`Shop by Category — ${group.label}`}
+              tiles={group.tiles}
+              images={getSectionImages(definition, group.tiles, 'shopByCategoryImages')}
+              categoryId={activeCategory.id}
+              variant="card"
+            />
+          ))
+        ) : (
+          <ScrollableTileRow
+            title="Shop by Category"
+            tiles={definition.tiles}
+            images={shopByCategoryImages}
+            categoryId={activeCategory.id}
+            variant="card"
+          />
+        )}
 
         <PromoBannerPair definition={definition} categoryId={activeCategory.id} />
 

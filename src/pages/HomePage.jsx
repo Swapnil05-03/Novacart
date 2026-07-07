@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from 'react'
-import { productService } from '@/services/productService'
+import { productService, diversifyByCategory } from '@/services/productService'
 import { ROUTES } from '@/constants'
 import Hero from '@/components/layout/Hero'
 import CategoryTabs from '@/components/layout/CategoryTabs'
@@ -56,6 +56,17 @@ if (localCats && localCats.length > 0) {
   homeDataCache.categoriesLoaded = true
 }
 
+// Homepage rows (Featured / Trending / Best Sellers) show 8 products each.
+// We deliberately fetch a bigger batch than that — sorted by newest, same as
+// before — then run it through diversifyByCategory so one category with
+// several matching rows seeded close together (e.g. several Beauty products
+// all marked is_featured) can't fill most of the row. At most 2 products per
+// category make it into the final 8, mirroring how Flipkart/Amazon homepage
+// rails mix categories rather than showing a run of near-duplicates.
+const HOMEPAGE_FETCH_BATCH = 24
+const HOMEPAGE_ROW_SIZE = 8
+const MAX_PER_CATEGORY = 2
+
 export default function HomePage() {
   const [categories, setCategories] = useState(homeDataCache.categories)
   const [featured, setFeatured] = useState(homeDataCache.featured)
@@ -86,21 +97,35 @@ export default function HomePage() {
 
     // Load products separately — these appear below the fold so a slightly
     // later arrival is less noticeable and doesn't block the above-fold UI.
+    // Each list is over-fetched (24) then diversified down to 8 so no single
+    // category can dominate a row.
     if (!homeDataCache.productsLoaded) {
       Promise.all([
-        productService.getProducts({ isFeatured: true, perPage: 8 }),
-        productService.getProducts({ isTrending: true, perPage: 8 }),
-        productService.getProducts({ isBestSeller: true, perPage: 8 }),
+        productService.getProducts({ isFeatured: true, perPage: HOMEPAGE_FETCH_BATCH }),
+        productService.getProducts({ isTrending: true, perPage: HOMEPAGE_FETCH_BATCH }),
+        productService.getProducts({ isBestSeller: true, perPage: HOMEPAGE_FETCH_BATCH }),
       ])
         .then(([featuredRes, trendingRes, bestSellersRes]) => {
           if (!isMounted) return
-          homeDataCache.featured = featuredRes.data
-          homeDataCache.trending = trendingRes.data
-          homeDataCache.bestSellers = bestSellersRes.data
+          const diversifiedFeatured = diversifyByCategory(featuredRes.data, {
+            maxPerCategory: MAX_PER_CATEGORY,
+            limit: HOMEPAGE_ROW_SIZE,
+          })
+          const diversifiedTrending = diversifyByCategory(trendingRes.data, {
+            maxPerCategory: MAX_PER_CATEGORY,
+            limit: HOMEPAGE_ROW_SIZE,
+          })
+          const diversifiedBestSellers = diversifyByCategory(bestSellersRes.data, {
+            maxPerCategory: MAX_PER_CATEGORY,
+            limit: HOMEPAGE_ROW_SIZE,
+          })
+          homeDataCache.featured = diversifiedFeatured
+          homeDataCache.trending = diversifiedTrending
+          homeDataCache.bestSellers = diversifiedBestSellers
           homeDataCache.productsLoaded = true
-          setFeatured(featuredRes.data)
-          setTrending(trendingRes.data)
-          setBestSellers(bestSellersRes.data)
+          setFeatured(diversifiedFeatured)
+          setTrending(diversifiedTrending)
+          setBestSellers(diversifiedBestSellers)
         })
         .catch((err) => console.error('Failed to load homepage products', err))
         .finally(() => { if (isMounted) setProductsLoading(false) })

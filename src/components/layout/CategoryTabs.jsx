@@ -14,6 +14,9 @@ import {
   Bike,
   Sofa,
   LayoutGrid,
+  Gem,
+  Watch,
+  ShoppingBag,
 } from 'lucide-react'
 import { classNames } from '@/utils/helpers'
 
@@ -31,7 +34,7 @@ const ICON_MAP = {
   'home & kitchen': Home,
   home: Home,
   appliances: Refrigerator,
-  accessories: Sparkles,
+  accessories: Watch,
   'beauty & personal care': Droplet,
   fitness: Dumbbell,
   'sports & outdoors': Dumbbell,
@@ -58,7 +61,7 @@ export default function CategoryTabs({ categories = [], activeCategoryId, onSele
           style={{ overscrollBehaviorX: 'contain', overscrollBehaviorY: 'contain' }}
         >
           <Tab
-            icon={Sparkles}
+            icon={ShoppingBag}
             label="For You"
             active={!activeCategoryId}
             onClick={() => onSelectCategory(null)}

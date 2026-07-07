@@ -24,7 +24,18 @@ export default function ScrollRow({ title, variant = 'product', items = [], cate
         </Link>
       </div>
 
-      <div className="flex items-stretch gap-3 overflow-x-auto pb-1" style={{ overscrollBehaviorX: 'contain', overscrollBehaviorY: 'contain' }}>
+      <div
+        className="flex items-stretch gap-3 overflow-x-auto pb-1"
+        // Only contain horizontal overscroll (stops this row's own
+        // left/right scroll from triggering browser swipe-back/forward
+        // navigation). Vertical is left as 'auto' — this row never scrolls
+        // vertically itself, so a normal mouse-wheel scroll while the
+        // cursor is hovering over it must be free to bubble up and scroll
+        // the page. Setting overscroll-behavior-y to 'contain' here was
+        // trapping vertical wheel scroll inside the row and made the whole
+        // page feel "stuck" whenever the cursor was over any of these rows.
+        style={{ overscrollBehaviorX: 'contain', overscrollBehaviorY: 'auto' }}
+      >
         {variant === 'sponsor'
           ? items.map((sponsorGroup) => (
               <div

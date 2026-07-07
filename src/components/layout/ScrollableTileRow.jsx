@@ -91,7 +91,16 @@ export default function ScrollableTileRow({ title, tiles, images, items, categor
             'flex overflow-x-auto scroll-smooth pb-1',
             isCard ? 'gap-4' : 'items-center gap-4'
           )}
-          style={{ overscrollBehaviorX: 'contain', overscrollBehaviorY: 'contain' }}
+          // Only contain horizontal overscroll (stops the row's own
+          // left/right scroll from triggering browser swipe-back/forward
+          // navigation). Vertical is left as 'auto' — this row has no
+          // vertical scroll of its own, so a normal mouse-wheel scroll
+          // while hovering over it must be free to bubble up and scroll
+          // the page. Setting overscroll-behavior-y to 'contain' here was
+          // trapping vertical wheel scroll inside the row and made the
+          // whole page feel "stuck" whenever the cursor was over any tile
+          // row.
+          style={{ overscrollBehaviorX: 'contain', overscrollBehaviorY: 'auto' }}
         >
           {entries.map((entry) => (
             <Link

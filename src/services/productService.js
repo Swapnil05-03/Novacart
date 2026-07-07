@@ -25,6 +25,76 @@ function applySort(query, sortBy) {
   }
 }
 
+// Caps how many products from the same category can appear in a single
+// homepage row (Featured / Trending / Best Sellers), AND interleaves them
+// round-robin across categories so the same category never appears twice in
+// a row. Without this, rows are just "first N by created_at" — if one
+// category happens to have several is_featured/is_trending/is_best_seller
+// rows seeded close together, that category can fill most of the row, or
+// end up with two of its products sitting right next to each other (e.g.
+// Beauty, Beauty, Electronics, Beauty...) instead of a properly mixed row
+// the way Flipkart/Amazon homepage rails do.
+//
+// Pass in a larger `products` batch than you actually want to display (e.g.
+// fetch 24, keep 8) so there's enough variety left to interleave from. The
+// row is always filled to `limit` (never shorter) as long as that many
+// products exist in the batch — the cap only controls ordering/mix, never
+// how many tiles are shown.
+export function diversifyByCategory(products, { maxPerCategory = 2, limit = 8 } = {}) {
+  // Group products by category, preserving each category's original
+  // relative order (e.g. newest-first from the query).
+  const groups = new Map()
+  const categoryOrder = []
+  for (const product of products) {
+    const catId = product.category_id ?? product.category?.id ?? 'uncategorized'
+    if (!groups.has(catId)) {
+      groups.set(catId, [])
+      categoryOrder.push(catId)
+    }
+    groups.get(catId).push(product)
+  }
+
+  const result = []
+  const takenPerCategory = {}
+
+  // Phase 1 — round-robin respecting maxPerCategory. Walk the categories in
+  // order and take one product from each per round. This is what actually
+  // prevents back-to-back repeats — between one product from category A and
+  // the next one from A, there's a product from every other available
+  // category in between.
+  const roundRobin = (respectCap) => {
+    let addedThisRound = true
+    while (result.length < limit && addedThisRound) {
+      addedThisRound = false
+      for (const catId of categoryOrder) {
+        if (result.length >= limit) break
+        const taken = takenPerCategory[catId] || 0
+        const group = groups.get(catId)
+        if ((respectCap && taken >= maxPerCategory) || taken >= group.length) continue
+        result.push(group[taken])
+        takenPerCategory[catId] = taken + 1
+        addedThisRound = true
+      }
+    }
+  }
+
+  roundRobin(true)
+
+  // Phase 2 — if too few distinct categories were in the batch to reach
+  // `limit` under the cap, keep round-robining the SAME way but without the
+  // cap, continuing wherever each category left off. This still interleaves
+  // categories rather than dumping the rest of one category's leftovers in a
+  // consecutive block, so back-to-back repeats stay avoided even when the
+  // batch only contains a handful of categories. Tile count still always
+  // reaches `limit` whenever that many products exist at all — diversity
+  // only affects ordering, never how many tiles are shown.
+  if (result.length < limit) {
+    roundRobin(false)
+  }
+
+  return result
+}
+
 export const productService = {
   async getProducts({
     page = 1,
