@@ -207,6 +207,71 @@ import toysDealsOffRoad from '@/assets/images/categories/toysAndGames/playtimeDe
 import toysDealsPlush from '@/assets/images/categories/toysAndGames/playtimeDeals/plush.webp'
 import toysDealsSuperhero from '@/assets/images/categories/toysAndGames/playtimeDeals/superhero.jpg'
 
+// --- Sports & Outdoors: locally-hosted images, same per-section folder pattern.
+import sportsBannerOne from '@/assets/images/categories/sportsAndOutdoors/banners/banner1.webp'
+import sportsBannerTwo from '@/assets/images/categories/sportsAndOutdoors/banners/banner2.webp'
+
+import sportsSliderOne from '@/assets/images/categories/sportsAndOutdoors/slider/slider1.webp'
+import sportsSliderTwo from '@/assets/images/categories/sportsAndOutdoors/slider/slider2.jpg'
+import sportsSliderThree from '@/assets/images/categories/sportsAndOutdoors/slider/slider3.jpg'
+import sportsSliderFour from '@/assets/images/categories/sportsAndOutdoors/slider/slider4.jpg'
+import sportsSliderFive from '@/assets/images/categories/sportsAndOutdoors/slider/slider5.webp'
+
+import sportsSbcBadminton from '@/assets/images/categories/sportsAndOutdoors/shopByCategory/badminton1.jpg'
+import sportsSbcBasketball from '@/assets/images/categories/sportsAndOutdoors/shopByCategory/basketball1.jpg'
+import sportsSbcCamping from '@/assets/images/categories/sportsAndOutdoors/shopByCategory/camping1.jpg'
+import sportsSbcCricket from '@/assets/images/categories/sportsAndOutdoors/shopByCategory/cricket1.jpg'
+import sportsSbcCycling from '@/assets/images/categories/sportsAndOutdoors/shopByCategory/cycling1.jpg'
+import sportsSbcFishing from '@/assets/images/categories/sportsAndOutdoors/shopByCategory/fishing1.jpg'
+import sportsSbcFootball from '@/assets/images/categories/sportsAndOutdoors/shopByCategory/football1.jpg'
+import sportsSbcHockey from '@/assets/images/categories/sportsAndOutdoors/shopByCategory/hockey1.jpg'
+import sportsSbcSkating from '@/assets/images/categories/sportsAndOutdoors/shopByCategory/skating1.jpg'
+import sportsSbcSkiing from '@/assets/images/categories/sportsAndOutdoors/shopByCategory/skiing1.jpg'
+import sportsSbcSwimming from '@/assets/images/categories/sportsAndOutdoors/shopByCategory/swimming1.jpg'
+import sportsSbcTableTennis from '@/assets/images/categories/sportsAndOutdoors/shopByCategory/table-tennis1.jpg'
+import sportsSbcTennis from '@/assets/images/categories/sportsAndOutdoors/shopByCategory/tennis1.jpg'
+import sportsSbcTrekking from '@/assets/images/categories/sportsAndOutdoors/shopByCategory/trekking1.jpg'
+import sportsSbcVolleyball from '@/assets/images/categories/sportsAndOutdoors/shopByCategory/volleyball1.jpg'
+
+import sportsSpotlightBadminton from '@/assets/images/categories/sportsAndOutdoors/championsChoice/badminton2.jpg'
+import sportsSpotlightBasketball from '@/assets/images/categories/sportsAndOutdoors/championsChoice/basketball2.jpg'
+import sportsSpotlightCamping from '@/assets/images/categories/sportsAndOutdoors/championsChoice/camping2.jpg'
+import sportsSpotlightCricket from '@/assets/images/categories/sportsAndOutdoors/championsChoice/cricket2.jpg'
+import sportsSpotlightCycling from '@/assets/images/categories/sportsAndOutdoors/championsChoice/cycling2.jpg'
+import sportsSpotlightFishing from '@/assets/images/categories/sportsAndOutdoors/championsChoice/fishing2.jpg'
+import sportsSpotlightFootball from '@/assets/images/categories/sportsAndOutdoors/championsChoice/football2.jpg'
+import sportsSpotlightHockey from '@/assets/images/categories/sportsAndOutdoors/championsChoice/hockey2.jpg'
+import sportsSpotlightSkating from '@/assets/images/categories/sportsAndOutdoors/championsChoice/skating2.webp'
+import sportsSpotlightSkiing from '@/assets/images/categories/sportsAndOutdoors/championsChoice/skiing2.jpg'
+import sportsSpotlightSwimming from '@/assets/images/categories/sportsAndOutdoors/championsChoice/swimming2.webp'
+import sportsSpotlightTableTennis from '@/assets/images/categories/sportsAndOutdoors/championsChoice/table-tennis2.webp'
+import sportsSpotlightTennis from '@/assets/images/categories/sportsAndOutdoors/championsChoice/tennis2.webp'
+import sportsSpotlightTrekking from '@/assets/images/categories/sportsAndOutdoors/championsChoice/trekking2.jpg'
+import sportsSpotlightVolleyball from '@/assets/images/categories/sportsAndOutdoors/championsChoice/volleyball2.jpg'
+
+import sportsBrandDunlop from '@/assets/images/categories/sportsAndOutdoors/FeaturedBrands/dunlop.jpg'
+import sportsBrandForclaz from '@/assets/images/categories/sportsAndOutdoors/FeaturedBrands/forclaz.jpg'
+import sportsBrandHead from '@/assets/images/categories/sportsAndOutdoors/FeaturedBrands/head.jpg'
+import sportsBrandKookaburra from '@/assets/images/categories/sportsAndOutdoors/FeaturedBrands/kookaburra.jpg'
+import sportsBrandLiNing from '@/assets/images/categories/sportsAndOutdoors/FeaturedBrands/li-ning.jpg'
+import sportsBrandMolten from '@/assets/images/categories/sportsAndOutdoors/FeaturedBrands/molten.jpg'
+import sportsBrandMrf from '@/assets/images/categories/sportsAndOutdoors/FeaturedBrands/mrf.jpg'
+import sportsBrandNivia from '@/assets/images/categories/sportsAndOutdoors/FeaturedBrands/nivia.jpg'
+import sportsBrandNorthFace from '@/assets/images/categories/sportsAndOutdoors/FeaturedBrands/north-face.jpg'
+import sportsBrandQuechua from '@/assets/images/categories/sportsAndOutdoors/FeaturedBrands/quechua.jpg'
+import sportsBrandRival from '@/assets/images/categories/sportsAndOutdoors/FeaturedBrands/rival.jpg'
+import sportsBrandSg from '@/assets/images/categories/sportsAndOutdoors/FeaturedBrands/sg.webp'
+import sportsBrandSpalding from '@/assets/images/categories/sportsAndOutdoors/FeaturedBrands/spalding.webp'
+import sportsBrandWildcraft from '@/assets/images/categories/sportsAndOutdoors/FeaturedBrands/wildcraft.jpg'
+import sportsBrandYonex from '@/assets/images/categories/sportsAndOutdoors/FeaturedBrands/yonex.jpg'
+
+import sportsDealsBadminton from '@/assets/images/categories/sportsAndOutdoors/GameDayDeals/badminton.webp'
+import sportsDealsBasketball from '@/assets/images/categories/sportsAndOutdoors/GameDayDeals/basketball.jpg'
+import sportsDealsCampingTent from '@/assets/images/categories/sportsAndOutdoors/GameDayDeals/camping-tent.webp'
+import sportsDealsHelmet from '@/assets/images/categories/sportsAndOutdoors/GameDayDeals/helmet.jpg'
+import sportsDealsFootball from '@/assets/images/categories/sportsAndOutdoors/GameDayDeals/official-football.png'
+import sportsDealsCricketKit from '@/assets/images/categories/sportsAndOutdoors/GameDayDeals/professional-cricket-kit.jpg'
+
 const CATEGORY_DEFINITIONS = {
   mobiles: {
     images: [
@@ -819,38 +884,97 @@ const CATEGORY_DEFINITIONS = {
       'https://picsum.photos/seed/1037/900/900',
       'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=900&q=80',
     ],
+    sliderImages: [
+      sportsSliderOne,
+      sportsSliderTwo,
+      sportsSliderThree,
+      sportsSliderFour,
+      sportsSliderFive,
+    ],
+    shopByCategoryImages: {
+      'Cricket Gear': sportsSbcCricket,
+      Badminton: sportsSbcBadminton,
+      Football: sportsSbcFootball,
+      Tennis: sportsSbcTennis,
+      'Table Tennis': sportsSbcTableTennis,
+      Basketball: sportsSbcBasketball,
+      Volleyball: sportsSbcVolleyball,
+      'Camping Equipment': sportsSbcCamping,
+      'Trekking Gear': sportsSbcTrekking,
+      'Cycling Gear': sportsSbcCycling,
+      'Swimming Gear': sportsSbcSwimming,
+      'Skating Gear': sportsSbcSkating,
+      'Fishing Gear': sportsSbcFishing,
+      Hockey: sportsSbcHockey,
+      Skiing: sportsSbcSkiing,
+    },
+    spotlightImages: {
+      'Cricket Gear': sportsSpotlightCricket,
+      Badminton: sportsSpotlightBadminton,
+      Football: sportsSpotlightFootball,
+      Tennis: sportsSpotlightTennis,
+      'Table Tennis': sportsSpotlightTableTennis,
+      Basketball: sportsSpotlightBasketball,
+      Volleyball: sportsSpotlightVolleyball,
+      'Camping Equipment': sportsSpotlightCamping,
+      'Trekking Gear': sportsSpotlightTrekking,
+      'Cycling Gear': sportsSpotlightCycling,
+      'Swimming Gear': sportsSpotlightSwimming,
+      'Skating Gear': sportsSpotlightSkating,
+      'Fishing Gear': sportsSpotlightFishing,
+      Hockey: sportsSpotlightHockey,
+      Skiing: sportsSpotlightSkiing,
+    },
+    brandImages: {
+      Dunlop: sportsBrandDunlop,
+      Forclaz: sportsBrandForclaz,
+      Head: sportsBrandHead,
+      Kookaburra: sportsBrandKookaburra,
+      'Li-Ning': sportsBrandLiNing,
+      Molten: sportsBrandMolten,
+      MRF: sportsBrandMrf,
+      Nivia: sportsBrandNivia,
+      'The North Face': sportsBrandNorthFace,
+      Quechua: sportsBrandQuechua,
+      Rival: sportsBrandRival,
+      SG: sportsBrandSg,
+      Spalding: sportsBrandSpalding,
+      Wildcraft: sportsBrandWildcraft,
+      Yonex: sportsBrandYonex,
+    },
+    promoImages: [sportsBannerOne, sportsBannerTwo],
     dealsItems: [
-      { label: 'Anti-Slip Yoga Mat', image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=900&q=80' },
-      { label: 'Insulated Steel Water Bottle', image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=80' },
-      { label: 'Resistance Bands Set', image: 'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=900&q=80' },
-      { label: '4-Person Camping Tent', image: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=900&q=80' },
-      { label: 'Mountain Cycling Helmet', image: 'https://images.unsplash.com/photo-1530549387789-4c1017266635?w=900&q=80' },
-      { label: 'Cricket Kit Bag Combo', image: 'https://images.unsplash.com/photo-1576678927484-cc907957088c?w=900&q=80' },
+      { label: 'Professional Cricket Kit Bag', image: sportsDealsCricketKit },
+      { label: 'Badminton Racket Pair with Shuttlecocks', image: sportsDealsBadminton },
+      { label: 'Official Size Football', image: sportsDealsFootball },
+      { label: '4-Person Camping Tent', image: sportsDealsCampingTent },
+      { label: 'Mountain Cycling Helmet', image: sportsDealsHelmet },
+      { label: 'Basketball with Pump', image: sportsDealsBasketball },
     ],
     headlines: [
-      ['Gear up for', 'fitness.'],
-      ['New season,', 'new gear.'],
-      ['Outdoor', 'essentials.'],
-      ['Weekend', 'warrior gear.'],
-      ['Push your', 'limits.'],
+      ['Cricket gear,', 'match ready.'],
+      ['Badminton &', 'racket sports.'],
+      ['Table tennis', 'excellence.'],
+      ['Team sports,', 'game on.'],
+      ['Cycling &', 'trekking essentials.'],
     ],
     descriptions: [
-      'Fitness gear that keeps you moving toward your goals.',
-      'Fresh gear for the new season, on the field or off it.',
-      'Outdoor essentials for camping, trekking, and everything between.',
-      'Gear built for weekend adventures, whatever they bring.',
-      'Performance equipment for athletes who push their limits.',
+      'Bats, balls, and kits for every cricket match, from the backyard to the pitch.',
+      'Rackets and shuttlecocks for badminton, tennis, and table tennis.',
+      'Premium paddles, balls, and accessories designed for precision, speed, and every winning rally.',
+      'Footballs, basketballs, and volleyballs for game day with friends.',
+      'Cycles, helmets, and trekking gear for the open trail.',
     ],
-    discounts: [35, 28, 22, 30, 25],
-    description: 'Equipment and apparel for every workout, trail, and weekend adventure.',
-    dealsLabel: 'Gear Up Deals',
-    spotlightLabel: 'Athlete Picks',
+    discounts: [30, 25, 20, 35, 22],
+    description: 'Everything for cricket, badminton, football, and your next outdoor adventure.',
+    dealsLabel: 'Game Day Deals',
+    spotlightLabel: "Champion's Choice",
     promos: [
-      { title: 'Fitness Gear Sale', subtitle: 'Up to 35% off equipment', ctaLabel: 'Shop Now' },
-      { title: 'Outdoor Essentials', subtitle: 'Starting at $19', ctaLabel: 'Explore Now' },
+      { title: 'Cricket Season Sale', subtitle: 'Up to 30% off cricket gear', ctaLabel: 'Shop Now' },
+      { title: 'Trekking Gear Sale', subtitle: 'Starting at $19', ctaLabel: 'Explore Now' },
     ],
-    tiles: ['Yoga Mats', 'Water Bottles', 'Resistance Bands', 'Outdoor Gear', 'Camping Equipment', 'Cycling Gear', 'Team Sports', 'Trekking Gear', 'Swimming Gear', 'Tennis & Badminton', 'Cricket Gear', 'Fitness Trackers', 'Skating Gear', 'Fishing Gear', 'Backpacks'],
-    brands: ['Nike', 'Adidas', 'Puma', 'Decathlon', 'Under Armour', 'Reebok', 'Wilson', 'Yonex', 'SG', 'Cosco', 'Nivia', 'Speedo', 'The North Face', 'Quechua', 'Columbia'],
+    tiles: ['Cricket Gear', 'Badminton', 'Football', 'Tennis', 'Table Tennis', 'Basketball', 'Volleyball', 'Camping Equipment', 'Trekking Gear', 'Cycling Gear', 'Swimming Gear', 'Skating Gear', 'Fishing Gear', 'Hockey', 'Skiing'],
+    brands: ['SG', 'Kookaburra', 'MRF', 'Li-Ning', 'Yonex', 'Nivia', 'Molten', 'Spalding', 'Head', 'Rival', 'Quechua', 'The North Face', 'Wildcraft', 'Dunlop', 'Forclaz'],
   },
   'books & stationery': {
     images: [

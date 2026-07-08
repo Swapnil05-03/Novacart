@@ -179,13 +179,13 @@ function PromoBannerPair({ definition, categoryId }) {
         <Link
           key={promo.title}
           to={`${ROUTES.PRODUCTS}?category=${categoryId}`}
-          className="group relative overflow-hidden rounded-2xl min-h-[140px] flex items-center p-6"
+          className="group relative overflow-hidden rounded-2xl min-h-[220px] sm:min-h-[260px] flex items-center p-6"
         >
           <img
             src={promoImages[i % promoImages.length]}
             alt={promo.title}
             loading="lazy"
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-ink-950/85 via-ink-950/40 to-transparent" />
           <div className="relative z-10 max-w-[60%]">
