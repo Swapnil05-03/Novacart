@@ -142,6 +142,71 @@ import twDealsHondaActiva from '@/assets/images/categories/twoWheelers/riderDeal
 import twDealsYamahaFz from '@/assets/images/categories/twoWheelers/riderDeals/yamaha-fz.jpg'
 import twDealsKtmDuke390 from '@/assets/images/categories/twoWheelers/riderDeals/ktm-duke-390.jpg'
 
+// --- Toys & Games: locally-hosted images, same per-section folder pattern.
+import toysBannerBoardGames from '@/assets/images/categories/toysAndGames/banners/boardgames.webp'
+import toysBannerToysSale from '@/assets/images/categories/toysAndGames/banners/toys-sale.png'
+
+import toysSliderOne from '@/assets/images/categories/toysAndGames/slider/slider1.webp'
+import toysSliderTwo from '@/assets/images/categories/toysAndGames//slider/slider2.jpg'
+import toysSliderThree from '@/assets/images/categories/toysAndGames/slider/slider3.webp'
+import toysSliderFour from '@/assets/images/categories/toysAndGames/slider/slider4.jpg'
+import toysSliderFive from '@/assets/images/categories/toysAndGames/slider/slider5.jpg'
+
+import toysSbcAction from '@/assets/images/categories/toysAndGames/shopByCategory/action.webp'
+import toysSbcArtCraft from '@/assets/images/categories/toysAndGames/shopByCategory/art-and-craft.jpg'
+import toysSbcBoardGames from '@/assets/images/categories/toysAndGames/shopByCategory/board-games.jpg'
+import toysSbcBuildingBlocks from '@/assets/images/categories/toysAndGames/shopByCategory/building-blocks.jpg'
+import toysSbcCardGames from '@/assets/images/categories/toysAndGames/shopByCategory/card-games.jpg'
+import toysSbcDolls from '@/assets/images/categories/toysAndGames/shopByCategory/dolls.webp'
+import toysSbcEducational from '@/assets/images/categories/toysAndGames/shopByCategory/educational.avif'
+import toysSbcMusicalToys from '@/assets/images/categories/toysAndGames/shopByCategory/musical-toys.jpg'
+import toysSbcOutdoorGames from '@/assets/images/categories/toysAndGames/shopByCategory/outdoor-games.webp'
+import toysSbcPlayDoh from '@/assets/images/categories/toysAndGames/shopByCategory/play-doh.jpg'
+import toysSbcPuzzles from '@/assets/images/categories/toysAndGames/shopByCategory/puzzles.jpg'
+import toysSbcRcCars from '@/assets/images/categories/toysAndGames/shopByCategory/rc-cars.jpg'
+import toysSbcRideOns from '@/assets/images/categories/toysAndGames/shopByCategory/ride-ons.jpg'
+import toysSbcScienceKit from '@/assets/images/categories/toysAndGames/shopByCategory/science kit.jpg'
+import toysSbcSoftToys from '@/assets/images/categories/toysAndGames/shopByCategory/soft-toys.jpg'
+
+import toysSpotlightAction from '@/assets/images/categories/toysAndGames/newArrivals/action.jpg'
+import toysSpotlightArtsAndCrafts from '@/assets/images/categories/toysAndGames/newArrivals/artsAndCrafts.jpg'
+import toysSpotlightBoardGames from '@/assets/images/categories/toysAndGames/newArrivals/board-games.jpg'
+import toysSpotlightBuildingBlocks from '@/assets/images/categories/toysAndGames/newArrivals/buildingBlocks.jpg'
+import toysSpotlightCard from '@/assets/images/categories/toysAndGames/newArrivals/card.jpg'
+import toysSpotlightDolls from '@/assets/images/categories/toysAndGames/newArrivals/dolls.jpg'
+import toysSpotlightEducational from '@/assets/images/categories/toysAndGames/newArrivals/educational.jpg'
+import toysSpotlightMusical from '@/assets/images/categories/toysAndGames/newArrivals/musical.jpg'
+import toysSpotlightOutdoor from '@/assets/images/categories/toysAndGames/newArrivals/outdoor.jpg'
+import toysSpotlightPlaydoh from '@/assets/images/categories/toysAndGames/newArrivals/playdoh.webp'
+import toysSpotlightPuzzles from '@/assets/images/categories/toysAndGames/newArrivals/puzzles.jpg'
+import toysSpotlightRC from '@/assets/images/categories/toysAndGames/newArrivals/RC.jpg'
+import toysSpotlightRideOns from '@/assets/images/categories/toysAndGames/newArrivals/ride-ons.jpg'
+import toysSpotlightScienceKit from '@/assets/images/categories/toysAndGames/newArrivals/science-kit.jpg'
+import toysSpotlightSoftToys from '@/assets/images/categories/toysAndGames/newArrivals/soft toys.jpg'
+
+import toysBrandBarbie from '@/assets/images/categories/toysAndGames/featuredBrands/barbie.jpg'
+import toysBrandChicco from '@/assets/images/categories/toysAndGames/featuredBrands/chicco.jpg'
+import toysBrandCrayola from '@/assets/images/categories/toysAndGames/featuredBrands/crayola.jpg'
+import toysBrandDisney from '@/assets/images/categories/toysAndGames/featuredBrands/disney.jpg'
+import toysBrandFisherPrice from '@/assets/images/categories/toysAndGames/featuredBrands/fisher-price.jpg'
+import toysBrandFunskool from '@/assets/images/categories/toysAndGames/featuredBrands/funskool.png'
+import toysBrandHamleys from '@/assets/images/categories/toysAndGames/featuredBrands/hamleys.avif'
+import toysBrandHasbro from '@/assets/images/categories/toysAndGames/featuredBrands/hasbro.jpg'
+import toysBrandHotWheels from '@/assets/images/categories/toysAndGames/featuredBrands/hot-wheels.jpg'
+import toysBrandLego from '@/assets/images/categories/toysAndGames/featuredBrands/lego.jpg'
+import toysBrandMattel from '@/assets/images/categories/toysAndGames/featuredBrands/mattel.jpg'
+import toysBrandMonopoly from '@/assets/images/categories/toysAndGames/featuredBrands/monopoly.jpg'
+import toysBrandNerf from '@/assets/images/categories/toysAndGames/featuredBrands/nerf.jpg'
+import toysBrandPlaydoh from '@/assets/images/categories/toysAndGames/featuredBrands/playdoh.jpg'
+import toysBrandVtech from '@/assets/images/categories/toysAndGames/featuredBrands/vtech.jpg'
+
+import toysDeals500Pieces from '@/assets/images/categories/toysAndGames/playtimeDeals/500pieces.jpg'
+import toysDealsFamily from '@/assets/images/categories/toysAndGames/playtimeDeals/family.jpg'
+import toysDealsArtCraft from '@/assets/images/categories/toysAndGames/playtimeDeals/kids-art-and-craft.jpg'
+import toysDealsOffRoad from '@/assets/images/categories/toysAndGames/playtimeDeals/off-road.jpg'
+import toysDealsPlush from '@/assets/images/categories/toysAndGames/playtimeDeals/plush.webp'
+import toysDealsSuperhero from '@/assets/images/categories/toysAndGames/playtimeDeals/superhero.jpg'
+
 const CATEGORY_DEFINITIONS = {
   mobiles: {
     images: [
@@ -426,13 +491,72 @@ const CATEGORY_DEFINITIONS = {
       'https://images.unsplash.com/photo-1599623560574-39d485eaa7eb?w=900&q=80',
       'https://picsum.photos/seed/1012/900/900',
     ],
+    sliderImages: [
+      toysSliderOne,
+      toysSliderTwo,
+      toysSliderThree,
+      toysSliderFour,
+      toysSliderFive,
+    ],
+    shopByCategoryImages: {
+      'Action Figures': toysSbcAction,
+      'Board Games': toysSbcBoardGames,
+      'RC Cars': toysSbcRcCars,
+      'Soft Toys': toysSbcSoftToys,
+      'Building Blocks': toysSbcBuildingBlocks,
+      Puzzles: toysSbcPuzzles,
+      'Outdoor Play': toysSbcOutdoorGames,
+      'Educational Toys': toysSbcEducational,
+      Dolls: toysSbcDolls,
+      'Art & Craft Kits': toysSbcArtCraft,
+      'Musical Toys': toysSbcMusicalToys,
+      'Card Games': toysSbcCardGames,
+      'Ride-Ons': toysSbcRideOns,
+      'Science Kits': toysSbcScienceKit,
+      'Play Dough': toysSbcPlayDoh,
+    },
+    spotlightImages: {
+      'Action Figures': toysSpotlightAction,
+      'Board Games': toysSpotlightBoardGames,
+      'RC Cars': toysSpotlightRC,
+      'Soft Toys': toysSpotlightSoftToys,
+      'Building Blocks': toysSpotlightBuildingBlocks,
+      Puzzles: toysSpotlightPuzzles,
+      'Outdoor Play': toysSpotlightOutdoor,
+      'Educational Toys': toysSpotlightEducational,
+      Dolls: toysSpotlightDolls,
+      'Art & Craft Kits': toysSpotlightArtsAndCrafts,
+      'Musical Toys': toysSpotlightMusical,
+      'Card Games': toysSpotlightCard,
+      'Ride-Ons': toysSpotlightRideOns,
+      'Science Kits': toysSpotlightScienceKit,
+      'Play Dough': toysSpotlightPlaydoh,
+    },
+    brandImages: {
+      LEGO: toysBrandLego,
+      Hasbro: toysBrandHasbro,
+      Mattel: toysBrandMattel,
+      'Fisher-Price': toysBrandFisherPrice,
+      'Hot Wheels': toysBrandHotWheels,
+      Barbie: toysBrandBarbie,
+      Funskool: toysBrandFunskool,
+      NERF: toysBrandNerf,
+      Hamleys: toysBrandHamleys,
+      Chicco: toysBrandChicco,
+      VTech: toysBrandVtech,
+      'Play-Doh': toysBrandPlaydoh,
+      Monopoly: toysBrandMonopoly,
+      Crayola: toysBrandCrayola,
+      Disney: toysBrandDisney,
+    },
+    promoImages: [toysBannerToysSale, toysBannerBoardGames],
     dealsItems: [
-      { label: 'Superhero Action Figure Set', image: 'https://images.unsplash.com/photo-1558877385-81a1c7e67d72?w=900&q=80' },
-      { label: '500-Piece Building Blocks Kit', image: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=900&q=80' },
-      { label: 'Family Board Game Bundle', image: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=900&q=80' },
-      { label: 'Remote-Control Off-Road Truck', image: 'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=900&q=80' },
-      { label: 'Plush Teddy Bear Large', image: 'https://images.unsplash.com/photo-1587731556726-069be43e9551?w=900&q=80' },
-      { label: 'Kids Art & Craft Kit', image: 'https://images.unsplash.com/photo-1577023311546-cdc07a8454d9?w=900&q=80' },
+      { label: '500-Piece Building Blocks Kit', image: toysDeals500Pieces },
+      { label: 'Family Board Game Bundle', image: toysDealsFamily },
+      { label: 'Kids Art & Craft Kit', image: toysDealsArtCraft },
+      { label: 'Remote-Control Off-Road Truck', image: toysDealsOffRoad },
+      { label: 'Plush Teddy Bear Large', image: toysDealsPlush },
+      { label: 'Superhero Action Figure Set', image: toysDealsSuperhero },
     ],
     headlines: [
       ['Playtime', 'favorites.'],
@@ -454,9 +578,9 @@ const CATEGORY_DEFINITIONS = {
     spotlightLabel: 'New Arrivals',
     promos: [
       { title: 'Playtime Sale', subtitle: 'Up to 50% off on toys', ctaLabel: 'Shop Now' },
-      { title: 'Board Game Picks', subtitle: 'Starting at $14', ctaLabel: 'Explore Now' },
+      { title: 'Board Game Picks', subtitle: 'Starting at ₹200', ctaLabel: 'Explore Now' },
     ],
-    tiles: ['Action Figures', 'Board Games', 'RC Cars', 'Soft Toys', 'Building Blocks', 'Puzzles', 'Outdoor Play', 'Educational Toys', 'Dolls', 'Art & Craft Kits', 'Musical Toys', 'Card Games', 'Ride-Ons', 'Science Kits', 'Party Supplies'],
+    tiles: ['Action Figures', 'Board Games', 'RC Cars', 'Soft Toys', 'Building Blocks', 'Puzzles', 'Outdoor Play', 'Educational Toys', 'Dolls', 'Art & Craft Kits', 'Musical Toys', 'Card Games', 'Ride-Ons', 'Science Kits', 'Play Dough'],
     brands: ['LEGO', 'Hasbro', 'Mattel', 'Fisher-Price', 'Hot Wheels', 'Barbie', 'Funskool', 'NERF', 'Hamleys', 'Chicco', 'VTech', 'Play-Doh', 'Monopoly', 'Crayola', 'Disney'],
   },
   'food & household': {
