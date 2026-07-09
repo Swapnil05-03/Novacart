@@ -272,6 +272,71 @@ import sportsDealsHelmet from '@/assets/images/categories/sportsAndOutdoors/Game
 import sportsDealsFootball from '@/assets/images/categories/sportsAndOutdoors/GameDayDeals/official-football.png'
 import sportsDealsCricketKit from '@/assets/images/categories/sportsAndOutdoors/GameDayDeals/professional-cricket-kit.jpg'
 
+// --- Office: locally-hosted images, same per-section folder pattern.
+import officeBannerOne from '@/assets/images/categories/office/banners/banner1.webp'
+import officeBannerTwo from '@/assets/images/categories/office/banners/banner2.webp'
+
+import officeSliderOne from '@/assets/images/categories/office/slider/slider1.webp'
+import officeSliderTwo from '@/assets/images/categories/office/slider/slider2.webp'
+import officeSliderThree from '@/assets/images/categories/office/slider/slider3.avif'
+import officeSliderFour from '@/assets/images/categories/office/slider/slider4.jpg'
+import officeSliderFive from '@/assets/images/categories/office/slider/slider5.jpg'
+
+import officeSbcErgonomic from '@/assets/images/categories/office/shopByCategory/ergonomic1.webp'
+import officeSbcExecutive from '@/assets/images/categories/office/shopByCategory/executive1.jpg'
+import officeSbcDesk from '@/assets/images/categories/office/shopByCategory/desk1.jpg'
+import officeSbcStanding from '@/assets/images/categories/office/shopByCategory/standing1.jpg'
+import officeSbcFiling from '@/assets/images/categories/office/shopByCategory/filing1.jpg'
+import officeSbcBookshelves from '@/assets/images/categories/office/shopByCategory/bookshelves1.jpg'
+import officeSbcWhiteboard from '@/assets/images/categories/office/shopByCategory/white1.jpg'
+import officeSbcOffice from '@/assets/images/categories/office/shopByCategory/office1.jpg'
+import officeSbcMonitor from '@/assets/images/categories/office/shopByCategory/monitor1.jpg'
+import officeSbcLaptop from '@/assets/images/categories/office/shopByCategory/laptop1.jpg'
+import officeSbcFootrests from '@/assets/images/categories/office/shopByCategory/footrests1.jpg'
+import officeSbcLamps from '@/assets/images/categories/office/shopByCategory/lamps1.jpg'
+import officeSbcCable from '@/assets/images/categories/office/shopByCategory/cable1.jpg'
+import officeSbcPen from '@/assets/images/categories/office/shopByCategory/pen1.jpg'
+import officeSbcTrays from '@/assets/images/categories/office/shopByCategory/trays1.jpg'
+
+import officeSpotlightErgonomic from '@/assets/images/categories/office/workspaceUpgrade/ergonomic2.jpg'
+import officeSpotlightExecutive from '@/assets/images/categories/office/workspaceUpgrade/executive2.jpg'
+import officeSpotlightDesk from '@/assets/images/categories/office/workspaceUpgrade/desk2.jpg'
+import officeSpotlightStanding from '@/assets/images/categories/office/workspaceUpgrade/standing2.jpg'
+import officeSpotlightFiling from '@/assets/images/categories/office/workspaceUpgrade/filing2.jpg'
+import officeSpotlightBookshelves from '@/assets/images/categories/office/workspaceUpgrade/bookshelves2.jpg'
+import officeSpotlightWhiteboard from '@/assets/images/categories/office/workspaceUpgrade/white2.jpg'
+import officeSpotlightOffice from '@/assets/images/categories/office/workspaceUpgrade/office2.jpg'
+import officeSpotlightMonitor from '@/assets/images/categories/office/workspaceUpgrade/monitor2.jpg'
+import officeSpotlightLaptop from '@/assets/images/categories/office/workspaceUpgrade/laptop2.jpg'
+import officeSpotlightFootrests from '@/assets/images/categories/office/workspaceUpgrade/footrests2.jpg'
+import officeSpotlightLamps from '@/assets/images/categories/office/workspaceUpgrade/lamps2.jpg'
+import officeSpotlightCable from '@/assets/images/categories/office/workspaceUpgrade/cable2.jpg'
+import officeSpotlightPen from '@/assets/images/categories/office/workspaceUpgrade/pen2.jpg'
+import officeSpotlightTrays from '@/assets/images/categories/office/workspaceUpgrade/trays2.jpg'
+
+import officeBrandAdarsh from '@/assets/images/categories/office/featuredBrands/adarsh.jpg'
+import officeBrandBantex from '@/assets/images/categories/office/featuredBrands/bantex.jpg'
+import officeBrandBluebell from '@/assets/images/categories/office/featuredBrands/bluebell.jpg'
+import officeBrandDeli from '@/assets/images/categories/office/featuredBrands/deli.jpg'
+import officeBrandDurian from '@/assets/images/categories/office/featuredBrands/durian.jpg'
+import officeBrandFeatherlite from '@/assets/images/categories/office/featuredBrands/featherlite.jpg'
+import officeBrandFellowes from '@/assets/images/categories/office/featuredBrands/fellowes.jpg'
+import officeBrandGodrej from '@/assets/images/categories/office/featuredBrands/godrej.jpg'
+import officeBrandNilkamalStorage from '@/assets/images/categories/office/featuredBrands/nilkamal-storage.jpg'
+import officeBrandNilkamal from '@/assets/images/categories/office/featuredBrands/nilkamal.jpg'
+import officeBrandSolo from '@/assets/images/categories/office/featuredBrands/solo.jpg'
+import officeBrandSpacewood from '@/assets/images/categories/office/featuredBrands/spacewood.jpg'
+import officeBrandSteelcase from '@/assets/images/categories/office/featuredBrands/steelcase.webp'
+import officeBrandSundaram from '@/assets/images/categories/office/featuredBrands/sundaram.jpg'
+import officeBrandVj from '@/assets/images/categories/office/featuredBrands/vj.jpg'
+
+import officeDealsAdjustable from '@/assets/images/categories/office/workspaceDeals/adjustable.jpg'
+import officeDealsCableManagement from '@/assets/images/categories/office/workspaceDeals/cable-management.webp'
+import officeDealsErgonomic from '@/assets/images/categories/office/workspaceDeals/ergonomic.jpg'
+import officeDealsLedDesk from '@/assets/images/categories/office/workspaceDeals/led-desk.jpg'
+import officeDealsWhiteboard from '@/assets/images/categories/office/workspaceDeals/whiteboard.jpg'
+import officeDealsWirelessKm from '@/assets/images/categories/office/workspaceDeals/wireless-km.jpg'
+
 const CATEGORY_DEFINITIONS = {
   mobiles: {
     images: [
@@ -1356,38 +1421,97 @@ const CATEGORY_DEFINITIONS = {
       'https://picsum.photos/seed/1073/900/900',
       'https://picsum.photos/seed/1074/900/900',
     ],
+    sliderImages: [
+      officeSliderOne,
+      officeSliderTwo,
+      officeSliderThree,
+      officeSliderFour,
+      officeSliderFive,
+    ],
+    shopByCategoryImages: {
+      'Ergonomic Chairs': officeSbcErgonomic,
+      'Executive Chairs': officeSbcExecutive,
+      'Office Desks': officeSbcDesk,
+      'Standing Desks': officeSbcStanding,
+      'Filing Cabinets': officeSbcFiling,
+      Bookshelves: officeSbcBookshelves,
+      Whiteboards: officeSbcWhiteboard,
+      'Desk Organizers': officeSbcOffice,
+      'Monitor Stands': officeSbcMonitor,
+      'Laptop Stands': officeSbcLaptop,
+      Footrests: officeSbcFootrests,
+      'Desk Lamps': officeSbcLamps,
+      'Cable Management Boxes': officeSbcCable,
+      'Pen Holders': officeSbcPen,
+      'Document Trays': officeSbcTrays,
+    },
+    spotlightImages: {
+      'Ergonomic Chairs': officeSpotlightErgonomic,
+      'Executive Chairs': officeSpotlightExecutive,
+      'Office Desks': officeSpotlightDesk,
+      'Standing Desks': officeSpotlightStanding,
+      'Filing Cabinets': officeSpotlightFiling,
+      Bookshelves: officeSpotlightBookshelves,
+      Whiteboards: officeSpotlightWhiteboard,
+      'Desk Organizers': officeSpotlightOffice,
+      'Monitor Stands': officeSpotlightMonitor,
+      'Laptop Stands': officeSpotlightLaptop,
+      Footrests: officeSpotlightFootrests,
+      'Desk Lamps': officeSpotlightLamps,
+      'Cable Management Boxes': officeSpotlightCable,
+      'Pen Holders': officeSpotlightPen,
+      'Document Trays': officeSpotlightTrays,
+    },
+    brandImages: {
+      Adarsh: officeBrandAdarsh,
+      Bantex: officeBrandBantex,
+      Bluebell: officeBrandBluebell,
+      Deli: officeBrandDeli,
+      Durian: officeBrandDurian,
+      Featherlite: officeBrandFeatherlite,
+      Fellowes: officeBrandFellowes,
+      'Godrej Interio': officeBrandGodrej,
+      'Nilkamal Storage': officeBrandNilkamalStorage,
+      Nilkamal: officeBrandNilkamal,
+      Solo: officeBrandSolo,
+      Spacewood: officeBrandSpacewood,
+      Steelcase: officeBrandSteelcase,
+      Sundaram: officeBrandSundaram,
+      'VJ Interior': officeBrandVj,
+    },
+    promoImages: [officeBannerOne, officeBannerTwo],
     dealsItems: [
-      { label: 'Ergonomic Mesh Office Chair', image: 'https://images.unsplash.com/photo-1518655048521-f130df041f66?w=900&q=80' },
-      { label: 'Wireless Keyboard & Mouse Combo', image: 'https://images.unsplash.com/photo-1497032205916-ac775f0649ae?w=900&q=80' },
-      { label: 'Adjustable Laptop Stand', image: 'https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=900&q=80' },
-      { label: 'LED Desk Lamp', image: 'https://images.unsplash.com/photo-1456735190827-d1262f71b8a3?w=900&q=80' },
-      { label: 'Cable Management Organizer Kit', image: 'https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?w=900&q=80' },
-      { label: 'Whiteboard with Marker Set', image: 'https://images.unsplash.com/photo-1542435503-956c469947f6?w=900&q=80' },
+      { label: 'Adjustable Monitor Arm', image: officeDealsAdjustable },
+      { label: 'Cable Management Box', image: officeDealsCableManagement },
+      { label: 'Ergonomic Mesh Office Chair', image: officeDealsErgonomic },
+      { label: 'LED Desk Lamp', image: officeDealsLedDesk },
+      { label: 'Magnetic Whiteboard', image: officeDealsWhiteboard },
+      { label: 'Wireless Keyboard & Mouse Combo', image: officeDealsWirelessKm },
     ],
     headlines: [
-      ['Tools for', 'focused work.'],
-      ['A desk that', 'works for you.'],
-      ['Write it', 'down.'],
-      ['Built for', 'long days.'],
-      ['Work smarter,', 'not harder.'],
+      ['Chairs built', 'for long days.'],
+      ['Desks that', 'mean business.'],
+      ['Storage that', 'stays organized.'],
+      ['Boards for', 'better ideas.'],
+      ['Small tools,', 'big difference.'],
     ],
     descriptions: [
-      'Tools that help you stay focused through the workday.',
-      'Desk setups designed around the way you actually work.',
-      'Notebooks and pens for jotting down every idea.',
-      'Office chairs and gear built to last through long days.',
-      'Smart accessories that help you work smarter, not harder.',
+      'Ergonomic and executive chairs designed to support you through every long workday.',
+      'Office and standing desks built for a setup that actually works for you.',
+      'Filing cabinets and bookshelves that keep your workspace clutter-free and organized.',
+      'Whiteboards and desk organizers that help every idea and item find its place.',
+      'Desk lamps, stands, and holders — the small essentials that complete a great setup.',
     ],
     discounts: [25, 30, 20, 35, 15],
     description: 'Desk setups, notebooks, and the small tools that keep focused work flowing.',
     dealsLabel: 'Workspace Deals',
-    spotlightLabel: 'Desk Setup Picks',
+    spotlightLabel: 'Workspace Upgrade Picks',
     promos: [
-      { title: 'Workspace Sale', subtitle: 'Up to 35% off desk setups', ctaLabel: 'Shop Now' },
-      { title: 'Stationery Picks', subtitle: 'Starting at $6', ctaLabel: 'Explore Now' },
+      { title: 'Ergonomic Chair Sale', subtitle: 'Up to 35% off office chairs', ctaLabel: 'Shop Now' },
+      { title: 'Desk Setup Essentials', subtitle: 'Starting at $29', ctaLabel: 'Explore Now' },
     ],
-    tiles: ['Notebooks', 'Desk Organizers', 'Keyboards', 'Pens', 'Lighting', 'Monitor Stands', 'Cable Organizers', 'Desk Mats', 'Office Chairs', 'Whiteboards', 'Staplers', 'File Folders', 'Sticky Notes', 'Desk Calendars', 'Laptop Stands'],
-    brands: ['Parker', 'Faber-Castell', 'Camlin', 'Staples', 'Godrej Interio', 'Featherlite', 'Nilkamal', 'Cello', 'Reynolds', 'Classmate', 'Logitech', 'HP', 'Dell', 'Lenovo', 'Xerox'],
+    tiles: ['Ergonomic Chairs', 'Executive Chairs', 'Office Desks', 'Standing Desks', 'Filing Cabinets', 'Bookshelves', 'Whiteboards', 'Desk Organizers', 'Monitor Stands', 'Laptop Stands', 'Footrests', 'Desk Lamps', 'Cable Management Boxes', 'Pen Holders', 'Document Trays'],
+    brands: ['Godrej Interio', 'Featherlite', 'Nilkamal', 'Steelcase', 'Durian', 'Spacewood', 'VJ Interior', 'Bluebell', 'Adarsh', 'Solo', 'Bantex', 'Sundaram', 'Nilkamal Storage', 'Fellowes', 'Deli'],
   },
 }
 
