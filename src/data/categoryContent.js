@@ -337,6 +337,71 @@ import officeDealsLedDesk from '@/assets/images/categories/office/workspaceDeals
 import officeDealsWhiteboard from '@/assets/images/categories/office/workspaceDeals/whiteboard.jpg'
 import officeDealsWirelessKm from '@/assets/images/categories/office/workspaceDeals/wireless-km.jpg'
 
+// --- Mobiles: locally-hosted images, same per-section folder pattern.
+import mobilesBannerOne from '@/assets/images/categories/mobiles/banners/banner1.jpg'
+import mobilesBannerTwo from '@/assets/images/categories/mobiles/banners/banner2.jpeg'
+
+import mobilesSliderOne from '@/assets/images/categories/mobiles/slider/slider1.webp'
+import mobilesSliderTwo from '@/assets/images/categories/mobiles/slider/slider2.webp'
+import mobilesSliderThree from '@/assets/images/categories/mobiles/slider/slider3.webp'
+import mobilesSliderFour from '@/assets/images/categories/mobiles/slider/slider4.jpg'
+import mobilesSliderFive from '@/assets/images/categories/mobiles/slider/slider5.jpg'
+
+import mobilesSbcIphone from '@/assets/images/categories/mobiles/shopByCategory/iphone1.avif'
+import mobilesSbcGalaxy from '@/assets/images/categories/mobiles/shopByCategory/galaxy1.jpg'
+import mobilesSbcOppo from '@/assets/images/categories/mobiles/shopByCategory/oppo.jpg'
+import mobilesSbcPoco from '@/assets/images/categories/mobiles/shopByCategory/poco1.jpg'
+import mobilesSbcRedmi from '@/assets/images/categories/mobiles/shopByCategory/redmi1.jpg'
+import mobilesSbcInfinix from '@/assets/images/categories/mobiles/shopByCategory/infinix1.jpg'
+import mobilesSbcNothing from '@/assets/images/categories/mobiles/shopByCategory/nothing1.jpg'
+import mobilesSbcPixel from '@/assets/images/categories/mobiles/shopByCategory/pixel1.jpg'
+import mobilesSbcOneplus from '@/assets/images/categories/mobiles/shopByCategory/oneplus1.jpg'
+import mobilesSbcVivo from '@/assets/images/categories/mobiles/shopByCategory/vivo1.jpg'
+import mobilesSbcRealme from '@/assets/images/categories/mobiles/shopByCategory/realme1.jpg'
+import mobilesSbcPhoneCases from '@/assets/images/categories/mobiles/shopByCategory/phonecase1.jpg'
+import mobilesSbcChargers from '@/assets/images/categories/mobiles/shopByCategory/chargers1.jpg'
+import mobilesSbcEarphones from '@/assets/images/categories/mobiles/shopByCategory/earphones1.jpg'
+import mobilesSbcScreenGuards from '@/assets/images/categories/mobiles/shopByCategory/screen-guards1.jpg'
+
+import mobilesSpotlightIphone from '@/assets/images/categories/mobiles/newLaunches/iphone2.jpg'
+import mobilesSpotlightGalaxy from '@/assets/images/categories/mobiles/newLaunches/galaxy2.jpg'
+import mobilesSpotlightOppo from '@/assets/images/categories/mobiles/newLaunches/oppo2.jpg'
+import mobilesSpotlightPoco from '@/assets/images/categories/mobiles/newLaunches/poco2.jpg'
+import mobilesSpotlightRedmi from '@/assets/images/categories/mobiles/newLaunches/redmi2.jpg'
+import mobilesSpotlightInfinix from '@/assets/images/categories/mobiles/newLaunches/infinix2.jpg'
+import mobilesSpotlightNothing from '@/assets/images/categories/mobiles/newLaunches/nothing2.jpg'
+import mobilesSpotlightPixel from '@/assets/images/categories/mobiles/newLaunches/pixel2.jpg'
+import mobilesSpotlightOneplus from '@/assets/images/categories/mobiles/newLaunches/oneplus2.jpg'
+import mobilesSpotlightVivo from '@/assets/images/categories/mobiles/newLaunches/vivo2.jpg'
+import mobilesSpotlightRealme from '@/assets/images/categories/mobiles/newLaunches/realme2.jpg'
+import mobilesSpotlightPhoneCases from '@/assets/images/categories/mobiles/newLaunches/phonecase2.jpg'
+import mobilesSpotlightChargers from '@/assets/images/categories/mobiles/newLaunches/chargers2.jpg'
+import mobilesSpotlightEarphones from '@/assets/images/categories/mobiles/newLaunches/earphones2.jpg'
+import mobilesSpotlightScreenGuards from '@/assets/images/categories/mobiles/newLaunches/screen-guards2.jpg'
+
+import mobilesBrandIphone from '@/assets/images/categories/mobiles/featuredBrands/iphone.jpg'
+import mobilesBrandGalaxy from '@/assets/images/categories/mobiles/featuredBrands/galaxy.webp'
+import mobilesBrandOppo from '@/assets/images/categories/mobiles/featuredBrands/oppo.jpg'
+import mobilesBrandPoco from '@/assets/images/categories/mobiles/featuredBrands/poco.jpg'
+import mobilesBrandRedmi from '@/assets/images/categories/mobiles/featuredBrands/redmi.jpg'
+import mobilesBrandInfinix from '@/assets/images/categories/mobiles/featuredBrands/infinix.jpg'
+import mobilesBrandNothing from '@/assets/images/categories/mobiles/featuredBrands/nothing.jpg'
+import mobilesBrandPixel from '@/assets/images/categories/mobiles/featuredBrands/pixel.jpg'
+import mobilesBrandOneplus from '@/assets/images/categories/mobiles/featuredBrands/oneplus.jpg'
+import mobilesBrandVivo from '@/assets/images/categories/mobiles/featuredBrands/vivo.jpg'
+import mobilesBrandRealme from '@/assets/images/categories/mobiles/featuredBrands/realme.jpg'
+import mobilesBrandMoto from '@/assets/images/categories/mobiles/featuredBrands/moto.jpg'
+import mobilesBrandHonor from '@/assets/images/categories/mobiles/featuredBrands/honor.webp'
+import mobilesBrandIqoo from '@/assets/images/categories/mobiles/featuredBrands/iqoo.jpg'
+import mobilesBrandTecno from '@/assets/images/categories/mobiles/featuredBrands/techno.jpg'
+
+import mobilesDeals128gb from '@/assets/images/categories/mobiles/bestDeals/128gb.jpg'
+import mobilesDealsAmoled from '@/assets/images/categories/mobiles/bestDeals/amoled.avif'
+import mobilesDealsEarbuds from '@/assets/images/categories/mobiles/bestDeals/earbuds.jpg'
+import mobilesDealsPowerBank from '@/assets/images/categories/mobiles/bestDeals/power-bank.jpg'
+import mobilesDealsProMax from '@/assets/images/categories/mobiles/bestDeals/pro-max.jpg'
+import mobilesDealsScreenGuard from '@/assets/images/categories/mobiles/bestDeals/screen-guard.jpg'
+
 const CATEGORY_DEFINITIONS = {
   mobiles: {
     images: [
@@ -356,13 +421,72 @@ const CATEGORY_DEFINITIONS = {
       'https://images.unsplash.com/photo-1592286927505-1def25115481?w=900&q=80',
       'https://images.unsplash.com/photo-1546054454-aa26e2b734c7?w=900&q=80',
     ],
+    sliderImages: [
+      mobilesSliderOne,
+      mobilesSliderTwo,
+      mobilesSliderThree,
+      mobilesSliderFour,
+      mobilesSliderFive,
+    ],
+    shopByCategoryImages: {
+      iPhone: mobilesSbcIphone,
+      Galaxy: mobilesSbcGalaxy,
+      OPPO: mobilesSbcOppo,
+      POCO: mobilesSbcPoco,
+      Redmi: mobilesSbcRedmi,
+      Infinix: mobilesSbcInfinix,
+      Nothing: mobilesSbcNothing,
+      Pixel: mobilesSbcPixel,
+      OnePlus: mobilesSbcOneplus,
+      Vivo: mobilesSbcVivo,
+      Realme: mobilesSbcRealme,
+      'Phone Cases': mobilesSbcPhoneCases,
+      Chargers: mobilesSbcChargers,
+      Earphones: mobilesSbcEarphones,
+      'Screen Guards': mobilesSbcScreenGuards,
+    },
+    spotlightImages: {
+      iPhone: mobilesSpotlightIphone,
+      Galaxy: mobilesSpotlightGalaxy,
+      OPPO: mobilesSpotlightOppo,
+      POCO: mobilesSpotlightPoco,
+      Redmi: mobilesSpotlightRedmi,
+      Infinix: mobilesSpotlightInfinix,
+      Nothing: mobilesSpotlightNothing,
+      Pixel: mobilesSpotlightPixel,
+      OnePlus: mobilesSpotlightOneplus,
+      Vivo: mobilesSpotlightVivo,
+      Realme: mobilesSpotlightRealme,
+      'Phone Cases': mobilesSpotlightPhoneCases,
+      Chargers: mobilesSpotlightChargers,
+      Earphones: mobilesSpotlightEarphones,
+      'Screen Guards': mobilesSpotlightScreenGuards,
+    },
+    brandImages: {
+      iPhone: mobilesBrandIphone,
+      'Samsung Galaxy': mobilesBrandGalaxy,
+      OPPO: mobilesBrandOppo,
+      POCO: mobilesBrandPoco,
+      'Xiaomi Redmi': mobilesBrandRedmi,
+      Infinix: mobilesBrandInfinix,
+      Nothing: mobilesBrandNothing,
+      'Google Pixel': mobilesBrandPixel,
+      OnePlus: mobilesBrandOneplus,
+      Vivo: mobilesBrandVivo,
+      Realme: mobilesBrandRealme,
+      Motorola: mobilesBrandMoto,
+      Honor: mobilesBrandHonor,
+      iQOO: mobilesBrandIqoo,
+      Tecno: mobilesBrandTecno,
+    },
+    promoImages: [mobilesBannerOne, mobilesBannerTwo],
     dealsItems: [
-      { label: '128GB 5G Smartphone', image: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=900&q=80' },
-      { label: 'Pro Max Camera Phone', image: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=900&q=80' },
-      { label: 'AMOLED Display Phone', image: 'https://images.unsplash.com/photo-1598965675045-45c5e72c7d05?w=900&q=80' },
-      { label: 'Fast-Charging Power Bank', image: 'https://images.unsplash.com/photo-1556656793-08538906a9f8?w=900&q=80' },
-      { label: 'Wireless Earbuds', image: 'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=900&q=80' },
-      { label: 'Tempered Glass Screen Guard', image: 'https://images.unsplash.com/photo-1571867424488-4565932edb41?w=900&q=80' },
+      { label: '128GB 5G Smartphone', image: mobilesDeals128gb },
+      { label: 'AMOLED Display Phone', image: mobilesDealsAmoled },
+      { label: 'Wireless Earbuds', image: mobilesDealsEarbuds },
+      { label: 'Fast-Charging Power Bank', image: mobilesDealsPowerBank },
+      { label: 'Pro Max Camera Phone', image: mobilesDealsProMax },
+      { label: 'Tempered Glass Screen Guard', image: mobilesDealsScreenGuard },
     ],
     headlines: [
       ['Latest 5G', 'smartphones.'],
