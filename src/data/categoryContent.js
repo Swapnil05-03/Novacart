@@ -402,6 +402,71 @@ import mobilesDealsPowerBank from '@/assets/images/categories/mobiles/bestDeals/
 import mobilesDealsProMax from '@/assets/images/categories/mobiles/bestDeals/pro-max.jpg'
 import mobilesDealsScreenGuard from '@/assets/images/categories/mobiles/bestDeals/screen-guard.jpg'
 
+// --- Home & Living: locally-hosted images, same per-section folder pattern.
+import homeBannerOne from '@/assets/images/categories/homeandLiving/banners/banner1.webp'
+import homeBannerTwo from '@/assets/images/categories/homeandLiving/banners/banner2.webp'
+
+import homeSliderOne from '@/assets/images/categories/homeandLiving/slider/slider1.jpg'
+import homeSliderTwo from '@/assets/images/categories/homeandLiving/slider/slider2.jpg'
+import homeSliderThree from '@/assets/images/categories/homeandLiving/slider/slider3.jpg'
+import homeSliderFour from '@/assets/images/categories/homeandLiving/slider/slider4.png'
+import homeSliderFive from '@/assets/images/categories/homeandLiving/slider/slider5.jpg'
+
+import homeSbcCushion from '@/assets/images/categories/homeandLiving/shopByCategory/cushion1.jpg'
+import homeSbcVases from '@/assets/images/categories/homeandLiving/shopByCategory/vases1.jpg'
+import homeSbcStorage from '@/assets/images/categories/homeandLiving/shopByCategory/storage1.jpg'
+import homeSbcLighting from '@/assets/images/categories/homeandLiving/shopByCategory/lighting1.jpg'
+import homeSbcWallDecor from '@/assets/images/categories/homeandLiving/shopByCategory/walldecor1.jpg'
+import homeSbcRugs from '@/assets/images/categories/homeandLiving/shopByCategory/rugs1.jpg'
+import homeSbcCurtains from '@/assets/images/categories/homeandLiving/shopByCategory/curtains1.jpg'
+import homeSbcKitchen from '@/assets/images/categories/homeandLiving/shopByCategory/kitchen1.jpg'
+import homeSbcBedsheets from '@/assets/images/categories/homeandLiving/shopByCategory/bedsheets1.jpg'
+import homeSbcMirror from '@/assets/images/categories/homeandLiving/shopByCategory/mirror1.jpg'
+import homeSbcClock from '@/assets/images/categories/homeandLiving/shopByCategory/clock1.jpg'
+import homeSbcPlanter from '@/assets/images/categories/homeandLiving/shopByCategory/planter1.jpg'
+import homeSbcPhotoframe from '@/assets/images/categories/homeandLiving/shopByCategory/photoframe1.jpg'
+import homeSbcDoormats from '@/assets/images/categories/homeandLiving/shopByCategory/doormats1.jpg'
+import homeSbcShowerCurtains from '@/assets/images/categories/homeandLiving/shopByCategory/shower-curtains1.jpg'
+
+import homeSpotlightCushion from '@/assets/images/categories/homeandLiving/designerPics/cushion2.jpg'
+import homeSpotlightVases from '@/assets/images/categories/homeandLiving/designerPics/vases2.jpg'
+import homeSpotlightStorage from '@/assets/images/categories/homeandLiving/designerPics/storage2.jpg'
+import homeSpotlightLighting from '@/assets/images/categories/homeandLiving/designerPics/lighting2.jpg'
+import homeSpotlightWallDecor from '@/assets/images/categories/homeandLiving/designerPics/walldecor2.jpg'
+import homeSpotlightRugs from '@/assets/images/categories/homeandLiving/designerPics/rugs2.jpg'
+import homeSpotlightCurtains from '@/assets/images/categories/homeandLiving/designerPics/curtains2.jpg'
+import homeSpotlightKitchen from '@/assets/images/categories/homeandLiving/designerPics/kitchen2.jpg'
+import homeSpotlightBedsheets from '@/assets/images/categories/homeandLiving/designerPics/bedsheets2.jpg'
+import homeSpotlightMirror from '@/assets/images/categories/homeandLiving/designerPics/mirror2.jpg'
+import homeSpotlightClock from '@/assets/images/categories/homeandLiving/designerPics/clock2.jpg'
+import homeSpotlightPlanter from '@/assets/images/categories/homeandLiving/designerPics/planter2.jpg'
+import homeSpotlightPhotoframe from '@/assets/images/categories/homeandLiving/designerPics/photoframe2.jpg'
+import homeSpotlightDoormats from '@/assets/images/categories/homeandLiving/designerPics/doormats2.jpg'
+import homeSpotlightShowerCurtains from '@/assets/images/categories/homeandLiving/designerPics/shower-curtains2.jpg'
+
+import homeBrandIkea from '@/assets/images/categories/homeandLiving/featuredBrands/ikea.jpg'
+import homeBrandUrbanLadder from '@/assets/images/categories/homeandLiving/featuredBrands/urban-ladder.jpg'
+import homeBrandPepperfry from '@/assets/images/categories/homeandLiving/featuredBrands/pepperfry.webp'
+import homeBrandHomeCentre from '@/assets/images/categories/homeandLiving/featuredBrands/homecentre.jpg'
+import homeBrandFabindia from '@/assets/images/categories/homeandLiving/featuredBrands/fabindia.webp'
+import homeBrandBombay from '@/assets/images/categories/homeandLiving/featuredBrands/bombay.jpg'
+import homeBrandSpaces from '@/assets/images/categories/homeandLiving/featuredBrands/spaces.jpg'
+import homeBrandPortico from '@/assets/images/categories/homeandLiving/featuredBrands/portico.jpg'
+import homeBrandWakefit from '@/assets/images/categories/homeandLiving/featuredBrands/wakefit.avif'
+import homeBrandChumbak from '@/assets/images/categories/homeandLiving/featuredBrands/chumbak.jpg'
+import homeBrandCraft from '@/assets/images/categories/homeandLiving/featuredBrands/craft.jpg'
+import homeBrandDecor from '@/assets/images/categories/homeandLiving/featuredBrands/decor.jpg'
+import homeBrandPhilips from '@/assets/images/categories/homeandLiving/featuredBrands/philips.avif'
+import homeBrandSaral from '@/assets/images/categories/homeandLiving/featuredBrands/saral.jpg'
+import homeBrandVenus from '@/assets/images/categories/homeandLiving/featuredBrands/venus.jpg'
+
+import homeDealsCushion from '@/assets/images/categories/homeandLiving/homeRefreshDeals/cushion.jpg'
+import homeDealsCeramic from '@/assets/images/categories/homeandLiving/homeRefreshDeals/ceramic.jpg'
+import homeDealsUnderbed from '@/assets/images/categories/homeandLiving/homeRefreshDeals/underbed.jpg'
+import homeDealsLight from '@/assets/images/categories/homeandLiving/homeRefreshDeals/light.webp'
+import homeDealsHandwoven from '@/assets/images/categories/homeandLiving/homeRefreshDeals/handwoven.webp'
+import homeDealsBedsheet from '@/assets/images/categories/homeandLiving/homeRefreshDeals/bedsheet.webp'
+
 const CATEGORY_DEFINITIONS = {
   mobiles: {
     images: [
@@ -643,26 +708,85 @@ const CATEGORY_DEFINITIONS = {
       'https://images.unsplash.com/photo-1606744824163-985d376605aa?w=900&q=80',
       'https://picsum.photos/seed/1009/900/900',
     ],
+    sliderImages: [
+      homeSliderOne,
+      homeSliderTwo,
+      homeSliderThree,
+      homeSliderFour,
+      homeSliderFive,
+    ],
+    shopByCategoryImages: {
+      'Cushion Covers': homeSbcCushion,
+      'Figurines & Vases': homeSbcVases,
+      Storage: homeSbcStorage,
+      Lighting: homeSbcLighting,
+      'Wall Decor': homeSbcWallDecor,
+      Rugs: homeSbcRugs,
+      Curtains: homeSbcCurtains,
+      'Kitchen Linen': homeSbcKitchen,
+      Bedsheets: homeSbcBedsheets,
+      Mirrors: homeSbcMirror,
+      Clocks: homeSbcClock,
+      Planters: homeSbcPlanter,
+      'Photo Frames': homeSbcPhotoframe,
+      'Door Mats': homeSbcDoormats,
+      'Shower Curtains': homeSbcShowerCurtains,
+    },
+    spotlightImages: {
+      'Cushion Covers': homeSpotlightCushion,
+      'Figurines & Vases': homeSpotlightVases,
+      Storage: homeSpotlightStorage,
+      Lighting: homeSpotlightLighting,
+      'Wall Decor': homeSpotlightWallDecor,
+      Rugs: homeSpotlightRugs,
+      Curtains: homeSpotlightCurtains,
+      'Kitchen Linen': homeSpotlightKitchen,
+      Bedsheets: homeSpotlightBedsheets,
+      Mirrors: homeSpotlightMirror,
+      Clocks: homeSpotlightClock,
+      Planters: homeSpotlightPlanter,
+      'Photo Frames': homeSpotlightPhotoframe,
+      'Door Mats': homeSpotlightDoormats,
+      'Shower Curtains': homeSpotlightShowerCurtains,
+    },
+    brandImages: {
+      IKEA: homeBrandIkea,
+      'Urban Ladder': homeBrandUrbanLadder,
+      Pepperfry: homeBrandPepperfry,
+      'Home Centre': homeBrandHomeCentre,
+      Fabindia: homeBrandFabindia,
+      'Bombay Dyeing': homeBrandBombay,
+      Spaces: homeBrandSpaces,
+      Portico: homeBrandPortico,
+      Wakefit: homeBrandWakefit,
+      Chumbak: homeBrandChumbak,
+      CraftMaestros: homeBrandCraft,
+      Decor: homeBrandDecor,
+      Philips: homeBrandPhilips,
+      'Saral Home': homeBrandSaral,
+      'Venus Mirror': homeBrandVenus,
+    },
+    promoImages: [homeBannerOne, homeBannerTwo],
     dealsItems: [
-      { label: 'Embroidered Cushion Cover Set', image: 'https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=900&q=80' },
-      { label: 'Ceramic Vase Duo', image: 'https://images.unsplash.com/photo-1524634126442-357e0eac3c14?w=900&q=80' },
-      { label: 'Under-Bed Storage Box', image: 'https://images.unsplash.com/photo-1558997519-83ea9252edf8?w=900&q=80' },
-      { label: 'Pendant Ceiling Light', image: 'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=900&q=80' },
-      { label: 'Handwoven Wall Tapestry', image: 'https://images.unsplash.com/photo-1513161455079-7dc1de15ef3e?w=900&q=80' },
-      { label: 'Cotton Bedsheet Set', image: 'https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=900&q=80' },
+      { label: 'Embroidered Cushion Cover Set', image: homeDealsCushion },
+      { label: 'Ceramic Vase Duo', image: homeDealsCeramic },
+      { label: 'Under-Bed Storage Box', image: homeDealsUnderbed },
+      { label: 'Pendant Ceiling Light', image: homeDealsLight },
+      { label: 'Handwoven Wall Tapestry', image: homeDealsHandwoven },
+      { label: 'Cotton Bedsheet Set', image: homeDealsBedsheet },
     ],
     headlines: [
       ['Revamp your', 'space in style.'],
       ['Lighting that', 'sets the mood.'],
       ['Storage made', 'simple.'],
-      ['A home you', 'love coming back to.'],
+      ['Soft touches,', 'cozy corners.'],
       ['Bedroom', 'refresh.'],
     ],
     descriptions: [
       'Decor pieces that give any room an instant style upgrade.',
       'Lighting fixtures that set the mood for every moment.',
       'Smart storage solutions that keep clutter out of sight.',
-      'Small touches that make a house feel like home.',
+      'Rugs, cushions, and curtains that add warmth to any room.',
       'Bedroom essentials for a calmer, more restful space.',
     ],
     description: 'Thoughtfully designed pieces that make every room feel like home.',
@@ -674,7 +798,7 @@ const CATEGORY_DEFINITIONS = {
     ],
     discounts: [35, 28, 20, 30, 38],
     tiles: ['Cushion Covers', 'Figurines & Vases', 'Storage', 'Lighting', 'Wall Decor', 'Rugs', 'Curtains', 'Kitchen Linen', 'Bedsheets', 'Mirrors', 'Clocks', 'Planters', 'Photo Frames', 'Door Mats', 'Shower Curtains'],
-    brands: ['IKEA', 'Urban Ladder', 'Pepperfry', 'Home Centre', 'Fabindia', 'Bombay Dyeing', 'Spaces', "D'décor", 'Portico', 'Wakefit', 'Nilkamal', 'Home Town', 'Evok', 'Godrej Interio', 'Durian'],
+    brands: ['IKEA', 'Urban Ladder', 'Pepperfry', 'Home Centre', 'Fabindia', 'Bombay Dyeing', 'Spaces', "D'décor", 'Portico', 'Wakefit', 'Chumbak', 'Philips', 'Venus Mirror', 'Saral Home', 'CraftMaestros'],
   },
   appliances: {
     images: [
