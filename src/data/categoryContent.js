@@ -467,6 +467,71 @@ import homeDealsLight from '@/assets/images/categories/homeandLiving/homeRefresh
 import homeDealsHandwoven from '@/assets/images/categories/homeandLiving/homeRefreshDeals/handwoven.webp'
 import homeDealsBedsheet from '@/assets/images/categories/homeandLiving/homeRefreshDeals/bedsheet.webp'
 
+// --- Food & Household: locally-hosted images, same per-section folder pattern.
+import foodBannerOne from '@/assets/images/categories/foodAndHousehold/banners/banner1.png'
+import foodBannerTwo from '@/assets/images/categories/foodAndHousehold/banners/banner2.png'
+
+import foodSliderOne from '@/assets/images/categories/foodAndHousehold/slider/slider1.jpg'
+import foodSliderTwo from '@/assets/images/categories/foodAndHousehold/slider/slider2.webp'
+import foodSliderThree from '@/assets/images/categories/foodAndHousehold/slider/slider3.png'
+import foodSliderFour from '@/assets/images/categories/foodAndHousehold/slider/slider4.jpg'
+import foodSliderFive from '@/assets/images/categories/foodAndHousehold/slider/slider5.png'
+
+import foodSbcSnacks from '@/assets/images/categories/foodAndHousehold/shopByCategory/snacks1.jpg'
+import foodSbcBeverages from '@/assets/images/categories/foodAndHousehold/shopByCategory/beverage1.webp'
+import foodSbcCleaning from '@/assets/images/categories/foodAndHousehold/shopByCategory/cleaning1.jpg'
+import foodSbcToiletries from '@/assets/images/categories/foodAndHousehold/shopByCategory/toiletries.jpg'
+import foodSbcBabyCare from '@/assets/images/categories/foodAndHousehold/shopByCategory/babycare1.jpg'
+import foodSbcPets from '@/assets/images/categories/foodAndHousehold/shopByCategory/pets1.webp'
+import foodSbcKitchen from '@/assets/images/categories/foodAndHousehold/shopByCategory/kitchen1.jpg'
+import foodSbcStorage from '@/assets/images/categories/foodAndHousehold/shopByCategory/storage1.jpg'
+import foodSbcBreakfast from '@/assets/images/categories/foodAndHousehold/shopByCategory/breakfast1.jpg'
+import foodSbcSpices from '@/assets/images/categories/foodAndHousehold/shopByCategory/spices1.webp'
+import foodSbcDairy from '@/assets/images/categories/foodAndHousehold/shopByCategory/dairy1.jpg'
+import foodSbcLaundry from '@/assets/images/categories/foodAndHousehold/shopByCategory/laundary1.jpg'
+import foodSbcPaper from '@/assets/images/categories/foodAndHousehold/shopByCategory/paper1.jpg'
+import foodSbcAir from '@/assets/images/categories/foodAndHousehold/shopByCategory/air1.jpg'
+import foodSbcDisposable from '@/assets/images/categories/foodAndHousehold/shopByCategory/disposable1.jpg'
+
+import foodSpotlightSnacks from '@/assets/images/categories/foodAndHousehold/everydayPics/snacks2.avif'
+import foodSpotlightBeverages from '@/assets/images/categories/foodAndHousehold/everydayPics/beverage2.webp'
+import foodSpotlightCleaning from '@/assets/images/categories/foodAndHousehold/everydayPics/cleaning2.jpg'
+import foodSpotlightToiletries from '@/assets/images/categories/foodAndHousehold/everydayPics/toiletries2.jpg'
+import foodSpotlightBabyCare from '@/assets/images/categories/foodAndHousehold/everydayPics/babycare2.jpg'
+import foodSpotlightPets from '@/assets/images/categories/foodAndHousehold/everydayPics/pets2.jpg'
+import foodSpotlightKitchen from '@/assets/images/categories/foodAndHousehold/everydayPics/kitchen2.jpg'
+import foodSpotlightStorage from '@/assets/images/categories/foodAndHousehold/everydayPics/storage2.jpg'
+import foodSpotlightBreakfast from '@/assets/images/categories/foodAndHousehold/everydayPics/breakfast2.jpg'
+import foodSpotlightSpices from '@/assets/images/categories/foodAndHousehold/everydayPics/spices2.jpg'
+import foodSpotlightDairy from '@/assets/images/categories/foodAndHousehold/everydayPics/dairy2.jpg'
+import foodSpotlightLaundry from '@/assets/images/categories/foodAndHousehold/everydayPics/laundary2.webp'
+import foodSpotlightPaper from '@/assets/images/categories/foodAndHousehold/everydayPics/paper2.jpg'
+import foodSpotlightAir from '@/assets/images/categories/foodAndHousehold/everydayPics/air2.jpg'
+import foodSpotlightDisposable from '@/assets/images/categories/foodAndHousehold/everydayPics/disposable2.jpg'
+
+import foodBrandNestle from '@/assets/images/categories/foodAndHousehold/featuredBrands/nestle.png'
+import foodBrandTata from '@/assets/images/categories/foodAndHousehold/featuredBrands/tata.webp'
+import foodBrandItc from '@/assets/images/categories/foodAndHousehold/featuredBrands/itc.jpg'
+import foodBrandAmul from '@/assets/images/categories/foodAndHousehold/featuredBrands/amul.jpg'
+import foodBrandBritannia from '@/assets/images/categories/foodAndHousehold/featuredBrands/britannia.jpg'
+import foodBrandColgate from '@/assets/images/categories/foodAndHousehold/featuredBrands/colgate.jpg'
+import foodBrandDettol from '@/assets/images/categories/foodAndHousehold/featuredBrands/dettol.avif'
+import foodBrandSurfExcel from '@/assets/images/categories/foodAndHousehold/featuredBrands/surfexcel.jpg'
+import foodBrandVim from '@/assets/images/categories/foodAndHousehold/featuredBrands/vim.webp'
+import foodBrandHarpic from '@/assets/images/categories/foodAndHousehold/featuredBrands/harpic.jpg'
+import foodBrandLizol from '@/assets/images/categories/foodAndHousehold/featuredBrands/lizol.jpg'
+import foodBrandParle from '@/assets/images/categories/foodAndHousehold/featuredBrands/parle.jpg'
+import foodBrandHaldiram from '@/assets/images/categories/foodAndHousehold/featuredBrands/haldiram.jpg'
+import foodBrandPatanjali from '@/assets/images/categories/foodAndHousehold/featuredBrands/patanjali.jpg'
+import foodBrandFortune from '@/assets/images/categories/foodAndHousehold/featuredBrands/fortune.jpg'
+
+import foodDealsSnacks from '@/assets/images/categories/foodAndHousehold/pantryDeals/snacks.jpg'
+import foodDealsCleaner from '@/assets/images/categories/foodAndHousehold/pantryDeals/cleaner.webp'
+import foodDealsHerbal from '@/assets/images/categories/foodAndHousehold/pantryDeals/herbal.jpg'
+import foodDealsBabyCare from '@/assets/images/categories/foodAndHousehold/pantryDeals/babycare.jpg'
+import foodDealsBasmati from '@/assets/images/categories/foodAndHousehold/pantryDeals/basmati.jpg'
+import foodDealsDishwashing from '@/assets/images/categories/foodAndHousehold/pantryDeals/dishwashing.jpg'
+
 const CATEGORY_DEFINITIONS = {
   mobiles: {
     images: [
@@ -979,27 +1044,86 @@ const CATEGORY_DEFINITIONS = {
       'https://picsum.photos/seed/1017/900/900',
       'https://images.unsplash.com/photo-1584736286279-90c4a5e44a91?w=900&q=80',
     ],
+    sliderImages: [
+      foodSliderOne,
+      foodSliderTwo,
+      foodSliderThree,
+      foodSliderFour,
+      foodSliderFive,
+    ],
+    shopByCategoryImages: {
+      Snacks: foodSbcSnacks,
+      Beverages: foodSbcBeverages,
+      'Cleaning Supplies': foodSbcCleaning,
+      Toiletries: foodSbcToiletries,
+      'Baby Care': foodSbcBabyCare,
+      'Pet Supplies': foodSbcPets,
+      'Kitchen Essentials': foodSbcKitchen,
+      'Storage Containers': foodSbcStorage,
+      'Breakfast Cereals': foodSbcBreakfast,
+      'Spices & Masalas': foodSbcSpices,
+      'Dairy & Bakery': foodSbcDairy,
+      'Laundry Care': foodSbcLaundry,
+      'Paper Products': foodSbcPaper,
+      'Air Fresheners': foodSbcAir,
+      Disposables: foodSbcDisposable,
+    },
+    spotlightImages: {
+      Snacks: foodSpotlightSnacks,
+      Beverages: foodSpotlightBeverages,
+      'Cleaning Supplies': foodSpotlightCleaning,
+      Toiletries: foodSpotlightToiletries,
+      'Baby Care': foodSpotlightBabyCare,
+      'Pet Supplies': foodSpotlightPets,
+      'Kitchen Essentials': foodSpotlightKitchen,
+      'Storage Containers': foodSpotlightStorage,
+      'Breakfast Cereals': foodSpotlightBreakfast,
+      'Spices & Masalas': foodSpotlightSpices,
+      'Dairy & Bakery': foodSpotlightDairy,
+      'Laundry Care': foodSpotlightLaundry,
+      'Paper Products': foodSpotlightPaper,
+      'Air Fresheners': foodSpotlightAir,
+      Disposables: foodSpotlightDisposable,
+    },
+    brandImages: {
+      'Nestlé': foodBrandNestle,
+      Tata: foodBrandTata,
+      ITC: foodBrandItc,
+      Amul: foodBrandAmul,
+      Britannia: foodBrandBritannia,
+      Colgate: foodBrandColgate,
+      Dettol: foodBrandDettol,
+      'Surf Excel': foodBrandSurfExcel,
+      Vim: foodBrandVim,
+      Harpic: foodBrandHarpic,
+      Lizol: foodBrandLizol,
+      Parle: foodBrandParle,
+      "Haldiram's": foodBrandHaldiram,
+      Patanjali: foodBrandPatanjali,
+      Fortune: foodBrandFortune,
+    },
+    promoImages: [foodBannerOne, foodBannerTwo],
     dealsItems: [
-      { label: 'Assorted Snacks Combo Pack', image: 'https://images.unsplash.com/photo-1543168256-418811576931?w=900&q=80' },
-      { label: 'Multi-Surface Cleaner Pack', image: 'https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=900&q=80' },
-      { label: 'Herbal Shampoo Combo', image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=900&q=80' },
-      { label: 'Baby Care Essentials Kit', image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=900&q=80' },
-      { label: 'Premium Basmati Rice 5kg', image: 'https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=900&q=80' },
-      { label: 'Dishwashing Liquid Combo', image: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=900&q=80' },
+      { label: 'Assorted Snacks Combo Pack', image: foodDealsSnacks },
+      { label: 'Multi-Surface Cleaner Pack', image: foodDealsCleaner },
+      { label: 'Herbal Shampoo Combo', image: foodDealsHerbal },
+      { label: 'Baby Care Essentials Kit', image: foodDealsBabyCare },
+      { label: 'Premium Basmati Rice 5kg', image: foodDealsBasmati },
+      { label: 'Dishwashing Liquid Combo', image: foodDealsDishwashing },
     ],
     headlines: [
       ['Pantry', 'staples.'],
       ['Cleaning made', 'simple.'],
       ['Everyday', 'essentials.'],
-      ['Fresh pantry', 'staples.'],
-      ['Home care', 'essentials.'],
+      ['Baby & personal', 'care.'],
+      ['Fresh from the', 'dairy & bakery.'],
     ],
     descriptions: [
       'Pantry staples to keep your kitchen always stocked.',
       'Cleaning supplies that make tidying up simple and quick.',
       'Everyday essentials for the whole household, delivered with care.',
-      'Fresh groceries and staples for your kitchen shelf.',
-      'Home care essentials that keep every corner spotless.',
+      'Baby care and personal essentials, chosen with extra care.',
+      'Fresh dairy and bakery picks delivered straight to your door.',
     ],
     discounts: [20, 30, 15, 25, 18],
     description: 'Everyday groceries and household essentials, delivered with care.',
@@ -1009,7 +1133,7 @@ const CATEGORY_DEFINITIONS = {
       { title: 'Pantry Refill Sale', subtitle: 'Up to 30% off groceries', ctaLabel: 'Shop Now' },
       { title: 'Cleaning Essentials', subtitle: 'Starting at $5', ctaLabel: 'Explore Now' },
     ],
-    tiles: ['Snacks', 'Beverages', 'Cleaning Supplies', 'Personal Care', 'Baby Care', 'Pet Supplies', 'Kitchen Essentials', 'Storage Containers', 'Breakfast Cereals', 'Spices & Masalas', 'Dairy & Bakery', 'Laundry Care', 'Paper Products', 'Air Fresheners', 'Disposables'],
+    tiles: ['Snacks', 'Beverages', 'Cleaning Supplies', 'Toiletries', 'Baby Care', 'Pet Supplies', 'Kitchen Essentials', 'Storage Containers', 'Breakfast Cereals', 'Spices & Masalas', 'Dairy & Bakery', 'Laundry Care', 'Paper Products', 'Air Fresheners', 'Disposables'],
     brands: ['Nestlé', 'Tata', 'ITC', 'Amul', 'Britannia', 'Colgate', 'Dettol', 'Surf Excel', 'Vim', 'Harpic', 'Lizol', 'Parle', "Haldiram's", 'Patanjali', 'Fortune'],
   },
   'auto accessories': {
@@ -1060,7 +1184,7 @@ const CATEGORY_DEFINITIONS = {
       { title: 'Car Care Sale', subtitle: 'Up to 60% off accessories', ctaLabel: 'Shop Now' },
       { title: 'Helmet Collection', subtitle: 'Starting at $39', ctaLabel: 'Explore Now' },
     ],
-    tiles: ['Cleaning Accessories', 'Tyre & Rim Care', 'Helmets', 'Vacuum Cleaners', 'Car Covers', 'Seat Covers', 'Dashboard Accessories', 'Air Fresheners', 'Car Chargers', 'Floor Mats', 'Car Perfumes', 'Steering Covers', 'Tool Kits', 'Jump Starters', 'Dash Cams'],
+    tiles: ['Snacks', 'Beverages', 'Cleaning Supplies', 'Toiletries', 'Baby Care', 'Pet Supplies', 'Kitchen Essentials', 'Storage Containers', 'Breakfast Cereals', 'Spices & Masalas', 'Dairy & Bakery', 'Laundry Care', 'Paper Products', 'Air Fresheners', 'Disposables'],
     brands: ['3M', 'Bosch', 'Michelin', "Meguiar's", 'Armor All', 'Philips', 'CEAT', 'MRF', 'Apollo Tyres', 'Steelbird', 'Vega', 'Studds', 'Motul', 'Castrol', 'Goodyear'],
   },
   'two wheelers': {
