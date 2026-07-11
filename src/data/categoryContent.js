@@ -532,6 +532,71 @@ import foodDealsBabyCare from '@/assets/images/categories/foodAndHousehold/pantr
 import foodDealsBasmati from '@/assets/images/categories/foodAndHousehold/pantryDeals/basmati.jpg'
 import foodDealsDishwashing from '@/assets/images/categories/foodAndHousehold/pantryDeals/dishwashing.jpg'
 
+// --- Fitness: locally-hosted images, same per-section folder pattern.
+import fitnessBannerOne from '@/assets/images/categories/fitness/banners/banner1.jpg'
+import fitnessBannerTwo from '@/assets/images/categories/fitness/banners/banner2.jpg'
+
+import fitnessSliderOne from '@/assets/images/categories/fitness/slider/slider1.avif'
+import fitnessSliderTwo from '@/assets/images/categories/fitness/slider/slider2.jpg'
+import fitnessSliderThree from '@/assets/images/categories/fitness/slider/slider3.jpg'
+import fitnessSliderFour from '@/assets/images/categories/fitness/slider/slider4.jpg'
+import fitnessSliderFive from '@/assets/images/categories/fitness/slider/slider5.jpg'
+
+import fitnessSbcWaterBottle from '@/assets/images/categories/fitness/shopByCategory/water-bottle1.jpg'
+import fitnessSbcYogaMats from '@/assets/images/categories/fitness/shopByCategory/yoga-mats1.jpg'
+import fitnessSbcBands from '@/assets/images/categories/fitness/shopByCategory/bands1.jpg'
+import fitnessSbcDumbbells from '@/assets/images/categories/fitness/shopByCategory/dumbbells1.jpg'
+import fitnessSbcRollers from '@/assets/images/categories/fitness/shopByCategory/rollers1.jpg'
+import fitnessSbcGymbags from '@/assets/images/categories/fitness/shopByCategory/gymbags1.webp'
+import fitnessSbcRopes from '@/assets/images/categories/fitness/shopByCategory/ropes1.webp'
+import fitnessSbcTrackers from '@/assets/images/categories/fitness/shopByCategory/trackers1.jpg'
+import fitnessSbcTreadmills from '@/assets/images/categories/fitness/shopByCategory/treadmills1.jpg'
+import fitnessSbcKettlebells from '@/assets/images/categories/fitness/shopByCategory/kettlebells1.jpg'
+import fitnessSbcPullup from '@/assets/images/categories/fitness/shopByCategory/pullup1.webp'
+import fitnessSbcGuns from '@/assets/images/categories/fitness/shopByCategory/guns1.jpg'
+import fitnessSbcShakers from '@/assets/images/categories/fitness/shopByCategory/shakers1.jpg'
+import fitnessSbcAbRollers from '@/assets/images/categories/fitness/shopByCategory/ab-rollers1.jpg'
+import fitnessSbcGloves from '@/assets/images/categories/fitness/shopByCategory/gloves1.jpg'
+
+import fitnessSpotlightWaterBottle from '@/assets/images/categories/fitness/athleteFavourites/water-bottle2.jpg'
+import fitnessSpotlightYogaMats from '@/assets/images/categories/fitness/athleteFavourites/yoga-mats2.jpg'
+import fitnessSpotlightBands from '@/assets/images/categories/fitness/athleteFavourites/bands2.webp'
+import fitnessSpotlightDumbbells from '@/assets/images/categories/fitness/athleteFavourites/dumbells2.jpg'
+import fitnessSpotlightRollers from '@/assets/images/categories/fitness/athleteFavourites/rollers2.jpg'
+import fitnessSpotlightGymbags from '@/assets/images/categories/fitness/athleteFavourites/gymbags2.jpg'
+import fitnessSpotlightRopes from '@/assets/images/categories/fitness/athleteFavourites/ropes2.jpg'
+import fitnessSpotlightTrackers from '@/assets/images/categories/fitness/athleteFavourites/trackers2.jpg'
+import fitnessSpotlightTreadmills from '@/assets/images/categories/fitness/athleteFavourites/treadmills2.jpg'
+import fitnessSpotlightKettlebells from '@/assets/images/categories/fitness/athleteFavourites/kettlebells2.jpg'
+import fitnessSpotlightPullup from '@/assets/images/categories/fitness/athleteFavourites/pullup2.jpg'
+import fitnessSpotlightGuns from '@/assets/images/categories/fitness/athleteFavourites/guns2.jpg'
+import fitnessSpotlightShakers from '@/assets/images/categories/fitness/athleteFavourites/shakers2.jpg'
+import fitnessSpotlightAbRollers from '@/assets/images/categories/fitness/athleteFavourites/ab-rollers2.jpg'
+import fitnessSpotlightGloves from '@/assets/images/categories/fitness/athleteFavourites/gloves2.jpg'
+
+import fitnessBrandHrx from '@/assets/images/categories/fitness/featuredBrands/hrx.png'
+import fitnessBrandCultsport from '@/assets/images/categories/fitness/featuredBrands/cultsport.png'
+import fitnessBrandBoldfit from '@/assets/images/categories/fitness/featuredBrands/boldfit.webp'
+import fitnessBrandDomyos from '@/assets/images/categories/fitness/featuredBrands/domyos.jpg'
+import fitnessBrandKore from '@/assets/images/categories/fitness/featuredBrands/kore.jpg'
+import fitnessBrandEverlast from '@/assets/images/categories/fitness/featuredBrands/everlast.jpg'
+import fitnessBrandAurion from '@/assets/images/categories/fitness/featuredBrands/aurion.jpg'
+import fitnessBrandStrauss from '@/assets/images/categories/fitness/featuredBrands/strauss.jpg'
+import fitnessBrandFitkit from '@/assets/images/categories/fitness/featuredBrands/fitkit.webp'
+import fitnessBrandGofit from '@/assets/images/categories/fitness/featuredBrands/gofit.jpg'
+import fitnessBrandDecathlon from '@/assets/images/categories/fitness/featuredBrands/decathlon.jpg'
+import fitnessBrandReebok from '@/assets/images/categories/fitness/featuredBrands/reebok.jpg'
+import fitnessBrandUnderArmour from '@/assets/images/categories/fitness/featuredBrands/under-armour.jpg'
+import fitnessBrandCosco from '@/assets/images/categories/fitness/featuredBrands/cosco.jpg'
+import fitnessBrandNivia from '@/assets/images/categories/fitness/featuredBrands/nivia.jpg'
+
+import fitnessDealsDumbbell from '@/assets/images/categories/fitness/trainingDeals/dumbbell.jpg'
+import fitnessDealsFoamRoller from '@/assets/images/categories/fitness/trainingDeals/foam-roller.jpg'
+import fitnessDealsFoldable from '@/assets/images/categories/fitness/trainingDeals/foldable.webp'
+import fitnessDealsIron from '@/assets/images/categories/fitness/trainingDeals/iron.jpg'
+import fitnessDealsFitness from '@/assets/images/categories/fitness/trainingDeals/fitness.webp'
+import fitnessDealsBag from '@/assets/images/categories/fitness/trainingDeals/bag.jpg'
+
 const CATEGORY_DEFINITIONS = {
   mobiles: {
     images: [
@@ -1742,27 +1807,86 @@ const CATEGORY_DEFINITIONS = {
       'https://picsum.photos/seed/1067/900/900',
       'https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=900&q=80',
     ],
-    dealsItems: [
-      { label: 'Adjustable Dumbbell Set', image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=900&q=80' },
-      { label: 'Foam Roller Recovery Kit', image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=80' },
-      { label: 'Foldable Treadmill', image: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=900&q=80' },
-      { label: 'Cast Iron Kettlebell', image: 'https://images.unsplash.com/photo-1576678927484-cc907957088c?w=900&q=80' },
-      { label: 'Fitness Tracker Band', image: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=900&q=80' },
-      { label: 'Gym Duffel Bag', image: 'https://images.unsplash.com/photo-1571008887538-b36bb32f4571?w=900&q=80' },
+    sliderImages: [
+      fitnessSliderOne,
+      fitnessSliderTwo,
+      fitnessSliderThree,
+      fitnessSliderFour,
+      fitnessSliderFive,
     ],
+    shopByCategoryImages: {
+      'Water Bottles': fitnessSbcWaterBottle,
+      'Yoga Mats': fitnessSbcYogaMats,
+      'Resistance Bands': fitnessSbcBands,
+      Dumbbells: fitnessSbcDumbbells,
+      'Foam Rollers': fitnessSbcRollers,
+      'Gym Bags': fitnessSbcGymbags,
+      'Jump Ropes': fitnessSbcRopes,
+      'Fitness Trackers': fitnessSbcTrackers,
+      Treadmills: fitnessSbcTreadmills,
+      Kettlebells: fitnessSbcKettlebells,
+      'Pull-Up Bars': fitnessSbcPullup,
+      'Massage Guns': fitnessSbcGuns,
+      'Protein Shakers': fitnessSbcShakers,
+      'Ab Rollers': fitnessSbcAbRollers,
+      'Gym Gloves': fitnessSbcGloves,
+    },
+    spotlightImages: {
+      'Water Bottles': fitnessSpotlightWaterBottle,
+      'Yoga Mats': fitnessSpotlightYogaMats,
+      'Resistance Bands': fitnessSpotlightBands,
+      Dumbbells: fitnessSpotlightDumbbells,
+      'Foam Rollers': fitnessSpotlightRollers,
+      'Gym Bags': fitnessSpotlightGymbags,
+      'Jump Ropes': fitnessSpotlightRopes,
+      'Fitness Trackers': fitnessSpotlightTrackers,
+      Treadmills: fitnessSpotlightTreadmills,
+      Kettlebells: fitnessSpotlightKettlebells,
+      'Pull-Up Bars': fitnessSpotlightPullup,
+      'Massage Guns': fitnessSpotlightGuns,
+      'Protein Shakers': fitnessSpotlightShakers,
+      'Ab Rollers': fitnessSpotlightAbRollers,
+      'Gym Gloves': fitnessSpotlightGloves,
+    },
+    brandImages: {
+      HRX: fitnessBrandHrx,
+      Cultsport: fitnessBrandCultsport,
+      Boldfit: fitnessBrandBoldfit,
+      Domyos: fitnessBrandDomyos,
+      Kore: fitnessBrandKore,
+      Everlast: fitnessBrandEverlast,
+      Aurion: fitnessBrandAurion,
+      Strauss: fitnessBrandStrauss,
+      Fitkit: fitnessBrandFitkit,
+      GoFit: fitnessBrandGofit,
+      Decathlon: fitnessBrandDecathlon,
+      Reebok: fitnessBrandReebok,
+      'Under Armour': fitnessBrandUnderArmour,
+      Cosco: fitnessBrandCosco,
+      Nivia: fitnessBrandNivia,
+    },
+    promoImages: [fitnessBannerOne, fitnessBannerTwo],
     headlines: [
       ['Show up,', 'every day.'],
       ['Gear for the', 'grind.'],
       ['Recovery', 'matters too.'],
       ['Train', 'anywhere.'],
-      ['Stronger', 'every day.'],
+      ['Track every', 'rep & mile.'],
     ],
     descriptions: [
       'Gear that helps you show up and stay consistent every day.',
       'Equipment built to keep up with the daily grind.',
       'Recovery tools that help your body rest and rebuild.',
       'Portable gear that lets you train anywhere, anytime.',
-      'Everyday equipment for a stronger, healthier you.',
+      'Fitness trackers and smartwatches that measure every rep and mile.',
+    ],
+    dealsItems: [
+      { label: 'Adjustable Dumbbell Set', image: fitnessDealsDumbbell },
+      { label: 'Foam Roller Recovery Kit', image: fitnessDealsFoamRoller },
+      { label: 'Foldable Treadmill', image: fitnessDealsFoldable },
+      { label: 'Cast Iron Kettlebell', image: fitnessDealsIron },
+      { label: 'Fitness Tracker Band', image: fitnessDealsFitness },
+      { label: 'Gym Duffel Bag', image: fitnessDealsBag },
     ],
     discounts: [30, 25, 20, 35, 18],
     description: 'Equipment built for consistency — at home, at the gym, or on the trail.',
@@ -1770,10 +1894,10 @@ const CATEGORY_DEFINITIONS = {
     spotlightLabel: 'Athlete Favorites',
     promos: [
       { title: 'Training Gear Sale', subtitle: 'Up to 30% off equipment', ctaLabel: 'Shop Now' },
-      { title: 'Recovery Picks', subtitle: 'Starting at $14', ctaLabel: 'Explore Now' },
+      { title: 'Recovery Essentials', subtitle: 'Starting at $14', ctaLabel: 'Explore Now' },
     ],
     tiles: ['Water Bottles', 'Yoga Mats', 'Resistance Bands', 'Dumbbells', 'Foam Rollers', 'Gym Bags', 'Jump Ropes', 'Fitness Trackers', 'Treadmills', 'Kettlebells', 'Pull-Up Bars', 'Massage Guns', 'Protein Shakers', 'Ab Rollers', 'Gym Gloves'],
-    brands: ['Nike', 'Adidas', 'Reebok', 'Under Armour', 'Decathlon', 'Puma', 'HRX', 'Cultsport', 'Boldfit', 'Cosco', 'Wilson', 'Yonex', 'Speedo', 'Domyos', 'Kore'],
+    brands: ['HRX', 'Cultsport', 'Boldfit', 'Domyos', 'Kore', 'Everlast', 'Aurion', 'Strauss', 'Fitkit', 'GoFit', 'Decathlon', 'Cosco', 'Reebok', 'Under Armour', 'Nivia'],
   },
   office: {
     images: [
