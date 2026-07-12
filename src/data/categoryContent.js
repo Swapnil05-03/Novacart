@@ -597,6 +597,71 @@ import fitnessDealsIron from '@/assets/images/categories/fitness/trainingDeals/i
 import fitnessDealsFitness from '@/assets/images/categories/fitness/trainingDeals/fitness.webp'
 import fitnessDealsBag from '@/assets/images/categories/fitness/trainingDeals/bag.jpg'
 
+// --- Electronics: locally-hosted images, same per-section folder pattern.
+import electronicsBannerOne from '@/assets/images/categories/electronics/banners/banner1.jpg'
+import electronicsBannerTwo from '@/assets/images/categories/electronics/banners/banner2.webp'
+
+import electronicsSliderOne from '@/assets/images/categories/electronics/slider/slider1.jpg'
+import electronicsSliderTwo from '@/assets/images/categories/electronics/slider/slider2.webp'
+import electronicsSliderThree from '@/assets/images/categories/electronics/slider/slider3.png'
+import electronicsSliderFour from '@/assets/images/categories/electronics/slider/slider4.jpg'
+import electronicsSliderFive from '@/assets/images/categories/electronics/slider/slider5.png'
+
+import electronicsSbcHeadphones from '@/assets/images/categories/electronics/shopByCategory/headphone1.jpg'
+import electronicsSbcLaptops from '@/assets/images/categories/electronics/shopByCategory/laptop1.jpg'
+import electronicsSbcSmartwatches from '@/assets/images/categories/electronics/shopByCategory/watch1.jpg'
+import electronicsSbcSpeakers from '@/assets/images/categories/electronics/shopByCategory/speaker1.jpg'
+import electronicsSbcCameras from '@/assets/images/categories/electronics/shopByCategory/camera1.jpg'
+import electronicsSbcPowerBanks from '@/assets/images/categories/electronics/shopByCategory/powerbank1.jpg'
+import electronicsSbcSecurityCameras from '@/assets/images/categories/electronics/shopByCategory/security1.jpg'
+import electronicsSbcGamingGear from '@/assets/images/categories/electronics/shopByCategory/gaming1.jpg'
+import electronicsSbcTablets from '@/assets/images/categories/electronics/shopByCategory/tablets1.jpg'
+import electronicsSbcMonitors from '@/assets/images/categories/electronics/shopByCategory/monitor1.jpg'
+import electronicsSbcPrinters from '@/assets/images/categories/electronics/shopByCategory/printer1.jpg'
+import electronicsSbcRouters from '@/assets/images/categories/electronics/shopByCategory/router1.jpg'
+import electronicsSbcExternalDrives from '@/assets/images/categories/electronics/shopByCategory/drive1.jpg'
+import electronicsSbcWebcams from '@/assets/images/categories/electronics/shopByCategory/webcams1.jpg'
+import electronicsSbcDrones from '@/assets/images/categories/electronics/shopByCategory/drones1.jpg'
+
+import electronicsSpotlightHeadphones from '@/assets/images/categories/electronics/trendingGadgets/headphone2.jpg'
+import electronicsSpotlightLaptops from '@/assets/images/categories/electronics/trendingGadgets/laptop2.jpg'
+import electronicsSpotlightSmartwatches from '@/assets/images/categories/electronics/trendingGadgets/watch2.jpg'
+import electronicsSpotlightSpeakers from '@/assets/images/categories/electronics/trendingGadgets/speaker2.jpg'
+import electronicsSpotlightCameras from '@/assets/images/categories/electronics/trendingGadgets/camera2.jpg'
+import electronicsSpotlightPowerBanks from '@/assets/images/categories/electronics/trendingGadgets/powerbank2.jpg'
+import electronicsSpotlightSecurityCameras from '@/assets/images/categories/electronics/trendingGadgets/security2.jpg'
+import electronicsSpotlightGamingGear from '@/assets/images/categories/electronics/trendingGadgets/gaming2.jpg'
+import electronicsSpotlightTablets from '@/assets/images/categories/electronics/trendingGadgets/tablets2.jpg'
+import electronicsSpotlightMonitors from '@/assets/images/categories/electronics/trendingGadgets/monitor2.jpg'
+import electronicsSpotlightPrinters from '@/assets/images/categories/electronics/trendingGadgets/printer2.jpg'
+import electronicsSpotlightRouters from '@/assets/images/categories/electronics/trendingGadgets/router2.jpg'
+import electronicsSpotlightExternalDrives from '@/assets/images/categories/electronics/trendingGadgets/drive2.jpg'
+import electronicsSpotlightWebcams from '@/assets/images/categories/electronics/trendingGadgets/webcams2.jpg'
+import electronicsSpotlightDrones from '@/assets/images/categories/electronics/trendingGadgets/drones2.jpg'
+
+import electronicsBrandSony from '@/assets/images/categories/electronics/featuredBrands/sony.jpg'
+import electronicsBrandJbl from '@/assets/images/categories/electronics/featuredBrands/jbl.jpg'
+import electronicsBrandBose from '@/assets/images/categories/electronics/featuredBrands/bose.jpg'
+import electronicsBrandBoat from '@/assets/images/categories/electronics/featuredBrands/boat.jpg'
+import electronicsBrandDell from '@/assets/images/categories/electronics/featuredBrands/dell.jpg'
+import electronicsBrandHp from '@/assets/images/categories/electronics/featuredBrands/hp.jpg'
+import electronicsBrandLenovo from '@/assets/images/categories/electronics/featuredBrands/lenovo.jpg'
+import electronicsBrandApple from '@/assets/images/categories/electronics/featuredBrands/apple.jpg'
+import electronicsBrandSennheiser from '@/assets/images/categories/electronics/featuredBrands/sennheiser.jpg'
+import electronicsBrandLogitech from '@/assets/images/categories/electronics/featuredBrands/logitech.jpg'
+import electronicsBrandAsus from '@/assets/images/categories/electronics/featuredBrands/asus.jpg'
+import electronicsBrandAcer from '@/assets/images/categories/electronics/featuredBrands/acer.png'
+import electronicsBrandCanon from '@/assets/images/categories/electronics/featuredBrands/canon.jpg'
+import electronicsBrandNikon from '@/assets/images/categories/electronics/featuredBrands/nikon.jpg'
+import electronicsBrandGopro from '@/assets/images/categories/electronics/featuredBrands/gopro.jpg'
+
+import electronicsDealsHeadphones from '@/assets/images/categories/electronics/topTechDeals/headphones.jpg'
+import electronicsDealsLaptop from '@/assets/images/categories/electronics/topTechDeals/laptop.jpg'
+import electronicsDealsSpeaker from '@/assets/images/categories/electronics/topTechDeals/speaker.jpg'
+import electronicsDealsWatch from '@/assets/images/categories/electronics/topTechDeals/watch.jpg'
+import electronicsDealsCamera from '@/assets/images/categories/electronics/topTechDeals/camera.jpg'
+import electronicsDealsPowerbank from '@/assets/images/categories/electronics/topTechDeals/powerbank.jpg'
+
 const CATEGORY_DEFINITIONS = {
   mobiles: {
     images: [
@@ -787,25 +852,84 @@ const CATEGORY_DEFINITIONS = {
       'https://picsum.photos/seed/1007/900/900',
       'https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=900&q=80',
     ],
+    sliderImages: [
+      electronicsSliderOne,
+      electronicsSliderTwo,
+      electronicsSliderThree,
+      electronicsSliderFour,
+      electronicsSliderFive,
+    ],
+    shopByCategoryImages: {
+      Headphones: electronicsSbcHeadphones,
+      Laptops: electronicsSbcLaptops,
+      Smartwatches: electronicsSbcSmartwatches,
+      Speakers: electronicsSbcSpeakers,
+      Cameras: electronicsSbcCameras,
+      'Power Banks': electronicsSbcPowerBanks,
+      'Security Cameras': electronicsSbcSecurityCameras,
+      'Gaming Gear': electronicsSbcGamingGear,
+      Tablets: electronicsSbcTablets,
+      Monitors: electronicsSbcMonitors,
+      Printers: electronicsSbcPrinters,
+      Routers: electronicsSbcRouters,
+      'External Drives': electronicsSbcExternalDrives,
+      Webcams: electronicsSbcWebcams,
+      Drones: electronicsSbcDrones,
+    },
+    spotlightImages: {
+      Headphones: electronicsSpotlightHeadphones,
+      Laptops: electronicsSpotlightLaptops,
+      Smartwatches: electronicsSpotlightSmartwatches,
+      Speakers: electronicsSpotlightSpeakers,
+      Cameras: electronicsSpotlightCameras,
+      'Power Banks': electronicsSpotlightPowerBanks,
+      'Security Cameras': electronicsSpotlightSecurityCameras,
+      'Gaming Gear': electronicsSpotlightGamingGear,
+      Tablets: electronicsSpotlightTablets,
+      Monitors: electronicsSpotlightMonitors,
+      Printers: electronicsSpotlightPrinters,
+      Routers: electronicsSpotlightRouters,
+      'External Drives': electronicsSpotlightExternalDrives,
+      Webcams: electronicsSpotlightWebcams,
+      Drones: electronicsSpotlightDrones,
+    },
+    brandImages: {
+      Sony: electronicsBrandSony,
+      JBL: electronicsBrandJbl,
+      Bose: electronicsBrandBose,
+      boAt: electronicsBrandBoat,
+      Dell: electronicsBrandDell,
+      HP: electronicsBrandHp,
+      Lenovo: electronicsBrandLenovo,
+      Apple: electronicsBrandApple,
+      Sennheiser: electronicsBrandSennheiser,
+      Logitech: electronicsBrandLogitech,
+      ASUS: electronicsBrandAsus,
+      Acer: electronicsBrandAcer,
+      Canon: electronicsBrandCanon,
+      Nikon: electronicsBrandNikon,
+      GoPro: electronicsBrandGopro,
+    },
+    promoImages: [electronicsBannerOne, electronicsBannerTwo],
     dealsItems: [
-      { label: 'Noise-Cancelling Headphones', image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=900&q=80' },
-      { label: '15.6" Slim Laptop', image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=900&q=80' },
-      { label: 'Bluetooth Party Speaker', image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&q=80' },
-      { label: 'Smartwatch with GPS', image: 'https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=900&q=80' },
-      { label: 'Mirrorless Camera Kit', image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=900&q=80' },
-      { label: '10000mAh Power Bank', image: 'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=900&q=80' },
+      { label: 'Noise-Cancelling Headphones', image: electronicsDealsHeadphones },
+      { label: '15.6" Slim Laptop', image: electronicsDealsLaptop },
+      { label: 'Bluetooth Party Speaker', image: electronicsDealsSpeaker },
+      { label: 'Smartwatch with GPS', image: electronicsDealsWatch },
+      { label: 'Mirrorless Camera Kit', image: electronicsDealsCamera },
+      { label: '10000mAh Power Bank', image: electronicsDealsPowerbank },
     ],
     headlines: [
       ['Audio gear,', 'up to 75% off.'],
       ['Laptops &', 'more.'],
-      ['Next-level', 'performance.'],
+      ['Tablets for', 'work & play.'],
       ['Smartwatches', 'for every day.'],
       ['Cameras that', 'capture it all.'],
     ],
     descriptions: [
       'Headphones and speakers with deep discounts on top brands.',
       'Laptops and computing gear built for work, study, and play.',
-      'Devices engineered for next-level speed and performance.',
+      'Tablets that adapt to whatever you need — work, study, or entertainment.',
       'Smartwatches that keep you connected and on track every day.',
       'Cameras built to capture every detail, in any setting.',
     ],
@@ -817,8 +941,8 @@ const CATEGORY_DEFINITIONS = {
       { title: 'Audio Week Sale', subtitle: 'Up to 60% off on headphones', ctaLabel: 'Shop Now' },
       { title: 'Smart Home Picks', subtitle: 'Starting at $19', ctaLabel: 'Explore Now' },
     ],
-    tiles: ['Headphones', 'Laptops', 'Smartwatches', 'Speakers', 'Cameras', 'Power Banks', 'Smart Home', 'Gaming Gear', 'Tablets', 'Monitors', 'Printers', 'Routers', 'External Drives', 'Webcams', 'Drones'],
-    brands: ['Sony', 'JBL', 'Bose', 'boAt', 'Samsung', 'LG', 'Dell', 'HP', 'Lenovo', 'Apple', 'Sennheiser', 'Logitech', 'ASUS', 'Acer', 'Canon'],
+    tiles: ['Headphones', 'Laptops', 'Smartwatches', 'Speakers', 'Cameras', 'Power Banks', 'Security Cameras', 'Gaming Gear', 'Tablets', 'Monitors', 'Printers', 'Routers', 'External Drives', 'Webcams', 'Drones'],
+    brands: ['Sony', 'JBL', 'Bose', 'boAt', 'Dell', 'HP', 'Lenovo', 'Apple', 'Sennheiser', 'Logitech', 'ASUS', 'Acer', 'Canon', 'Nikon', 'GoPro'],
   },
   'home & living': {
     images: [
