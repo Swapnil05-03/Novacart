@@ -662,6 +662,71 @@ import electronicsDealsWatch from '@/assets/images/categories/electronics/topTec
 import electronicsDealsCamera from '@/assets/images/categories/electronics/topTechDeals/camera.jpg'
 import electronicsDealsPowerbank from '@/assets/images/categories/electronics/topTechDeals/powerbank.jpg'
 
+// --- Books & Stationery: locally-hosted images, same per-section folder pattern.
+import booksBannerOne from '@/assets/images/categories/booksAndStationary/banners/banner1.avif'
+import booksBannerTwo from '@/assets/images/categories/booksAndStationary/banners/banner2.jpg'
+
+import booksSliderOne from '@/assets/images/categories/booksAndStationary/slider/slider1.avif'
+import booksSliderTwo from '@/assets/images/categories/booksAndStationary/slider/slider2.jpg'
+import booksSliderThree from '@/assets/images/categories/booksAndStationary/slider/slider3.webp'
+import booksSliderFour from '@/assets/images/categories/booksAndStationary/slider/slider4.webp'
+import booksSliderFive from '@/assets/images/categories/booksAndStationary/slider/slider5.webp'
+
+import booksSbcFiction from '@/assets/images/categories/booksAndStationary/shopByCategory/fiction1.jpg'
+import booksSbcNotebooks from '@/assets/images/categories/booksAndStationary/shopByCategory/notebooks1.jpg'
+import booksSbcPensPencils from '@/assets/images/categories/booksAndStationary/shopByCategory/pens-pencils1.jpg'
+import booksSbcKids from '@/assets/images/categories/booksAndStationary/shopByCategory/kids1.jpg'
+import booksSbcNonFiction from '@/assets/images/categories/booksAndStationary/shopByCategory/non-fiction1.jpg'
+import booksSbcArt from '@/assets/images/categories/booksAndStationary/shopByCategory/art1.jpg'
+import booksSbcPlanner from '@/assets/images/categories/booksAndStationary/shopByCategory/planner1.jpg'
+import booksSbcManga from '@/assets/images/categories/booksAndStationary/shopByCategory/manga1.webp'
+import booksSbcBookmark from '@/assets/images/categories/booksAndStationary/shopByCategory/bookmark1.jpg'
+import booksSbcDiary from '@/assets/images/categories/booksAndStationary/shopByCategory/diary1.jpg'
+import booksSbcSticky from '@/assets/images/categories/booksAndStationary/shopByCategory/sticky1.jpg'
+import booksSbcHighlighters from '@/assets/images/categories/booksAndStationary/shopByCategory/highlighters1.jpg'
+import booksSbcOrganizer from '@/assets/images/categories/booksAndStationary/shopByCategory/organizer1.jpg'
+import booksSbcCard from '@/assets/images/categories/booksAndStationary/shopByCategory/card1.jpg'
+import booksSbcCalci from '@/assets/images/categories/booksAndStationary/shopByCategory/calci1.jpg'
+
+import booksSpotlightFiction from '@/assets/images/categories/booksAndStationary/newReleases/fiction2.webp'
+import booksSpotlightNotebooks from '@/assets/images/categories/booksAndStationary/newReleases/notebooks2.jpg'
+import booksSpotlightPensPencils from '@/assets/images/categories/booksAndStationary/newReleases/pens-pencils2.jpg'
+import booksSpotlightKids from '@/assets/images/categories/booksAndStationary/newReleases/kids2.jpg'
+import booksSpotlightNonFiction from '@/assets/images/categories/booksAndStationary/newReleases/non-fiction2.jpg'
+import booksSpotlightArt from '@/assets/images/categories/booksAndStationary/newReleases/art2.jpg'
+import booksSpotlightPlanner from '@/assets/images/categories/booksAndStationary/newReleases/planner2.jpg'
+import booksSpotlightManga from '@/assets/images/categories/booksAndStationary/newReleases/manga2.jpg'
+import booksSpotlightBookmark from '@/assets/images/categories/booksAndStationary/newReleases/bookmark2.webp'
+import booksSpotlightDiary from '@/assets/images/categories/booksAndStationary/newReleases/diary2.jpg'
+import booksSpotlightSticky from '@/assets/images/categories/booksAndStationary/newReleases/sticky2.jpg'
+import booksSpotlightHighlighters from '@/assets/images/categories/booksAndStationary/newReleases/highlighters2.jpg'
+import booksSpotlightOrganizer from '@/assets/images/categories/booksAndStationary/newReleases/organizer2.jpg'
+import booksSpotlightCard from '@/assets/images/categories/booksAndStationary/newReleases/card2.jpg'
+import booksSpotlightCalci from '@/assets/images/categories/booksAndStationary/newReleases/calci2.jpg'
+
+import booksBrandPenguin from '@/assets/images/categories/booksAndStationary/featuredBrands/penguin.jpg'
+import booksBrandHarper from '@/assets/images/categories/booksAndStationary/featuredBrands/harper.avif'
+import booksBrandClassmate from '@/assets/images/categories/booksAndStationary/featuredBrands/classmate.jpg'
+import booksBrandCamlin from '@/assets/images/categories/booksAndStationary/featuredBrands/camlin.jpg'
+import booksBrandParker from '@/assets/images/categories/booksAndStationary/featuredBrands/parker.jpg'
+import booksBrandFaber from '@/assets/images/categories/booksAndStationary/featuredBrands/faber.jpg'
+import booksBrandStaedtler from '@/assets/images/categories/booksAndStationary/featuredBrands/staedtler.jpg'
+import booksBrandAmar from '@/assets/images/categories/booksAndStationary/featuredBrands/amar.jpg'
+import booksBrandScholastic from '@/assets/images/categories/booksAndStationary/featuredBrands/scholastic.png'
+import booksBrandOxford from '@/assets/images/categories/booksAndStationary/featuredBrands/oxford.jpg'
+import booksBrandNatraj from '@/assets/images/categories/booksAndStationary/featuredBrands/natraj.jpg'
+import booksBrandDoms from '@/assets/images/categories/booksAndStationary/featuredBrands/doms.jpg'
+import booksBrandReynolds from '@/assets/images/categories/booksAndStationary/featuredBrands/reynolds.jpg'
+import booksBrandCello from '@/assets/images/categories/booksAndStationary/featuredBrands/cello.jpg'
+import booksBrandNavneet from '@/assets/images/categories/booksAndStationary/featuredBrands/navneet.webp'
+
+import booksDealsFiction from '@/assets/images/categories/booksAndStationary/readerDeals/fiction.jpg'
+import booksDealsNotebook from '@/assets/images/categories/booksAndStationary/readerDeals/notebook.jpg'
+import booksDealsPen from '@/assets/images/categories/booksAndStationary/readerDeals/pen.jpg'
+import booksDealsStorybook from '@/assets/images/categories/booksAndStationary/readerDeals/storybook.webp'
+import booksDealsDailyPlanner from '@/assets/images/categories/booksAndStationary/readerDeals/daily-planner.jpg'
+import booksDealsWatercolor from '@/assets/images/categories/booksAndStationary/readerDeals/watercolor.webp'
+
 const CATEGORY_DEFINITIONS = {
   mobiles: {
     images: [
@@ -800,14 +865,14 @@ const CATEGORY_DEFINITIONS = {
       { label: "Women's Keratin Hair Spa Kit", image: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=900&q=80' },
     ],
     headlines: [
-      ["Men's grooming,", 'made simple.'],
+      ["Beard & shave,", 'sorted.'],
       ["Women's makeup,", 'must-haves.'],
       ["Men's skincare,", 'daily routine.'],
       ["Women's haircare,", 'reinvented.'],
       ['Fragrance for', 'every mood.'],
     ],
     descriptions: [
-      "Men's grooming essentials for a routine that actually works.",
+      'Trimmers, razors, and beard oils for a sharp, well-groomed look.',
       "Women's makeup must-haves for a flawless look, day or night.",
       "Men's skincare basics, simplified for a daily routine.",
       "Women's haircare formulas reinvented for stronger, healthier-looking hair.",
@@ -1620,27 +1685,86 @@ const CATEGORY_DEFINITIONS = {
       'https://picsum.photos/seed/1043/900/900',
       'https://images.unsplash.com/photo-1568667256549-094345857637?w=900&q=80',
     ],
+    sliderImages: [
+      booksSliderOne,
+      booksSliderTwo,
+      booksSliderThree,
+      booksSliderFour,
+      booksSliderFive,
+    ],
+    shopByCategoryImages: {
+      Fiction: booksSbcFiction,
+      Notebooks: booksSbcNotebooks,
+      'Pens & Pencils': booksSbcPensPencils,
+      "Kids' Books": booksSbcKids,
+      'Non-Fiction': booksSbcNonFiction,
+      'Art Supplies': booksSbcArt,
+      Planners: booksSbcPlanner,
+      'Comics & Manga': booksSbcManga,
+      Bookmarks: booksSbcBookmark,
+      Diaries: booksSbcDiary,
+      'Sticky Notes': booksSbcSticky,
+      Highlighters: booksSbcHighlighters,
+      'File Organizers': booksSbcOrganizer,
+      'Greeting Cards': booksSbcCard,
+      Calculators: booksSbcCalci,
+    },
+    spotlightImages: {
+      Fiction: booksSpotlightFiction,
+      Notebooks: booksSpotlightNotebooks,
+      'Pens & Pencils': booksSpotlightPensPencils,
+      "Kids' Books": booksSpotlightKids,
+      'Non-Fiction': booksSpotlightNonFiction,
+      'Art Supplies': booksSpotlightArt,
+      Planners: booksSpotlightPlanner,
+      'Comics & Manga': booksSpotlightManga,
+      Bookmarks: booksSpotlightBookmark,
+      Diaries: booksSpotlightDiary,
+      'Sticky Notes': booksSpotlightSticky,
+      Highlighters: booksSpotlightHighlighters,
+      'File Organizers': booksSpotlightOrganizer,
+      'Greeting Cards': booksSpotlightCard,
+      Calculators: booksSpotlightCalci,
+    },
+    brandImages: {
+      Penguin: booksBrandPenguin,
+      HarperCollins: booksBrandHarper,
+      Classmate: booksBrandClassmate,
+      Camlin: booksBrandCamlin,
+      Parker: booksBrandParker,
+      'Faber-Castell': booksBrandFaber,
+      Staedtler: booksBrandStaedtler,
+      'Amar Chitra Katha': booksBrandAmar,
+      Scholastic: booksBrandScholastic,
+      Oxford: booksBrandOxford,
+      Natraj: booksBrandNatraj,
+      Doms: booksBrandDoms,
+      Reynolds: booksBrandReynolds,
+      Cello: booksBrandCello,
+      Navneet: booksBrandNavneet,
+    },
+    promoImages: [booksBannerOne, booksBannerTwo],
     dealsItems: [
-      { label: 'Bestselling Fiction Bundle', image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=900&q=80' },
-      { label: 'Hardcover Ruled Notebook Set', image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=900&q=80' },
-      { label: 'Premium Gel Pen Pack', image: 'https://images.unsplash.com/photo-1456735190827-d1262f71b8a3?w=900&q=80' },
-      { label: 'Illustrated Kids Storybook Set', image: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=900&q=80' },
-      { label: 'Daily Planner & Journal', image: 'https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=900&q=80' },
-      { label: 'Watercolor Art Supply Kit', image: 'https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?w=900&q=80' },
+      { label: 'Bestselling Fiction Bundle', image: booksDealsFiction },
+      { label: 'Hardcover Ruled Notebook Set', image: booksDealsNotebook },
+      { label: 'Premium Gel Pen Pack', image: booksDealsPen },
+      { label: 'Illustrated Kids Storybook Set', image: booksDealsStorybook },
+      { label: 'Daily Planner & Journal', image: booksDealsDailyPlanner },
+      { label: 'Watercolor Art Supply Kit', image: booksDealsWatercolor },
     ],
     headlines: [
-      ['Refill your', 'shelf.'],
+      ['Fiction that', 'pulls you in.'],
       ['Notebooks for', 'every idea.'],
-      ['Bestsellers', 'and more.'],
-      ['Ideas start', 'on paper.'],
-      ['Read more,', 'learn more.'],
+      ['Pens that', 'write smooth.'],
+      ["Kids' books,", 'story time.'],
+      ['Art supplies,', 'get creative.'],
     ],
     descriptions: [
-      'Fresh titles to refill your shelf with new stories.',
+      'Fiction and bestsellers that pull you into a whole new world.',
       'Notebooks and journals ready for whatever idea comes next.',
-      'Bestsellers and reader favorites, all in one place.',
-      'Stationery essentials where every great idea begins.',
-      'Books that help you read more and learn more.',
+      'Pens and pencils built for smooth, comfortable writing.',
+      "Illustrated storybooks that make story time a favorite part of the day.",
+      'Art and craft supplies that bring every creative idea to life.',
     ],
     discounts: [25, 20, 15, 30, 18],
     description: 'Stories to get lost in and tools to bring your ideas to life.',
@@ -1650,7 +1774,7 @@ const CATEGORY_DEFINITIONS = {
       { title: 'Reader Sale', subtitle: 'Up to 30% off bestsellers', ctaLabel: 'Shop Now' },
       { title: 'Stationery Edit', subtitle: 'Starting at $4', ctaLabel: 'Explore Now' },
     ],
-    tiles: ['Fiction', 'Notebooks', 'Pens & Pencils', "Kids' Books", 'Non-Fiction', 'Art Supplies', 'Planners', 'Comics & Manga', 'Academic Books', 'Self-Help', 'Sticky Notes', 'Highlighters', 'File Organizers', 'Greeting Cards', 'Calculators'],
+    tiles: ['Fiction', 'Notebooks', 'Pens & Pencils', "Kid's Books", 'Non-Fiction', 'Art Supplies', 'Planners', 'Comics & Manga', 'Book Marks', 'Diary', 'Sticky Notes', 'Highlighters', 'File Organizers', 'Greeting Cards', 'Calculators'],
     brands: ['Penguin', 'HarperCollins', 'Classmate', 'Camlin', 'Parker', 'Faber-Castell', 'Staedtler', 'Amar Chitra Katha', 'Scholastic', 'Oxford', 'Natraj', 'Doms', 'Reynolds', 'Cello', 'Navneet'],
   },
   furniture: {
