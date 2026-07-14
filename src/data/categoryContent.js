@@ -727,6 +727,90 @@ import booksDealsStorybook from '@/assets/images/categories/booksAndStationary/r
 import booksDealsDailyPlanner from '@/assets/images/categories/booksAndStationary/readerDeals/daily-planner.jpg'
 import booksDealsWatercolor from '@/assets/images/categories/booksAndStationary/readerDeals/watercolor.webp'
 
+// --- Beauty: locally-hosted images, same per-section folder pattern.
+import beautyBannerOne from '@/assets/images/categories/beauty/banners/banner1.jpg'
+import beautyBannerTwo from '@/assets/images/categories/beauty/banners/banner2.jpeg'
+
+import beautySliderOne from '@/assets/images/categories/beauty/slider/slider1.png'
+import beautySliderTwo from '@/assets/images/categories/beauty/slider/slider2.jpg'
+import beautySliderThree from '@/assets/images/categories/beauty/slider/slider3.jpg'
+import beautySliderFour from '@/assets/images/categories/beauty/slider/slider4.webp'
+import beautySliderFive from '@/assets/images/categories/beauty/slider/slider5.webp'
+
+// Men — shopByCategory
+import beautyMenGrooming from '@/assets/images/categories/beauty/shopByCategoryMen/grooming.jpg'
+import beautyMenBeard from '@/assets/images/categories/beauty/shopByCategoryMen/beard.jpg'
+import beautyMenShaving from '@/assets/images/categories/beauty/shopByCategoryMen/shaving.jpg'
+import beautyMenFaceWash from '@/assets/images/categories/beauty/shopByCategoryMen/face-wash.avif'
+import beautyMenDeodorant from '@/assets/images/categories/beauty/shopByCategoryMen/deodorant.webp'
+import beautyMenHairStyling from '@/assets/images/categories/beauty/shopByCategoryMen/hair-styling.webp'
+import beautyMenBodyWash from '@/assets/images/categories/beauty/shopByCategoryMen/body wash.jpg'
+import beautyMenSunscreen from '@/assets/images/categories/beauty/shopByCategoryMen/sunscreen.webp'
+import beautyMenTrimmer from '@/assets/images/categories/beauty/shopByCategoryMen/trimmer.jpg'
+import beautyMenBodyLotion from '@/assets/images/categories/beauty/shopByCategoryMen/body-lotion.avif'
+import beautyMenPerfume from '@/assets/images/categories/beauty/shopByCategoryMen/perfume.jpg'
+import beautyMenHairColor from '@/assets/images/categories/beauty/shopByCategoryMen/hair-colour.jpg'
+import beautyMenSkincare from '@/assets/images/categories/beauty/shopByCategoryMen/skincare.jpg'
+import beautyMenTalc from '@/assets/images/categories/beauty/shopByCategoryMen/talc.webp'
+import beautyMenFaceMask from '@/assets/images/categories/beauty/shopByCategoryMen/face-mask.webp'
+
+// Women — shopByCategory
+import beautyWomenMakeup from '@/assets/images/categories/beauty/shopByCategoryWomen/makeup.jpg'
+import beautyWomenSkincare from '@/assets/images/categories/beauty/shopByCategoryWomen/skincare.webp'
+import beautyWomenHaircare from '@/assets/images/categories/beauty/shopByCategoryWomen/haircare.jpg'
+import beautyWomenFragrance from '@/assets/images/categories/beauty/shopByCategoryWomen/fragrance.webp'
+import beautyWomenBathBody from '@/assets/images/categories/beauty/shopByCategoryWomen/bath-body.jpg'
+import beautyWomenToolsBrushes from '@/assets/images/categories/beauty/shopByCategoryWomen/tools-brushes.jpg'
+import beautyWomenLip from '@/assets/images/categories/beauty/shopByCategoryWomen/lip.jpg'
+import beautyWomenNailCare from '@/assets/images/categories/beauty/shopByCategoryWomen/nail-care.jpg'
+import beautyWomenFaceMask from '@/assets/images/categories/beauty/shopByCategoryWomen/face-mask.jpg'
+import beautyWomenHairColor from '@/assets/images/categories/beauty/shopByCategoryWomen/hair-colour.jpg'
+import beautyWomenBodyLotion from '@/assets/images/categories/beauty/shopByCategoryWomen/body-lotion.jpg'
+import beautyWomenDeodorants from '@/assets/images/categories/beauty/shopByCategoryWomen/deodarants.png'
+import beautyWomenSunscreen from '@/assets/images/categories/beauty/shopByCategoryWomen/sunscreen.jpg'
+import beautyWomenHairRemoval from '@/assets/images/categories/beauty/shopByCategoryWomen/hair-removal.jpg'
+import beautyWomenBodyScrub from '@/assets/images/categories/beauty/shopByCategoryWomen/body-scrub.jpg'
+
+// Trending Now (spotlight, mixed Men+Women)
+import beautyTrendSkincare from '@/assets/images/categories/beauty/trendingNow/skincare.webp'
+import beautyTrendGrooming from '@/assets/images/categories/beauty/trendingNow/grooming.jpg'
+import beautyTrendPerfume from '@/assets/images/categories/beauty/trendingNow/perfume.jpg'
+import beautyTrendBeard from '@/assets/images/categories/beauty/trendingNow/beard.avif'
+import beautyTrendMakeup from '@/assets/images/categories/beauty/trendingNow/makeup.webp'
+import beautyTrendSunscreen from '@/assets/images/categories/beauty/trendingNow/sunscreen.jpg'
+import beautyTrendHaircare from '@/assets/images/categories/beauty/trendingNow/haircare.jpg'
+import beautyTrendShaving from '@/assets/images/categories/beauty/trendingNow/shaving.jpg'
+import beautyTrendBath from '@/assets/images/categories/beauty/trendingNow/bath.jpg'
+import beautyTrendDeodorants from '@/assets/images/categories/beauty/trendingNow/deodorants.avif'
+import beautyTrendBrushes from '@/assets/images/categories/beauty/trendingNow/brushes.jpg'
+import beautyTrendFaceWash from '@/assets/images/categories/beauty/trendingNow/face-wash.avif'
+import beautyTrendLipCare from '@/assets/images/categories/beauty/trendingNow/lip-care.webp'
+import beautyTrendHairStyling from '@/assets/images/categories/beauty/trendingNow/hair-styling.jpg'
+import beautyTrendBodyWash from '@/assets/images/categories/beauty/trendingNow/body-wash.jpg'
+
+import beautyBrandNivea from '@/assets/images/categories/beauty/featuredBrands/nivea.avif'
+import beautyBrandLakme from '@/assets/images/categories/beauty/featuredBrands/lakme.jpg'
+import beautyBrandHimalaya from '@/assets/images/categories/beauty/featuredBrands/himalaya.jpg'
+import beautyBrandMaybelline from '@/assets/images/categories/beauty/featuredBrands/maybelline.avif'
+import beautyBrandDove from '@/assets/images/categories/beauty/featuredBrands/dove.avif'
+import beautyBrandLoreal from '@/assets/images/categories/beauty/featuredBrands/loreal.jpg'
+import beautyBrandGillette from '@/assets/images/categories/beauty/featuredBrands/gillette.jpg'
+import beautyBrandNykaa from '@/assets/images/categories/beauty/featuredBrands/nykaa.jpg'
+import beautyBrandOldSpice from '@/assets/images/categories/beauty/featuredBrands/old-spice.avif'
+import beautyBrandMac from '@/assets/images/categories/beauty/featuredBrands/mac.jpg'
+import beautyBrandParkAvenue from '@/assets/images/categories/beauty/featuredBrands/park-avenue.jpg'
+import beautyBrandGarnier from '@/assets/images/categories/beauty/featuredBrands/garnier.webp'
+import beautyBrandWildstone from '@/assets/images/categories/beauty/featuredBrands/wildstone.jpg'
+import beautyBrandBodyShop from '@/assets/images/categories/beauty/featuredBrands/bodyShop.jpg'
+import beautyBrandMamaearth from '@/assets/images/categories/beauty/featuredBrands/mamaearth.jpg'
+
+import beautyDealsGrooming from '@/assets/images/categories/beauty/limitedTimeDeals/grooming.jpg'
+import beautyDealsLipstick from '@/assets/images/categories/beauty/limitedTimeDeals/matte.webp'
+import beautyDealsFaceWash from '@/assets/images/categories/beauty/limitedTimeDeals/vitamin.jpg'
+import beautyDealsSerum from '@/assets/images/categories/beauty/limitedTimeDeals/hair-spa.jpg'
+import beautyDealsDeoPerfume from '@/assets/images/categories/beauty/limitedTimeDeals/perfume.webp'
+import beautyDealsHairSpa from '@/assets/images/categories/beauty/limitedTimeDeals/sunscreen.jpg'
+
 const CATEGORY_DEFINITIONS = {
   mobiles: {
     images: [
@@ -856,13 +940,87 @@ const CATEGORY_DEFINITIONS = {
       'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=900&q=80',
       'https://images.unsplash.com/photo-1607602132700-068258431c6e?w=900&q=80',
     ],
+    sliderImages: [
+      beautySliderOne,
+      beautySliderTwo,
+      beautySliderThree,
+      beautySliderFour,
+      beautySliderFive,
+    ],
+    shopByCategoryImages: {
+      "Men's Grooming": beautyMenGrooming,
+      'Beard Care': beautyMenBeard,
+      Shaving: beautyMenShaving,
+      'Face Wash': beautyMenFaceWash,
+      "Men's Deodorant": beautyMenDeodorant,
+      'Hair Styling': beautyMenHairStyling,
+      'Body Wash': beautyMenBodyWash,
+      "Men's Sunscreen": beautyMenSunscreen,
+      Trimmers: beautyMenTrimmer,
+      "Men's Body Lotion": beautyMenBodyLotion,
+      Perfume: beautyMenPerfume,
+      "Men's Hair Color": beautyMenHairColor,
+      "Men's Skincare": beautyMenSkincare,
+      'Talc & Powder': beautyMenTalc,
+      'Face Mask': beautyMenFaceMask,
+      Makeup: beautyWomenMakeup,
+      Skincare: beautyWomenSkincare,
+      Haircare: beautyWomenHaircare,
+      Fragrance: beautyWomenFragrance,
+      'Bath & Body': beautyWomenBathBody,
+      'Tools & Brushes': beautyWomenToolsBrushes,
+      'Lip Care': beautyWomenLip,
+      'Nail Care': beautyWomenNailCare,
+      'Face Masks': beautyWomenFaceMask,
+      'Hair Color': beautyWomenHairColor,
+      'Body Lotion': beautyWomenBodyLotion,
+      Deodorants: beautyWomenDeodorants,
+      Sunscreen: beautyWomenSunscreen,
+      'Hair Removal': beautyWomenHairRemoval,
+      'Body Scrubs': beautyWomenBodyScrub,
+    },
+    spotlightImages: {
+      "Men's Skincare": beautyTrendSkincare,
+      "Men's Grooming": beautyTrendGrooming,
+      Fragrance: beautyTrendPerfume,
+      'Beard Care': beautyTrendBeard,
+      Makeup: beautyTrendMakeup,
+      "Sunscreen": beautyTrendSunscreen,
+      Haircare: beautyTrendHaircare,
+      Shaving: beautyTrendShaving,
+      'Bath & Body': beautyTrendBath,
+      "Men's Deodorant": beautyTrendDeodorants,
+      'Tools & Brushes': beautyTrendBrushes,
+      'Face Wash': beautyTrendFaceWash,
+      'Lip Care': beautyTrendLipCare,
+      'Hair Styling': beautyTrendHairStyling,
+      'Body Wash': beautyTrendBodyWash,
+    },
+    brandImages: {
+      Nivea: beautyBrandNivea,
+      'Lakmé': beautyBrandLakme,
+      Himalaya: beautyBrandHimalaya,
+      Maybelline: beautyBrandMaybelline,
+      Dove: beautyBrandDove,
+      "L'Oréal": beautyBrandLoreal,
+      Gillette: beautyBrandGillette,
+      Nykaa: beautyBrandNykaa,
+      'Old Spice': beautyBrandOldSpice,
+      MAC: beautyBrandMac,
+      'Park Avenue': beautyBrandParkAvenue,
+      Garnier: beautyBrandGarnier,
+      'Wild Stone': beautyBrandWildstone,
+      'The Body Shop': beautyBrandBodyShop,
+      Mamaearth: beautyBrandMamaearth,
+    },
+    promoImages: [beautyBannerOne, beautyBannerTwo],
     dealsItems: [
-      { label: "Men's Beard Grooming Kit", image: 'https://images.unsplash.com/photo-1585652757173-57de5be9a4a5?w=900&q=80' },
-      { label: "Women's Matte Liquid Lipstick Set", image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=900&q=80' },
-      { label: "Men's Face Wash & Sunscreen Combo", image: 'https://images.unsplash.com/photo-1571875257727-256c39da42af?w=900&q=80' },
-      { label: "Women's Vitamin C Serum", image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=900&q=80' },
-      { label: "Men's Deodorant & Perfume Set", image: 'https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=900&q=80' },
-      { label: "Women's Keratin Hair Spa Kit", image: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=900&q=80' },
+      { label: "Men's Beard Grooming Kit", image: beautyDealsGrooming },
+      { label: "Women's Matte Liquid Lipstick Set", image: beautyDealsLipstick },
+      { label: "Men's Face Wash & Sunscreen Combo", image: beautyDealsFaceWash },
+      { label: "Women's Vitamin C Serum", image: beautyDealsSerum },
+      { label: "Men's Deodorant & Perfume Set", image: beautyDealsDeoPerfume },
+      { label: "Women's Keratin Hair Spa Kit", image: beautyDealsHairSpa },
     ],
     headlines: [
       ["Beard & shave,", 'sorted.'],
@@ -881,23 +1039,27 @@ const CATEGORY_DEFINITIONS = {
     discounts: [40, 35, 30, 25, 20],
     description: 'Skincare, makeup, and grooming essentials trusted by thousands of happy customers.',
     dealsLabel: 'Limited Time Deals',
-    spotlightLabel: 'Red Carpet Debuts',
+    spotlightLabel: 'Trending Now',
     promos: [
-      { title: 'Summer Beauty Sale', subtitle: 'Up to 50% off on Skincare & Makeup', ctaLabel: 'Shop Now' },
-      { title: 'Premium Fragrances', subtitle: 'Starting at $29', ctaLabel: 'Explore Now' },
+      { title: 'Grooming Essentials Sale', subtitle: "Up to 40% off on men's grooming", ctaLabel: 'Shop Now' },
+      { title: "Women's Beauty Edit", subtitle: 'Up to 50% off on makeup & skincare', ctaLabel: 'Explore Now' },
     ],
     tileGroups: [
       {
         label: 'Men',
-        tiles: ["Men's Grooming", 'Beard Care', 'Shaving', 'Face Wash', 'Deodorants', 'Hair Styling', 'Body Wash', 'Sunscreen', 'Trimmers', 'Body Lotion', 'Perfume', 'Hair Color', 'Skincare', 'Talc & Powder', 'Wellness'],
+        tiles: ["Men's Grooming", 'Beard Care', 'Shaving', 'Face Wash', "Men's Deodorant", 'Hair Styling', 'Body Wash', "Men's Sunscreen", 'Trimmers', "Men's Body Lotion", 'Perfume', "Men's Hair Color", "Men's Skincare", 'Talc & Powder', 'Face Mask'],
       },
       {
         label: 'Women',
-        tiles: ['Makeup', 'Skincare', 'Haircare', 'Fragrance', 'Bath & Body', 'Tools & Brushes', 'Lip Care', 'Nail Care', 'Face Masks', 'Hair Color', 'Body Lotion', 'Deodorants', 'Sunscreen', 'Hair Removal', 'Wellness'],
+        tiles: ['Makeup', 'Skincare', 'Haircare', 'Fragrance', 'Bath & Body', 'Tools & Brushes', 'Lip Care', 'Nail Care', 'Face Masks', 'Hair Color', 'Body Lotion', 'Deodorants', 'Sunscreen', 'Hair Removal', 'Body Scrubs'],
       },
     ],
-    tiles: ['Skincare', 'Makeup', 'Haircare', 'Fragrance', "Men's Grooming", 'Wellness', 'Bath & Body', 'Tools & Brushes', 'Sunscreen', 'Lip Care', 'Nail Care', 'Hair Color', 'Face Masks', 'Body Lotion', 'Deodorants'],
-    brands: ['Lakmé', 'Maybelline', "L'Oréal", 'Nykaa', 'MAC', 'Dove', 'Nivea', "Pond's", 'Garnier', 'The Body Shop', 'Himalaya', 'Biotique', 'Mamaearth', 'WOW Skin Science', 'Neutrogena'],
+    tiles: [
+      'Skincare', "Men's Grooming", 'Fragrance', 'Beard Care', 'Makeup',
+      'Sunscreen', 'Haircare', 'Shaving', 'Bath & Body', 'Deodorants',
+      'Tools & Brushes', 'Face Wash', 'Lip Care', 'Hair Styling', 'Body Wash',
+    ],
+    brands: ['Nivea', 'Lakmé', 'Himalaya', 'Maybelline', 'Dove', "L'Oréal", 'Gillette', 'Nykaa', 'Old Spice', 'MAC', 'Park Avenue', 'Garnier', 'Wild Stone', 'The Body Shop', 'Mamaearth'],
   },
   electronics: {
     images: [
