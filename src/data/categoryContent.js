@@ -811,6 +811,71 @@ import beautyDealsSerum from '@/assets/images/categories/beauty/limitedTimeDeals
 import beautyDealsDeoPerfume from '@/assets/images/categories/beauty/limitedTimeDeals/perfume.webp'
 import beautyDealsHairSpa from '@/assets/images/categories/beauty/limitedTimeDeals/sunscreen.jpg'
 
+// --- Appliances: locally-hosted images, same per-section folder pattern.
+import appliancesBannerOne from '@/assets/images/categories/appliances/banners/banner1.jpg'
+import appliancesBannerTwo from '@/assets/images/categories/appliances/banners/banner2.png'
+
+import appliancesSliderOne from '@/assets/images/categories/appliances/slider/slider1.png'
+import appliancesSliderTwo from '@/assets/images/categories/appliances/slider/slider2.png'
+import appliancesSliderThree from '@/assets/images/categories/appliances/slider/slider3.png'
+import appliancesSliderFour from '@/assets/images/categories/appliances/slider/slider4.jpg'
+import appliancesSliderFive from '@/assets/images/categories/appliances/slider/slider5.jpg'
+
+import appliancesSbcAc from '@/assets/images/categories/appliances/shopByCategory/ac1.jpg'
+import appliancesSbcFridge from '@/assets/images/categories/appliances/shopByCategory/fridge1.jpg'
+import appliancesSbcMicrowave from '@/assets/images/categories/appliances/shopByCategory/microwave1.jpg'
+import appliancesSbcWashing from '@/assets/images/categories/appliances/shopByCategory/washing1.jpg'
+import appliancesSbcPurifier from '@/assets/images/categories/appliances/shopByCategory/purifier1.jpg'
+import appliancesSbcMixer from '@/assets/images/categories/appliances/shopByCategory/mixer1.jpg'
+import appliancesSbcCleaner from '@/assets/images/categories/appliances/shopByCategory/cleaner1.jpg'
+import appliancesSbcGeyser from '@/assets/images/categories/appliances/shopByCategory/geyser1.jpg'
+import appliancesSbcDishwasher from '@/assets/images/categories/appliances/shopByCategory/dishwasher1.jpg'
+import appliancesSbcAirPurifier from '@/assets/images/categories/appliances/shopByCategory/air-purifier1.jpg'
+import appliancesSbcToaster from '@/assets/images/categories/appliances/shopByCategory/toaster1.jpg'
+import appliancesSbcKettle from '@/assets/images/categories/appliances/shopByCategory/kettle1.jpg'
+import appliancesSbcInduction from '@/assets/images/categories/appliances/shopByCategory/induction1.jpg'
+import appliancesSbcCoffee from '@/assets/images/categories/appliances/shopByCategory/coffee1.jpg'
+import appliancesSbcChimneys from '@/assets/images/categories/appliances/shopByCategory/chimneys1.jpg'
+
+import appliancesSpotlightAc from '@/assets/images/categories/appliances/customerFavourites/ac2.jpg'
+import appliancesSpotlightFridge from '@/assets/images/categories/appliances/customerFavourites/fridge2.jpg'
+import appliancesSpotlightMicrowave from '@/assets/images/categories/appliances/customerFavourites/microwave2.jpg'
+import appliancesSpotlightWashing from '@/assets/images/categories/appliances/customerFavourites/washing2.jpg'
+import appliancesSpotlightPurifier from '@/assets/images/categories/appliances/customerFavourites/purifier2.jpg'
+import appliancesSpotlightMixer from '@/assets/images/categories/appliances/customerFavourites/mixer2.jpg'
+import appliancesSpotlightCleaner from '@/assets/images/categories/appliances/customerFavourites/cleaner2.jpg'
+import appliancesSpotlightGeyser from '@/assets/images/categories/appliances/customerFavourites/geyser2.jpg'
+import appliancesSpotlightDishwasher from '@/assets/images/categories/appliances/customerFavourites/dishwasher2.jpg'
+import appliancesSpotlightAirPurifier from '@/assets/images/categories/appliances/customerFavourites/air-purifier2.jpg'
+import appliancesSpotlightToaster from '@/assets/images/categories/appliances/customerFavourites/toaster2.jpg'
+import appliancesSpotlightKettle from '@/assets/images/categories/appliances/customerFavourites/kettle2.jpg'
+import appliancesSpotlightInduction from '@/assets/images/categories/appliances/customerFavourites/induction2.jpg'
+import appliancesSpotlightCoffee from '@/assets/images/categories/appliances/customerFavourites/coffee2.jpg'
+import appliancesSpotlightChimneys from '@/assets/images/categories/appliances/customerFavourites/chimneys2.jpg'
+
+import appliancesBrandSamsung from '@/assets/images/categories/appliances/featuredBrands/samsung.jpg'
+import appliancesBrandLg from '@/assets/images/categories/appliances/featuredBrands/lg.avif'
+import appliancesBrandWhirlpool from '@/assets/images/categories/appliances/featuredBrands/whirlpool.webp'
+import appliancesBrandBosch from '@/assets/images/categories/appliances/featuredBrands/bosch.jpg'
+import appliancesBrandIfb from '@/assets/images/categories/appliances/featuredBrands/ifb.jpg'
+import appliancesBrandVoltas from '@/assets/images/categories/appliances/featuredBrands/voltas.webp'
+import appliancesBrandHaier from '@/assets/images/categories/appliances/featuredBrands/haier.webp'
+import appliancesBrandPanasonic from '@/assets/images/categories/appliances/featuredBrands/panasonic.jpg'
+import appliancesBrandGodrej from '@/assets/images/categories/appliances/featuredBrands/godrej.png'
+import appliancesBrandPhilips from '@/assets/images/categories/appliances/featuredBrands/philips.jpg'
+import appliancesBrandHitachi from '@/assets/images/categories/appliances/featuredBrands/hitachi.jpg'
+import appliancesBrandDaikin from '@/assets/images/categories/appliances/featuredBrands/daikin.webp'
+import appliancesBrandHavells from '@/assets/images/categories/appliances/featuredBrands/havells.webp'
+import appliancesBrandBajaj from '@/assets/images/categories/appliances/featuredBrands/bajaj.jpg'
+import appliancesBrandPrestige from '@/assets/images/categories/appliances/featuredBrands/prestige.jpg'
+
+import appliancesDealsAc from '@/assets/images/categories/appliances/applianceDeals/ac.jpg'
+import appliancesDealsFridge from '@/assets/images/categories/appliances/applianceDeals/fridge.avif'
+import appliancesDealsMicrowave from '@/assets/images/categories/appliances/applianceDeals/microwave.webp'
+import appliancesDealsWashing from '@/assets/images/categories/appliances/applianceDeals/wasing machine.jpg'
+import appliancesDealsPurifier from '@/assets/images/categories/appliances/applianceDeals/purifier.jpg'
+import appliancesDealsCleaner from '@/assets/images/categories/appliances/applianceDeals/cleaner.webp'
+
 const CATEGORY_DEFINITIONS = {
   mobiles: {
     images: [
@@ -1299,37 +1364,96 @@ const CATEGORY_DEFINITIONS = {
       'https://picsum.photos/seed/1011/900/900',
       'https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=900&q=80',
     ],
-    dealsItems: [
-      { label: '1.5 Ton Split AC', image: 'https://images.unsplash.com/photo-1581275299192-3c47b0c89e26?w=900&q=80' },
-      { label: 'Double-Door Refrigerator', image: 'https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?w=900&q=80' },
-      { label: '25L Convection Microwave', image: 'https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=900&q=80' },
-      { label: 'Front-Load Washing Machine', image: 'https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=900&q=80' },
-      { label: 'RO+UV Water Purifier', image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=900&q=80' },
-      { label: 'Robotic Vacuum Cleaner', image: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=900&q=80' },
+    sliderImages: [
+      appliancesSliderOne,
+      appliancesSliderTwo,
+      appliancesSliderThree,
+      appliancesSliderFour,
+      appliancesSliderFive,
     ],
+    shopByCategoryImages: {
+      'Air Conditioners': appliancesSbcAc,
+      Refrigerators: appliancesSbcFridge,
+      Microwaves: appliancesSbcMicrowave,
+      'Washing Machines': appliancesSbcWashing,
+      'Water Purifiers': appliancesSbcPurifier,
+      'Mixers & Grinders': appliancesSbcMixer,
+      'Vacuum Cleaners': appliancesSbcCleaner,
+      Geysers: appliancesSbcGeyser,
+      Dishwashers: appliancesSbcDishwasher,
+      'Air Purifiers': appliancesSbcAirPurifier,
+      Toasters: appliancesSbcToaster,
+      'Electric Kettles': appliancesSbcKettle,
+      'Induction Cooktops': appliancesSbcInduction,
+      'Coffee Makers': appliancesSbcCoffee,
+      Chimneys: appliancesSbcChimneys,
+    },
+    spotlightImages: {
+      'Air Conditioners': appliancesSpotlightAc,
+      Refrigerators: appliancesSpotlightFridge,
+      Microwaves: appliancesSpotlightMicrowave,
+      'Washing Machines': appliancesSpotlightWashing,
+      'Water Purifiers': appliancesSpotlightPurifier,
+      'Mixers & Grinders': appliancesSpotlightMixer,
+      'Vacuum Cleaners': appliancesSpotlightCleaner,
+      Geysers: appliancesSpotlightGeyser,
+      Dishwashers: appliancesSpotlightDishwasher,
+      'Air Purifiers': appliancesSpotlightAirPurifier,
+      Toasters: appliancesSpotlightToaster,
+      'Electric Kettles': appliancesSpotlightKettle,
+      'Induction Cooktops': appliancesSpotlightInduction,
+      'Coffee Makers': appliancesSpotlightCoffee,
+      Chimneys: appliancesSpotlightChimneys,
+    },
+    brandImages: {
+      Samsung: appliancesBrandSamsung,
+      LG: appliancesBrandLg,
+      Whirlpool: appliancesBrandWhirlpool,
+      Bosch: appliancesBrandBosch,
+      IFB: appliancesBrandIfb,
+      Voltas: appliancesBrandVoltas,
+      Haier: appliancesBrandHaier,
+      Panasonic: appliancesBrandPanasonic,
+      Godrej: appliancesBrandGodrej,
+      Philips: appliancesBrandPhilips,
+      Hitachi: appliancesBrandHitachi,
+      Daikin: appliancesBrandDaikin,
+      Havells: appliancesBrandHavells,
+      Bajaj: appliancesBrandBajaj,
+      Prestige: appliancesBrandPrestige,
+    },
+    promoImages: [appliancesBannerOne, appliancesBannerTwo],
     headlines: [
-      ['Appliances for', 'your home.'],
+      ['Beat the heat,', 'stay cool.'],
       ['Kitchen', 'upgrades.'],
       ['Refrigerators,', 'reimagined.'],
       ['Laundry day,', 'made easy.'],
-      ['Smart kitchen', 'upgrades.'],
+      ['Breathe easy,', 'live clean.'],
     ],
     descriptions: [
-      'Reliable appliances for every room in your home.',
+      'Air conditioners and coolers that keep your home comfortable all season.',
       'Kitchen upgrades that make cooking faster and easier.',
       'Refrigerators reimagined with smarter cooling and storage.',
       'Washing machines and dryers that make laundry day effortless.',
-      'Smart kitchen gadgets that save you time on every task.',
+      'Air and water purifiers that keep your home clean and healthy.',
+    ],
+    dealsItems: [
+      { label: '1.5 Ton Split AC', image: appliancesDealsAc },
+      { label: 'Double-Door Refrigerator', image: appliancesDealsFridge },
+      { label: '25L Convection Microwave', image: appliancesDealsMicrowave },
+      { label: 'Front-Load Washing Machine', image: appliancesDealsWashing },
+      { label: 'RO+UV Water Purifier', image: appliancesDealsPurifier },
+      { label: 'Robotic Vacuum Cleaner', image: appliancesDealsCleaner },
     ],
     discounts: [55, 40, 30, 25, 20],
     description: 'Reliable appliances that make everyday tasks faster and easier.',
     dealsLabel: 'Appliance Deals',
-    spotlightLabel: 'Top Rated Picks',
+    spotlightLabel: 'Customer Favorites',
     promos: [
       { title: 'Kitchen Upgrade Sale', subtitle: 'Up to 55% off on appliances', ctaLabel: 'Shop Now' },
       { title: 'Cooling Essentials', subtitle: 'Starting at $99', ctaLabel: 'Explore Now' },
     ],
-    tiles: ['Air Conditioners', 'Refrigerators', 'Microwaves', 'Washing Machines', 'Water Purifiers', 'Mixers & Grinders', 'Vacuum Cleaners', 'Geysers', 'Dishwashers', 'Air Purifiers', 'Toasters', 'Electric Kettles', 'Induction Cooktops', 'Coffee Makers', 'Ceiling Fans'],
+    tiles: ['Air Conditioners', 'Refrigerators', 'Microwaves', 'Washing Machines', 'Water Purifiers', 'Mixers & Grinders', 'Vacuum Cleaners', 'Geysers', 'Dishwashers', 'Air Purifiers', 'Toasters', 'Electric Kettles', 'Induction Cooktops', 'Coffee Makers', 'Chimneys'],
     brands: ['Samsung', 'LG', 'Whirlpool', 'Bosch', 'IFB', 'Voltas', 'Haier', 'Panasonic', 'Godrej', 'Philips', 'Hitachi', 'Daikin', 'Havells', 'Bajaj', 'Prestige'],
   },
   'toys & games': {
