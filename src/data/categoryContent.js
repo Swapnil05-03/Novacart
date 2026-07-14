@@ -876,6 +876,70 @@ import appliancesDealsWashing from '@/assets/images/categories/appliances/applia
 import appliancesDealsPurifier from '@/assets/images/categories/appliances/applianceDeals/purifier.jpg'
 import appliancesDealsCleaner from '@/assets/images/categories/appliances/applianceDeals/cleaner.webp'
 
+// --- Auto Accessories: locally-hosted images, same per-section folder pattern.
+import autoBannerOne from '@/assets/images/categories/autoAcessories/banners/banner1.jpg'
+import autoBannerTwo from '@/assets/images/categories/autoAcessories/banners/banner2.webp'
+
+import autoSliderOne from '@/assets/images/categories/autoAcessories/slider/slider1.webp'
+import autoSliderTwo from '@/assets/images/categories/autoAcessories/slider/slider2.png'
+import autoSliderThree from '@/assets/images/categories/autoAcessories/slider/slider3.png'
+import autoSliderFour from '@/assets/images/categories/autoAcessories/slider/slider4.png'
+import autoSliderFive from '@/assets/images/categories/autoAcessories/slider/slider5.png'
+
+import autoSbcCleaning from '@/assets/images/categories/autoAcessories/shopByCategory/cleaning1.webp'
+import autoSbcTyreRim from '@/assets/images/categories/autoAcessories/shopByCategory/tyre-rim1.jpg'
+import autoSbcHelmets from '@/assets/images/categories/autoAcessories/shopByCategory/helmets1.jpg'
+import autoSbcCarVacuum from '@/assets/images/categories/autoAcessories/shopByCategory/car-vacuum1.jpg'
+import autoSbcCovers from '@/assets/images/categories/autoAcessories/shopByCategory/covers1.webp'
+import autoSbcSeatCovers from '@/assets/images/categories/autoAcessories/shopByCategory/seat-covers1.jpg'
+import autoSbcDashboard from '@/assets/images/categories/autoAcessories/shopByCategory/dashboard1.webp'
+import autoSbcCarPerfume from '@/assets/images/categories/autoAcessories/shopByCategory/car-perfume1.jpg'
+import autoSbcChargers from '@/assets/images/categories/autoAcessories/shopByCategory/chargers1.jpg'
+import autoSbcMats from '@/assets/images/categories/autoAcessories/shopByCategory/mats1.jpg'
+import autoSbcShades from '@/assets/images/categories/autoAcessories/shopByCategory/shades1.jpg'
+import autoSbcSteering from '@/assets/images/categories/autoAcessories/shopByCategory/steering1.jpg'
+import autoSbcCarTool from '@/assets/images/categories/autoAcessories/shopByCategory/car-tool1.jpg'
+import autoSbcStarter from '@/assets/images/categories/autoAcessories/shopByCategory/starter1.jpg'
+import autoSbcDashCam from '@/assets/images/categories/autoAcessories/shopByCategory/dash-cam1.jpg'
+
+import autoSpotlightCleaning from '@/assets/images/categories/autoAcessories/topRatedGear/cleaning2.webp'
+import autoSpotlightTyreRim from '@/assets/images/categories/autoAcessories/topRatedGear/tyre-rim2.jpg'
+import autoSpotlightHelmets from '@/assets/images/categories/autoAcessories/topRatedGear/helmets2.jpg'
+import autoSpotlightCarVacuum from '@/assets/images/categories/autoAcessories/topRatedGear/car-vacuum2.jpg'
+import autoSpotlightCovers from '@/assets/images/categories/autoAcessories/topRatedGear/covers2.jpg'
+import autoSpotlightSeatCovers from '@/assets/images/categories/autoAcessories/topRatedGear/seat-covers2.jpg'
+import autoSpotlightDashboard from '@/assets/images/categories/autoAcessories/topRatedGear/dashboard2.webp'
+import autoSpotlightCarPerfume from '@/assets/images/categories/autoAcessories/topRatedGear/car-perfume2.jpg'
+import autoSpotlightChargers from '@/assets/images/categories/autoAcessories/topRatedGear/chargers2.jpg'
+import autoSpotlightMats from '@/assets/images/categories/autoAcessories/topRatedGear/mats2.jpg'
+import autoSpotlightShades from '@/assets/images/categories/autoAcessories/topRatedGear/shades2.webp'
+import autoSpotlightSteering from '@/assets/images/categories/autoAcessories/topRatedGear/steering2.jpg'
+import autoSpotlightCarTool from '@/assets/images/categories/autoAcessories/topRatedGear/car-tool2.jpg'
+import autoSpotlightStarter from '@/assets/images/categories/autoAcessories/topRatedGear/starter2.jpg'
+import autoSpotlightDashCam from '@/assets/images/categories/autoAcessories/topRatedGear/dash-cam2.jpg'
+
+import autoBrand3m from '@/assets/images/categories/autoAcessories/featuredBrands/3M.jpg'
+import autoBrandTurtleWax from '@/assets/images/categories/autoAcessories/featuredBrands/turtle-wax.webp'
+import autoBrandMichelin from '@/assets/images/categories/autoAcessories/featuredBrands/michelin.jpg'
+import autoBrandMeguiars from '@/assets/images/categories/autoAcessories/featuredBrands/meguiars.jpg'
+import autoBrandArmorall from '@/assets/images/categories/autoAcessories/featuredBrands/armorall.jpg'
+import autoBrandBridgestone from '@/assets/images/categories/autoAcessories/featuredBrands/bridgestone.jpg'
+import autoBrandCeat from '@/assets/images/categories/autoAcessories/featuredBrands/ceat.jpg'
+import autoBrandAuravya from '@/assets/images/categories/autoAcessories/featuredBrands/auravya.jpg'
+import autoBrandApollo from '@/assets/images/categories/autoAcessories/featuredBrands/apollo.jpg'
+import autoBrandSteelbird from '@/assets/images/categories/autoAcessories/featuredBrands/steelbird.jpg'
+import autoBrandVega from '@/assets/images/categories/autoAcessories/featuredBrands/vega.jpg'
+import autoBrandStudds from '@/assets/images/categories/autoAcessories/featuredBrands/studds.jpg'
+import autoBrandMotul from '@/assets/images/categories/autoAcessories/featuredBrands/motul.jpg'
+import autoBrandCarbinic from '@/assets/images/categories/autoAcessories/featuredBrands/carbinic.jpg'
+import autoBrandCredicus from '@/assets/images/categories/autoAcessories/featuredBrands/Credicus.webp'
+import autoDealsCleaner from '@/assets/images/categories/autoAcessories/garageDeals/car-cleaner.jpg'
+import autoDealsCover from '@/assets/images/categories/autoAcessories/garageDeals/cover.jpg'
+import autoDealsHelmet from '@/assets/images/categories/autoAcessories/garageDeals/helmet.jpg'
+import autoDealsHolder from '@/assets/images/categories/autoAcessories/garageDeals/holder.webp'
+import autoDealsMicrofiber from '@/assets/images/categories/autoAcessories/garageDeals/microfiber.jpg'
+import autoDealsSpray from '@/assets/images/categories/autoAcessories/garageDeals/spray.webp'
+
 const CATEGORY_DEFINITIONS = {
   mobiles: {
     images: [
@@ -1694,13 +1758,72 @@ const CATEGORY_DEFINITIONS = {
       'https://picsum.photos/seed/1023/900/900',
       'https://picsum.photos/seed/1024/900/900',
     ],
+    sliderImages: [
+      autoSliderOne,
+      autoSliderTwo,
+      autoSliderThree,
+      autoSliderFour,
+      autoSliderFive,
+    ],
+    shopByCategoryImages: {
+      'Cleaning Accessories': autoSbcCleaning,
+      'Tyre & Rim Care': autoSbcTyreRim,
+      Helmets: autoSbcHelmets,
+      'Car Vacuum Cleaners': autoSbcCarVacuum,
+      'Car Covers': autoSbcCovers,
+      'Seat Covers': autoSbcSeatCovers,
+      'Dashboard Accessories': autoSbcDashboard,
+      'Car Perfumes': autoSbcCarPerfume,
+      'Car Chargers': autoSbcChargers,
+      'Floor Mats': autoSbcMats,
+      'Sun Shades': autoSbcShades,
+      'Steering Covers': autoSbcSteering,
+      'Tool Kits': autoSbcCarTool,
+      'Jump Starters': autoSbcStarter,
+      'Dash Cams': autoSbcDashCam,
+    },
+    spotlightImages: {
+      'Cleaning Accessories': autoSpotlightCleaning,
+      'Tyre & Rim Care': autoSpotlightTyreRim,
+      Helmets: autoSpotlightHelmets,
+      'Car Vacuum Cleaners': autoSpotlightCarVacuum,
+      'Car Covers': autoSpotlightCovers,
+      'Seat Covers': autoSpotlightSeatCovers,
+      'Dashboard Accessories': autoSpotlightDashboard,
+      'Car Perfumes': autoSpotlightCarPerfume,
+      'Car Chargers': autoSpotlightChargers,
+      'Floor Mats': autoSpotlightMats,
+      'Sun Shades': autoSpotlightShades,
+      'Steering Covers': autoSpotlightSteering,
+      'Tool Kits': autoSpotlightCarTool,
+      'Jump Starters': autoSpotlightStarter,
+      'Dash Cams': autoSpotlightDashCam,
+    },
+    brandImages: {
+      '3M': autoBrand3m,
+      'Turtle Wax': autoBrandTurtleWax,
+      Michelin: autoBrandMichelin,
+      "Meguiars": autoBrandMeguiars,
+      'Armor All': autoBrandArmorall,
+      Bridgestone: autoBrandBridgestone,
+      CEAT: autoBrandCeat,
+      Auravya: autoBrandAuravya,
+      'Apollo Tyres': autoBrandApollo,
+      Steelbird: autoBrandSteelbird,
+      Vega: autoBrandVega,
+      Studds: autoBrandStudds,
+      Motul: autoBrandMotul,
+      Carbinic: autoBrandCarbinic,
+      Credicus: autoBrandCredicus,
+    },
+    promoImages: [autoBannerOne, autoBannerTwo],
     dealsItems: [
-      { label: 'Microfiber Car Wash Kit', image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=900&q=80' },
-      { label: 'Alloy Wheel Cleaner Spray', image: 'https://images.unsplash.com/photo-1486754735734-325b5831c3ad?w=900&q=80' },
-      { label: 'Full-Face Riding Helmet', image: 'https://images.unsplash.com/photo-1542362567-b07e54358753?w=900&q=80' },
-      { label: 'Robotic Car Vacuum Cleaner', image: 'https://images.unsplash.com/photo-1601362840469-51e4d8d58785?w=900&q=80' },
-      { label: 'Waterproof Car Body Cover', image: 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=900&q=80' },
-      { label: 'Dashboard Mobile Holder', image: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=900&q=80' },
+      { label: 'Microfiber Car Wash Kit', image: autoDealsCleaner },
+      { label: 'Alloy Wheel Cleaner Spray', image: autoDealsSpray },
+      { label: 'Full-Face Riding Helmet', image: autoDealsHelmet },
+      { label: 'Waterproof Car Body Cover', image: autoDealsCover },
+      { label: 'Dashboard Mobile Holder', image: autoDealsHolder },
+      { label: 'Portable Car Vacuum Cleaner', image: autoSbcCarVacuum },
     ],
     headlines: [
       ['Car care', 'essentials.'],
@@ -1724,8 +1847,8 @@ const CATEGORY_DEFINITIONS = {
       { title: 'Car Care Sale', subtitle: 'Up to 60% off accessories', ctaLabel: 'Shop Now' },
       { title: 'Helmet Collection', subtitle: 'Starting at $39', ctaLabel: 'Explore Now' },
     ],
-    tiles: ['Snacks', 'Beverages', 'Cleaning Supplies', 'Toiletries', 'Baby Care', 'Pet Supplies', 'Kitchen Essentials', 'Storage Containers', 'Breakfast Cereals', 'Spices & Masalas', 'Dairy & Bakery', 'Laundry Care', 'Paper Products', 'Air Fresheners', 'Disposables'],
-    brands: ['3M', 'Bosch', 'Michelin', "Meguiar's", 'Armor All', 'Philips', 'CEAT', 'MRF', 'Apollo Tyres', 'Steelbird', 'Vega', 'Studds', 'Motul', 'Castrol', 'Goodyear'],
+    tiles: ['Cleaning Accessories', 'Tyre & Rim Care', 'Helmets', 'Car Vacuum Cleaners', 'Car Covers', 'Seat Covers', 'Dashboard Accessories', 'Car Perfumes', 'Car Chargers', 'Floor Mats', 'Sun Shades', 'Steering Covers', 'Tool Kits', 'Jump Starters', 'Dash Cams'],
+    brands: ['3M', 'Turtle Wax', 'Michelin', "Meguiars", 'Armor All', 'Bridgestone', 'CEAT', 'Auravya', 'Apollo Tyres', 'Steelbird', 'Vega', 'Studds', 'Motul', 'Carbinic', 'Credicus'],
   },
   'two wheelers': {
     images: [
