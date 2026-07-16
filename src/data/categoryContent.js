@@ -940,6 +940,93 @@ import autoDealsHolder from '@/assets/images/categories/autoAcessories/garageDea
 import autoDealsMicrofiber from '@/assets/images/categories/autoAcessories/garageDeals/microfiber.jpg'
 import autoDealsSpray from '@/assets/images/categories/autoAcessories/garageDeals/spray.webp'
 
+// --- Accessories: locally-hosted images, same per-section folder pattern.
+// NOTE: folder on disk is spelled "acessories" (not "accessories") and the
+// women's shop-by-category folder is spelled "shopByCategpryWomen" — paths
+// below match those exact spellings.
+import accessoriesBannerOne from '@/assets/images/categories/acessories/banners/banner1.png'
+import accessoriesBannerTwo from '@/assets/images/categories/acessories/banners/banner2.webp'
+
+import accessoriesSliderOne from '@/assets/images/categories/acessories/slider/slider1.webp'
+import accessoriesSliderTwo from '@/assets/images/categories/acessories/slider/slider2.jpg'
+import accessoriesSliderThree from '@/assets/images/categories/acessories/slider/slider3.webp'
+import accessoriesSliderFour from '@/assets/images/categories/acessories/slider/slider4.webp'
+import accessoriesSliderFive from '@/assets/images/categories/acessories/slider/slider5.jpg'
+
+// Men — shopByCategory
+import accMenBags from '@/assets/images/categories/acessories/shopByCategoryMen/bags.jpg'
+import accMenBelts from '@/assets/images/categories/acessories/shopByCategoryMen/belts.jpg'
+import accMenBracelets from '@/assets/images/categories/acessories/shopByCategoryMen/bracelets.jpg'
+import accMenCaps from '@/assets/images/categories/acessories/shopByCategoryMen/caps.jpg'
+import accMenCardHolders from '@/assets/images/categories/acessories/shopByCategoryMen/card-holders.jpg'
+import accMenGloves from '@/assets/images/categories/acessories/shopByCategoryMen/gloves.jpg'
+import accMenKeychains from '@/assets/images/categories/acessories/shopByCategoryMen/keychains.webp'
+import accMenPhoneAccessories from '@/assets/images/categories/acessories/shopByCategoryMen/phone-accessories.webp'
+import accMenPocketSquares from '@/assets/images/categories/acessories/shopByCategoryMen/pocket-squares.jpg'
+import accMenRings from '@/assets/images/categories/acessories/shopByCategoryMen/rings.jpg'
+import accMenSunglasses from '@/assets/images/categories/acessories/shopByCategoryMen/sunglasses.jpg'
+import accMenTies from '@/assets/images/categories/acessories/shopByCategoryMen/ties.webp'
+import accMenUmbrella from '@/assets/images/categories/acessories/shopByCategoryMen/umbrella.webp'
+import accMenWallet from '@/assets/images/categories/acessories/shopByCategoryMen/wallet.jpg'
+import accMenWatch from '@/assets/images/categories/acessories/shopByCategoryMen/watch.jpg'
+
+// Women — shopByCategory
+import accWomenAnklets from '@/assets/images/categories/acessories/shopByCategoryWomen/anklets.jpg'
+import accWomenBelts from '@/assets/images/categories/acessories/shopByCategoryWomen/belts.webp'
+import accWomenBracelets from '@/assets/images/categories/acessories/shopByCategoryWomen/bracelets.webp'
+import accWomenClutch from '@/assets/images/categories/acessories/shopByCategoryWomen/clutch.jpg'
+import accWomenEarrings from '@/assets/images/categories/acessories/shopByCategoryWomen/earrings.webp'
+import accWomenHairAccessories from '@/assets/images/categories/acessories/shopByCategoryWomen/hair-accessories.webp'
+import accWomenHandbags from '@/assets/images/categories/acessories/shopByCategoryWomen/handbags.jpg'
+import accWomenNecklace from '@/assets/images/categories/acessories/shopByCategoryWomen/necklace.png'
+import accWomenRings from '@/assets/images/categories/acessories/shopByCategoryWomen/rings.jpg'
+import accWomenScarves from '@/assets/images/categories/acessories/shopByCategoryWomen/scarves.webp'
+import accWomenScrunchies from '@/assets/images/categories/acessories/shopByCategoryWomen/scrunchies.webp'
+import accWomenStoles from '@/assets/images/categories/acessories/shopByCategoryWomen/stoles.webp'
+import accWomenSunglasses from '@/assets/images/categories/acessories/shopByCategoryWomen/sunglasses.jpg'
+import accWomenUmbrella from '@/assets/images/categories/acessories/shopByCategoryWomen/umbrella.jpg'
+import accWomenWatch from '@/assets/images/categories/acessories/shopByCategoryWomen/watch.jpeg'
+
+// Style Add-Ons (spotlight)
+import accSpotlightBelts from '@/assets/images/categories/acessories/styleAddOns/belts.jpg'
+import accSpotlightCaps from '@/assets/images/categories/acessories/styleAddOns/caps.jpg'
+import accSpotlightGloves from '@/assets/images/categories/acessories/styleAddOns/gloves.jpg'
+import accSpotlightHairAccessories from '@/assets/images/categories/acessories/styleAddOns/hair-accessories.webp'
+import accSpotlightHandbags from '@/assets/images/categories/acessories/styleAddOns/handbags.jpg'
+import accSpotlightKeychains from '@/assets/images/categories/acessories/styleAddOns/keychains.jpg'
+import accSpotlightPhoneAccessories from '@/assets/images/categories/acessories/styleAddOns/phone-accessories.jpg'
+import accSpotlightRings from '@/assets/images/categories/acessories/styleAddOns/rings.avif'
+import accSpotlightScarves from '@/assets/images/categories/acessories/styleAddOns/scarves.webp'
+import accSpotlightSunglasses from '@/assets/images/categories/acessories/styleAddOns/sunglasses.jpg'
+import accSpotlightTies from '@/assets/images/categories/acessories/styleAddOns/ties.webp'
+import accSpotlightUmbrella from '@/assets/images/categories/acessories/styleAddOns/umbrella.jpg'
+import accSpotlightWallets from '@/assets/images/categories/acessories/styleAddOns/wallets.jpg'
+import accSpotlightWatches from '@/assets/images/categories/acessories/styleAddOns/watches.jpg'
+import accSpotlightScrunchies from '@/assets/images/categories/acessories/styleAddOns/scrunchies.jpg'
+
+import accBrandBaggit from '@/assets/images/categories/acessories/featuredBrands/baggit.webp'
+import accBrandFastrack from '@/assets/images/categories/acessories/featuredBrands/fastrack.jpg'
+import accBrandFossil from '@/assets/images/categories/acessories/featuredBrands/fossil.avif'
+import accBrandGiva from '@/assets/images/categories/acessories/featuredBrands/giva.avif'
+import accBrandGuess from '@/assets/images/categories/acessories/featuredBrands/guess.avif'
+import accBrandLouisPhilippe from '@/assets/images/categories/acessories/featuredBrands/louis-philippe.jpg'
+import accBrandMichaelKors from '@/assets/images/categories/acessories/featuredBrands/michael-kors.jpg'
+import accBrandNike from '@/assets/images/categories/acessories/featuredBrands/nike.webp'
+import accBrandPalmonas from '@/assets/images/categories/acessories/featuredBrands/palmonas.jpg'
+import accBrandPuma from '@/assets/images/categories/acessories/featuredBrands/puma.jpg'
+import accBrandRayBan from '@/assets/images/categories/acessories/featuredBrands/ray-ban.jpg'
+import accBrandTimex from '@/assets/images/categories/acessories/featuredBrands/timex.webp'
+import accBrandTitan from '@/assets/images/categories/acessories/featuredBrands/titan.webp'
+import accBrandTommyHilfiger from '@/assets/images/categories/acessories/featuredBrands/tommy-hilfiger.jpg'
+import accBrandWoodland from '@/assets/images/categories/acessories/featuredBrands/woodland.jpg'
+
+import accDealsBag from '@/assets/images/categories/acessories/acessoryDeals/bag.jpg'
+import accDealsEarrings from '@/assets/images/categories/acessories/acessoryDeals/earrings.jpg'
+import accDealsNecklace from '@/assets/images/categories/acessories/acessoryDeals/necklace.jpg'
+import accDealsSunglasses from '@/assets/images/categories/acessories/acessoryDeals/sunglasses.jpg'
+import accDealsWallet from '@/assets/images/categories/acessories/acessoryDeals/wallet.jpg'
+import accDealsWatch from '@/assets/images/categories/acessories/acessoryDeals/watches.webp'
+
 const CATEGORY_DEFINITIONS = {
   mobiles: {
     images: [
@@ -2330,13 +2417,87 @@ const CATEGORY_DEFINITIONS = {
       'https://picsum.photos/seed/1054/900/900',
       'https://picsum.photos/seed/1055/900/900',
     ],
+    sliderImages: [
+      accessoriesSliderOne,
+      accessoriesSliderTwo,
+      accessoriesSliderThree,
+      accessoriesSliderFour,
+      accessoriesSliderFive,
+    ],
+    shopByCategoryImages: {
+      "Men's Watches": accMenWatch,
+      "Men's Wallets": accMenWallet,
+      "Men's Belts": accMenBelts,
+      "Men's Sunglasses": accMenSunglasses,
+      'Ties & Cufflinks': accMenTies,
+      'Pocket Squares': accMenPocketSquares,
+      Caps: accMenCaps,
+      Bags: accMenBags,
+      Keychains: accMenKeychains,
+      'Phone Accessories': accMenPhoneAccessories,
+      "Men's Bracelets": accMenBracelets,
+      "Men's Rings": accMenRings,
+      Gloves: accMenGloves,
+      "Men's Umbrellas": accMenUmbrella,
+      'Card Holders': accMenCardHolders,
+      Handbags: accWomenHandbags,
+      Rings: accWomenRings,
+      Sunglasses: accWomenSunglasses,
+      Scarves: accWomenScarves,
+      'Hair Accessories': accWomenHairAccessories,
+      Watches: accWomenWatch,
+      Belts: accWomenBelts,
+      Clutches: accWomenClutch,
+      Scrunchies: accWomenScrunchies,
+      Stoles: accWomenStoles,
+      Bracelets: accWomenBracelets,
+      Earrings: accWomenEarrings,
+      Necklaces: accWomenNecklace,
+      Anklets: accWomenAnklets,
+      Umbrellas: accWomenUmbrella,
+    },
+    spotlightImages: {
+      Handbags: accSpotlightHandbags,
+      Watches: accSpotlightWatches,
+      Wallets: accSpotlightWallets,
+      Belts: accSpotlightBelts,
+      Sunglasses: accSpotlightSunglasses,
+      Rings: accSpotlightRings,
+      Caps: accSpotlightCaps,
+      Scarves: accSpotlightScarves,
+      'Hair Accessories': accSpotlightHairAccessories,
+      'Ties & Cufflinks': accSpotlightTies,
+      Keychains: accSpotlightKeychains,
+      'Phone Accessories': accSpotlightPhoneAccessories,
+      Umbrellas: accSpotlightUmbrella,
+      Gloves: accSpotlightGloves,
+      Scrunchies: accSpotlightScrunchies,
+    },
+    brandImages: {
+      Fossil: accBrandFossil,
+      Titan: accBrandTitan,
+      'Ray-Ban': accBrandRayBan,
+      'Louis Philippe': accBrandLouisPhilippe,
+      Nike: accBrandNike,
+      'Michael Kors': accBrandMichaelKors,
+      'Tommy Hilfiger': accBrandTommyHilfiger,
+      Puma: accBrandPuma,
+      Palmonas: accBrandPalmonas,
+      Fastrack: accBrandFastrack,
+      Giva: accBrandGiva,
+      Baggit: accBrandBaggit,
+      Woodland: accBrandWoodland,
+      Timex: accBrandTimex,
+      Guess: accBrandGuess,
+    },
+    promoImages: [accessoriesBannerOne, accessoriesBannerTwo],
     dealsItems: [
-      { label: "Men's Chronograph Wrist Watch", image: 'https://images.unsplash.com/photo-1611923134239-b9be5816e23c?w=900&q=80' },
-      { label: "Women's Layered Statement Necklace", image: 'https://images.unsplash.com/photo-1591561954557-26941169b49e?w=900&q=80' },
-      { label: "Men's Bifold Leather Wallet", image: 'https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=900&q=80' },
-      { label: "Women's Structured Handbag", image: 'https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?w=900&q=80' },
-      { label: "Men's Polarized Aviator Sunglasses", image: 'https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=900&q=80' },
-      { label: "Women's Pearl Drop Earrings", image: 'https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?w=900&q=80' },
+      { label: "Women's Structured Handbag", image: accDealsBag },
+      { label: "Women's Pearl Drop Earrings", image: accDealsEarrings },
+      { label: "Women's Layered Statement Necklace", image: accDealsNecklace },
+      { label: "Men's Polarized Aviator Sunglasses", image: accDealsSunglasses },
+      { label: "Men's Bifold Leather Wallet", image: accDealsWallet },
+      { label: "Men's Chronograph Wrist Watch", image: accDealsWatch },
     ],
     headlines: [
       ["Men's watches,", 'built to last.'],
@@ -2355,23 +2516,23 @@ const CATEGORY_DEFINITIONS = {
     discounts: [40, 30, 25, 35, 20],
     description: 'Bags, watches, and the small details that finish every outfit.',
     dealsLabel: 'Accessory Deals',
-    spotlightLabel: 'Editor Picks',
+    spotlightLabel: 'Style Add-Ons',
     promos: [
-      { title: 'Accessory Sale', subtitle: 'Up to 40% off bags & watches', ctaLabel: 'Shop Now' },
-      { title: 'Sunglasses Edit', subtitle: 'Starting at $24', ctaLabel: 'Explore Now' },
+      { title: "Men's Accessory Sale", subtitle: 'Up to 40% off watches & wallets', ctaLabel: 'Shop Now' },
+      { title: "Women's Accessory Edit", subtitle: 'Up to 35% off bags & jewelry', ctaLabel: 'Explore Now' },
     ],
     tileGroups: [
-      {
-        label: 'Men',
-        tiles: ['Watches', 'Wallets', 'Belts', 'Sunglasses', 'Ties & Cufflinks', 'Cufflinks & Tie Pins', 'Caps', 'Bags', 'Keychains', 'Phone Accessories', 'Bracelets', 'Rings', 'Gloves', 'Umbrellas', 'Card Holders'],
-      },
-      {
-        label: 'Women',
-        tiles: ['Handbags', 'Jewelry', 'Sunglasses', 'Scarves', 'Hair Accessories', 'Watches', 'Belts', 'Clutches', 'Brooches & Pins', 'Hair Clips', 'Bracelets', 'Earrings', 'Necklaces', 'Anklets', 'Umbrellas'],
-      },
-    ],
-    tiles: ['Bags', 'Watches', 'Wallets', 'Belts', 'Sunglasses', 'Jewelry', 'Hats & Caps', 'Scarves', 'Hair Accessories', 'Ties & Cufflinks', 'Keychains', 'Phone Accessories', 'Umbrellas', 'Gloves', 'Brooches & Pins'],
-    brands: ['Fossil', 'Titan', 'Ray-Ban', 'Fastrack', 'Casio', 'Michael Kors', 'Tommy Hilfiger', 'Wildcraft', 'American Tourister', 'Skybags', 'Da Milano', 'Baggit', 'Woodland', 'Timex', 'Guess'],
+    {
+      label: 'Men',
+      tiles: ["Men's Watches", "Men's Wallets", "Men's Belts", "Men's Sunglasses", 'Ties & Cufflinks', 'Pocket Squares', 'Caps', 'Bags', 'Keychains', 'Phone Accessories', "Men's Bracelets", "Men's Rings", 'Gloves', "Men's Umbrellas", 'Card Holders'],
+    },
+    {
+      label: 'Women',
+      tiles: ['Handbags', 'Rings', 'Sunglasses', 'Scarves', 'Hair Accessories', 'Watches', 'Belts', 'Clutches', 'Scrunchies', 'Stoles', 'Bracelets', 'Earrings', 'Necklaces', 'Anklets', 'Umbrellas'],
+    },
+],
+    tiles: ['Handbags', 'Watches', 'Wallets', 'Belts', 'Sunglasses', 'Rings', 'Caps', 'Scarves', 'Hair Accessories', 'Ties & Cufflinks', 'Keychains', 'Phone Accessories', 'Umbrellas', 'Gloves', 'Scrunchies'],
+    brands: ['Fossil', 'Titan', 'Ray-Ban', 'Louis Philippe', 'Nike', 'Michael Kors', 'Tommy Hilfiger', 'Puma', 'Palmonas', 'Fastrack', 'Giva', 'Baggit', 'Woodland', 'Timex', 'Guess'],
   },
   apparel: {
     images: [
