@@ -1027,6 +1027,100 @@ import accDealsSunglasses from '@/assets/images/categories/acessories/acessoryDe
 import accDealsWallet from '@/assets/images/categories/acessories/acessoryDeals/wallet.jpg'
 import accDealsWatch from '@/assets/images/categories/acessories/acessoryDeals/watches.webp'
 
+// --- Apparel: locally-hosted images, same per-section folder pattern.
+import apparelBannerOne from '@/assets/images/categories/apparel/banners/banner1.png'
+import apparelBannerTwo from '@/assets/images/categories/apparel/banners/banner2.png'
+
+import apparelSliderOne from '@/assets/images/categories/apparel/slider/slider1.png'
+import apparelSliderTwo from '@/assets/images/categories/apparel/slider/slider2.png'
+import apparelSliderThree from '@/assets/images/categories/apparel/slider/slider3.png'
+import apparelSliderFour from '@/assets/images/categories/apparel/slider/slider4.png'
+import apparelSliderFive from '@/assets/images/categories/apparel/slider/slider5.png'
+
+// Men — shopByCategory
+import apparelMenTshirts from '@/assets/images/categories/apparel/shopByCategoryMen/tshirts.jpg'
+import apparelMenJeans from '@/assets/images/categories/apparel/shopByCategoryMen/jeans.jpg'
+import apparelMenFormalShirts from '@/assets/images/categories/apparel/shopByCategoryMen/formal-shirts.jpg'
+import apparelMenHoodies from '@/assets/images/categories/apparel/shopByCategoryMen/hoodies.jpg'
+import apparelMenTrackPants from '@/assets/images/categories/apparel/shopByCategoryMen/track-pants.webp'
+import apparelMenEthnic from '@/assets/images/categories/apparel/shopByCategoryMen/ethnic.jpeg'
+import apparelMenBlazers from '@/assets/images/categories/apparel/shopByCategoryMen/blazers.jpg'
+import apparelMenShorts from '@/assets/images/categories/apparel/shopByCategoryMen/shorts.jpg'
+import apparelMenActivewear from '@/assets/images/categories/apparel/shopByCategoryMen/active-wear.jpg'
+import apparelMenInnerwear from '@/assets/images/categories/apparel/shopByCategoryMen/inner-wear.jpg'
+import apparelMenThermalWear from '@/assets/images/categories/apparel/shopByCategoryMen/thermal-wear.jpg'
+import apparelMenLoungewear from '@/assets/images/categories/apparel/shopByCategoryMen/lounge-wear.webp'
+import apparelMenPoloShirts from '@/assets/images/categories/apparel/shopByCategoryMen/polo-shirts.jpg'
+import apparelMenJackets from '@/assets/images/categories/apparel/shopByCategoryMen/jackets.jpg'
+import apparelMenVests from '@/assets/images/categories/apparel/shopByCategoryMen/vests.jpg'
+
+// Women — shopByCategory
+import apparelWomenTops from '@/assets/images/categories/apparel/shopByCategoryWomen/tops.jpg'
+import apparelWomenDresses from '@/assets/images/categories/apparel/shopByCategoryWomen/dresses.webp'
+import apparelWomenSweaters from '@/assets/images/categories/apparel/shopByCategoryWomen/sweaters.jpg'
+import apparelWomenEthnicWear from '@/assets/images/categories/apparel/shopByCategoryWomen/ethnic-wear.webp'
+import apparelWomenSkirts from '@/assets/images/categories/apparel/shopByCategoryWomen/skirt.jpg'
+import apparelWomenJumpsuits from '@/assets/images/categories/apparel/shopByCategoryWomen/jumpsuits.jpg'
+import apparelWomenLeggings from '@/assets/images/categories/apparel/shopByCategoryWomen/legging.png'
+import apparelWomenCoordSets from '@/assets/images/categories/apparel/shopByCategoryWomen/coord.jpg'
+import apparelWomenSarees from '@/assets/images/categories/apparel/shopByCategoryWomen/sarees.jpg'
+import apparelWomenKurtis from '@/assets/images/categories/apparel/shopByCategoryWomen/kurtis.webp'
+import apparelWomenNightwear from '@/assets/images/categories/apparel/shopByCategoryWomen/nightwear.png'
+import apparelWomenBlazers from '@/assets/images/categories/apparel/shopByCategoryWomen/blazers.jpg'
+import apparelWomenActivewear from '@/assets/images/categories/apparel/shopByCategoryWomen/active-wear.jpg'
+import apparelWomenInnerwear from '@/assets/images/categories/apparel/shopByCategoryWomen/inner-wear.jpg'
+import apparelWomenJackets from '@/assets/images/categories/apparel/shopByCategoryWomen/jacket.jpg'
+
+// New This Week (spotlight) — aligned to flat `tiles` list (25 items)
+import apparelSpotlightTshirt from '@/assets/images/categories/apparel/newThisWeek/tshirt.jpg'
+import apparelSpotlightJeans from '@/assets/images/categories/apparel/newThisWeek/jeans.jpg'
+import apparelSpotlightFormalShirts from '@/assets/images/categories/apparel/newThisWeek/formal-shirts.jpg'
+import apparelSpotlightHoodies from '@/assets/images/categories/apparel/newThisWeek/hoodies.jpg'
+import apparelSpotlightTrackPants from '@/assets/images/categories/apparel/newThisWeek/track-pants.webp'
+import apparelSpotlightEthnic from '@/assets/images/categories/apparel/newThisWeek/ethnic.webp'
+import apparelSpotlightBlazers from '@/assets/images/categories/apparel/newThisWeek/blazers.jpg'
+import apparelSpotlightShorts from '@/assets/images/categories/apparel/newThisWeek/shorts.jpg'
+import apparelSpotlightActivewear from '@/assets/images/categories/apparel/newThisWeek/activewear.webp'
+import apparelSpotlightInnerwear from '@/assets/images/categories/apparel/newThisWeek/innerwear.webp'
+import apparelSpotlightThermalWear from '@/assets/images/categories/apparel/newThisWeek/thermal-wear.png'
+import apparelSpotlightLoungewear from '@/assets/images/categories/apparel/newThisWeek/loungewear.jpg'
+import apparelSpotlightPolo from '@/assets/images/categories/apparel/newThisWeek/polo.jpg'
+import apparelSpotlightJackets from '@/assets/images/categories/apparel/newThisWeek/jackets.jpg'
+import apparelSpotlightVests from '@/assets/images/categories/apparel/newThisWeek/vests.jpg'
+import apparelSpotlightTops from '@/assets/images/categories/apparel/newThisWeek/tops.jpg'
+import apparelSpotlightDress from '@/assets/images/categories/apparel/newThisWeek/dress.jpg'
+import apparelSpotlightSweaters from '@/assets/images/categories/apparel/newThisWeek/sweaters.jpg'
+import apparelSpotlightSkirts from '@/assets/images/categories/apparel/newThisWeek/skirts.jpg'
+import apparelSpotlightJumpsuits from '@/assets/images/categories/apparel/newThisWeek/jumpsuits.jpg'
+import apparelSpotlightLeggings from '@/assets/images/categories/apparel/newThisWeek/leggings.jpg'
+import apparelSpotlightCoordSet from '@/assets/images/categories/apparel/newThisWeek/coord-set.jpg'
+import apparelSpotlightSaree from '@/assets/images/categories/apparel/newThisWeek/saree.jpg'
+import apparelSpotlightKurtis from '@/assets/images/categories/apparel/newThisWeek/kurtis.jpg'
+import apparelSpotlightNightwear from '@/assets/images/categories/apparel/newThisWeek/nightwear.jpg'
+
+import apparelBrandLevis from '@/assets/images/categories/apparel/featuredBrands/levis.jpg'
+import apparelBrandAllenSolly from '@/assets/images/categories/apparel/featuredBrands/allen-solly.jpg'
+import apparelBrandAdidas from '@/assets/images/categories/apparel/featuredBrands/adidas.avif'
+import apparelBrandVanHeusen from '@/assets/images/categories/apparel/featuredBrands/van-heusen.avif'
+import apparelBrandHM from '@/assets/images/categories/apparel/featuredBrands/h&m.jpg'
+import apparelBrandZara from '@/assets/images/categories/apparel/featuredBrands/zara.jpg'
+import apparelBrandUniqlo from '@/assets/images/categories/apparel/featuredBrands/uniqlo.jpg'
+import apparelBrandGap from '@/assets/images/categories/apparel/featuredBrands/gap.jpg'
+import apparelBrandUsPolo from '@/assets/images/categories/apparel/featuredBrands/us-polo.jpg'
+import apparelBrandJackAndJones from '@/assets/images/categories/apparel/featuredBrands/jackandjones.jpg'
+import apparelBrandPepe from '@/assets/images/categories/apparel/featuredBrands/pepe.jpg'
+import apparelBrandWrangler from '@/assets/images/categories/apparel/featuredBrands/wrangler.jpg'
+import apparelBrandLee from '@/assets/images/categories/apparel/featuredBrands/lee.webp'
+import apparelBrandSuperdry from '@/assets/images/categories/apparel/featuredBrands/superdry.jpg'
+import apparelBrandRoadster from '@/assets/images/categories/apparel/featuredBrands/roadsters.jpg'
+
+import apparelDealsHoodie from '@/assets/images/categories/apparel/wardrobeDeals/hoodie.jpg'
+import apparelDealsMidi from '@/assets/images/categories/apparel/wardrobeDeals/midi.jpg'
+import apparelDealsChinos from '@/assets/images/categories/apparel/wardrobeDeals/chinos.jpg'
+import apparelDealsSweater from '@/assets/images/categories/apparel/wardrobeDeals/sweater.avif'
+import apparelDealsJacket from '@/assets/images/categories/apparel/wardrobeDeals/jacket.jpg'
+import apparelDealsJeans from '@/assets/images/categories/apparel/wardrobeDeals/jeans.webp'
+
 const CATEGORY_DEFINITIONS = {
   mobiles: {
     images: [
@@ -2552,21 +2646,105 @@ const CATEGORY_DEFINITIONS = {
       'https://picsum.photos/seed/1061/900/900',
       'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=900&q=80',
     ],
+    sliderImages: [
+      apparelSliderOne,
+      apparelSliderTwo,
+      apparelSliderThree,
+      apparelSliderFour,
+      apparelSliderFive,
+    ],
+    shopByCategoryImages: {
+      "T-Shirts": apparelMenTshirts,
+      Jeans: apparelMenJeans,
+      'Formal Shirts': apparelMenFormalShirts,
+      Hoodies: apparelMenHoodies,
+      'Track Pants': apparelMenTrackPants,
+      "Men's Ethnic Wear": apparelMenEthnic,
+      "Men's Blazers": apparelMenBlazers,
+      Shorts: apparelMenShorts,
+      "Men's Activewear": apparelMenActivewear,
+      "Men's Innerwear": apparelMenInnerwear,
+      'Thermal Wear': apparelMenThermalWear,
+      Loungewear: apparelMenLoungewear,
+      'Polo Shirts': apparelMenPoloShirts,
+      "Men's Jackets": apparelMenJackets,
+      Vests: apparelMenVests,
+      Tops: apparelWomenTops,
+      Dresses: apparelWomenDresses,
+      Sweaters: apparelWomenSweaters,
+      'Ethnic Wear': apparelWomenEthnicWear,
+      Skirts: apparelWomenSkirts,
+      Jumpsuits: apparelWomenJumpsuits,
+      Leggings: apparelWomenLeggings,
+      'Co-ord Sets': apparelWomenCoordSets,
+      Sarees: apparelWomenSarees,
+      Kurtis: apparelWomenKurtis,
+      Nightwear: apparelWomenNightwear,
+      Blazers: apparelWomenBlazers,
+      Activewear: apparelWomenActivewear,
+      Innerwear: apparelWomenInnerwear,
+      Jackets: apparelWomenJackets,
+    },
+    spotlightImages: {
+      "T-Shirts": apparelSpotlightTshirt,
+      Jeans: apparelSpotlightJeans,
+      'Formal Shirts': apparelSpotlightFormalShirts,
+      Hoodies: apparelSpotlightHoodies,
+      'Track Pants': apparelSpotlightTrackPants,
+      'Ethnic Wear': apparelSpotlightEthnic,
+      Blazers: apparelSpotlightBlazers,
+      Shorts: apparelSpotlightShorts,
+      Activewear: apparelSpotlightActivewear,
+      Innerwear: apparelSpotlightInnerwear,
+      'Thermal Wear': apparelSpotlightThermalWear,
+      Loungewear: apparelSpotlightLoungewear,
+      'Polo Shirts': apparelSpotlightPolo,
+      Jackets: apparelSpotlightJackets,
+      Vests: apparelSpotlightVests,
+      Tops: apparelSpotlightTops,
+      Dresses: apparelSpotlightDress,
+      Sweaters: apparelSpotlightSweaters,
+      Skirts: apparelSpotlightSkirts,
+      Jumpsuits: apparelSpotlightJumpsuits,
+      Leggings: apparelSpotlightLeggings,
+      'Co-ord Sets': apparelSpotlightCoordSet,
+      Sarees: apparelSpotlightSaree,
+      Kurtis: apparelSpotlightKurtis,
+      Nightwear: apparelSpotlightNightwear,
+    },
+    brandImages: {
+      "Levi's": apparelBrandLevis,
+      'Allen Solly': apparelBrandAllenSolly,
+      Adidas: apparelBrandAdidas,
+      'Van Heusen': apparelBrandVanHeusen,
+      'H&M': apparelBrandHM,
+      Zara: apparelBrandZara,
+      Uniqlo: apparelBrandUniqlo,
+      Gap: apparelBrandGap,
+      'US Polo Assn': apparelBrandUsPolo,
+      'Jack & Jones': apparelBrandJackAndJones,
+      'Pepe Jeans': apparelBrandPepe,
+      Wrangler: apparelBrandWrangler,
+      Lee: apparelBrandLee,
+      Superdry: apparelBrandSuperdry,
+      Roadster: apparelBrandRoadster,
+    },
+    promoImages: [apparelBannerOne, apparelBannerTwo],
     // Curated deals — a deliberate Men's/Women's mix so the "Wardrobe
     // Deals" row itself shows both, not just a unisex/men-leaning set.
     dealsItems: [
-      { label: "Men's Oversized Cotton Hoodie", image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=900&q=80' },
-      { label: "Women's Wrap Midi Dress", image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=900&q=80' },
-      { label: "Men's Slim-Fit Chinos", image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=900&q=80' },
-      { label: "Women's Ribbed Knit Sweater", image: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=900&q=80' },
-      { label: "Men's Quilted Bomber Jacket", image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=900&q=80' },
-      { label: "Women's High-Rise Denim Jeans", image: 'https://images.unsplash.com/photo-1516257984-b1b4d707412e?w=900&q=80' },
+      { label: "Men's Oversized Cotton Hoodie", image: apparelDealsHoodie },
+      { label: "Women's Wrap Midi Dress", image: apparelDealsMidi },
+      { label: "Men's Slim-Fit Chinos", image: apparelDealsChinos },
+      { label: "Women's Ribbed Knit Sweater", image: apparelDealsSweater },
+      { label: "Men's Quilted Bomber Jacket", image: apparelDealsJacket },
+      { label: "Women's High-Rise Denim Jeans", image: apparelDealsJeans },
     ],
     headlines: [
-      ["Men's wear,", 'everyday essentials.'],
+      ["Men's wear,", 'everyday basics.'],
       ["Women's edit,", 'new this season.'],
-      ["Men's layers", 'for every season.'],
-      ["Women's dresses", 'for every occasion.'],
+      ["Men's layers,", 'season ready.'],
+      ["Women's dress,", 'every occasion.'],
       ['Fits that', 'just work.'],
     ],
     descriptions: [
@@ -2592,7 +2770,7 @@ const CATEGORY_DEFINITIONS = {
     tileGroups: [
       {
         label: 'Men',
-        tiles: ["T-Shirts", 'Jeans', 'Formal Shirts', 'Hoodies', 'Track Pants', 'Ethnic Wear', 'Blazers', 'Shorts', 'Activewear', 'Innerwear', 'Thermal Wear', 'Loungewear', 'Polo Shirts', 'Jackets', 'Vests'],
+        tiles: ["T-Shirts", 'Jeans', 'Formal Shirts', 'Hoodies', 'Track Pants', "Men's Ethnic Wear", "Men's Blazers", 'Shorts', "Men's Activewear", "Men's Innerwear", 'Thermal Wear', 'Loungewear', 'Polo T-Shirts', "Men's Jackets", 'Vests'],
       },
       {
         label: 'Women',
@@ -2605,7 +2783,7 @@ const CATEGORY_DEFINITIONS = {
       "T-Shirts", 'Jeans', 'Formal Shirts', 'Hoodies', 'Track Pants', 'Ethnic Wear', 'Blazers', 'Shorts', 'Activewear', 'Innerwear', 'Thermal Wear', 'Loungewear', 'Polo Shirts', 'Jackets', 'Vests',
       'Tops', 'Dresses', 'Sweaters', 'Skirts', 'Jumpsuits', 'Leggings', 'Co-ord Sets', 'Sarees', 'Kurtis', 'Nightwear',
     ],
-    brands: ["Levi's", 'Nike', 'Adidas', 'Puma', 'H&M', 'Zara', 'Uniqlo', 'Gap', 'US Polo Assn', 'Jack & Jones', 'Pepe Jeans', 'Wrangler', 'Lee', 'Superdry', 'Roadster'],
+    brands: ["Levi's", 'Allen Solly', 'Adidas', 'Van Heusen', 'H&M', 'Zara', 'Uniqlo', 'Gap', 'US Polo Assn', 'Jack & Jones', 'Pepe Jeans', 'Wrangler', 'Lee', 'Superdry', 'Roadster'],
   },
   fitness: {
     images: [

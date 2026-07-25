@@ -47,8 +47,7 @@ function getSectionImages(definition, tiles, mapKey) {
 // shared placeholder pool so the row is never empty.
 function buildBrandRow(definition) {
   const brandNames = definition.brands || PLACEHOLDER_BRANDS
-  return definition.tiles.map((tile, i) => {
-    const brandName = brandNames[i % brandNames.length]
+  return brandNames.map((brandName, i) => {
     const image = (definition.brandImages && definition.brandImages[brandName]) || definition.images[i % definition.images.length]
     return {
       label: brandName,
