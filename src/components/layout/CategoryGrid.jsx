@@ -2,18 +2,25 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ROUTES } from '@/constants'
 
+import shopByCategoryApparel from '@/assets/images/hero/shopByCategory/apparel.jpg'
+import shopByCategoryBeauty from '@/assets/images/hero/shopByCategory/beauty.avif'
+import shopByCategoryElectronics from '@/assets/images/hero/shopByCategory/elctronics.webp'
+import shopByCategoryFurniture from '@/assets/images/hero/shopByCategory/furniture.webp'
+import shopByCategoryHomeAndLiving from '@/assets/images/hero/shopByCategory/homeAndLiving.jpg'
+import shopByCategoryMobiles from '@/assets/images/hero/shopByCategory/mobiles.jpg'
+
 // Themed stock photography per category — purely visual, not from product data.
 // Falls back to a generic shot for any category name not listed here, so new
 // categories added in Supabase never render a broken image.
 const CATEGORY_IMAGES = {
-  electronics: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80',
-  apparel: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&q=80',
-  fashion: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&q=80',
-  mobiles: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&q=80',
-  'home & living': 'https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=500&q=80',
-  'home-living': 'https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=500&q=80',
-  furniture: 'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=500&q=80',
-  beauty: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=500&q=80',
+  electronics: shopByCategoryElectronics,
+  apparel: shopByCategoryApparel,
+  fashion: shopByCategoryApparel,
+  mobiles: shopByCategoryMobiles,
+  'home & living': shopByCategoryHomeAndLiving,
+  'home-living': shopByCategoryHomeAndLiving,
+  furniture: shopByCategoryFurniture,
+  beauty: shopByCategoryBeauty,
   accessories: 'https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?w=500&q=80',
   fitness: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=500&q=80',
   office: 'https://images.unsplash.com/photo-1518655048521-f130df041f66?w=500&q=80',

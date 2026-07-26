@@ -5,6 +5,12 @@ import { ROUTES } from '@/constants'
 import Button from '@/components/ui/Button'
 import SlideCarousel from '@/components/layout/SlideCarousel'
 
+import heroSliderOne from '@/assets/images/hero/slider/slider1.webp'
+import heroSliderTwo from '@/assets/images/hero/slider/slider2.webp'
+import heroSliderThree from '@/assets/images/hero/slider/slider3.png'
+import heroSliderFour from '@/assets/images/hero/slider/slider4.png'
+import heroSliderFive from '@/assets/images/hero/slider/slider5.png'
+
 const SLIDES = [
   {
     badge: 'New Arrival',
@@ -13,7 +19,7 @@ const SLIDES = [
     primaryCta: { label: 'Shop Now', to: ROUTES.PRODUCTS },
     secondaryCta: { label: 'Explore Deals', to: `${ROUTES.PRODUCTS}?filter=featured` },
     discount: '40',
-    image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=900&q=80',
+    image: heroSliderOne,
   },
   {
     badge: 'Trending',
@@ -22,7 +28,7 @@ const SLIDES = [
     primaryCta: { label: 'Shop Audio', to: `${ROUTES.PRODUCTS}?filter=trending` },
     secondaryCta: { label: 'Best Sellers', to: `${ROUTES.PRODUCTS}?filter=best-sellers` },
     discount: '25',
-    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=900&q=80',
+    image: heroSliderTwo,
   },
   {
     badge: 'Limited Time',
@@ -31,7 +37,7 @@ const SLIDES = [
     primaryCta: { label: 'Shop Collection', to: ROUTES.PRODUCTS },
     secondaryCta: { label: 'View Deals', to: `${ROUTES.PRODUCTS}?filter=featured` },
     discount: '30',
-    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=900&q=80',
+    image: heroSliderThree,
   },
   {
     badge: 'Best Sellers',
@@ -40,7 +46,7 @@ const SLIDES = [
     primaryCta: { label: 'Shop Best Sellers', to: `${ROUTES.PRODUCTS}?filter=best-sellers` },
     secondaryCta: { label: 'Top Rated', to: `${ROUTES.PRODUCTS}?sort=rating` },
     discount: '20',
-    image: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=900&q=80',
+    image: heroSliderFour,
   },
   {
     badge: 'Flash Sale',
@@ -49,7 +55,7 @@ const SLIDES = [
     primaryCta: { label: 'See All Deals', to: `${ROUTES.PRODUCTS}?filter=featured` },
     secondaryCta: { label: 'New Arrivals', to: ROUTES.PRODUCTS },
     discount: '50',
-    image: 'https://images.unsplash.com/photo-1607082349566-187342175e2f?w=900&q=80',
+    image: heroSliderFive,
   },
 ]
 
