@@ -5,6 +5,7 @@ import { useWishlist } from '@/context/WishlistContext'
 import { useCart } from '@/context/CartContext'
 import { formatCurrency, calculateDiscount, classNames } from '@/utils/helpers'
 import { ROUTES } from '@/constants'
+import { getStaticProductImages } from '@/data/productImages'
 import LazyImage from '@/components/ui/LazyImage'
 import Rating from '@/components/ui/Rating'
 import Badge from '@/components/ui/Badge'
@@ -13,8 +14,17 @@ export default function ProductCard({ product }) {
   const { isWishlisted, toggleWishlist } = useWishlist()
   const { addToCart } = useCart()
 
+  // Static, code-based images (src/data/productImages.js) take priority
+  // when they exist for this SKU — these replace the random/unrelated
+  // Picsum photos that were seeded for the newly-added categories. Falls
+  // back to whatever Supabase's product_images join provided, which is
+  // still correct for the original 6 categories.
+  const staticImages = getStaticProductImages(product.sku)
   const primaryImage =
-    product.images?.find((img) => img.is_primary)?.url || product.images?.[0]?.url
+    staticImages[0] ||
+    product.images?.find((img) => img.is_primary)?.url ||
+    product.images?.[0]?.url
+
   const discount = calculateDiscount(product.price, product.compare_at_price)
   const wishlisted = isWishlisted(product.id)
   const outOfStock = product.stock <= 0

@@ -1,77 +1,105 @@
-import { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
-import { Heart, ShoppingBag, Share2, Truck, ShieldCheck, RotateCcw, Minus, Plus, Check } from 'lucide-react'
-import toast from 'react-hot-toast'
-import { productService } from '@/services/productService'
-import { useCart } from '@/context/CartContext'
-import { useWishlist } from '@/context/WishlistContext'
-import { useRecentlyViewed } from '@/hooks/useRecentlyViewed'
-import { formatCurrency, calculateDiscount, classNames } from '@/utils/helpers'
-import { ROUTES } from '@/constants'
-import ProductGallery from '@/components/product/ProductGallery'
-import { ReviewList, ReviewForm } from '@/components/product/Reviews'
-import ProductCard from '@/components/product/ProductCard'
-import Rating from '@/components/ui/Rating'
-import Badge from '@/components/ui/Badge'
-import Button from '@/components/ui/Button'
-import { PageLoader } from '@/components/ui/Loader'
-import EmptyState from '@/components/ui/EmptyState'
-import { PackageX } from 'lucide-react'
+import { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import {
+  Heart,
+  ShoppingBag,
+  Share2,
+  Truck,
+  ShieldCheck,
+  RotateCcw,
+  Minus,
+  Plus,
+  Check,
+} from "lucide-react";
+import toast from "react-hot-toast";
+import { productService } from "@/services/productService";
+import { useCart } from "@/context/CartContext";
+import { useWishlist } from "@/context/WishlistContext";
+import { useRecentlyViewed } from "@/hooks/useRecentlyViewed";
+import { formatCurrency, calculateDiscount, classNames } from "@/utils/helpers";
+import { ROUTES } from "@/constants";
+import ProductGallery from "@/components/product/ProductGallery";
+import { ReviewList, ReviewForm } from "@/components/product/Reviews";
+import ProductCard from "@/components/product/ProductCard";
+import Rating from "@/components/ui/Rating";
+import Badge from "@/components/ui/Badge";
+import Button from "@/components/ui/Button";
+import { PageLoader } from "@/components/ui/Loader";
+import EmptyState from "@/components/ui/EmptyState";
+import { PackageX } from "lucide-react";
+import { getStaticProductImages } from "@/data/productImages";
+import { getStaticProductById } from "@/data/staticProducts";
 
 export default function ProductDetailPage() {
-  const { id } = useParams()
-  const [product, setProduct] = useState(null)
-  const [related, setRelated] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [quantity, setQuantity] = useState(1)
-  const [activeTab, setActiveTab] = useState('description')
+  const { id } = useParams();
+  const [product, setProduct] = useState(null);
+  const [related, setRelated] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [quantity, setQuantity] = useState(1);
+  const [activeTab, setActiveTab] = useState("description");
 
-  const { addToCart } = useCart()
-  const { isWishlisted, toggleWishlist } = useWishlist()
-  const { addProduct } = useRecentlyViewed()
+  const { addToCart } = useCart();
+  const { isWishlisted, toggleWishlist } = useWishlist();
+  const { addProduct } = useRecentlyViewed();
 
   useEffect(() => {
-    let isMounted = true
-    setLoading(true)
-    setQuantity(1)
+    let isMounted = true;
+    setLoading(true);
+    setQuantity(1);
+
+    // Static homepage rows (Featured/Trending/Best Sellers) use fake IDs
+    // like 'featured-ac' that don't exist in Supabase. Check here first —
+    // if found, skip the DB call entirely. Everything else (category page,
+    // search, filters) still has real Supabase UUIDs and goes through the
+    // normal DB fetch below, unaffected.
+    const staticProduct = getStaticProductById(id);
+    if (staticProduct) {
+      setProduct(staticProduct);
+      addProduct(staticProduct.id);
+      setRelated([]);
+      setLoading(false);
+      return () => {
+        isMounted = false;
+      };
+    }
 
     productService
       .getProductById(id)
       .then((data) => {
-        if (!isMounted) return
-        setProduct(data)
-        addProduct(data.id)
-        return productService.getRelatedProducts(data.category_id, data.id)
+        if (!isMounted) return;
+        setProduct(data);
+        addProduct(data.id);
+        return productService.getRelatedProducts(data.category_id, data.id);
       })
       .then((rel) => isMounted && setRelated(rel || []))
-      .catch((err) => console.error('Failed to load product', err))
-      .finally(() => isMounted && setLoading(false))
+      .catch((err) => console.error("Failed to load product", err))
+      .finally(() => isMounted && setLoading(false));
 
     return () => {
-      isMounted = false
-    }
+      isMounted = false;
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id])
+  }, [id]);
 
   const handleShare = async () => {
-    const url = window.location.href
+    const url = window.location.href;
     if (navigator.share) {
       try {
-        await navigator.share({ title: product.name, url })
+        await navigator.share({ title: product.name, url });
       } catch {
         // user cancelled
       }
     } else {
-      await navigator.clipboard.writeText(url)
-      toast.success('Link copied to clipboard')
+      await navigator.clipboard.writeText(url);
+      toast.success("Link copied to clipboard");
     }
-  }
+  };
 
   const refreshReviews = () => {
-    productService.getProductById(id).then(setProduct).catch(console.error)
-  }
+    productService.getProductById(id).then(setProduct).catch(console.error);
+  };
 
-  if (loading) return <PageLoader />
+  if (loading) return <PageLoader />;
 
   if (!product) {
     return (
@@ -87,24 +115,47 @@ export default function ProductDetailPage() {
           }
         />
       </div>
-    )
+    );
   }
+  const staticImages = getStaticProductImages(product.sku);
+  const galleryImages =
+    staticImages.length > 0
+      ? staticImages.map((url, i) => ({
+          id: `static-${i}`,
+          url,
+          is_primary: i === 0,
+          alt_text: product.name,
+        }))
+      : product.images;
 
-  const discount = calculateDiscount(product.price, product.compare_at_price)
-  const wishlisted = isWishlisted(product.id)
-  const outOfStock = product.stock <= 0
+  const discount = calculateDiscount(product.price, product.compare_at_price);
+  const wishlisted = isWishlisted(product.id);
+  const outOfStock = product.stock <= 0;
 
   return (
     <div className="container-page py-8">
       {/* Breadcrumb */}
       <nav className="text-sm text-ink-400 mb-6 flex items-center gap-1.5">
-        <Link to={ROUTES.HOME} className="hover:text-ink-700 dark:hover:text-ink-200">Home</Link>
+        <Link
+          to={ROUTES.HOME}
+          className="hover:text-ink-700 dark:hover:text-ink-200"
+        >
+          Home
+        </Link>
         <span>/</span>
-        <Link to={ROUTES.PRODUCTS} className="hover:text-ink-700 dark:hover:text-ink-200">Products</Link>
+        <Link
+          to={ROUTES.PRODUCTS}
+          className="hover:text-ink-700 dark:hover:text-ink-200"
+        >
+          Products
+        </Link>
         {product.category && (
           <>
             <span>/</span>
-            <Link to={`${ROUTES.PRODUCTS}?category=${product.category.id}`} className="hover:text-ink-700 dark:hover:text-ink-200">
+            <Link
+              to={`${ROUTES.PRODUCTS}?category=${product.category.id}`}
+              className="hover:text-ink-700 dark:hover:text-ink-200"
+            >
               {product.category.name}
             </Link>
           </>
@@ -112,7 +163,7 @@ export default function ProductDetailPage() {
       </nav>
 
       <div className="grid lg:grid-cols-2 gap-10">
-        <ProductGallery images={product.images} productName={product.name} />
+        <ProductGallery images={galleryImages} productName={product.name} />
 
         <div>
           {product.category && (
@@ -126,7 +177,9 @@ export default function ProductDetailPage() {
 
           <div className="flex items-center gap-3 mt-3">
             <Rating value={product.average_rating} size="md" showValue />
-            <span className="text-sm text-ink-400">{product.review_count} reviews</span>
+            <span className="text-sm text-ink-400">
+              {product.review_count} reviews
+            </span>
           </div>
 
           <div className="flex items-baseline gap-3 mt-5">
@@ -152,7 +205,8 @@ export default function ProductDetailPage() {
               <Badge variant="danger">Out of stock</Badge>
             ) : (
               <span className="inline-flex items-center gap-1.5 text-sm text-success-600">
-                <Check className="h-4 w-4" /> In stock — {product.stock} available
+                <Check className="h-4 w-4" /> In stock — {product.stock}{" "}
+                available
               </span>
             )}
           </div>
@@ -167,9 +221,13 @@ export default function ProductDetailPage() {
                 >
                   <Minus className="h-4 w-4" />
                 </button>
-                <span className="w-12 text-center text-sm font-semibold tabular-nums">{quantity}</span>
+                <span className="w-12 text-center text-sm font-semibold tabular-nums">
+                  {quantity}
+                </span>
                 <button
-                  onClick={() => setQuantity((q) => Math.min(product.stock, q + 1))}
+                  onClick={() =>
+                    setQuantity((q) => Math.min(product.stock, q + 1))
+                  }
                   className="flex h-11 w-11 items-center justify-center text-ink-600 dark:text-ink-300 hover:bg-ink-100 dark:hover:bg-ink-800 rounded-r-xl transition-colors"
                   aria-label="Increase quantity"
                 >
@@ -194,13 +252,23 @@ export default function ProductDetailPage() {
               variant="outline"
               className="flex-1"
               leftIcon={
-                <Heart className={classNames('h-4 w-4', wishlisted && 'fill-brand-500 text-brand-500')} />
+                <Heart
+                  className={classNames(
+                    "h-4 w-4",
+                    wishlisted && "fill-brand-500 text-brand-500",
+                  )}
+                />
               }
               onClick={() => toggleWishlist(product)}
             >
-              {wishlisted ? 'Saved' : 'Save for later'}
+              {wishlisted ? "Saved" : "Save for later"}
             </Button>
-            <Button variant="outline" size="icon" onClick={handleShare} aria-label="Share product">
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={handleShare}
+              aria-label="Share product"
+            >
               <Share2 className="h-4 w-4" />
             </Button>
           </div>
@@ -217,18 +285,18 @@ export default function ProductDetailPage() {
       <div className="mt-16">
         <div className="flex gap-1 border-b border-ink-200 dark:border-ink-800">
           {[
-            { key: 'description', label: 'Description' },
-            { key: 'specifications', label: 'Specifications' },
-            { key: 'reviews', label: `Reviews (${product.review_count})` },
+            { key: "description", label: "Description" },
+            { key: "specifications", label: "Specifications" },
+            { key: "reviews", label: `Reviews (${product.review_count})` },
           ].map((tab) => (
             <button
               key={tab.key}
               onClick={() => setActiveTab(tab.key)}
               className={classNames(
-                'px-4 py-3 text-sm font-medium border-b-2 transition-colors -mb-px',
+                "px-4 py-3 text-sm font-medium border-b-2 transition-colors -mb-px",
                 activeTab === tab.key
-                  ? 'border-brand-500 text-brand-600 dark:text-brand-400'
-                  : 'border-transparent text-ink-500 hover:text-ink-800 dark:hover:text-ink-200'
+                  ? "border-brand-500 text-brand-600 dark:text-brand-400"
+                  : "border-transparent text-ink-500 hover:text-ink-800 dark:hover:text-ink-200",
               )}
             >
               {tab.label}
@@ -237,26 +305,28 @@ export default function ProductDetailPage() {
         </div>
 
         <div className="py-8 max-w-3xl">
-          {activeTab === 'description' && (
+          {activeTab === "description" && (
             <p className="text-sm text-ink-600 dark:text-ink-300 leading-relaxed whitespace-pre-line">
               {product.description}
             </p>
           )}
-          {activeTab === 'specifications' && (
+          {activeTab === "specifications" && (
             <dl className="divide-y divide-ink-100 dark:divide-ink-800">
               {[
-                ['SKU', product.sku || '—'],
-                ['Category', product.category?.name || '—'],
-                ['Stock', `${product.stock} units`],
+                ["SKU", product.sku || "—"],
+                ["Category", product.category?.name || "—"],
+                ["Stock", `${product.stock} units`],
               ].map(([key, value]) => (
                 <div key={key} className="flex justify-between py-3 text-sm">
                   <dt className="text-ink-500">{key}</dt>
-                  <dd className="font-medium text-ink-900 dark:text-white">{value}</dd>
+                  <dd className="font-medium text-ink-900 dark:text-white">
+                    {value}
+                  </dd>
                 </div>
               ))}
             </dl>
           )}
-          {activeTab === 'reviews' && (
+          {activeTab === "reviews" && (
             <div className="space-y-8">
               <ReviewForm productId={product.id} onSubmitted={refreshReviews} />
               <ReviewList reviews={product.reviews} />
@@ -279,7 +349,7 @@ export default function ProductDetailPage() {
         </div>
       )}
     </div>
-  )
+  );
 }
 
 function Feature({ icon: Icon, text }) {
@@ -288,5 +358,5 @@ function Feature({ icon: Icon, text }) {
       <Icon className="h-5 w-5 text-ink-400" strokeWidth={1.5} />
       <span className="text-xs text-ink-500 dark:text-ink-400">{text}</span>
     </div>
-  )
+  );
 }

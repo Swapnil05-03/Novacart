@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { SlidersHorizontal } from 'lucide-react'
 import { productService } from '@/services/productService'
+import { getBrandsForCategory, getRandomMixBrands } from '@/constants/featuredBrands'
 import { useDebounce } from '@/hooks/useDebounce'
 import { PRODUCTS_PER_PAGE, SORT_OPTIONS } from '@/constants'
 import ProductGrid from '@/components/product/ProductGrid'
@@ -52,10 +53,19 @@ export default function ProductsPage() {
     productService.getCategoryProductCounts().then(setCategoryCounts).catch(console.error)
   }, [])
 
-  // Real brand list (+ counts), scoped to the active category if one is selected
+  // Static "Featured Brands" list (hardcoded per category in
+  // src/constants/featuredBrands.js) — no DB call here anymore.
+  // - A specific category selected -> that category's dedicated brand list.
+  // - "All categories" (no category selected) -> a random mix pulled from
+  //   every category's list, so the Brand filter isn't empty/single-category
+  //   when browsing everything.
   useEffect(() => {
-    productService.getBrands(categoryId).then(setBrands).catch(console.error)
-  }, [categoryId])
+    if (activeCategory) {
+      setBrands(getBrandsForCategory(activeCategory.name))
+    } else {
+      setBrands(getRandomMixBrands(10))
+    }
+  }, [activeCategory])
 
   useEffect(() => {
     if (debouncedSearch !== search) {
@@ -92,7 +102,15 @@ export default function ProductsPage() {
       maxPrice,
       minRating,
       minDiscount,
-      brands: selectedBrands,
+      // NOTE: selectedBrands is intentionally NOT passed here. The Brand
+      // filter's options come from curated display names in
+      // src/data/categoryContent.js (used for the Featured Brands
+      // carousel), which don't match the products.brand column in the
+      // DB — filtering by them would always return zero results. Brand
+      // selection still drives the image preview in ProductFilters and
+      // updates the URL; it just doesn't narrow this query yet. Wire
+      // this back up once products are tagged with real, matching brand
+      // values.
       sortBy,
     }
 
@@ -132,6 +150,13 @@ export default function ProductsPage() {
       mapped.subcategory = null
       mapped.filter = null
       mapped.search = null
+      // Selected brands are scoped to the previous category's brand list.
+      // If we don't clear them here, a brand chosen under the old category
+      // stays applied as a hidden filter after switching category, even
+      // though it no longer appears as a checked option anywhere in the UI
+      // — silently ANDing with a brand that doesn't exist in the new
+      // category and producing a false "no products found".
+      mapped.brands = null
       setSearchInput('')
     }
     if ('minPrice' in updates) mapped.minPrice = updates.minPrice
@@ -154,6 +179,15 @@ export default function ProductsPage() {
   }
 
   const filters = { categoryId, minPrice, maxPrice, minRating, minDiscount, selectedBrands }
+
+  // Full { name, image } objects for whichever brands are currently
+  // checked, so ProductGrid can render each one as a real card (image +
+  // label) inline with the products, instead of a small sidebar preview.
+  const selectedBrandDetails = brands.filter((b) => selectedBrands.includes(b.name))
+
+  const handleRemoveBrand = (brandName) => {
+    handleFilterChange({ selectedBrands: selectedBrands.filter((b) => b !== brandName) })
+  }
 
   return (
     <div className="pb-12">
@@ -214,6 +248,8 @@ export default function ProductsPage() {
             <ProductGrid
               products={products}
               loading={loading}
+              selectedBrands={selectedBrandDetails}
+              onRemoveBrand={handleRemoveBrand}
               emptyMessage={
                 activeCategory
                   ? `We're still stocking up on ${activeCategory.name.toLowerCase()} — check back soon, or browse other categories in the meantime.`

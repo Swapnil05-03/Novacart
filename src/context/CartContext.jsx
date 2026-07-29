@@ -2,24 +2,58 @@ import { createContext, useContext, useEffect, useState, useCallback, useMemo } 
 import toast from 'react-hot-toast'
 import { cartService } from '@/services/cartService'
 import { useAuth } from '@/context/AuthContext'
+import { getStaticProductById } from '@/data/staticProducts'
 
 const CartContext = createContext(undefined)
 
+// Static cart items (Featured/Trending/Best Sellers) live in localStorage
+// instead of Supabase, keyed per-user so they survive page reloads.
+const STATIC_CART_KEY_PREFIX = 'novacart-static-cart-'
+
+function readStaticCart(userId) {
+  if (!userId) return []
+  try {
+    const raw = localStorage.getItem(STATIC_CART_KEY_PREFIX + userId)
+    return raw ? JSON.parse(raw) : []
+  } catch {
+    return []
+  }
+}
+
+function writeStaticCart(userId, items) {
+  if (!userId) return
+  try {
+    localStorage.setItem(STATIC_CART_KEY_PREFIX + userId, JSON.stringify(items))
+  } catch {
+    // localStorage full or unavailable — not critical
+  }
+}
+
 export function CartProvider({ children }) {
   const { user, isAuthenticated } = useAuth()
-  const [items, setItems] = useState([])
+
+  // Real, Supabase-backed cart items (fetched via cartService).
+  const [dbItems, setDbItems] = useState([])
+
+  // Static products (Featured/Trending/Best Sellers — fake IDs like
+  // 'best-racket') can't be inserted into cart_items because product_id
+  // is a foreign key into the real `products` table. These are kept
+  // entirely client-side instead (persisted to localStorage), and merged
+  // with dbItems for display.
+  const [staticItems, setStaticItems] = useState(() => readStaticCart(user?.id))
+
   const [loading, setLoading] = useState(false)
   const [coupon, setCoupon] = useState(null)
 
   const refreshCart = useCallback(async () => {
     if (!user) {
-      setItems([])
+      setDbItems([])
       return
     }
     setLoading(true)
     try {
       const data = await cartService.getCartItems(user.id)
-      setItems(data)
+      setDbItems(data)
     } catch (err) {
       console.error('Failed to load cart', err)
     } finally {
@@ -31,15 +65,56 @@ export function CartProvider({ children }) {
     refreshCart()
   }, [refreshCart])
 
+  // Load this user's static cart whenever the logged-in user changes.
+  useEffect(() => {
+    setStaticItems(readStaticCart(user?.id))
+  }, [user?.id])
+
+  // Persist static cart to localStorage on every change.
+  useEffect(() => {
+    if (user?.id) writeStaticCart(user.id, staticItems)
+  }, [staticItems, user?.id])
+
+  // Combined list shown everywhere in the app.
+  const items = useMemo(() => [...staticItems, ...dbItems], [staticItems, dbItems])
+
   const addToCart = useCallback(
     async (product, quantity = 1) => {
       if (!isAuthenticated) {
         toast.error('Please sign in to add items to your cart')
         return
       }
-      // Optimistic update
-      const existingIndex = items.findIndex((i) => i.product.id === product.id)
-      const optimisticItems = [...items]
+
+      const isStatic = Boolean(getStaticProductById(product.id))
+
+      if (isStatic) {
+        setStaticItems((prev) => {
+          const existingIndex = prev.findIndex((i) => i.product.id === product.id)
+          if (existingIndex > -1) {
+            const updated = [...prev]
+            updated[existingIndex] = {
+              ...updated[existingIndex],
+              quantity: updated[existingIndex].quantity + quantity,
+            }
+            return updated
+          }
+          return [
+            {
+              id: `static-cart-${product.id}`,
+              quantity,
+              product,
+              isStatic: true,
+            },
+            ...prev,
+          ]
+        })
+        toast.success(`${product.name} added to cart`)
+        return
+      }
+
+      // Optimistic update for real (Supabase-backed) products
+      const existingIndex = dbItems.findIndex((i) => i.product.id === product.id)
+      const optimisticItems = [...dbItems]
       if (existingIndex > -1) {
         optimisticItems[existingIndex] = {
           ...optimisticItems[existingIndex],
@@ -52,57 +127,74 @@ export function CartProvider({ children }) {
           product,
         })
       }
-      setItems(optimisticItems)
+      setDbItems(optimisticItems)
 
       try {
         await cartService.addToCart(user.id, product.id, quantity)
         toast.success(`${product.name} added to cart`)
         refreshCart()
       } catch (err) {
-        setItems(items)
+        setDbItems(dbItems)
         toast.error('Could not add item to cart')
         console.error(err)
       }
     },
-    [items, isAuthenticated, user, refreshCart]
+    [dbItems, isAuthenticated, user, refreshCart]
   )
 
   const updateQuantity = useCallback(
     async (cartItemId, quantity) => {
-      const previous = items
-      setItems((prev) =>
+      const staticIndex = staticItems.findIndex((i) => i.id === cartItemId)
+      if (staticIndex > -1) {
+        setStaticItems((prev) =>
+          prev.map((i) => (i.id === cartItemId ? { ...i, quantity } : i)).filter((i) => i.quantity > 0)
+        )
+        return
+      }
+
+      const previous = dbItems
+      setDbItems((prev) =>
         prev.map((i) => (i.id === cartItemId ? { ...i, quantity } : i)).filter((i) => i.quantity > 0)
       )
       try {
         await cartService.updateQuantity(cartItemId, quantity)
       } catch (err) {
-        setItems(previous)
+        setDbItems(previous)
         toast.error('Could not update quantity')
         console.error(err)
       }
     },
-    [items]
+    [dbItems, staticItems]
   )
 
   const removeFromCart = useCallback(
     async (cartItemId, productName) => {
-      const previous = items
-      setItems((prev) => prev.filter((i) => i.id !== cartItemId))
+      const staticIndex = staticItems.findIndex((i) => i.id === cartItemId)
+      if (staticIndex > -1) {
+        setStaticItems((prev) => prev.filter((i) => i.id !== cartItemId))
+        toast.success(productName ? `${productName} removed from cart` : 'Item removed')
+        return
+      }
+
+      const previous = dbItems
+      setDbItems((prev) => prev.filter((i) => i.id !== cartItemId))
       try {
         await cartService.removeFromCart(cartItemId)
         toast.success(productName ? `${productName} removed from cart` : 'Item removed')
       } catch (err) {
-        setItems(previous)
+        setDbItems(previous)
         toast.error('Could not remove item')
         console.error(err)
       }
     },
-    [items]
+    [dbItems, staticItems]
   )
 
   const clearCart = useCallback(async () => {
+    setStaticItems([])
+    if (user?.id) writeStaticCart(user.id, [])
     if (!user) return
-    setItems([])
+    setDbItems([])
     try {
       await cartService.clearCart(user.id)
     } catch (err) {
