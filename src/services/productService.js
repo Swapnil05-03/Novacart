@@ -101,6 +101,8 @@ export const productService = {
     perPage = 12,
     search = '',
     categoryId = null,
+    subcategory = null,
+    gender = null,
     minPrice = null,
     maxPrice = null,
     minRating = null,
@@ -121,6 +123,16 @@ export const productService = {
     }
     if (categoryId) {
       query = query.eq('category_id', categoryId)
+    }
+    // Real column match now that products.subcategory exists — replaces the
+    // old fallback of running the subcategory label through the `search`
+    // ilike('name', ...) text match, which only worked by coincidence when
+    // a product's name happened to contain the tile label.
+    if (subcategory) {
+      query = query.eq('subcategory', subcategory)
+    }
+    if (gender) {
+      query = query.eq('gender', gender)
     }
     if (minPrice !== null) {
       query = query.gte('price', minPrice)
@@ -210,6 +222,47 @@ export const productService = {
     return Object.entries(counts)
       .map(([name, count]) => ({ name, count }))
       .sort((a, b) => b.count - a.count)
+  },
+
+  // Real, DB-driven subcategory list for a given category — same pattern as
+  // getBrands(). Optionally scoped further by gender so the pills shown
+  // under a "Men" / "Women" tab only reflect what actually exists for
+  // that gender, not a static curated list.
+  async getSubcategories(categoryId, gender = null) {
+    if (!categoryId) return []
+    let query = supabase
+      .from('products')
+      .select('subcategory')
+      .eq('category_id', categoryId)
+      .not('subcategory', 'is', null)
+    if (gender) {
+      query = query.eq('gender', gender)
+    }
+    const { data, error } = await query
+    if (error) throw error
+
+    const counts = {}
+    data.forEach((row) => {
+      if (!row.subcategory) return
+      counts[row.subcategory] = (counts[row.subcategory] || 0) + 1
+    })
+    return Object.entries(counts)
+      .map(([name, count]) => ({ name, count }))
+      .sort((a, b) => b.count - a.count)
+  },
+
+  // Does this category have any products tagged with a gender? Used to
+  // decide whether to show Men/Women tabs at all — most categories won't,
+  // and we don't want to render an empty/fake toggle for them.
+  async getAvailableGenders(categoryId) {
+    if (!categoryId) return []
+    const { data, error } = await supabase
+      .from('products')
+      .select('gender')
+      .eq('category_id', categoryId)
+      .not('gender', 'is', null)
+    if (error) throw error
+    return [...new Set(data.map((row) => row.gender))]
   },
 
   async getCategoryProductCounts() {

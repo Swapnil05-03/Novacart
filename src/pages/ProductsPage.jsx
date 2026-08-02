@@ -28,6 +28,7 @@ export default function ProductsPage() {
   const page = Number(searchParams.get('page')) || 1
   const search = searchParams.get('search') || ''
   const subcategory = searchParams.get('subcategory') || null
+  const gender = searchParams.get('gender') || null
   const sortBy = searchParams.get('sort') || 'newest'
   const categoryId = searchParams.get('category') || null
   const minPrice = searchParams.get('minPrice') ? Number(searchParams.get('minPrice')) : null
@@ -96,7 +97,9 @@ export default function ProductsPage() {
     const queryFilters = {
       page,
       perPage: PRODUCTS_PER_PAGE,
-      search: subcategory || search,
+      search,
+      subcategory,
+      gender,
       categoryId,
       minPrice,
       maxPrice,
@@ -131,7 +134,7 @@ export default function ProductsPage() {
     return () => {
       isMounted = false
     }
-  }, [page, search, subcategory, categoryId, minPrice, maxPrice, minRating, minDiscount, selectedBrands, sortBy, filterPreset])
+  }, [page, search, subcategory, gender, categoryId, minPrice, maxPrice, minRating, minDiscount, selectedBrands, sortBy, filterPreset])
 
   const totalPages = Math.max(1, Math.ceil(totalCount / PRODUCTS_PER_PAGE))
 
@@ -148,6 +151,7 @@ export default function ProductsPage() {
       // term, the page falsely shows "no products found" even though the
       // category itself has products.
       mapped.subcategory = null
+      mapped.gender = null
       mapped.filter = null
       mapped.search = null
       // Selected brands are scoped to the previous category's brand list.
@@ -171,6 +175,12 @@ export default function ProductsPage() {
 
   const handleSelectSubcategory = (label) => {
     updateParams({ subcategory: label, page: null })
+  }
+
+  const handleSelectGender = (value) => {
+    // Switching gender can change which subcategories exist, so drop any
+    // subcategory selection that might not apply under the new gender.
+    updateParams({ gender: value, subcategory: null, page: null })
   }
 
   const handleClearFilters = () => {
@@ -197,6 +207,8 @@ export default function ProductsPage() {
         category={activeCategory}
         activeSubcategory={subcategory}
         onSelectSubcategory={handleSelectSubcategory}
+        activeGender={gender}
+        onSelectGender={handleSelectGender}
       />
 
       <div className="container-page">

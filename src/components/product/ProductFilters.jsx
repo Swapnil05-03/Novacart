@@ -45,7 +45,6 @@ export default function ProductFilters({
     selectedBrands = [],
   } = filters;
   const [brandSearch, setBrandSearch] = useState("");
-  const [showAllCategories, setShowAllCategories] = useState(false);
 
   const totalCount = Object.values(categoryCounts).reduce(
     (sum, n) => sum + n,
@@ -54,12 +53,6 @@ export default function ProductFilters({
   const filteredBrands = brands.filter((b) =>
     b.name.toLowerCase().includes(brandSearch.toLowerCase()),
   );
-
-  const VISIBLE_CATEGORY_LIMIT = 6;
-  const visibleCategories = showAllCategories
-    ? categories
-    : categories.slice(0, VISIBLE_CATEGORY_LIMIT);
-  const hiddenCategoryCount = categories.length - VISIBLE_CATEGORY_LIMIT;
 
   const toggleBrand = (brandName) => {
     const next = selectedBrands.includes(brandName)
@@ -80,7 +73,7 @@ export default function ProductFilters({
       </div>
 
       <FilterSection title="Category">
-        <div className="space-y-2.5">
+        <div className="space-y-2.5 max-h-48 overflow-y-auto pr-1">
           <label className="flex items-center justify-between gap-2.5 text-sm text-ink-600 dark:text-ink-300 cursor-pointer">
             <span className="flex items-center gap-2.5">
               <input
@@ -95,7 +88,7 @@ export default function ProductFilters({
               <span className="text-xs text-ink-400">{totalCount}</span>
             )}
           </label>
-          {visibleCategories.map((cat) => (
+          {categories.map((cat) => (
             <label
               key={cat.id}
               className="flex items-center justify-between gap-2.5 text-sm text-ink-600 dark:text-ink-300 cursor-pointer"
@@ -116,23 +109,6 @@ export default function ProductFilters({
               )}
             </label>
           ))}
-          {hiddenCategoryCount > 0 && (
-            <button
-              type="button"
-              onClick={() => setShowAllCategories((v) => !v)}
-              className="flex items-center gap-1 text-sm font-medium text-brand-600 dark:text-brand-400 pt-1"
-            >
-              {showAllCategories
-                ? "Show less"
-                : `View all (${hiddenCategoryCount} more)`}
-              <ChevronDown
-                className={classNames(
-                  "h-3.5 w-3.5 transition-transform",
-                  showAllCategories && "rotate-180",
-                )}
-              />
-            </button>
-          )}
         </div>
       </FilterSection>
 

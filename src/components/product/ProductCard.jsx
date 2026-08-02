@@ -6,6 +6,7 @@ import { useCart } from '@/context/CartContext'
 import { formatCurrency, calculateDiscount, classNames } from '@/utils/helpers'
 import { ROUTES } from '@/constants'
 import { getStaticProductImages } from '@/data/productImages'
+import { getDefinitionForCategory } from '@/data/categoryContent'
 import LazyImage from '@/components/ui/LazyImage'
 import Rating from '@/components/ui/Rating'
 import Badge from '@/components/ui/Badge'
@@ -14,13 +15,23 @@ export default function ProductCard({ product }) {
   const { isWishlisted, toggleWishlist } = useWishlist()
   const { addToCart } = useCart()
 
-  // Static, code-based images (src/data/productImages.js) take priority
-  // when they exist for this SKU — these replace the random/unrelated
-  // Picsum photos that were seeded for the newly-added categories. Falls
-  // back to whatever Supabase's product_images join provided, which is
-  // still correct for the original 6 categories.
+  // Priority order for the product image, most-specific first:
+  // 1. The curated "shopByCategory" image for this product's subcategory
+  //    (src/data/categoryContent.js) — the same real, hand-picked photo
+  //    used for the subcategory tile itself, so a "Notebooks" product
+  //    shows an actual notebook photo instead of a random/unrelated one.
+  // 2. A static per-SKU image (src/data/productImages.js), if one was
+  //    curated for this exact product.
+  // 3. Whatever Supabase's product_images join provided — this is the
+  //    picsum.photos placeholder for newly-seeded products, so it's the
+  //    last resort rather than the default.
+  const categoryDefinition = getDefinitionForCategory(product.category?.name)
+  const subcategoryImage = product.subcategory
+    ? categoryDefinition.shopByCategoryImages?.[product.subcategory]
+    : null
   const staticImages = getStaticProductImages(product.sku)
   const primaryImage =
+    subcategoryImage ||
     staticImages[0] ||
     product.images?.find((img) => img.is_primary)?.url ||
     product.images?.[0]?.url

@@ -18,9 +18,8 @@ import {
 import { getDefinitionForCategory } from '@/data/categoryContent'
 import { classNames } from '@/utils/helpers'
 
-// Same icon-mapping convention used by CategoryTabs/CategoryShowcase, kept
-// local here since sub-category tile names are more granular (e.g. "Skin
-// Care" rather than "Beauty") and map to a slightly different icon set.
+// Same icon-mapping convention used elsewhere — falls back to a generic
+// grid icon for any tile label we don't have a specific icon for.
 const ICON_MAP = {
   skincare: Droplet,
   'skin care': Droplet,
@@ -55,17 +54,62 @@ function getIconForTile(label = '') {
   return ICON_MAP[label.toLowerCase()] || LayoutGrid
 }
 
-export default function SubcategoryRow({ category, activeSubcategory, onSelectSubcategory }) {
+// Maps a tileGroups label ('Men' / 'Women') to the gender value stored on
+// products, so a click can filter by the real DB column.
+function labelToGender(label = '') {
+  const lower = label.toLowerCase()
+  if (lower === 'men') return 'men'
+  if (lower === 'women') return 'women'
+  return null
+}
+
+export default function SubcategoryRow({ category, activeSubcategory, onSelectSubcategory, activeGender, onSelectGender }) {
   if (!category) return null
 
+  // Full curated tile list for this category — this is the same
+  // "shopByCategory" data already used for the homepage carousels and the
+  // /products banner, so what you see here always matches what's been
+  // designed for the category, not just whatever happens to have real
+  // stock today. Clicking a tile still filters against the real
+  // `subcategory` column on products, so results are accurate even if a
+  // given tile currently has zero matching products.
   const definition = getDefinitionForCategory(category.name)
-  // First 9 sub-tiles, matching the density of the reference image's row.
-  const subcategories = definition.tiles.slice(0, 9)
+  const hasGenderTabs = Array.isArray(definition.tileGroups) && definition.tileGroups.length > 0
+
+  const activeGroup = hasGenderTabs
+    ? definition.tileGroups.find((g) => labelToGender(g.label) === activeGender)
+    : null
+
+  const tiles = activeGroup ? activeGroup.tiles : definition.tiles || []
 
   return (
     <div className="container-page mb-6">
+      {hasGenderTabs && (
+        <div className="flex items-center gap-2 mb-3">
+          {definition.tileGroups.map((group) => {
+            const genderValue = labelToGender(group.label)
+            const active = activeGender === genderValue
+            return (
+              <button
+                key={group.label}
+                type="button"
+                onClick={() => onSelectGender(active ? null : genderValue)}
+                className={classNames(
+                  'rounded-full px-4 py-1.5 text-sm font-medium border transition-colors',
+                  active
+                    ? 'border-brand-400 bg-brand-50 text-brand-700 dark:bg-brand-900/20 dark:text-brand-300'
+                    : 'border-ink-200 dark:border-ink-800 text-ink-600 dark:text-ink-300'
+                )}
+              >
+                {group.label}
+              </button>
+            )
+          })}
+        </div>
+      )}
+
       <div className="flex items-center gap-3 overflow-x-auto pb-1" style={{ overscrollBehaviorX: 'contain', overscrollBehaviorY: 'contain' }}>
-        {subcategories.map((label) => {
+        {tiles.map((label) => {
           const Icon = getIconForTile(label)
           const active = activeSubcategory === label
           return (
