@@ -3,12 +3,29 @@ import { Minus, Plus, Trash2 } from 'lucide-react'
 import { formatCurrency, classNames } from '@/utils/helpers'
 import { ROUTES } from '@/constants'
 import { useCart } from '@/context/CartContext'
+import { getStaticProductImages } from '@/data/productImages'
+import { getDefinitionForCategory } from '@/data/categoryContent'
 import LazyImage from '@/components/ui/LazyImage'
 
 export default function CartItem({ item }) {
   const { updateQuantity, removeFromCart } = useCart()
   const { product, quantity } = item
-  const image = product.images?.find((i) => i.is_primary)?.url || product.images?.[0]?.url
+
+  // Same priority order as ProductCard/ProductDetailPage: curated
+  // subcategory image first, then a static per-SKU image, then whatever
+  // Supabase provided — keeps the cart image consistent with what the
+  // person saw on the grid card and the detail page.
+  const categoryDefinition = getDefinitionForCategory(product.category?.name)
+  const subcategoryImage = product.subcategory
+    ? categoryDefinition.shopByCategoryImages?.[product.subcategory]
+    : null
+  const staticImages = getStaticProductImages(product.sku)
+  const image =
+    subcategoryImage ||
+    staticImages[0] ||
+    product.images?.find((i) => i.is_primary)?.url ||
+    product.images?.[0]?.url
+
   const maxedOut = quantity >= (product.stock ?? 99)
 
   return (

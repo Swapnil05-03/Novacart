@@ -6,28 +6,24 @@ import { useCart } from '@/context/CartContext'
 import LazyImage from '@/components/ui/LazyImage'
 import Badge from '@/components/ui/Badge'
 
-// Two modes:
-// - "browse" (default, no filter applied yet): part of the full gallery of
-//   every brand image for the category — click applies that brand filter.
-// - "selected" (this brand is the active filter): the only card shown. If a
-//   real product exists for this brand (linkedProduct), the card behaves
-//   like a normal ProductCard — clicking opens its detail page and Add to
-//   Cart adds that real product. If no matching product exists yet, it
-//   stays a non-clickable preview with a soft "not available yet" message.
-export default function BrandCard({ brand, mode = 'browse', onSelect, onRemove, linkedProduct }) {
+// Same two modes as BrandCard. In "selected" mode, if a real product
+// exists for this subcategory (linkedProduct), the card behaves like a
+// normal ProductCard — click opens its detail page, Add to Cart adds that
+// real product. With no matching product yet, it's a non-clickable preview.
+export default function SubcategoryCard({ name, image, mode = 'browse', onSelect, onRemove, linkedProduct }) {
   const isSelected = mode === 'selected'
   const { addToCart } = useCart()
 
   const handleCardClick = (e) => {
     if (isSelected) return
     e.preventDefault()
-    onSelect?.(brand.name)
+    onSelect?.(name)
   }
 
   const handleRemove = (e) => {
     e.preventDefault()
     e.stopPropagation()
-    onRemove?.(brand.name)
+    onRemove?.()
   }
 
   const handleAddToCart = (e) => {
@@ -45,19 +41,19 @@ export default function BrandCard({ brand, mode = 'browse', onSelect, onRemove, 
   return (
     <Wrapper
       {...wrapperProps}
-      title={isSelected ? `Remove ${brand.name} filter` : `Shop ${brand.name}`}
+      title={isSelected ? `Remove ${name} filter` : `Shop ${name}`}
       className="group block w-full text-left rounded-2xl border border-brand-300 dark:border-brand-700 bg-elevated dark:bg-elevated-dark overflow-hidden shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl cursor-pointer"
     >
       <div className="relative aspect-square overflow-hidden bg-ink-50 dark:bg-ink-900">
         <LazyImage
-          src={brand.image}
-          alt={brand.name}
+          src={image}
+          alt={name}
           containerClassName="h-full w-full"
           className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
         />
 
         <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
-          <Badge variant="brand">{isSelected ? 'Selected Brand' : 'Brand'}</Badge>
+          <Badge variant="brand">{isSelected ? 'Selected' : 'Subcategory'}</Badge>
         </div>
 
         {isSelected && (
@@ -90,13 +86,13 @@ export default function BrandCard({ brand, mode = 'browse', onSelect, onRemove, 
 
       <div className="p-4">
         <p className="text-xs font-medium text-brand-500 uppercase tracking-wide mb-1">
-          Brand
+          Subcategory
         </p>
         <h3 className="text-sm font-semibold text-ink-900 dark:text-ink-50 line-clamp-2 leading-snug">
-          {brand.name}
+          {name}
         </h3>
         {!isSelected && (
-          <p className="mt-2 text-xs text-ink-400">Tap to shop this brand</p>
+          <p className="mt-2 text-xs text-ink-400">Tap to shop this subcategory</p>
         )}
         {isSelected && !linkedProduct && (
           <p className="mt-2 text-xs text-ink-400">No products in stock yet</p>

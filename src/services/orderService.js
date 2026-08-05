@@ -5,7 +5,11 @@ const ORDER_SELECT = `
   *,
   order_items(
     id, quantity, price_at_purchase,
-    product:products(id, name, slug, images:product_images(url, is_primary))
+    product:products(
+      id, name, slug, sku, subcategory,
+      category:categories(id, name),
+      images:product_images(url, is_primary)
+    )
   )
 `
 

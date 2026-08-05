@@ -4,7 +4,8 @@ const CART_SELECT = `
   id,
   quantity,
   product:products(
-    id, name, price, compare_at_price, stock, slug,
+    id, name, price, compare_at_price, stock, slug, sku, subcategory,
+    category:categories(id, name),
     images:product_images(url, is_primary)
   )
 `

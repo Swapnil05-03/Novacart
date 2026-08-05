@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom'
 import { SlidersHorizontal } from 'lucide-react'
 import { productService } from '@/services/productService'
 import { getBrandsForCategory, getRandomMixBrands } from '@/constants/featuredBrands'
+import { getDefinitionForCategory } from '@/data/categoryContent'
 import { useDebounce } from '@/hooks/useDebounce'
 import { PRODUCTS_PER_PAGE, SORT_OPTIONS } from '@/constants'
 import ProductGrid from '@/components/product/ProductGrid'
@@ -199,6 +200,38 @@ export default function ProductsPage() {
     handleFilterChange({ selectedBrands: selectedBrands.filter((b) => b !== brandName) })
   }
 
+  // Real curated image for the currently-selected subcategory (same
+  // shopByCategoryImages data used by SubcategoryRow's tiles), so
+  // ProductGrid can render it as a real card — mirrors selectedBrandDetails.
+  const selectedSubcategory = useMemo(() => {
+    if (!subcategory || !activeCategory) return null
+    const definition = getDefinitionForCategory(activeCategory.name)
+    const image = definition.shopByCategoryImages?.[subcategory]
+    if (!image) return null
+    return { name: subcategory, image }
+  }, [subcategory, activeCategory])
+
+  const handleRemoveSubcategory = () => {
+    updateParams({ subcategory: null, page: null })
+  }
+
+  // Applying a filter by clicking a browse-mode card in the gallery — same
+  // effect as checking the brand in the sidebar / clicking the pill above.
+  const handleSelectBrandFromGrid = (brandName) => {
+    handleFilterChange({ selectedBrands: [...selectedBrands, brandName] })
+  }
+
+  // Every subcategory tile for this category that has a curated image,
+  // shown as the browse gallery when no filter is active yet.
+  const allSubcategoryTiles = useMemo(() => {
+    if (!activeCategory) return []
+    const definition = getDefinitionForCategory(activeCategory.name)
+    const images = definition.shopByCategoryImages || {}
+    return (definition.tiles || [])
+      .filter((label) => images[label])
+      .map((label) => ({ name: label, image: images[label] }))
+  }, [activeCategory])
+
   return (
     <div className="pb-12">
       <CategoryBanner category={activeCategory} />
@@ -260,8 +293,15 @@ export default function ProductsPage() {
             <ProductGrid
               products={products}
               loading={loading}
+              page={page}
+              allBrands={brands}
+              allSubcategoryTiles={allSubcategoryTiles}
+              onSelectBrand={handleSelectBrandFromGrid}
+              onSelectSubcategory={handleSelectSubcategory}
               selectedBrands={selectedBrandDetails}
               onRemoveBrand={handleRemoveBrand}
+              selectedSubcategory={selectedSubcategory}
+              onRemoveSubcategory={handleRemoveSubcategory}
               emptyMessage={
                 activeCategory
                   ? `We're still stocking up on ${activeCategory.name.toLowerCase()} — check back soon, or browse other categories in the meantime.`

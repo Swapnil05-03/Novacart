@@ -33,6 +33,7 @@ import { PageLoader } from "@/components/ui/Loader";
 import EmptyState from "@/components/ui/EmptyState";
 import { PackageX } from "lucide-react";
 import { getStaticProductImages } from "@/data/productImages";
+import { getDefinitionForCategory } from "@/data/categoryContent";
 import { getStaticProductById } from "@/data/staticProducts";
 
 // Picks a reasonable icon for a feature badge based on its label text.
@@ -143,9 +144,17 @@ export default function ProductDetailPage() {
     );
   }
 
+  // Same priority order as ProductCard: curated subcategory image first
+  // (so the detail page shows the same real photo as the grid/browse
+  // card), then a static per-SKU image, then whatever Supabase provided.
+  const categoryDefinition = getDefinitionForCategory(product.category?.name);
+  const subcategoryImage = product.subcategory
+    ? categoryDefinition.shopByCategoryImages?.[product.subcategory]
+    : null;
   const staticImages = getStaticProductImages(product.sku);
-  const galleryImages =
-    staticImages.length > 0
+  const galleryImages = subcategoryImage
+    ? [{ id: 'subcategory-image', url: subcategoryImage, is_primary: true, alt_text: product.name }]
+    : staticImages.length > 0
       ? staticImages.map((url, i) => ({
           id: `static-${i}`,
           url,

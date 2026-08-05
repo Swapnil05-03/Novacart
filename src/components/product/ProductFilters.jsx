@@ -30,7 +30,6 @@ function FilterSection({ title, children, defaultOpen = true }) {
 
 export default function ProductFilters({
   categories,
-  categoryCounts = {},
   brands = [],
   filters,
   onChange,
@@ -46,10 +45,6 @@ export default function ProductFilters({
   } = filters;
   const [brandSearch, setBrandSearch] = useState("");
 
-  const totalCount = Object.values(categoryCounts).reduce(
-    (sum, n) => sum + n,
-    0,
-  );
   const filteredBrands = brands.filter((b) =>
     b.name.toLowerCase().includes(brandSearch.toLowerCase()),
   );
@@ -74,39 +69,27 @@ export default function ProductFilters({
 
       <FilterSection title="Category">
         <div className="space-y-2.5 max-h-48 overflow-y-auto pr-1">
-          <label className="flex items-center justify-between gap-2.5 text-sm text-ink-600 dark:text-ink-300 cursor-pointer">
-            <span className="flex items-center gap-2.5">
-              <input
-                type="radio"
-                checked={!categoryId}
-                onChange={() => onChange({ categoryId: null })}
-                className="h-4 w-4 accent-brand-500"
-              />
-              All categories
-            </span>
-            {totalCount > 0 && (
-              <span className="text-xs text-ink-400">{totalCount}</span>
-            )}
+          <label className="flex items-center gap-2.5 text-sm text-ink-600 dark:text-ink-300 cursor-pointer">
+            <input
+              type="radio"
+              checked={!categoryId}
+              onChange={() => onChange({ categoryId: null })}
+              className="h-4 w-4 accent-brand-500"
+            />
+            All categories
           </label>
           {categories.map((cat) => (
             <label
               key={cat.id}
-              className="flex items-center justify-between gap-2.5 text-sm text-ink-600 dark:text-ink-300 cursor-pointer"
+              className="flex items-center gap-2.5 text-sm text-ink-600 dark:text-ink-300 cursor-pointer"
             >
-              <span className="flex items-center gap-2.5">
-                <input
-                  type="radio"
-                  checked={categoryId === cat.id}
-                  onChange={() => onChange({ categoryId: cat.id })}
-                  className="h-4 w-4 accent-brand-500"
-                />
-                {cat.name}
-              </span>
-              {categoryCounts[cat.id] !== undefined && (
-                <span className="text-xs text-ink-400">
-                  {categoryCounts[cat.id]}
-                </span>
-              )}
+              <input
+                type="radio"
+                checked={categoryId === cat.id}
+                onChange={() => onChange({ categoryId: cat.id })}
+                className="h-4 w-4 accent-brand-500"
+              />
+              {cat.name}
             </label>
           ))}
         </div>
