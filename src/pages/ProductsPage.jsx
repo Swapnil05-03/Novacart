@@ -5,28 +5,37 @@ import { productService } from '@/services/productService'
 import { getBrandsForCategory, getRandomMixBrands } from '@/constants/featuredBrands'
 import { getDefinitionForCategory } from '@/data/categoryContent'
 import { useDebounce } from '@/hooks/useDebounce'
-import { PRODUCTS_PER_PAGE, SORT_OPTIONS } from '@/constants'
+import { SORT_OPTIONS } from '@/constants'
 import ProductGrid from '@/components/product/ProductGrid'
 import ProductFilters from '@/components/product/ProductFilters'
 import CategoryBanner from '@/components/layout/CategoryBanner'
 import SubcategoryRow from '@/components/layout/SubcategoryRow'
 import TrustBadges from '@/components/layout/TrustBadges'
 import Select from '@/components/ui/Select'
-import Pagination from '@/components/ui/Pagination'
 import Modal from '@/components/ui/Modal'
 import Button from '@/components/ui/Button'
 
+// NOTE ON SCOPE (intentional, by request):
+// This page still doesn't render a real, separately-paginated product
+// grid from Supabase — every card here is a curated subcategory/brand
+// discovery tile, always showing its local, always-valid image (never a
+// Supabase image_url, so the earlier broken-image problem can't return).
+// What's added now: each tile/brand card additionally looks up ONE real
+// product actually tagged with that subcategory or brand (see
+// `productLinks` below). When a match exists, that card becomes a genuine
+// shoppable product card — click opens the product's detail page, with
+// working Add to Cart / Wishlist buttons — while still using its curated
+// local image. Tiles with no matching real product yet keep the original
+// discovery behavior (click applies that subcategory/brand as a filter).
 export default function ProductsPage() {
   const [searchParams, setSearchParams] = useSearchParams()
-  const [products, setProducts] = useState([])
   const [categories, setCategories] = useState([])
   const [categoryCounts, setCategoryCounts] = useState({})
   const [brands, setBrands] = useState([])
-  const [totalCount, setTotalCount] = useState(0)
   const [loading, setLoading] = useState(true)
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
+  const [productLinks, setProductLinks] = useState({ bySubcategory: {}, byBrand: {} })
 
-  const page = Number(searchParams.get('page')) || 1
   const search = searchParams.get('search') || ''
   const subcategory = searchParams.get('subcategory') || null
   const gender = searchParams.get('gender') || null
@@ -40,7 +49,6 @@ export default function ProductsPage() {
     () => (searchParams.get('brands') ? searchParams.get('brands').split(',') : []),
     [searchParams]
   )
-  const filterPreset = searchParams.get('filter')
 
   const activeCategory = useMemo(
     () => categories.find((c) => c.id === categoryId) || null,
@@ -51,16 +59,34 @@ export default function ProductsPage() {
   const debouncedSearch = useDebounce(searchInput, 400)
 
   useEffect(() => {
-    productService.getCategories().then(setCategories).catch(console.error)
-    productService.getCategoryProductCounts().then(setCategoryCounts).catch(console.error)
+    let isMounted = true
+    setLoading(true)
+    Promise.all([
+      productService.getCategories(),
+      productService.getCategoryProductCounts(),
+    ])
+      .then(([categoriesData, counts]) => {
+        if (!isMounted) return
+        setCategories(categoriesData)
+        setCategoryCounts(counts)
+      })
+      .catch(console.error)
+      .finally(() => isMounted && setLoading(false))
+
+    return () => {
+      isMounted = false
+    }
   }, [])
 
   // Static "Featured Brands" list (hardcoded per category in
-  // src/constants/featuredBrands.js) — no DB call here anymore.
+  // src/constants/featuredBrands.js) — no DB call here.
   // - A specific category selected -> that category's dedicated brand list.
   // - "All categories" (no category selected) -> a random mix pulled from
-  //   every category's list, so the Brand filter isn't empty/single-category
-  //   when browsing everything.
+  //   every category's list, so the sidebar Brand filter isn't empty when
+  //   browsing everything. This `brands` state feeds the sidebar filter +
+  //   selectedBrandDetails only; the gallery uses the separate
+  //   `galleryBrands` memo below (every category's brands merged), so the
+  //   sidebar never has to render 150+ checkboxes.
   useEffect(() => {
     if (activeCategory) {
       setBrands(getBrandsForCategory(activeCategory.name))
@@ -68,13 +94,6 @@ export default function ProductsPage() {
       setBrands(getRandomMixBrands(10))
     }
   }, [activeCategory])
-
-  useEffect(() => {
-    if (debouncedSearch !== search) {
-      updateParams({ search: debouncedSearch || null, page: null })
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedSearch])
 
   const updateParams = useCallback(
     (updates) => {
@@ -92,52 +111,64 @@ export default function ProductsPage() {
   )
 
   useEffect(() => {
-    let isMounted = true
-    setLoading(true)
+    if (debouncedSearch !== search) {
+      updateParams({ search: debouncedSearch || null })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedSearch])
 
-    const queryFilters = {
-      page,
-      perPage: PRODUCTS_PER_PAGE,
-      search,
-      subcategory,
-      gender,
-      categoryId,
-      minPrice,
-      maxPrice,
-      minRating,
-      minDiscount,
-      // NOTE: selectedBrands is intentionally NOT passed here. The Brand
-      // filter's options come from curated display names in
-      // src/data/categoryContent.js (used for the Featured Brands
-      // carousel), which don't match the products.brand column in the
-      // DB — filtering by them would always return zero results. Brand
-      // selection still drives the image preview in ProductFilters and
-      // updates the URL; it just doesn't narrow this query yet. Wire
-      // this back up once products are tagged with real, matching brand
-      // values.
-      sortBy,
+  // Real products, used ONLY to power Add to Cart / Wishlist / "view
+  // product" on the discovery cards above — never as their visual image.
+  // Builds two lookup maps keyed by `${categoryId}::${label}` (category id
+  // included because the same subcategory/brand name can exist under more
+  // than one category with a different real product behind it, e.g.
+  // "Philips" in both Beauty and Appliances). Only the first matching
+  // product per key is kept — one linked product per tile is enough to
+  // make the card shoppable.
+  //
+  // With a single category active, this fetches that category's products
+  // (perPage covers realistic per-category catalog sizes). On "all
+  // categories" it fetches one broader, unscoped batch instead of firing a
+  // separate query per category (16 requests) — if the catalog grows past
+  // this batch size, raise ALL_CATEGORIES_PRODUCT_SAMPLE_SIZE.
+  const SINGLE_CATEGORY_PRODUCT_SAMPLE_SIZE = 100
+  const ALL_CATEGORIES_PRODUCT_SAMPLE_SIZE = 500
+
+  useEffect(() => {
+    let isMounted = true
+
+    const buildLinkMaps = (products) => {
+      const bySubcategory = {}
+      const byBrand = {}
+      for (const product of products) {
+        const catId = product.category_id ?? product.category?.id
+        if (product.subcategory) {
+          const key = `${catId}::${product.subcategory}`
+          if (!bySubcategory[key]) bySubcategory[key] = product
+        }
+        if (product.brand) {
+          const key = `${catId}::${product.brand}`
+          if (!byBrand[key]) byBrand[key] = product
+        }
+      }
+      return { bySubcategory, byBrand }
     }
 
-    if (filterPreset === 'featured') queryFilters.isFeatured = true
-    if (filterPreset === 'trending') queryFilters.isTrending = true
-    if (filterPreset === 'best-sellers') queryFilters.isBestSeller = true
+    const fetchParams = activeCategory
+      ? { categoryId: activeCategory.id, perPage: SINGLE_CATEGORY_PRODUCT_SAMPLE_SIZE, sortBy: 'newest' }
+      : { perPage: ALL_CATEGORIES_PRODUCT_SAMPLE_SIZE, sortBy: 'newest' }
 
     productService
-      .getProducts(queryFilters)
-      .then(({ data, count }) => {
-        if (!isMounted) return
-        setProducts(data)
-        setTotalCount(count)
+      .getProducts(fetchParams)
+      .then(({ data }) => {
+        if (isMounted) setProductLinks(buildLinkMaps(data))
       })
       .catch(console.error)
-      .finally(() => isMounted && setLoading(false))
 
     return () => {
       isMounted = false
     }
-  }, [page, search, subcategory, gender, categoryId, minPrice, maxPrice, minRating, minDiscount, selectedBrands, sortBy, filterPreset])
-
-  const totalPages = Math.max(1, Math.ceil(totalCount / PRODUCTS_PER_PAGE))
+  }, [activeCategory])
 
   const handleFilterChange = (updates) => {
     const mapped = {}
@@ -148,9 +179,7 @@ export default function ProductsPage() {
       // search — all three are easy to carry over from wherever the user
       // arrived from (a subcategory chip, a "Today's Deals" link, or simply
       // typing a search term earlier) and silently AND with the new
-      // category. If the new category has no matches for that leftover
-      // term, the page falsely shows "no products found" even though the
-      // category itself has products.
+      // category.
       mapped.subcategory = null
       mapped.gender = null
       mapped.filter = null
@@ -158,9 +187,7 @@ export default function ProductsPage() {
       // Selected brands are scoped to the previous category's brand list.
       // If we don't clear them here, a brand chosen under the old category
       // stays applied as a hidden filter after switching category, even
-      // though it no longer appears as a checked option anywhere in the UI
-      // — silently ANDing with a brand that doesn't exist in the new
-      // category and producing a false "no products found".
+      // though it no longer appears as a checked option anywhere in the UI.
       mapped.brands = null
       setSearchInput('')
     }
@@ -171,17 +198,30 @@ export default function ProductsPage() {
     if ('selectedBrands' in updates) {
       mapped.brands = updates.selectedBrands.length ? updates.selectedBrands.join(',') : null
     }
-    updateParams({ ...mapped, page: null })
+    // Lets a caller set `category` AND `subcategory` in one atomic URL
+    // update — needed when selecting a tile from the merged "all
+    // categories" gallery, where the category wasn't chosen yet. Must run
+    // after the categoryId branch above so it overrides that branch's
+    // `mapped.subcategory = null` reset.
+    if ('subcategory' in updates) mapped.subcategory = updates.subcategory
+    updateParams(mapped)
   }
 
-  const handleSelectSubcategory = (label) => {
-    updateParams({ subcategory: label, page: null })
+  const handleSelectSubcategory = (label, categoryId) => {
+    if (categoryId) {
+      // Clicked from the merged "all categories" gallery — this tile
+      // belongs to a category we weren't browsing yet, so switch into
+      // that category AND apply the subcategory filter together.
+      handleFilterChange({ categoryId, subcategory: label })
+    } else {
+      updateParams({ subcategory: label })
+    }
   }
 
   const handleSelectGender = (value) => {
     // Switching gender can change which subcategories exist, so drop any
     // subcategory selection that might not apply under the new gender.
-    updateParams({ gender: value, subcategory: null, page: null })
+    updateParams({ gender: value, subcategory: null })
   }
 
   const handleClearFilters = () => {
@@ -191,10 +231,22 @@ export default function ProductsPage() {
 
   const filters = { categoryId, minPrice, maxPrice, minRating, minDiscount, selectedBrands }
 
-  // Full { name, image } objects for whichever brands are currently
-  // checked, so ProductGrid can render each one as a real card (image +
-  // label) inline with the products, instead of a small sidebar preview.
-  const selectedBrandDetails = brands.filter((b) => selectedBrands.includes(b.name))
+  // `brands` (sidebar filter list) + linkedProduct per brand, scoped to
+  // the active category so cart/wishlist/detail-link act on the right
+  // product when the same brand name exists under more than one category.
+  const brandsWithLinks = useMemo(() => {
+    if (!activeCategory) return brands
+    return brands.map((b) => ({
+      ...b,
+      linkedProduct: productLinks.byBrand[`${activeCategory.id}::${b.name}`] || null,
+    }))
+  }, [brands, activeCategory, productLinks])
+
+  // Full { name, image, linkedProduct } objects for whichever brands are
+  // currently checked, so ProductGrid can render each one as a real card
+  // (image + label, plus a working Add to Cart/Wishlist/detail-link when a
+  // real product is linked) inline, instead of a small sidebar preview.
+  const selectedBrandDetails = brandsWithLinks.filter((b) => selectedBrands.includes(b.name))
 
   const handleRemoveBrand = (brandName) => {
     handleFilterChange({ selectedBrands: selectedBrands.filter((b) => b !== brandName) })
@@ -208,29 +260,107 @@ export default function ProductsPage() {
     const definition = getDefinitionForCategory(activeCategory.name)
     const image = definition.shopByCategoryImages?.[subcategory]
     if (!image) return null
-    return { name: subcategory, image }
-  }, [subcategory, activeCategory])
+    return {
+      name: subcategory,
+      image,
+      linkedProduct: productLinks.bySubcategory[`${activeCategory.id}::${subcategory}`] || null,
+    }
+  }, [subcategory, activeCategory, productLinks])
 
   const handleRemoveSubcategory = () => {
-    updateParams({ subcategory: null, page: null })
+    updateParams({ subcategory: null })
   }
 
   // Applying a filter by clicking a browse-mode card in the gallery — same
   // effect as checking the brand in the sidebar / clicking the pill above.
-  const handleSelectBrandFromGrid = (brandName) => {
-    handleFilterChange({ selectedBrands: [...selectedBrands, brandName] })
+  const handleSelectBrandFromGrid = (brandName, categoryId) => {
+    if (categoryId) {
+      // Clicked from the merged "all categories" gallery — switch into
+      // that brand's category and select just this brand (replacing any
+      // prior selection, since a brand chosen under a different category
+      // wouldn't be valid here anyway).
+      handleFilterChange({ categoryId, selectedBrands: [brandName] })
+    } else {
+      handleFilterChange({ selectedBrands: [...selectedBrands, brandName] })
+    }
   }
 
-  // Every subcategory tile for this category that has a curated image,
-  // shown as the browse gallery when no filter is active yet.
-  const allSubcategoryTiles = useMemo(() => {
-    if (!activeCategory) return []
-    const definition = getDefinitionForCategory(activeCategory.name)
+  // Every subcategory tile for the given category definition that has a
+  // curated image. Shared by the single-category gallery and the
+  // per-category preview rows below.
+  //
+  // Categories with a men's/women's split (Beauty, Accessories, Apparel)
+  // define `tileGroups` — a men list AND a women list, 15 each, with their
+  // own correctly-keyed images in shopByCategoryImages. The flat `tiles`
+  // list on those same categories is a deduped, single 15-item list kept
+  // around for other sections (e.g. Featured Brands trending strip) and
+  // must NOT be used here: collapsing both genders into one list drops
+  // half the tiles and, worse, silently picks only one gender's image for
+  // any shared label (e.g. "Blazers"). When `tileGroups` exists, flatten
+  // BOTH groups so the full-category gallery shows the full men+women set
+  // (30 tiles). Categories without a men's/women's split have no
+  // `tileGroups` and fall back to the flat `tiles` list as before.
+  const getGalleryTilesForDefinition = (definition) => {
     const images = definition.shopByCategoryImages || {}
-    return (definition.tiles || [])
+    const labels = definition.tileGroups
+      ? definition.tileGroups.flatMap((group) => group.tiles || [])
+      : definition.tiles || []
+    return labels
       .filter((label) => images[label])
       .map((label) => ({ name: label, image: images[label] }))
-  }, [activeCategory])
+  }
+
+  // Full gallery for the ACTIVE category only (used once a category is
+  // selected). On "all categories" there's no single category to build
+  // this for — that view uses categoryPreviews instead (below), not a
+  // flat merge of every category's full gallery.
+  const allSubcategoryTiles = useMemo(() => {
+    if (!activeCategory) return []
+    return getGalleryTilesForDefinition(getDefinitionForCategory(activeCategory.name)).map((tile) => ({
+      ...tile,
+      linkedProduct: productLinks.bySubcategory[`${activeCategory.id}::${tile.name}`] || null,
+    }))
+  }, [activeCategory, productLinks])
+
+  const PREVIEW_TILES_PER_CATEGORY = 4
+  const PREVIEW_BRANDS_PER_CATEGORY = 2
+
+  // "All categories" landing view — instead of dumping every category's
+  // full gallery into one long paginated list (285 tiles + 240 brands =
+  // 525 items, ~44 pages — nobody pages that deep), show a short, curated
+  // preview per category: its first few subcategory tiles + brands (the
+  // ones each category lists first, i.e. its most representative items)
+  // under a heading, with a "View all in [Category]" action that opens
+  // that category's own full, paginated gallery. Each preview item is
+  // tagged with its owning category id so clicking a tile/brand directly
+  // (not just "View all") still jumps into the right category.
+  const categoryPreviews = useMemo(() => {
+    if (activeCategory) return null
+    return categories
+      .map((cat) => {
+        const definition = getDefinitionForCategory(cat.name)
+        const tiles = getGalleryTilesForDefinition(definition)
+          .slice(0, PREVIEW_TILES_PER_CATEGORY)
+          .map((tile) => ({
+            ...tile,
+            categoryId: cat.id,
+            linkedProduct: productLinks.bySubcategory[`${cat.id}::${tile.name}`] || null,
+          }))
+        const previewBrands = getBrandsForCategory(cat.name)
+          .slice(0, PREVIEW_BRANDS_PER_CATEGORY)
+          .map((brand) => ({
+            ...brand,
+            categoryId: cat.id,
+            linkedProduct: productLinks.byBrand[`${cat.id}::${brand.name}`] || null,
+          }))
+        return { category: cat, tiles, brands: previewBrands }
+      })
+      .filter((preview) => preview.tiles.length || preview.brands.length)
+  }, [activeCategory, categories, productLinks])
+
+  const handleViewCategory = (catId) => {
+    handleFilterChange({ categoryId: catId })
+  }
 
   return (
     <div className="pb-12">
@@ -245,12 +375,6 @@ export default function ProductsPage() {
       />
 
       <div className="container-page">
-        <div className="flex items-center justify-between mb-6">
-          <p className="text-sm font-medium text-ink-700 dark:text-ink-200">
-            <span className="text-brand-600 dark:text-brand-400 font-semibold">{totalCount}</span> products found
-          </p>
-        </div>
-
         <div className="flex flex-col sm:flex-row gap-3 mb-6">
           <input
             type="text"
@@ -262,7 +386,7 @@ export default function ProductsPage() {
           <div className="flex gap-3">
             <Select
               value={sortBy}
-              onChange={(e) => updateParams({ sort: e.target.value, page: null })}
+              onChange={(e) => updateParams({ sort: e.target.value })}
               options={SORT_OPTIONS}
               className="min-w-[180px]"
             />
@@ -291,11 +415,11 @@ export default function ProductsPage() {
 
           <div>
             <ProductGrid
-              products={products}
               loading={loading}
-              page={page}
-              allBrands={brands}
+              allBrands={brandsWithLinks}
               allSubcategoryTiles={allSubcategoryTiles}
+              categoryPreviews={categoryPreviews}
+              onViewCategory={handleViewCategory}
               onSelectBrand={handleSelectBrandFromGrid}
               onSelectSubcategory={handleSelectSubcategory}
               selectedBrands={selectedBrandDetails}
@@ -308,15 +432,6 @@ export default function ProductsPage() {
                   : 'Try adjusting your filters or search terms.'
               }
             />
-            {!loading && totalPages > 1 && (
-              <div className="mt-10">
-                <Pagination
-                  currentPage={page}
-                  totalPages={totalPages}
-                  onPageChange={(p) => updateParams({ page: p })}
-                />
-              </div>
-            )}
           </div>
         </div>
       </div>

@@ -1552,7 +1552,7 @@ const CATEGORY_DEFINITIONS = {
       Wakefit: homeBrandWakefit,
       Chumbak: homeBrandChumbak,
       CraftMaestros: homeBrandCraft,
-      Decor: homeBrandDecor,
+      "D'décor": homeBrandDecor,
       Philips: homeBrandPhilips,
       'Saral Home': homeBrandSaral,
       'Venus Mirror': homeBrandVenus,
@@ -2364,7 +2364,7 @@ const CATEGORY_DEFINITIONS = {
       { title: 'Reader Sale', subtitle: 'Up to 30% off bestsellers', ctaLabel: 'Shop Now' },
       { title: 'Stationery Edit', subtitle: 'Starting at $4', ctaLabel: 'Explore Now' },
     ],
-    tiles: ['Fiction', 'Notebooks', 'Pens & Pencils', "Kid's Books", 'Non-Fiction', 'Art Supplies', 'Planners', 'Comics & Manga', 'Book Marks', 'Diary', 'Sticky Notes', 'Highlighters', 'File Organizers', 'Greeting Cards', 'Calculators'],
+    tiles: ['Fiction', 'Notebooks', 'Pens & Pencils', "Kids' Books", 'Non-Fiction', 'Art Supplies', 'Planners', 'Comics & Manga', 'Bookmarks', 'Diaries', 'Sticky Notes', 'Highlighters', 'File Organizers', 'Greeting Cards', 'Calculators'],
     brands: ['Penguin', 'HarperCollins', 'Classmate', 'Camlin', 'Parker', 'Faber-Castell', 'Staedtler', 'Amar Chitra Katha', 'Scholastic', 'Oxford', 'Natraj', 'Doms', 'Reynolds', 'Cello', 'Navneet'],
   },
   furniture: {
@@ -2770,7 +2770,7 @@ const CATEGORY_DEFINITIONS = {
     tileGroups: [
       {
         label: 'Men',
-        tiles: ["T-Shirts", 'Jeans', 'Formal Shirts', 'Hoodies', 'Track Pants', "Men's Ethnic Wear", "Men's Blazers", 'Shorts', "Men's Activewear", "Men's Innerwear", 'Thermal Wear', 'Loungewear', 'Polo T-Shirts', "Men's Jackets", 'Vests'],
+        tiles: ["T-Shirts", 'Jeans', 'Formal Shirts', 'Hoodies', 'Track Pants', "Men's Ethnic Wear", "Men's Blazers", 'Shorts', "Men's Activewear", "Men's Innerwear", 'Thermal Wear', 'Loungewear', 'Polo Shirts', "Men's Jackets", 'Vests'],
       },
       {
         label: 'Women',

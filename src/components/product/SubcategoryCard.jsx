@@ -1,21 +1,31 @@
 import { Link } from 'react-router-dom'
-import { X, ShoppingBag } from 'lucide-react'
+import { X, ShoppingBag, Heart } from 'lucide-react'
+import { motion } from 'framer-motion'
 import { classNames } from '@/utils/helpers'
 import { ROUTES } from '@/constants'
 import { useCart } from '@/context/CartContext'
+import { useWishlist } from '@/context/WishlistContext'
 import LazyImage from '@/components/ui/LazyImage'
 import Badge from '@/components/ui/Badge'
 
-// Same two modes as BrandCard. In "selected" mode, if a real product
-// exists for this subcategory (linkedProduct), the card behaves like a
-// normal ProductCard — click opens its detail page, Add to Cart adds that
-// real product. With no matching product yet, it's a non-clickable preview.
+// Same two modes as BrandCard. If a real product is tagged with this
+// subcategory (linkedProduct), the card behaves like a genuine product
+// card in either mode — click opens its detail page, with working Add to
+// Cart / Wishlist buttons (same pattern as ProductCard). With no matching
+// product, "browse" falls back to a plain discovery card (click applies
+// the subcategory filter) and "selected" stays a non-clickable "not
+// available yet" preview. The card's own image is always the curated
+// local subcategory image passed in via `image` — never the linked
+// product's own image — so a broken/missing product image can never show
+// up here.
 export default function SubcategoryCard({ name, image, mode = 'browse', onSelect, onRemove, linkedProduct }) {
   const isSelected = mode === 'selected'
+  const hasProduct = !!linkedProduct
   const { addToCart } = useCart()
+  const { isWishlisted, toggleWishlist } = useWishlist()
 
   const handleCardClick = (e) => {
-    if (isSelected) return
+    if (isSelected || hasProduct) return
     e.preventDefault()
     onSelect?.(name)
   }
@@ -32,16 +42,29 @@ export default function SubcategoryCard({ name, image, mode = 'browse', onSelect
     if (linkedProduct) addToCart(linkedProduct, 1)
   }
 
-  const Wrapper = isSelected && linkedProduct ? Link : 'div'
-  const wrapperProps =
-    isSelected && linkedProduct
-      ? { to: ROUTES.PRODUCT_DETAIL(linkedProduct.id) }
-      : { onClick: handleCardClick, role: isSelected ? undefined : 'button', tabIndex: isSelected ? undefined : 0 }
+  const handleWishlistClick = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    if (linkedProduct) toggleWishlist(linkedProduct)
+  }
+
+  const wishlisted = hasProduct && isWishlisted(linkedProduct.id)
+
+  const Wrapper = hasProduct ? Link : 'div'
+  const wrapperProps = hasProduct
+    ? { to: ROUTES.PRODUCT_DETAIL(linkedProduct.id) }
+    : {
+        onClick: handleCardClick,
+        role: isSelected ? undefined : 'button',
+        tabIndex: isSelected ? undefined : 0,
+      }
 
   return (
     <Wrapper
       {...wrapperProps}
-      title={isSelected ? `Remove ${name} filter` : `Shop ${name}`}
+      title={
+        isSelected ? `Remove ${name} filter` : hasProduct ? `View ${linkedProduct.name}` : `Shop ${name}`
+      }
       className="group block w-full text-left rounded-2xl border border-brand-300 dark:border-brand-700 bg-elevated dark:bg-elevated-dark overflow-hidden shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl cursor-pointer"
     >
       <div className="relative aspect-square overflow-hidden bg-ink-50 dark:bg-ink-900">
@@ -69,32 +92,59 @@ export default function SubcategoryCard({ name, image, mode = 'browse', onSelect
           </span>
         )}
 
-        {isSelected && linkedProduct && (
-          <span
-            onClick={handleAddToCart}
+        {/* Floating wishlist button — only in browse mode; "selected" mode
+            keeps the remove (X) button in this corner instead. */}
+        {!isSelected && hasProduct && (
+          <motion.button
+            onClick={handleWishlistClick}
+            aria-label={wishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
+            aria-pressed={wishlisted}
+            whileTap={{ scale: 0.9 }}
             className={classNames(
-              'absolute inset-x-3 bottom-3 z-10 flex items-center justify-center gap-1.5 rounded-xl py-2.5',
-              'bg-white dark:bg-ink-50 text-ink-900 text-sm font-semibold shadow-card cursor-pointer',
-              'transition-transform duration-200 hover:-translate-y-0.5'
+              'absolute top-3 right-3 z-10 flex h-9 w-9 items-center justify-center rounded-full',
+              'bg-white/90 dark:bg-ink-950/80 backdrop-blur shadow-soft ring-1 ring-transparent',
+              'transition-all duration-200 hover:-translate-y-0.5 hover:shadow-card hover:ring-brand-400/50'
+            )}
+          >
+            <Heart
+              className={classNames('h-4 w-4', wishlisted ? 'fill-brand-500 text-brand-500' : 'text-ink-500')}
+            />
+          </motion.button>
+        )}
+
+        {/* Add to cart — always visible in "selected" mode (matches the
+            original design), hover-reveal in "browse" mode (matches
+            ProductCard's pattern), only rendered when a real product is
+            linked. */}
+        {hasProduct && (
+          <motion.button
+            onClick={handleAddToCart}
+            whileTap={{ scale: 0.95 }}
+            className={classNames(
+              'absolute z-10 flex items-center justify-center gap-1.5 rounded-xl py-2.5 text-sm font-medium',
+              isSelected
+                ? 'inset-x-3 bottom-3 bg-white dark:bg-ink-50 text-ink-900 shadow-card'
+                : 'bottom-3 left-3 right-3 opacity-0 translate-y-3 shadow-card-hover bg-ink-900 text-white dark:bg-white dark:text-ink-900 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-y-0'
             )}
           >
             <ShoppingBag className="h-4 w-4" />
             Add to cart
-          </span>
+          </motion.button>
         )}
       </div>
 
       <div className="p-4">
-        <p className="text-xs font-medium text-brand-500 uppercase tracking-wide mb-1">
-          Subcategory
-        </p>
+        <p className="text-xs font-medium text-brand-500 uppercase tracking-wide mb-1">Subcategory</p>
         <h3 className="text-sm font-semibold text-ink-900 dark:text-ink-50 line-clamp-2 leading-snug">
           {name}
         </h3>
-        {!isSelected && (
+        {!isSelected && !hasProduct && (
           <p className="mt-2 text-xs text-ink-400">Tap to shop this subcategory</p>
         )}
-        {isSelected && !linkedProduct && (
+        {hasProduct && (
+          <p className="mt-2 text-xs text-ink-400 line-clamp-1">{linkedProduct.name}</p>
+        )}
+        {isSelected && !hasProduct && (
           <p className="mt-2 text-xs text-ink-400">No products in stock yet</p>
         )}
       </div>
