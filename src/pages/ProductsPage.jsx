@@ -34,7 +34,7 @@ export default function ProductsPage() {
   const [brands, setBrands] = useState([])
   const [loading, setLoading] = useState(true)
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
-  const [productLinks, setProductLinks] = useState({ bySubcategory: {}, byBrand: {} })
+  const [productLinks, setProductLinks] = useState({ bySubcategory: {}, byBrand: {}, byBrandAnyCategory: {} })
 
   const search = searchParams.get('search') || ''
   const subcategory = searchParams.get('subcategory') || null
@@ -127,12 +127,18 @@ export default function ProductsPage() {
   // make the card shoppable.
   //
   // With a single category active, this fetches that category's products
-  // (perPage covers realistic per-category catalog sizes). On "all
-  // categories" it fetches one broader, unscoped batch instead of firing a
-  // separate query per category (16 requests) — if the catalog grows past
-  // this batch size, raise ALL_CATEGORIES_PRODUCT_SAMPLE_SIZE.
-  const SINGLE_CATEGORY_PRODUCT_SAMPLE_SIZE = 100
-  const ALL_CATEGORIES_PRODUCT_SAMPLE_SIZE = 500
+  // directly (perPage comfortably covers a realistic per-category catalog
+  // size). On "all categories" it fetches every category's products the
+  // same way, in parallel, and merges the results — rather than one flat
+  // "newest N products storewide" query. That flat approach used to be
+  // fine when the catalog was small, but it silently breaks as soon as
+  // total product count exceeds the sample size: growth in any category
+  // pushes OLDER products in every other category out of the "newest N"
+  // window, so their tiles lose their linked product even though nothing
+  // about them changed. Fetching per-category sidesteps that entirely —
+  // a category's own products can never be crowded out by unrelated
+  // growth elsewhere in the catalog.
+  const PRODUCT_SAMPLE_SIZE_PER_CATEGORY = 200
 
   useEffect(() => {
     let isMounted = true
@@ -140,6 +146,11 @@ export default function ProductsPage() {
     const buildLinkMaps = (products) => {
       const bySubcategory = {}
       const byBrand = {}
+      // Brand name -> product, ignoring category. Used only when browsing
+      // "All categories" (no activeCategory), where the brand chips/filter
+      // don't carry a specific category id to scope the `byBrand` lookup
+      // above — see brandsWithLinks below.
+      const byBrandAnyCategory = {}
       for (const product of products) {
         const catId = product.category_id ?? product.category?.id
         if (product.subcategory) {
@@ -149,26 +160,34 @@ export default function ProductsPage() {
         if (product.brand) {
           const key = `${catId}::${product.brand}`
           if (!byBrand[key]) byBrand[key] = product
+          if (!byBrandAnyCategory[product.brand]) byBrandAnyCategory[product.brand] = product
         }
       }
-      return { bySubcategory, byBrand }
+      return { bySubcategory, byBrand, byBrandAnyCategory }
     }
 
-    const fetchParams = activeCategory
-      ? { categoryId: activeCategory.id, perPage: SINGLE_CATEGORY_PRODUCT_SAMPLE_SIZE, sortBy: 'newest' }
-      : { perPage: ALL_CATEGORIES_PRODUCT_SAMPLE_SIZE, sortBy: 'newest' }
+    const fetchProducts = activeCategory
+      ? productService
+          .getProducts({ categoryId: activeCategory.id, perPage: PRODUCT_SAMPLE_SIZE_PER_CATEGORY, sortBy: 'newest' })
+          .then(({ data }) => data)
+      : Promise.all(
+          categories.map((cat) =>
+            productService
+              .getProducts({ categoryId: cat.id, perPage: PRODUCT_SAMPLE_SIZE_PER_CATEGORY, sortBy: 'newest' })
+              .then(({ data }) => data)
+          )
+        ).then((perCategoryResults) => perCategoryResults.flat())
 
-    productService
-      .getProducts(fetchParams)
-      .then(({ data }) => {
-        if (isMounted) setProductLinks(buildLinkMaps(data))
+    fetchProducts
+      .then((products) => {
+        if (isMounted) setProductLinks(buildLinkMaps(products))
       })
       .catch(console.error)
 
     return () => {
       isMounted = false
     }
-  }, [activeCategory])
+  }, [activeCategory, categories])
 
   const handleFilterChange = (updates) => {
     const mapped = {}
@@ -235,10 +254,11 @@ export default function ProductsPage() {
   // the active category so cart/wishlist/detail-link act on the right
   // product when the same brand name exists under more than one category.
   const brandsWithLinks = useMemo(() => {
-    if (!activeCategory) return brands
     return brands.map((b) => ({
       ...b,
-      linkedProduct: productLinks.byBrand[`${activeCategory.id}::${b.name}`] || null,
+      linkedProduct: activeCategory
+        ? productLinks.byBrand[`${activeCategory.id}::${b.name}`] || null
+        : productLinks.byBrandAnyCategory[b.name] || null,
     }))
   }, [brands, activeCategory, productLinks])
 

@@ -33,7 +33,7 @@ import { PageLoader } from "@/components/ui/Loader";
 import EmptyState from "@/components/ui/EmptyState";
 import { PackageX } from "lucide-react";
 import { getStaticProductImages } from "@/data/productImages";
-import { getDefinitionForCategory } from "@/data/categoryContent";
+import { getDefinitionForCategory, findDealsItemImageForSubcategory } from "@/data/categoryContent";
 import { getStaticProductById } from "@/data/staticProducts";
 
 // Picks a reasonable icon for a feature badge based on its label text.
@@ -144,24 +144,29 @@ export default function ProductDetailPage() {
     );
   }
 
-  // Same priority order as ProductCard: curated subcategory image first
-  // (so the detail page shows the same real photo as the grid/browse
-  // card), then a static per-SKU image, then whatever Supabase provided.
+  // Same priority order as ProductCard: curated "Top Deals" image first
+  // (so a product reached by clicking a deals tile shows that exact same
+  // photo, not a different one), then curated subcategory image (so the
+  // detail page shows the same real photo as the grid/browse card), then
+  // a static per-SKU image, then whatever Supabase provided.
   const categoryDefinition = getDefinitionForCategory(product.category?.name);
+  const dealsItemImage = findDealsItemImageForSubcategory(categoryDefinition, product.subcategory);
   const subcategoryImage = product.subcategory
     ? categoryDefinition.shopByCategoryImages?.[product.subcategory]
     : null;
   const staticImages = getStaticProductImages(product.sku);
-  const galleryImages = subcategoryImage
-    ? [{ id: 'subcategory-image', url: subcategoryImage, is_primary: true, alt_text: product.name }]
-    : staticImages.length > 0
-      ? staticImages.map((url, i) => ({
-          id: `static-${i}`,
-          url,
-          is_primary: i === 0,
-          alt_text: product.name,
-        }))
-      : product.images;
+  const galleryImages = dealsItemImage
+    ? [{ id: 'deals-item-image', url: dealsItemImage, is_primary: true, alt_text: product.name }]
+    : subcategoryImage
+      ? [{ id: 'subcategory-image', url: subcategoryImage, is_primary: true, alt_text: product.name }]
+      : staticImages.length > 0
+        ? staticImages.map((url, i) => ({
+            id: `static-${i}`,
+            url,
+            is_primary: i === 0,
+            alt_text: product.name,
+          }))
+        : product.images;
 
   const discount = calculateDiscount(product.price, product.compare_at_price);
   const wishlisted = isWishlisted(product.id);

@@ -41,9 +41,14 @@ function TileImage({ src, alt, className }) {
  *    where each entry already has its own distinct name + image
  *
  * variant: 'circle' (small round image + label, used for Trending rows)
- *          'card'   (bigger card with image + name + tag, used for Shop by Category / Featured Brands)
+ *          'card'   (bigger card with image + name + tag, used for Shop by Category / Featured Brands / Trending)
+ * cardSize (only for variant 'card'): 'sm' (w-36, default — Shop by
+ *          Category / Featured Brands) or 'lg' (w-56 sm:w-64, matching the
+ *          real ProductCard grid size — used for Trending/New Releases,
+ *          which used to render actual ProductCards in that grid size
+ *          before always switching to this curated tile row).
  */
-export default function ScrollableTileRow({ title, tiles, images, items, categoryId, variant = 'circle', tagLabel = 'Shop now' }) {
+export default function ScrollableTileRow({ title, tiles, images, items, categoryId, variant = 'circle', cardSize = 'sm', tagLabel = 'Shop now', linkParam = 'subcategory' }) {
   const scrollRef = useRef(null)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(false)
@@ -105,11 +110,24 @@ export default function ScrollableTileRow({ title, tiles, images, items, categor
           {entries.map((entry) => (
             <Link
               key={entry.label}
-              to={`${ROUTES.PRODUCTS}?category=${categoryId}&search=${encodeURIComponent(entry.label)}`}
+              // linkParam controls which filter this row's tiles apply:
+              // 'subcategory' (the default — Shop by Category / Trending
+              // rows) pre-selects that exact subcategory chip on the
+              // Products page and filters to only its products, the same
+              // as clicking a SubcategoryCard there. 'brands' does the
+              // same for the Featured Brands row. Previously this always
+              // used a free-text `search=` param instead, which landed on
+              // the category but left the subcategory/brand unselected and
+              // matched loosely on product names rather than filtering
+              // exactly.
+              to={`${ROUTES.PRODUCTS}?category=${categoryId}&${linkParam}=${encodeURIComponent(entry.label)}`}
               className={classNames(
                 'group shrink-0',
                 isCard
-                  ? 'w-36 rounded-2xl border border-ink-200 dark:border-ink-800 bg-elevated dark:bg-elevated-dark overflow-hidden transition-shadow duration-200 hover:shadow-card'
+                  ? classNames(
+                      cardSize === 'lg' ? 'w-56 sm:w-64' : 'w-36',
+                      'rounded-2xl border border-ink-200 dark:border-ink-800 bg-elevated dark:bg-elevated-dark overflow-hidden transition-shadow duration-200 hover:shadow-card'
+                    )
                   : 'flex flex-col items-center gap-2'
               )}
             >

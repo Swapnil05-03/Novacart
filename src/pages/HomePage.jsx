@@ -1,4 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
+import { useSearchParams } from "react-router-dom";
 import { productService } from "@/services/productService";
 import { ROUTES } from "@/constants";
 import Hero from "@/components/layout/Hero";
@@ -74,7 +75,24 @@ export default function HomePage() {
   const [categoriesLoading, setCategoriesLoading] = useState(
     !homeDataCache.categoriesLoaded,
   );
-  const [activeCategoryId, setActiveCategoryId] = useState(null);
+  // The active category tab lives in the URL (?category=<id>), not local
+  // state — the same pattern ProductsPage already uses. Local state here
+  // meant picking a category never actually changed the page's URL, so
+  // clicking a product (pushing a new history entry) and then pressing
+  // Back landed on the homepage's ORIGINAL url with no category info in
+  // it, remounting HomePage back to its useState(null) default — always
+  // "For You", regardless of which category you were actually browsing.
+  const [searchParams, setSearchParams] = useSearchParams();
+  const activeCategoryId = searchParams.get("category");
+
+  const setActiveCategoryId = (categoryId) => {
+    // replace: true — switching tabs shouldn't stack up browser history
+    // entries (you'd need to hit Back once per tab you'd tried). The URL
+    // still always reflects the current tab, so navigating away to a
+    // product and pressing Back once returns straight to whichever
+    // category you were actually on.
+    setSearchParams(categoryId ? { category: categoryId } : {}, { replace: true });
+  };
 
   useEffect(() => {
     let isMounted = true;

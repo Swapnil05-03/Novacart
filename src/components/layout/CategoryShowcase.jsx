@@ -204,10 +204,20 @@ function PromoBannerPair({ definition, categoryId }) {
 // Deals"), visually matching the ProductCard grid layout — image, discount
 // badge, wishlist heart, category label, and title — since curated
 // dealsItems only carry title/tag/image (no live price data).
-function CuratedDealCard({ item, categoryName, categoryId }) {
+//
+// `linkedProduct` (when found — see findLinkedProduct below) sends the
+// card straight to that real product's own detail page, same as clicking
+// any other product card. Only categories/items with no matching real
+// product yet fall back to the old "search this category" behavior, so
+// the card is never a dead end.
+function CuratedDealCard({ item, categoryName, categoryId, linkedProduct }) {
   return (
     <Link
-      to={`${ROUTES.PRODUCTS}?category=${categoryId}&search=${encodeURIComponent(item.title)}`}
+      to={
+        linkedProduct
+          ? ROUTES.PRODUCT_DETAIL(linkedProduct.id)
+          : `${ROUTES.PRODUCTS}?category=${categoryId}&search=${encodeURIComponent(item.title)}`
+      }
       className="group block rounded-2xl overflow-hidden border border-ink-200 dark:border-ink-800 bg-white dark:bg-ink-900"
     >
       <div className="relative aspect-square overflow-hidden bg-ink-100 dark:bg-ink-800">
@@ -259,8 +269,13 @@ export default function CategoryShowcase({ activeCategory }) {
     let isMounted = true
     setProductsLoading(true)
 
+    // perPage is deliberately generous (not just the 16 needed for the
+    // deals/trending rows below) — the same pool also backs
+    // findLinkedProduct's subcategory lookup for curated deal tiles, which
+    // needs a real chance of covering every subcategory in the category,
+    // not just its newest 16 products.
     productService
-      .getProducts({ categoryId: activeCategory.id, perPage: 16 })
+      .getProducts({ categoryId: activeCategory.id, perPage: 200, sortBy: 'newest' })
       .then(({ data }) => {
         if (isMounted) setCategoryProducts(data)
       })
@@ -282,10 +297,11 @@ export default function CategoryShowcase({ activeCategory }) {
 
   const brandItems = buildBrandRow(definition)
 
-  // Real products for this category, split into two rows so "Today's Best
-  // Deals" and "Trending in X" show different items rather than duplicates.
+  // Real products for this category's "Today's Best Deals" row (used only
+  // when the category has no curated dealsItems — see hasCuratedDeals
+  // below). "Trending in X" further down is always the curated tile row,
+  // not real products.
   const dealsProducts = categoryProducts.slice(0, 8)
-  const trendingProducts = categoryProducts.slice(8, 16)
   const hasRealProducts = categoryProducts.length > 0
 
   // If this category has a curated `dealsItems` list (specific named deal
@@ -296,6 +312,31 @@ export default function CategoryShowcase({ activeCategory }) {
   // products in the database.
   const hasCuratedDeals = Boolean(definition.dealsItems?.length)
   const showRealDealsProducts = hasRealProducts && !hasCuratedDeals
+
+  // Matches a curated deal item's marketing label (e.g. "Noise-Cancelling
+  // Headphones") to a real product, so CuratedDealCard can link straight to
+  // that product's detail page instead of a search results list. Curated
+  // labels are hand-written copy, not exact subcategory names, so this
+  // does a loose match: find whichever real subcategory tile's singular
+  // "stem" (Headphones -> headphone, Cameras -> camera) appears anywhere
+  // in the item's label, then use that subcategory's real linked product.
+  const stem = (s) => {
+    const lower = s.toLowerCase()
+    if (lower.endsWith('es')) return lower.slice(0, -2)
+    if (lower.endsWith('s')) return lower.slice(0, -1)
+    return lower
+  }
+  const bySubcategory = {}
+  for (const product of categoryProducts) {
+    if (product.subcategory && !bySubcategory[product.subcategory]) {
+      bySubcategory[product.subcategory] = product
+    }
+  }
+  const findLinkedProduct = (label) => {
+    const lowerLabel = label.toLowerCase()
+    const matchedTile = definition.tiles.find((tile) => lowerLabel.includes(stem(tile)))
+    return matchedTile ? bySubcategory[matchedTile] || null : null
+  }
 
   // "Shop by Category" images, aligned with definition.tiles
   const shopByCategoryImages = getSectionImages(definition, definition.tiles, 'shopByCategoryImages')
@@ -381,6 +422,7 @@ export default function CategoryShowcase({ activeCategory }) {
                     item={item}
                     categoryName={activeCategory.name}
                     categoryId={activeCategory.id}
+                    linkedProduct={findLinkedProduct(item.title)}
                   />
                 </div>
               ))}
@@ -395,35 +437,23 @@ export default function CategoryShowcase({ activeCategory }) {
           )}
         </section>
 
-        {/* Trending in [Category] — more real products, or placeholder tiles if none exist yet */}
-        {hasRealProducts && trendingProducts.length > 0 ? (
-          <section className="mb-8">
-            <div className="flex items-center justify-between mb-3">
-              <h3 className="text-sm font-bold text-ink-900 dark:text-white">
-                {definition.spotlightLabel}
-              </h3>
-              <Link
-                to={`${ROUTES.PRODUCTS}?category=${activeCategory.id}`}
-                className="text-xs font-medium text-brand-600 dark:text-brand-400 link-underline shrink-0"
-              >
-                View all
-              </Link>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-              {trendingProducts.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </div>
-          </section>
-        ) : (
-          <ScrollableTileRow
-            title={definition.spotlightLabel}
-            tiles={trendingTiles}
-            images={trendingImages}
-            categoryId={activeCategory.id}
-            variant="circle"
-          />
-        )}
+        {/* Trending in [Category] — always the curated 15-tile horizontal
+            scroll row (each tile has its own real image), matching "Shop
+            by Category" above it. This intentionally does NOT switch to a
+            grid of real DB products once some exist for the category —
+            it used to, but that meant adding real products (even just a
+            handful, e.g. for subcategory/brand linking elsewhere) silently
+            shrank this row from all 15 curated tiles down to however many
+            real products happened to exist, which isn't what this section
+            is for. */}
+        <ScrollableTileRow
+          title={definition.spotlightLabel}
+          tiles={trendingTiles}
+          images={trendingImages}
+          categoryId={activeCategory.id}
+          variant="card"
+          cardSize="lg"
+        />
 
         <ScrollableTileRow
           title="Featured Brands"
@@ -431,6 +461,7 @@ export default function CategoryShowcase({ activeCategory }) {
           categoryId={activeCategory.id}
           variant="card"
           tagLabel="Visit store"
+          linkParam="brands"
         />
 
         <CategoryTrustSection categoryName={activeCategory.name} />

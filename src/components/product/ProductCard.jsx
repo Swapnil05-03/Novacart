@@ -6,7 +6,7 @@ import { useCart } from '@/context/CartContext'
 import { formatCurrency, calculateDiscount, classNames } from '@/utils/helpers'
 import { ROUTES } from '@/constants'
 import { getStaticProductImages } from '@/data/productImages'
-import { getDefinitionForCategory } from '@/data/categoryContent'
+import { getDefinitionForCategory, findDealsItemImageForSubcategory } from '@/data/categoryContent'
 import LazyImage from '@/components/ui/LazyImage'
 import Rating from '@/components/ui/Rating'
 import Badge from '@/components/ui/Badge'
@@ -16,21 +16,27 @@ export default function ProductCard({ product }) {
   const { addToCart } = useCart()
 
   // Priority order for the product image, most-specific first:
-  // 1. The curated "shopByCategory" image for this product's subcategory
+  // 1. This subcategory's curated "Top Deals" marketing image, if this
+  //    product happens to be the one a dealsItems tile links to (e.g. the
+  //    "Noise-Cancelling Headphones" deal card) — so clicking that card
+  //    and landing here shows the SAME photo, not a different one.
+  // 2. The curated "shopByCategory" image for this product's subcategory
   //    (src/data/categoryContent.js) — the same real, hand-picked photo
   //    used for the subcategory tile itself, so a "Notebooks" product
   //    shows an actual notebook photo instead of a random/unrelated one.
-  // 2. A static per-SKU image (src/data/productImages.js), if one was
+  // 3. A static per-SKU image (src/data/productImages.js), if one was
   //    curated for this exact product.
-  // 3. Whatever Supabase's product_images join provided — this is the
+  // 4. Whatever Supabase's product_images join provided — this is the
   //    picsum.photos placeholder for newly-seeded products, so it's the
   //    last resort rather than the default.
   const categoryDefinition = getDefinitionForCategory(product.category?.name)
+  const dealsItemImage = findDealsItemImageForSubcategory(categoryDefinition, product.subcategory)
   const subcategoryImage = product.subcategory
     ? categoryDefinition.shopByCategoryImages?.[product.subcategory]
     : null
   const staticImages = getStaticProductImages(product.sku)
   const primaryImage =
+    dealsItemImage ||
     subcategoryImage ||
     staticImages[0] ||
     product.images?.find((img) => img.is_primary)?.url ||

@@ -3035,4 +3035,32 @@ function getDefinitionForCategory(name = '') {
   return CATEGORY_DEFINITIONS[name.toLowerCase()] || DEFAULT_DEFINITION
 }
 
-export { CATEGORY_DEFINITIONS, DEFAULT_DEFINITION, getDefinitionForCategory }
+// Matches a product's subcategory to that category's curated `dealsItems`
+// entry (e.g. subcategory "Headphones" -> the "Noise-Cancelling
+// Headphones" deal tile), if one exists, and returns that entry's own
+// specific marketing image. dealsItems images are hand-picked and distinct
+// from the plainer shopByCategoryImages used for the subcategory tile
+// itself — so without this, a product reached by clicking a deal card
+// would show a different photo on its detail page than the one just
+// clicked. Uses the same singular/plural-tolerant "stem" match as
+// CategoryShowcase's findLinkedProduct, so it stays in sync with which
+// deal tile actually links to this product.
+function findDealsItemImageForSubcategory(definition, subcategory) {
+  if (!subcategory || !definition.dealsItems?.length) return null
+  const stem = (s) => {
+    const lower = s.toLowerCase()
+    if (lower.endsWith('es')) return lower.slice(0, -2)
+    if (lower.endsWith('s')) return lower.slice(0, -1)
+    return lower
+  }
+  const subStem = stem(subcategory)
+  const match = definition.dealsItems.find((item) => item.label.toLowerCase().includes(subStem))
+  return match?.image || null
+}
+
+export {
+  CATEGORY_DEFINITIONS,
+  DEFAULT_DEFINITION,
+  getDefinitionForCategory,
+  findDealsItemImageForSubcategory,
+}
