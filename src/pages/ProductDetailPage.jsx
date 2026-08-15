@@ -150,7 +150,7 @@ export default function ProductDetailPage() {
   // detail page shows the same real photo as the grid/browse card), then
   // a static per-SKU image, then whatever Supabase provided.
   const categoryDefinition = getDefinitionForCategory(product.category?.name);
-  const dealsItemImage = findDealsItemImageForSubcategory(categoryDefinition, product.subcategory);
+  const dealsItemImage = findDealsItemImageForSubcategory(categoryDefinition, product.subcategory, product.name);
   const subcategoryImage = product.subcategory
     ? categoryDefinition.shopByCategoryImages?.[product.subcategory]
     : null;

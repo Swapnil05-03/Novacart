@@ -806,10 +806,10 @@ import beautyBrandMamaearth from '@/assets/images/categories/beauty/featuredBran
 
 import beautyDealsGrooming from '@/assets/images/categories/beauty/limitedTimeDeals/grooming.jpg'
 import beautyDealsLipstick from '@/assets/images/categories/beauty/limitedTimeDeals/matte.webp'
-import beautyDealsFaceWash from '@/assets/images/categories/beauty/limitedTimeDeals/vitamin.jpg'
-import beautyDealsSerum from '@/assets/images/categories/beauty/limitedTimeDeals/hair-spa.jpg'
+import beautyDealsFaceWash from '@/assets/images/categories/beauty/limitedTimeDeals/sunscreen.jpg'
+import beautyDealsSerum from '@/assets/images/categories/beauty/limitedTimeDeals/vitamin.jpg'
 import beautyDealsDeoPerfume from '@/assets/images/categories/beauty/limitedTimeDeals/perfume.webp'
-import beautyDealsHairSpa from '@/assets/images/categories/beauty/limitedTimeDeals/sunscreen.jpg'
+import beautyDealsHairSpa from '@/assets/images/categories/beauty/limitedTimeDeals/hair-spa.jpg'
 
 // --- Appliances: locally-hosted images, same per-section folder pattern.
 import appliancesBannerOne from '@/assets/images/categories/appliances/banners/banner1.jpg'
@@ -3035,32 +3035,78 @@ function getDefinitionForCategory(name = '') {
   return CATEGORY_DEFINITIONS[name.toLowerCase()] || DEFAULT_DEFINITION
 }
 
-// Matches a product's subcategory to that category's curated `dealsItems`
-// entry (e.g. subcategory "Headphones" -> the "Noise-Cancelling
-// Headphones" deal tile), if one exists, and returns that entry's own
-// specific marketing image. dealsItems images are hand-picked and distinct
-// from the plainer shopByCategoryImages used for the subcategory tile
-// itself — so without this, a product reached by clicking a deal card
-// would show a different photo on its detail page than the one just
-// clicked. Uses the same singular/plural-tolerant "stem" match as
-// CategoryShowcase's findLinkedProduct, so it stays in sync with which
-// deal tile actually links to this product.
-function findDealsItemImageForSubcategory(definition, subcategory) {
-  if (!subcategory || !definition.dealsItems?.length) return null
-  const stem = (s) => {
-    const lower = s.toLowerCase()
-    if (lower.endsWith('es')) return lower.slice(0, -2)
-    if (lower.endsWith('s')) return lower.slice(0, -1)
-    return lower
-  }
-  const subStem = stem(subcategory)
-  const match = definition.dealsItems.find((item) => item.label.toLowerCase().includes(subStem))
-  return match?.image || null
+// Same word-level stemming used by CategoryShowcase's findLinkedProduct —
+// kept in sync so the two directions of the match (deal label -> product,
+// product's subcategory -> deal image) always agree, even for multi-word
+// subcategories like "Pens & Pencils" or "Kids' Books" (a naive
+// single-string stem breaks on those: it only chops the last character
+// off the *whole* string, producing nonsense like "pens & pencil" that
+// never appears in a deal label).
+function stemWord(word) {
+  const lower = word.toLowerCase().replace(/[^a-z]/g, '')
+  if (lower.endsWith('es') && lower.length > 3) return lower.slice(0, -2)
+  if (lower.endsWith('s') && lower.length > 2) return lower.slice(0, -1)
+  return lower
 }
 
-export {
-  CATEGORY_DEFINITIONS,
-  DEFAULT_DEFINITION,
-  getDefinitionForCategory,
-  findDealsItemImageForSubcategory,
+// Word-boundary-safe test — plain `String.includes()` would count "men"
+// as present inside "women", or "book" as present inside "notebook"/
+// "storybook", which caused real mismatches. Requiring a boundary
+// immediately before the stem rules those out.
+function stemAppearsIn(stemmed, lowerLabel) {
+  return new RegExp(`\\b${stemmed}`).test(lowerLabel)
 }
+
+// Reverse of CategoryShowcase's findLinkedProduct: given a category
+// definition and a real product, finds the curated `dealsItems` entry
+// whose marketing label most closely matches that product, so
+// ProductDetailPage shows that same curated photo instead of a
+// different, possibly mismatched image drawn from the product's own
+// data (e.g. an admin-added product's own DB photo).
+//
+// Tries two strategies:
+// 1. subcategory match — e.g. product.subcategory "Hoodies" -> a deal
+//    labeled "Men's Oversized Cotton Hoodie".
+// 2. product NAME match — e.g. product.name "Vitamin C Brightening
+//    Serum" -> a deal labeled "Women's Vitamin C Serum". Needed for
+//    products whose subcategory doesn't share any word with a deal
+//    label, or has no subcategory set at all (common for admin-added
+//    products) — without this, those products fell through to their
+//    own (often unrelated) DB photo instead of the curated one shown
+//    on the card that linked here.
+function findDealsItemImageForSubcategory(definition, subcategory, productName) {
+  if (!definition?.dealsItems?.length) return null
+
+  const scoreAgainst = (text) => {
+    if (!text) return null
+    const words = text
+      .split(/\s+/)
+      .filter((w) => w.replace(/[^a-zA-Z]/g, '').length > 2)
+
+    let bestItem = null
+    let bestScore = 0
+    for (const item of definition.dealsItems) {
+      const lowerLabel = item.label.toLowerCase()
+      let itemScore = 0
+      for (const word of words) {
+        const stemmed = stemWord(word)
+        if (stemmed && stemmed !== 'men' && stemmed !== 'women' && stemAppearsIn(stemmed, lowerLabel)) itemScore += stemmed.length
+      }
+      if (itemScore > bestScore) {
+        bestScore = itemScore
+        bestItem = item
+      }
+    }
+    return bestItem
+  }
+
+  const bySubcategory = scoreAgainst(subcategory)
+  if (bySubcategory) return bySubcategory.image
+
+  const byName = scoreAgainst(productName)
+  if (byName) return byName.image
+
+  return null
+}
+
+export { CATEGORY_DEFINITIONS, DEFAULT_DEFINITION, getDefinitionForCategory, findDealsItemImageForSubcategory }

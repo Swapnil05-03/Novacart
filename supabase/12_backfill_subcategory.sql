@@ -14,11 +14,14 @@
 -- only appear once you add real gendered SKUs (see note at the bottom).
 --
 -- NOTE on Two Wheelers: the sub-category tiles defined in
--- categoryContent.js for this category are bike TYPES (Sports Bikes,
--- Cruiser Bikes, Adventure Bikes...), but the actual seeded products are
--- riding GEAR (jackets, gloves, covers, locks) — a mismatch in the app's
--- own design, not something a backfill script can safely paper over.
--- Left unmapped below; flagged for your decision (see message).
+-- categoryContent.js for this category were originally all bike TYPES
+-- (Sports Bikes, Cruiser Bikes, Adventure Bikes...), while the actual
+-- seeded products are riding GEAR (jackets, gloves, covers, locks) — a
+-- mismatch in the app's own design. categoryContent.js now also defines
+-- 6 riding-gear tiles (Riding Jackets, Bike Covers, Riding Gloves,
+-- Headlights & Lighting, Saddle Bags, Locks & Alarms) that match these
+-- products, each reusing that product's own correct image — see the
+-- mapping below.
 -- ============================================================================
 
 -- Mobiles
@@ -68,6 +71,14 @@ update public.products set subcategory = 'Baby Care'           where sku = 'NC-F
 update public.products set subcategory = 'Spices & Masalas'    where sku = 'NC-FH-005';
 update public.products set subcategory = 'Kitchen Essentials'  where sku = 'NC-FH-006';
 
+-- Two Wheelers (riding gear — see NOTE above)
+update public.products set subcategory = 'Riding Jackets'         where sku = 'NC-TW-001'; -- Riding Jacket with Armor
+update public.products set subcategory = 'Bike Covers'            where sku = 'NC-TW-002'; -- Bike Cover — All Weather
+update public.products set subcategory = 'Riding Gloves'          where sku = 'NC-TW-003'; -- Riding Gloves with Knuckle Guard
+update public.products set subcategory = 'Headlights & Lighting'  where sku = 'NC-TW-004'; -- LED Headlight Upgrade Kit
+update public.products set subcategory = 'Saddle Bags'            where sku = 'NC-TW-005'; -- Saddle Bag — Waterproof
+update public.products set subcategory = 'Locks & Alarms'         where sku = 'NC-TW-006'; -- Bike Disc Lock with Alarm
+
 -- Auto Accessories
 update public.products set subcategory = 'Cleaning Accessories'   where sku = 'NC-AA-001';
 update public.products set subcategory = 'Tyre & Rim Care'        where sku = 'NC-AA-002';
@@ -77,7 +88,15 @@ update public.products set subcategory = 'Seat Covers'            where sku = 'N
 update public.products set subcategory = 'Dashboard Accessories'  where sku = 'NC-AA-006';
 
 -- Sports & Outdoors
-update public.products set subcategory = 'Skating Gear'      where sku = 'NC-SP-001'; -- yoga mat: no exact tile, closest fit is generic gear; consider adding a 'Yoga & Wellness' tile
+-- NC-SP-001 (Non-Slip Yoga Mat) was previously mapped to 'Skating Gear'
+-- here as a "closest fit" placeholder. That was a mistake: 'Skating Gear'
+-- is a real, valid tile in this category's shopByCategoryImages map, so
+-- the product card/detail page confidently rendered the Skating Gear tile
+-- photo instead of the product's own (correct) yoga mat photo — a
+-- product-image mismatch, not a harmless fallback. There is no matching
+-- Sports & Outdoors tile for yoga mats, so leave it unmapped (same
+-- pattern as NC-MB-001 above) — this makes ProductCard/ProductDetailPage
+-- fall through to the product's own curated per-SKU image instead.
 update public.products set subcategory = 'Camping Equipment' where sku = 'NC-SP-004';
 update public.products set subcategory = 'Cycling Gear'      where sku = 'NC-SP-005';
 update public.products set subcategory = 'Cricket Gear'      where sku = 'NC-SP-006';
@@ -101,18 +120,31 @@ update public.products set subcategory = 'Bookshelves'      where sku = 'NC-FN-0
 update public.products set subcategory = 'TV Units'         where sku = 'NC-FN-005';
 update public.products set subcategory = 'Outdoor Furniture' where sku = 'NC-FN-006';
 
--- Apparel (original 6 categories, 04_seed_data.sql) — unisex, no gender set
-update public.products set subcategory = 'T-Shirts'  where sku = 'NC-AP-001'; -- Everyday Crewneck
-update public.products set subcategory = 'T-Shirts'  where sku = 'NC-AP-002'; -- Mono Tee
-update public.products set subcategory = 'Hoodies'   where sku = 'NC-AP-003'; -- Trail Pullover Hoodie
-update public.products set subcategory = 'Jackets'   where sku = 'NC-AP-004'; -- Wool Blend Overcoat
+-- Apparel (original 6 categories, 04_seed_data.sql) — unisex, no gender set.
+-- IMPORTANT: left unmapped on purpose (do not tag these with a tile).
+-- Apparel/Accessories only define GENDERED tiles (e.g. 'Jackets' resolves
+-- to a WOMEN's jacket photo, 'T-Shirts'/'Hoodies'/'Bags' resolve to MEN's
+-- photos of a different specific item). These 4 products already have
+-- their own correct, product-specific image from Supabase
+-- (07_fix_product_images.sql) — tagging them with a gendered subcategory
+-- made the storefront override that correct photo with an unrelated
+-- gendered stock photo (e.g. the unisex 'Wool Blend Overcoat' showed a
+-- WOMEN's jacket photo). See 14_fix_product_image_mismatches.sql.
+-- NC-AP-001 (Everyday Crewneck), NC-AP-002 (Mono Tee), NC-AP-003 (Trail
+-- Pullover Hoodie), NC-AP-004 (Wool Blend Overcoat).
 
--- Accessories (original 6 categories, 04_seed_data.sql) — unisex, no gender set
-update public.products set subcategory = 'Wallets'   where sku = 'NC-AC-001'; -- Cardholder
-update public.products set subcategory = 'Bags'      where sku = 'NC-AC-002'; -- Weekender Bag
-update public.products set subcategory = 'Watches'   where sku = 'NC-AC-003'; -- Stainless Steel Watch
+-- Accessories (original 6 categories, 04_seed_data.sql) — unisex, no gender
+-- set. Same reasoning as Apparel above: 'Bags' and 'Watches' are real,
+-- gendered tile keys here (Bags -> a MEN's bag photo, Watches -> a
+-- WOMEN's watch photo) that don't match these unisex products, so they're
+-- left unmapped rather than overriding their correct own images.
+-- ('Wallets' was already a no-op — there's no plain 'Wallets' tile, only
+-- "Men's Wallets" — but it's removed here too for clarity.)
+-- NC-AC-001 (Cardholder), NC-AC-002 (Canvas Weekender Bag), NC-AC-003
+-- (Stainless Steel Watch).
 
 -- Fitness, Office, Electronics, Home & Living: current tile lists for these
 -- categories don't cleanly match the small seeded product sets either —
 -- reviewed and intentionally left unmapped rather than guessing. Same
--- pattern as the Two Wheelers/Mobiles/Sports gaps noted above.
+-- pattern as the Mobiles/Sports gaps noted above (Two Wheelers now has
+-- matching gear tiles — see the Two Wheelers section above).

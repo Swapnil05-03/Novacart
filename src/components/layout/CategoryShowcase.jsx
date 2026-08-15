@@ -313,29 +313,138 @@ export default function CategoryShowcase({ activeCategory }) {
   const hasCuratedDeals = Boolean(definition.dealsItems?.length)
   const showRealDealsProducts = hasRealProducts && !hasCuratedDeals
 
-  // Matches a curated deal item's marketing label (e.g. "Noise-Cancelling
-  // Headphones") to a real product, so CuratedDealCard can link straight to
-  // that product's detail page instead of a search results list. Curated
-  // labels are hand-written copy, not exact subcategory names, so this
-  // does a loose match: find whichever real subcategory tile's singular
-  // "stem" (Headphones -> headphone, Cameras -> camera) appears anywhere
-  // in the item's label, then use that subcategory's real linked product.
-  const stem = (s) => {
-    const lower = s.toLowerCase()
-    if (lower.endsWith('es')) return lower.slice(0, -2)
-    if (lower.endsWith('s')) return lower.slice(0, -1)
+  // Matches a curated deal item's marketing label (e.g. "Men's Polarized
+  // Aviator Sunglasses") to a real product, so CuratedDealCard can link
+  // straight to that product's detail page instead of a search results
+  // list. Curated labels are hand-written copy, not exact subcategory
+  // names, so this does a loose match — see the helper functions below
+  // for exactly how.
+  //
+  // Real DB subcategories are frequently gendered ("Men's Sunglasses",
+  // "Women's Watches") and those gendered names often live ONLY inside a
+  // category's `tileGroups` (e.g. Accessories' Men/Women split), not in
+  // its flat `tiles` list. Searching just `tiles` — as this used to do —
+  // meant every gendered deal item could only ever match the generic,
+  // ungendered tile name, which then silently linked to a completely
+  // different (wrong) product that happened to share that generic
+  // subcategory, or matched nothing at all. `allTiles` below covers both.
+  const allTiles = [
+    ...(definition.tiles || []),
+    ...(definition.tileGroups || []).flatMap((group) => group.tiles || []),
+  ]
+
+  // Singularizes one word (Sunglasses -> sunglass, Books -> book).
+  const stem = (word) => {
+    const lower = word.toLowerCase().replace(/[^a-z]/g, '')
+    if (lower.endsWith('es') && lower.length > 3) return lower.slice(0, -2)
+    if (lower.endsWith('s') && lower.length > 2) return lower.slice(0, -1)
     return lower
   }
+
+  // Word-boundary-safe test — plain `String.includes()` would count "men"
+  // as present inside "women", or "book" as present inside "notebook"/
+  // "storybook", which caused real mismatches (a men's product linking to
+  // a women's one; a notebook deal winning over a genuinely book-related
+  // one). Requiring a boundary immediately before the stem rules those
+  // out, since "men" only starts a boundary in "Men's", not mid-word in
+  // "Women's".
+  const stemAppearsIn = (stemmed, lowerLabel) => new RegExp(`\\b${stemmed}`).test(lowerLabel)
+
+// "Men"/"Women" alone should never decide a match — they only say who
+  // the item is for, not what kind of item it is, and nearly every
+  // gendered tile/label in a category contains one of them. Without
+  // excluding them, a deal label like "Men's Slim-Fit Chinos" could match
+  // a completely unrelated tile like "Men's Ethnic Wear" on the strength
+  // of "Men's" alone, ignoring that "chinos" appears nowhere in it.
+  const GENERIC_STOPWORDS = new Set(['men', 'women'])
+
+  // Scores a phrase (a tile name OR a real product's name) against a deal
+  // label by *summing* every one of the phrase's words that appears in the
+  // label (not just the single longest word found) — so a fully-specific
+  // phrase like "Men's Sunglasses" (matches both "men" and "sunglass")
+  // clearly outscores the generic "Sunglasses" tile (matches only
+  // "sunglass") for a label like "Men's Polarized Aviator Sunglasses",
+  // correctly preferring the more specific match.
+  const phraseMatchScore = (phrase, lowerLabel) => {
+    const words = phrase.split(/\s+/).filter((w) => w.replace(/[^a-zA-Z]/g, '').length > 2)
+    let total = 0
+    for (const word of words) {
+      const stemmed = stem(word)
+      if (!stemmed || GENERIC_STOPWORDS.has(stemmed)) continue
+      if (stemAppearsIn(stemmed, lowerLabel)) total += stemmed.length
+    }
+    return total
+  }
+
+  // Real product `subcategory` values (from Supabase) are keyed here by a
+  // *normalized* form (lowercased, punctuation stripped) rather than the
+  // raw string, so a tile name and a DB subcategory that mean the same
+  // thing but are typed slightly differently — e.g. the database's
+  // "Kid's Books" vs categoryContent.js's "Kids' Books", or any other
+  // stray apostrophe/hyphen mismatch — still resolve to the same product,
+  // instead of the lookup silently missing on that one tile.
+  const normalizeKey = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, '')
   const bySubcategory = {}
   for (const product of categoryProducts) {
-    if (product.subcategory && !bySubcategory[product.subcategory]) {
-      bySubcategory[product.subcategory] = product
+    if (product.subcategory) {
+      const key = normalizeKey(product.subcategory)
+      if (!bySubcategory[key]) bySubcategory[key] = product
     }
   }
+
+  // Matches a curated deal card to a real product using two strategies,
+  // then keeps whichever result is the *stronger, more specific* match —
+  // not just whichever strategy happened to find something first:
+  //
+  // 1. Sub-category match: find the tile name that best overlaps with the
+  //    deal label's words, then look up a real product tagged with that
+  //    exact subcategory.
+  //
+  // 2. Product-name match: match the deal label directly against real
+  //    products' own names, since many deal labels use specific product
+  //    vocabulary ("Vitamin C Serum", "Chinos") that never appears in any
+  //    tile name at all.
+  //
+  // Comparing scores (instead of returning as soon as strategy 1 finds
+  // *any* match) matters because a coincidental one-word subcategory
+  // match can otherwise beat a real, specific product-name match — e.g.
+  // without this, "Men's Slim-Fit Chinos" could resolve to a generic
+  // "Men's Ethnic Wear" filler product just because both happen to be
+  // tagged "Men's", even though a product genuinely about chinos might
+  // exist and score higher on its own name.
+  //
+  // If neither strategy finds anything with score > 0, this returns null.
+  // An unmatched card then falls through to CuratedDealCard's
+  // category-search link instead of opening some unrelated product's
+  // page, which would be actively misleading.
   const findLinkedProduct = (label) => {
     const lowerLabel = label.toLowerCase()
-    const matchedTile = definition.tiles.find((tile) => lowerLabel.includes(stem(tile)))
-    return matchedTile ? bySubcategory[matchedTile] || null : null
+
+    let bestTile = null
+    let bestTileScore = 0
+    for (const tile of allTiles) {
+      const score = phraseMatchScore(tile, lowerLabel)
+      if (score > bestTileScore) {
+        bestTileScore = score
+        bestTile = tile
+      }
+    }
+    const subcategoryMatch = bestTile ? bySubcategory[normalizeKey(bestTile)] : null
+
+    let bestProduct = null
+    let bestProductScore = 0
+    for (const product of categoryProducts) {
+      if (!product.name) continue
+      const score = phraseMatchScore(product.name, lowerLabel)
+      if (score > bestProductScore) {
+        bestProductScore = score
+        bestProduct = product
+      }
+    }
+
+    if (subcategoryMatch && bestTileScore >= bestProductScore) return subcategoryMatch
+    if (bestProduct) return bestProduct
+    return subcategoryMatch || null
   }
 
   // "Shop by Category" images, aligned with definition.tiles
