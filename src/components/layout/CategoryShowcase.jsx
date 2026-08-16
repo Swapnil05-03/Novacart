@@ -356,7 +356,7 @@ export default function CategoryShowcase({ activeCategory }) {
   // excluding them, a deal label like "Men's Slim-Fit Chinos" could match
   // a completely unrelated tile like "Men's Ethnic Wear" on the strength
   // of "Men's" alone, ignoring that "chinos" appears nowhere in it.
-  const GENERIC_STOPWORDS = new Set(['men', 'women'])
+  const GENERIC_STOPWORDS = new Set(['men', 'women', 'slim', 'fit', 'set', 'kit', 'pack', 'combo', 'pick', 'essential', 'premium'])
 
   // Scores a phrase (a tile name OR a real product's name) against a deal
   // label by *summing* every one of the phrase's words that appears in the
@@ -366,7 +366,7 @@ export default function CategoryShowcase({ activeCategory }) {
   // "sunglass") for a label like "Men's Polarized Aviator Sunglasses",
   // correctly preferring the more specific match.
   const phraseMatchScore = (phrase, lowerLabel) => {
-    const words = phrase.split(/\s+/).filter((w) => w.replace(/[^a-zA-Z]/g, '').length > 2)
+    const words = phrase.split(/[\s-]+/).filter((w) => w.replace(/[^a-zA-Z]/g, '').length > 2)
     let total = 0
     for (const word of words) {
       const stemmed = stem(word)

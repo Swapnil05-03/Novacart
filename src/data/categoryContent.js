@@ -3077,10 +3077,17 @@ function stemAppearsIn(stemmed, lowerLabel) {
 function findDealsItemImageForSubcategory(definition, subcategory, productName) {
   if (!definition?.dealsItems?.length) return null
 
+  // Same stopword list as CategoryShowcase's findLinkedProduct — generic
+  // descriptive words that coincidentally overlap between unrelated
+  // labels (e.g. "Fit" shared between "Slim-Fit Chinos" and "Slim Fit
+  // Denim Jeans") must not count as a real match on either side of the
+  // lookup, or the two directions can disagree.
+  const GENERIC_STOPWORDS = new Set(['men', 'women', 'slim', 'fit', 'set', 'kit', 'pack', 'combo', 'pick', 'essential', 'premium'])
+
   const scoreAgainst = (text) => {
-    if (!text) return null
+    if (!text) return { item: null, score: 0 }
     const words = text
-      .split(/\s+/)
+      .split(/[\s-]+/)
       .filter((w) => w.replace(/[^a-zA-Z]/g, '').length > 2)
 
     let bestItem = null
@@ -3090,23 +3097,22 @@ function findDealsItemImageForSubcategory(definition, subcategory, productName) 
       let itemScore = 0
       for (const word of words) {
         const stemmed = stemWord(word)
-        if (stemmed && stemmed !== 'men' && stemmed !== 'women' && stemAppearsIn(stemmed, lowerLabel)) itemScore += stemmed.length
+        if (stemmed && !GENERIC_STOPWORDS.has(stemmed) && stemAppearsIn(stemmed, lowerLabel)) itemScore += stemmed.length
       }
       if (itemScore > bestScore) {
         bestScore = itemScore
         bestItem = item
       }
     }
-    return bestItem
+    return { item: bestItem, score: bestScore }
   }
 
   const bySubcategory = scoreAgainst(subcategory)
-  if (bySubcategory) return bySubcategory.image
-
   const byName = scoreAgainst(productName)
-  if (byName) return byName.image
 
-  return null
+  if (bySubcategory.item && bySubcategory.score >= byName.score) return bySubcategory.item.image
+  if (byName.item) return byName.item.image
+  return bySubcategory.item?.image || null
 }
 
 export { CATEGORY_DEFINITIONS, DEFAULT_DEFINITION, getDefinitionForCategory, findDealsItemImageForSubcategory }
