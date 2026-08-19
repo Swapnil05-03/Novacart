@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom'
 
 import MainLayout from '@/layouts/MainLayout'
 import AuthLayout from '@/layouts/AuthLayout'
+import LoginVisualPanel from '@/components/auth/LoginVisualPanel'
 import AdminLayout from '@/layouts/AdminLayout'
 import ProfileLayout from '@/layouts/ProfileLayout'
 
@@ -79,9 +80,11 @@ export default function App() {
           </Route>
 
           {/* Auth pages */}
-          <Route element={<AuthLayout />}>
+          <Route element={<AuthLayout rightPanel={<LoginVisualPanel />} />}>
             <Route path={ROUTES.LOGIN} element={<PageTransition><LoginPage /></PageTransition>} />
             <Route path={ROUTES.SIGNUP} element={<PageTransition><SignupPage /></PageTransition>} />
+          </Route>
+          <Route element={<AuthLayout />}>
             <Route path={ROUTES.FORGOT_PASSWORD} element={<PageTransition><ForgotPasswordPage /></PageTransition>} />
             <Route path={ROUTES.RESET_PASSWORD} element={<PageTransition><ResetPasswordPage /></PageTransition>} />
           </Route>
