@@ -4,8 +4,10 @@
 
 const ADDRESS_KEY_PREFIX = 'novacart-addresses-'
 const PREFS_KEY_PREFIX = 'novacart-comm-prefs-'
+const EMAIL_PREFS_KEY_PREFIX = 'novacart-email-prefs-'
 
 const DEFAULT_PREFS = { email: true, sms: false }
+const DEFAULT_EMAIL_PREFS = { orderUpdates: true, promotions: true, newsletter: true }
 
 function readJSON(key, fallback) {
   try {
@@ -42,4 +44,14 @@ export function getCommPrefs(userId) {
 export function saveCommPrefs(userId, prefs) {
   if (!userId) return
   writeJSON(PREFS_KEY_PREFIX + userId, prefs)
+}
+
+export function getEmailPrefs(userId) {
+  if (!userId) return DEFAULT_EMAIL_PREFS
+  return readJSON(EMAIL_PREFS_KEY_PREFIX + userId, DEFAULT_EMAIL_PREFS)
+}
+
+export function saveEmailPrefs(userId, prefs) {
+  if (!userId) return
+  writeJSON(EMAIL_PREFS_KEY_PREFIX + userId, prefs)
 }

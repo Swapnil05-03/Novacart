@@ -50,6 +50,52 @@ export const authService = {
     if (error) throw error
   },
 
+  /**
+   * Re-authenticates with the current password before a sensitive change.
+   * Supabase's updateUser() doesn't require the current password itself,
+   * so we verify it client-side first for a safer UX.
+   */
+  async verifyCurrentPassword(email, currentPassword) {
+    const { error } = await supabase.auth.signInWithPassword({ email, password: currentPassword })
+    if (error) throw new Error('Current password is incorrect')
+  },
+
+  /** Signs out every session except the one currently in use. */
+  async signOutOtherDevices() {
+    const { error } = await supabase.auth.signOut({ scope: 'others' })
+    if (error) throw error
+  },
+
+  // --- Two-factor authentication (TOTP via Supabase MFA) -------------------
+
+  async listMfaFactors() {
+    const { data, error } = await supabase.auth.mfa.listFactors()
+    if (error) throw error
+    return data.totp || []
+  },
+
+  async enrollMfa() {
+    const { data, error } = await supabase.auth.mfa.enroll({ factorType: 'totp' })
+    if (error) throw error
+    return data
+  },
+
+  async verifyMfaEnrollment(factorId, code) {
+    const { data: challenge, error: challengeError } = await supabase.auth.mfa.challenge({ factorId })
+    if (challengeError) throw challengeError
+    const { error: verifyError } = await supabase.auth.mfa.verify({
+      factorId,
+      challengeId: challenge.id,
+      code,
+    })
+    if (verifyError) throw verifyError
+  },
+
+  async unenrollMfa(factorId) {
+    const { error } = await supabase.auth.mfa.unenroll({ factorId })
+    if (error) throw error
+  },
+
   async getSession() {
     const { data, error } = await supabase.auth.getSession()
     if (error) throw error
