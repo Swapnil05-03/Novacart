@@ -110,3 +110,22 @@
     @apply w-full;
   }
 }
+
+/* Printable invoice: hide everything except the invoice content when
+   printing. #invoice-print-area is rendered via the Modal's portal so it
+   sits at the document root, making this reliable regardless of what
+   other UI is open behind it. */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #invoice-print-area,
+  #invoice-print-area * {
+    visibility: visible;
+  }
+  #invoice-print-area {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+  }
+}

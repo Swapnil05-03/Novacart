@@ -336,7 +336,7 @@ export default function ProfilePage() {
 
           {addresses.length === 0 ? (
             <p className="text-sm text-ink-500 dark:text-ink-400">
-              You haven't saved any addresses yet. Add one to speed up checkout.
+              You haven&apos;t saved any addresses yet. Add one to speed up checkout.
             </p>
           ) : (
             <div className="space-y-3">

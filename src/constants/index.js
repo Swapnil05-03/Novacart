@@ -9,6 +9,8 @@ export const ORDER_STATUS = {
   SHIPPED: 'shipped',
   DELIVERED: 'delivered',
   CANCELLED: 'cancelled',
+  RETURN_REQUESTED: 'return_requested',
+  RETURNED: 'returned',
 }
 
 export const ORDER_STATUS_LABELS = {
@@ -17,7 +19,18 @@ export const ORDER_STATUS_LABELS = {
   [ORDER_STATUS.SHIPPED]: 'Shipped',
   [ORDER_STATUS.DELIVERED]: 'Delivered',
   [ORDER_STATUS.CANCELLED]: 'Cancelled',
+  [ORDER_STATUS.RETURN_REQUESTED]: 'Return Requested',
+  [ORDER_STATUS.RETURNED]: 'Returned',
 }
+
+// Orders in these statuses can still be cancelled by the customer.
+export const CANCELLABLE_STATUSES = [ORDER_STATUS.PENDING, ORDER_STATUS.PROCESSING]
+
+// Orders in these statuses are eligible for a return/refund request.
+export const RETURNABLE_STATUSES = [ORDER_STATUS.DELIVERED]
+
+// Orders in these statuses can be removed from the customer's visible history.
+export const REMOVABLE_FROM_HISTORY_STATUSES = [ORDER_STATUS.CANCELLED, ORDER_STATUS.RETURNED]
 
 export const ORDER_STATUS_FLOW = [
   ORDER_STATUS.PENDING,

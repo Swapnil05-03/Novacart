@@ -6,7 +6,7 @@ const ORDER_SELECT = `
   order_items(
     id, quantity, price_at_purchase,
     product:products(
-      id, name, slug, sku, subcategory,
+      id, name, slug, sku, subcategory, price, stock, is_active,
       category:categories(id, name),
       images:product_images(url, is_primary)
     )
@@ -62,12 +62,73 @@ export const orderService = {
     return data
   },
 
-  async getUserOrders(userId) {
-    const { data, error } = await supabase
+  async getUserOrders(userId, { includeHidden = false } = {}) {
+    let query = supabase
       .from('orders')
       .select(ORDER_SELECT)
       .eq('user_id', userId)
       .order('created_at', { ascending: false })
+
+    if (!includeHidden) {
+      query = query.eq('hidden_from_history', false)
+    }
+
+    const { data, error } = await query
+    if (error) throw error
+    return data
+  },
+
+  /**
+   * Cancels a customer's own order. Only allowed while the order is still
+   * pending/processing — the UI enforces this too, but the RLS policy plus
+   * this status list keep it consistent if called directly.
+   */
+  async cancelOrder(orderId, { previousPaymentStatus } = {}) {
+    const updates = {
+      status: 'cancelled',
+      cancelled_at: new Date().toISOString(),
+    }
+    // If the order had already been paid for, reflect that the payment is
+    // now being reversed rather than leaving it marked "paid".
+    if (previousPaymentStatus === 'paid') {
+      updates.payment_status = 'refunded'
+    }
+    const { data, error } = await supabase.from('orders').update(updates).eq('id', orderId).select(ORDER_SELECT).single()
+    if (error) throw error
+    return data
+  },
+
+  /**
+   * Submits a return/refund request for a delivered order.
+   */
+  async requestReturn(orderId, { reason, comment, refundMethod }) {
+    const { data, error } = await supabase
+      .from('orders')
+      .update({
+        status: 'return_requested',
+        return_requested_at: new Date().toISOString(),
+        return_reason: reason,
+        return_comment: comment || null,
+        refund_method: refundMethod,
+      })
+      .eq('id', orderId)
+      .select(ORDER_SELECT)
+      .single()
+    if (error) throw error
+    return data
+  },
+
+  /**
+   * Hides a cancelled/returned order from the customer's visible order
+   * history. This never deletes the underlying order row.
+   */
+  async hideFromHistory(orderId) {
+    const { data, error } = await supabase
+      .from('orders')
+      .update({ hidden_from_history: true })
+      .eq('id', orderId)
+      .select()
+      .single()
     if (error) throw error
     return data
   },
