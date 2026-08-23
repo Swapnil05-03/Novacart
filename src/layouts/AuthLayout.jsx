@@ -3,7 +3,7 @@ import { ROUTES, APP_NAME } from '@/constants'
 
 export default function AuthLayout({ rightPanel }) {
   return (
-    <div className="min-h-screen bg-ink-950">
+    <div className="min-h-screen bg-surface dark:bg-surface-dark">
       <div className="mx-auto grid min-h-screen max-w-[1280px] lg:grid-cols-2">
         {/* Form column */}
         <div className="flex flex-col justify-center px-6 sm:px-12 lg:px-16 py-12">
@@ -23,7 +23,7 @@ export default function AuthLayout({ rightPanel }) {
         </div>
 
         {/* Visual column */}
-        <div className="hidden lg:flex relative bg-ink-950 items-center justify-center overflow-hidden border-l border-white/[0.06]">
+        <div className="hidden lg:flex relative bg-ink-50 dark:bg-ink-950 items-center justify-center overflow-hidden border-l border-ink-200 dark:border-white/[0.06]">
           {rightPanel ? (
             rightPanel
           ) : (
@@ -35,11 +35,11 @@ export default function AuthLayout({ rightPanel }) {
                     'radial-gradient(circle at 20% 20%, rgba(91,95,239,0.35), transparent 40%), radial-gradient(circle at 80% 70%, rgba(245,166,35,0.18), transparent 45%)',
                 }}
               />
-              <div className="absolute inset-0 [background-image:linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:48px_48px]" />
+              <div className="absolute inset-0 opacity-70 dark:opacity-100 [background-image:linear-gradient(rgba(0,0,0,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.035)_1px,transparent_1px)] dark:[background-image:linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:48px_48px]" />
               <div className="relative z-10 max-w-md px-10 text-center">
-                <p className="price-mono text-7xl font-bold text-white tracking-tight">₹0.00</p>
-                <p className="mt-3 text-ink-400 text-sm">to start. Free returns, every order, every time.</p>
-                <blockquote className="mt-12 text-xl font-medium text-white leading-relaxed">
+                <p className="price-mono text-7xl font-bold text-ink-900 dark:text-white tracking-tight">₹0.00</p>
+                <p className="mt-3 text-ink-500 dark:text-ink-400 text-sm">to start. Free returns, every order, every time.</p>
+                <blockquote className="mt-12 text-xl font-medium text-ink-900 dark:text-white leading-relaxed">
                   &ldquo;Checkout took less time than making coffee.&rdquo;
                 </blockquote>
                 <p className="mt-3 text-sm text-ink-500">— a NovaCart customer</p>

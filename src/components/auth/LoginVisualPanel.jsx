@@ -6,44 +6,44 @@ import { Truck, RotateCcw, ShieldCheck } from 'lucide-react'
  */
 export default function LoginVisualPanel() {
   return (
-    <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden bg-ink-950 px-10 py-12">
+    <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden bg-ink-50 dark:bg-ink-950 px-10 py-12">
       {/* Ambient gradient glows */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-60"
+        className="pointer-events-none absolute inset-0 opacity-40 dark:opacity-60"
         style={{
           backgroundImage:
             'radial-gradient(circle at 18% 15%, rgba(91,95,239,0.35), transparent 42%), radial-gradient(circle at 85% 20%, rgba(155,92,246,0.22), transparent 45%), radial-gradient(circle at 75% 85%, rgba(91,95,239,0.20), transparent 45%)',
         }}
       />
       {/* Faint grid */}
-      <div className="pointer-events-none absolute inset-0 opacity-[0.35] [background-image:linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] [background-size:44px_44px]" />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.35] [background-image:linear-gradient(rgba(0,0,0,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.035)_1px,transparent_1px)] dark:[background-image:linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] [background-size:44px_44px]" />
       {/* Vignette */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,transparent_35%,rgba(11,11,15,0.7)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,transparent_35%,rgba(255,255,255,0.6)_100%)] dark:bg-[radial-gradient(circle_at_50%_40%,transparent_35%,rgba(11,11,15,0.7)_100%)]" />
 
       <div className="relative z-10 flex w-full max-w-md flex-col items-center text-center">
         {/* 3D-style shopping bag visual */}
         <div className="relative mb-8 flex h-72 w-72 items-center justify-center">
           <div className="absolute h-52 w-52 rounded-full bg-brand-500/25 blur-3xl" />
-          <div className="absolute h-72 w-72 animate-[spin_16s_linear_infinite] rounded-full border border-white/[0.06]" />
+          <div className="absolute h-72 w-72 animate-[spin_16s_linear_infinite] rounded-full border border-ink-200 dark:border-white/[0.06]" />
           <ShoppingBagArt className="relative h-64 w-64 drop-shadow-[0_20px_45px_rgba(91,95,239,0.4)]" />
           <span className="absolute right-1 top-8 h-2.5 w-2.5 rounded-full bg-amber-400 shadow-[0_0_12px_2px_rgba(245,166,35,0.7)]" />
           <span className="absolute left-0 bottom-12 h-1.5 w-1.5 rounded-full bg-brand-300 shadow-[0_0_10px_2px_rgba(123,129,249,0.7)]" />
         </div>
 
-        <p className="price-mono text-6xl font-bold tracking-tight text-white">₹0.00</p>
-        <p className="mt-3 max-w-[19rem] text-sm leading-relaxed text-ink-400">
+        <p className="price-mono text-6xl font-bold tracking-tight text-ink-900 dark:text-white">₹0.00</p>
+        <p className="mt-3 max-w-[19rem] text-sm leading-relaxed text-ink-500 dark:text-ink-400">
           to start. Free returns, every order, every time.
         </p>
 
         {/* Testimonial card */}
-        <div className="mt-10 w-full rounded-2xl border border-white/[0.08] bg-white/[0.04] p-6 text-left shadow-[0_8px_30px_-12px_rgba(0,0,0,0.6)] backdrop-blur-sm">
-          <svg width="22" height="16" viewBox="0 0 22 16" fill="none" className="mb-3 text-brand-400">
+        <div className="mt-10 w-full rounded-2xl border border-ink-200 dark:border-white/[0.08] bg-white dark:bg-white/[0.04] p-6 text-left shadow-[0_8px_30px_-12px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_30px_-12px_rgba(0,0,0,0.6)] backdrop-blur-sm">
+          <svg width="22" height="16" viewBox="0 0 22 16" fill="none" className="mb-3 text-brand-500 dark:text-brand-400">
             <path
               d="M0 16V9.5C0 4.25 3.2 1 8 0l1.2 2.4C6.4 3.4 5 5.1 5 7h4v9H0Zm12 0V9.5c0-5.25 3.2-8.5 8-9.5l1.2 2.4c-2.8 1-4.2 2.7-4.2 4.6h4v9h-9Z"
               fill="currentColor"
             />
           </svg>
-          <p className="text-lg font-medium leading-snug text-white">
+          <p className="text-lg font-medium leading-snug text-ink-900 dark:text-white">
             Checkout took less time than making coffee.
           </p>
           <p className="mt-3 text-sm text-ink-500">— a NovaCart customer</p>
@@ -62,11 +62,11 @@ export default function LoginVisualPanel() {
 
 function Benefit({ icon, title, subtitle }) {
   return (
-    <div className="flex flex-col items-center gap-1.5 rounded-xl border border-white/[0.06] bg-white/[0.02] px-3 py-4 text-center transition-colors hover:bg-white/[0.05]">
-      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-500/15 text-brand-300">
+    <div className="flex flex-col items-center gap-1.5 rounded-xl border border-ink-200 dark:border-white/[0.06] bg-white dark:bg-white/[0.02] px-3 py-4 text-center transition-colors hover:bg-ink-50 dark:hover:bg-white/[0.05]">
+      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-500/15 text-brand-600 dark:text-brand-300">
         {icon}
       </div>
-      <p className="text-xs font-semibold text-white">{title}</p>
+      <p className="text-xs font-semibold text-ink-900 dark:text-white">{title}</p>
       <p className="text-[11px] leading-tight text-ink-500">{subtitle}</p>
     </div>
   )
