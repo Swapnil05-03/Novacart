@@ -1,12 +1,12 @@
 import { Outlet } from 'react-router-dom'
-import Navbar from '@/components/layout/Navbar'
+import AdminHeader from '@/components/layout/AdminHeader'
 import AdminSidebar from '@/components/layout/AdminSidebar'
 import AdminMobileNav from '@/components/layout/AdminMobileNav'
 
 export default function AdminLayout() {
   return (
     <div className="flex min-h-screen flex-col">
-      <Navbar />
+      <AdminHeader />
       <AdminMobileNav />
       <div className="flex flex-1">
         <AdminSidebar />

@@ -183,4 +183,53 @@ export const orderService = {
       ordersByDate: revenueData || [],
     }
   },
+
+  /**
+   * Everything the admin dashboard needs for a given date range: orders
+   * placed in-range (with items, for revenue/status/top-product breakdowns),
+   * the same window one period earlier (for trend %), plus product/user
+   * counts now vs. as-of the start of the range (for growth trend on those
+   * cumulative totals). All numbers are derived from real rows — nothing
+   * here is mocked.
+   */
+  async getDashboardAnalytics({ from, to }) {
+    const rangeMs = new Date(to).getTime() - new Date(from).getTime()
+    const prevFrom = new Date(new Date(from).getTime() - rangeMs).toISOString()
+
+    const [
+      { data: currentOrders, error: currentErr },
+      { data: previousOrders, error: prevErr },
+      { count: totalProducts },
+      { count: productsBeforeRange },
+      { count: totalUsers },
+      { count: usersBeforeRange },
+      { data: recentUsers },
+    ] = await Promise.all([
+      supabase
+        .from('orders')
+        .select(`${ORDER_SELECT}, profiles(full_name, email)`)
+        .gte('created_at', from)
+        .lte('created_at', to)
+        .order('created_at', { ascending: false }),
+      supabase.from('orders').select('total, status, created_at').gte('created_at', prevFrom).lt('created_at', from),
+      supabase.from('products').select('*', { count: 'exact', head: true }),
+      supabase.from('products').select('*', { count: 'exact', head: true }).lt('created_at', from),
+      supabase.from('profiles').select('*', { count: 'exact', head: true }),
+      supabase.from('profiles').select('*', { count: 'exact', head: true }).lt('created_at', from),
+      supabase.from('profiles').select('id, full_name, email, avatar_url, created_at').order('created_at', { ascending: false }).limit(5),
+    ])
+
+    if (currentErr) throw currentErr
+    if (prevErr) throw prevErr
+
+    return {
+      currentOrders: currentOrders || [],
+      previousOrders: previousOrders || [],
+      totalProducts: totalProducts || 0,
+      productsBeforeRange: productsBeforeRange || 0,
+      totalUsers: totalUsers || 0,
+      usersBeforeRange: usersBeforeRange || 0,
+      recentUsers: recentUsers || [],
+    }
+  },
 }

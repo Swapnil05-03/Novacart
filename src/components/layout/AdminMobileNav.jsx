@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { LayoutDashboard, Package, ShoppingCart, Users } from 'lucide-react'
+import { LayoutDashboard, Package, ShoppingCart, Users, Tags, Star } from 'lucide-react'
 import { ROUTES } from '@/constants'
 import { classNames } from '@/utils/helpers'
 
@@ -8,6 +8,8 @@ const LINKS = [
   { label: 'Products', to: ROUTES.ADMIN_PRODUCTS, icon: Package },
   { label: 'Orders', to: ROUTES.ADMIN_ORDERS, icon: ShoppingCart },
   { label: 'Users', to: ROUTES.ADMIN_USERS, icon: Users },
+  { label: 'Categories', to: ROUTES.ADMIN_CATEGORIES, icon: Tags },
+  { label: 'Reviews', to: ROUTES.ADMIN_REVIEWS, icon: Star },
 ]
 
 export default function AdminMobileNav() {

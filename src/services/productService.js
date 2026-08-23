@@ -206,6 +206,44 @@ export const productService = {
     return data
   },
 
+  async getCategoriesWithCounts() {
+    const [{ data: categories, error: catError }, { data: products, error: prodError }] = await Promise.all([
+      supabase.from('categories').select('*').order('name'),
+      supabase.from('products').select('category_id'),
+    ])
+    if (catError) throw catError
+    if (prodError) throw prodError
+
+    const counts = {}
+    ;(products || []).forEach((p) => {
+      if (p.category_id) counts[p.category_id] = (counts[p.category_id] || 0) + 1
+    })
+
+    return (categories || []).map((c) => ({ ...c, productCount: counts[c.id] || 0 }))
+  },
+
+  async createCategory({ name, slug, description }) {
+    const { data, error } = await supabase.from('categories').insert({ name, slug, description: description || null }).select().single()
+    if (error) throw error
+    return data
+  },
+
+  async updateCategory(id, { name, slug, description }) {
+    const { data, error } = await supabase
+      .from('categories')
+      .update({ name, slug, description: description || null })
+      .eq('id', id)
+      .select()
+      .single()
+    if (error) throw error
+    return data
+  },
+
+  async deleteCategory(id) {
+    const { error } = await supabase.from('categories').delete().eq('id', id)
+    if (error) throw error
+  },
+
   async getBrands(categoryId = null) {
     let query = supabase.from('products').select('brand').not('brand', 'is', null)
     if (categoryId) {

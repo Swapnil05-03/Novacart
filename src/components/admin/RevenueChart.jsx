@@ -2,9 +2,8 @@ import { useMemo } from 'react'
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 import { formatCurrency } from '@/utils/helpers'
 
-export default function RevenueChart({ orders = [] }) {
+export default function RevenueChart({ orders = [], days = 14, title = `Revenue, last ${days} days`, subtitle = 'Daily revenue across all completed orders' }) {
   const chartData = useMemo(() => {
-    const days = 14
     const today = new Date()
     const buckets = Array.from({ length: days }, (_, i) => {
       const d = new Date(today)
@@ -24,12 +23,12 @@ export default function RevenueChart({ orders = [] }) {
     })
 
     return buckets
-  }, [orders])
+  }, [orders, days])
 
   return (
     <div className="rounded-2xl border border-ink-200 dark:border-ink-800 bg-elevated dark:bg-elevated-dark p-5">
-      <h3 className="text-base font-semibold text-ink-900 dark:text-white mb-1">Revenue, last 14 days</h3>
-      <p className="text-sm text-ink-500 dark:text-ink-400 mb-4">Daily revenue across all completed orders</p>
+      <h3 className="text-base font-semibold text-ink-900 dark:text-white mb-1">{title}</h3>
+      <p className="text-sm text-ink-500 dark:text-ink-400 mb-4">{subtitle}</p>
       <ResponsiveContainer width="100%" height={280}>
         <AreaChart data={chartData} margin={{ top: 5, right: 5, left: 5, bottom: 0 }}>
           <defs>

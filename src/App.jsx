@@ -33,7 +33,8 @@ import AdminDashboardPage from '@/pages/admin/AdminDashboardPage'
 import AdminProductsPage from '@/pages/admin/AdminProductsPage'
 import AdminOrdersPage from '@/pages/admin/AdminOrdersPage'
 import AdminUsersPage from '@/pages/admin/AdminUsersPage'
-
+import AdminCategoriesPage from '@/pages/admin/AdminCategoriesPage'
+import AdminReviewsPage from '@/pages/admin/AdminReviewsPage'
 import NotFoundPage from '@/pages/NotFoundPage'
 import { ROUTES } from '@/constants'
 
@@ -96,6 +97,8 @@ export default function App() {
               <Route path={ROUTES.ADMIN_PRODUCTS} element={<PageTransition><AdminProductsPage /></PageTransition>} />
               <Route path={ROUTES.ADMIN_ORDERS} element={<PageTransition><AdminOrdersPage /></PageTransition>} />
               <Route path={ROUTES.ADMIN_USERS} element={<PageTransition><AdminUsersPage /></PageTransition>} />
+              <Route path={ROUTES.ADMIN_CATEGORIES} element={<PageTransition><AdminCategoriesPage /></PageTransition>} />
+              <Route path={ROUTES.ADMIN_REVIEWS} element={<PageTransition><AdminReviewsPage /></PageTransition>} />
             </Route>
           </Route>
 
