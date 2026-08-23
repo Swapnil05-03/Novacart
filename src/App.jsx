@@ -36,6 +36,20 @@ import AdminUsersPage from '@/pages/admin/AdminUsersPage'
 import AdminCategoriesPage from '@/pages/admin/AdminCategoriesPage'
 import AdminReviewsPage from '@/pages/admin/AdminReviewsPage'
 import NotFoundPage from '@/pages/NotFoundPage'
+
+import AboutPage from '@/pages/info/AboutPage'
+import CareersPage from '@/pages/info/CareersPage'
+import PressPage from '@/pages/info/PressPage'
+import BlogPage from '@/pages/info/BlogPage'
+import ContactPage from '@/pages/info/ContactPage'
+import TermsPage from '@/pages/info/TermsPage'
+import PrivacyPage from '@/pages/info/PrivacyPage'
+import HelpCenterPage from '@/pages/info/HelpCenterPage'
+import ShippingInfoPage from '@/pages/info/ShippingInfoPage'
+import ReturnsRefundsPage from '@/pages/info/ReturnsRefundsPage'
+import PaymentOptionsPage from '@/pages/info/PaymentOptionsPage'
+import FaqsPage from '@/pages/info/FaqsPage'
+
 import { ROUTES } from '@/constants'
 
 function PageTransition({ children }) {
@@ -66,6 +80,20 @@ export default function App() {
             <Route path="/products/:id" element={<PageTransition><ProductDetailPage /></PageTransition>} />
             <Route path={ROUTES.WISHLIST} element={<PageTransition><WishlistPage /></PageTransition>} />
             <Route path={ROUTES.CART} element={<PageTransition><CartPage /></PageTransition>} />
+
+            {/* Informational / footer pages */}
+            <Route path={ROUTES.ABOUT} element={<PageTransition><AboutPage /></PageTransition>} />
+            <Route path={ROUTES.CAREERS} element={<PageTransition><CareersPage /></PageTransition>} />
+            <Route path={ROUTES.PRESS} element={<PageTransition><PressPage /></PageTransition>} />
+            <Route path={ROUTES.BLOG} element={<PageTransition><BlogPage /></PageTransition>} />
+            <Route path={ROUTES.CONTACT} element={<PageTransition><ContactPage /></PageTransition>} />
+            <Route path={ROUTES.TERMS} element={<PageTransition><TermsPage /></PageTransition>} />
+            <Route path={ROUTES.PRIVACY} element={<PageTransition><PrivacyPage /></PageTransition>} />
+            <Route path={ROUTES.HELP_CENTER} element={<PageTransition><HelpCenterPage /></PageTransition>} />
+            <Route path={ROUTES.SHIPPING_INFO} element={<PageTransition><ShippingInfoPage /></PageTransition>} />
+            <Route path={ROUTES.RETURNS_REFUNDS} element={<PageTransition><ReturnsRefundsPage /></PageTransition>} />
+            <Route path={ROUTES.PAYMENT_OPTIONS} element={<PageTransition><PaymentOptionsPage /></PageTransition>} />
+            <Route path={ROUTES.FAQS} element={<PageTransition><FaqsPage /></PageTransition>} />
 
             {/* Authenticated storefront routes */}
             <Route element={<ProtectedRoute />}>
