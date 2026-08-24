@@ -8,6 +8,43 @@ const PRODUCT_SELECT = `
   reviews(id, rating)
 `
 
+// Global product search matches name, description, and brand — the real
+// per-product text columns. Case-insensitive substring matching (so
+// "headphone" still finds "Wireless Headphones"). The query is split on
+// whitespace and each word must appear in AT LEAST ONE of those fields
+// (`.or()` per word), with every word's `.or()` group AND-ed together
+// (supabase-js AND-combines chained filter calls) — so "gaming laptop"
+// only matches products touching both "gaming" and "laptop" somewhere.
+//
+// NOTE: this deliberately does NOT try to match the product's *category*
+// name (e.g. "electronics") here — Supabase/PostgREST's `.or()` can only
+// filter columns on the table being queried, not columns on an embedded/
+// joined table (`category:categories(...)` above). Attempting
+// `category.name.ilike...` inside `.or()` fails at the database level and
+// silently returns zero rows for every query, which is worse than not
+// matching category names here at all. Category-name search is instead
+// handled up front by resolveCuratedMatch() (src/utils/curatedSearch.js),
+// which redirects a category-name query straight to that category/tile —
+// this function only needs to cover the free-text product search fallback.
+function applySearchFilter(query, search) {
+  const words = search
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    // Escape characters that have special meaning in a PostgREST filter
+    // string (`,`, `(`, `)`) so a stray character in the query can't break
+    // the `.or()` expression syntax.
+    .map((word) => word.replace(/[,()%]/g, ''))
+    .filter(Boolean)
+    .slice(0, 6)
+
+  let q = query
+  for (const word of words) {
+    q = q.or(`name.ilike.%${word}%,description.ilike.%${word}%,brand.ilike.%${word}%`)
+  }
+  return q
+}
+
 function applySort(query, sortBy) {
   switch (sortBy) {
     case 'price_asc':
@@ -119,7 +156,7 @@ export const productService = {
     let query = supabase.from('products').select(PRODUCT_SELECT, { count: 'exact' })
 
     if (search) {
-      query = query.ilike('name', `%${search}%`)
+      query = applySearchFilter(query, search)
     }
     if (categoryId) {
       query = query.eq('category_id', categoryId)
@@ -172,6 +209,28 @@ export const productService = {
     }
 
     return { data: results, count }
+  },
+
+  // Lightweight query for the header search dropdown — a small product
+  // list (name/price/primary image only, no reviews) plus the count of
+  // everything matching, so the "Search for '<query>'" row can be skipped
+  // if there's truly nothing to find. Categories aren't queried here; the
+  // caller matches against its own already-loaded category list.
+  async searchSuggestions(search, limit = 5) {
+    if (!search || !search.trim()) return { products: [], count: 0 }
+
+    let query = supabase
+      .from('products')
+      .select(
+        'id, name, price, compare_at_price, brand, category:categories(id, name), images:product_images(url, is_primary, sort_order)',
+        { count: 'exact' }
+      )
+    query = applySearchFilter(query, search)
+    query = query.order('created_at', { ascending: false }).limit(limit)
+
+    const { data, error, count } = await query
+    if (error) throw error
+    return { products: data || [], count: count || 0 }
   },
 
   async getProductById(id) {

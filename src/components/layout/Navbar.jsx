@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
@@ -21,9 +21,11 @@ import { useCart } from '@/context/CartContext'
 import { useWishlist } from '@/context/WishlistContext'
 import { useTheme } from '@/context/ThemeContext'
 import { useClickOutside } from '@/hooks/useClickOutside'
+import { productService } from '@/services/productService'
 import { ROUTES, APP_NAME } from '@/constants'
 import Avatar from '@/components/ui/Avatar'
 import LocationPicker from '@/components/layout/LocationPicker'
+import SearchBar from '@/components/layout/SearchBar'
 
 const NAV_LINKS = [
   { label: 'Categories', to: ROUTES.PRODUCTS + '?view=categories' },
@@ -37,21 +39,29 @@ export default function Navbar() {
   const { theme, toggleTheme } = useTheme()
 
   const [searchOpen, setSearchOpen] = useState(false)
-  const [searchValue, setSearchValue] = useState('')
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [userMenuOpen, setUserMenuOpen] = useState(false)
+  const [categories, setCategories] = useState([])
   const userMenuRef = useRef(null)
 
   useClickOutside(userMenuRef, () => setUserMenuOpen(false), userMenuOpen)
 
-  const handleSearchSubmit = (e) => {
-    e.preventDefault()
-    if (searchValue.trim()) {
-      navigate(`${ROUTES.PRODUCTS}?search=${encodeURIComponent(searchValue.trim())}`)
-      setSearchOpen(false)
-      setSearchValue('')
+  // Loaded once and handed to SearchBar so the suggestion dropdown can
+  // match category names without a DB round-trip on every keystroke.
+  useEffect(() => {
+    let active = true
+    productService
+      .getCategories()
+      .then((data) => {
+        if (active) setCategories(data || [])
+      })
+      .catch(() => {
+        if (active) setCategories([])
+      })
+    return () => {
+      active = false
     }
-  }
+  }, [])
 
   const handleSignOut = async () => {
     await signOut()
@@ -93,18 +103,9 @@ export default function Navbar() {
         </nav>
 
         {/* Desktop search */}
-        <form onSubmit={handleSearchSubmit} className="hidden lg:flex flex-1 max-w-sm">
-          <div className="relative w-full">
-            <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-400" />
-            <input
-              type="text"
-              value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
-              placeholder="Search products..."
-              className="h-10 w-full rounded-xl border border-ink-200 dark:border-ink-700 bg-white/70 dark:bg-ink-900/70 pl-10 pr-4 text-sm focus:border-brand-500 transition-colors"
-            />
-          </div>
-        </form>
+        <div className="hidden lg:flex flex-1 max-w-sm">
+          <SearchBar categories={categories} />
+        </div>
 
         <LocationPicker />
 
@@ -229,23 +230,21 @@ export default function Navbar() {
             exit={{ height: 0, opacity: 0 }}
             className="lg:hidden overflow-hidden border-t border-ink-200 dark:border-ink-800"
           >
-            <form onSubmit={handleSearchSubmit} className="container-page py-3 flex gap-2">
-              <input
+            <div className="container-page py-3 flex gap-2">
+              <SearchBar
+                categories={categories}
                 autoFocus
-                type="text"
-                value={searchValue}
-                onChange={(e) => setSearchValue(e.target.value)}
-                placeholder="Search products..."
-                className="h-10 flex-1 rounded-xl border border-ink-200 dark:border-ink-700 bg-white dark:bg-ink-900 px-4 text-sm focus:border-brand-500"
+                inputClassName="bg-white dark:bg-ink-900"
+                onNavigate={() => setSearchOpen(false)}
               />
               <button
                 type="button"
                 onClick={() => setSearchOpen(false)}
-                className="h-10 px-3 text-sm text-ink-500"
+                className="h-10 px-3 text-sm text-ink-500 shrink-0"
               >
                 Cancel
               </button>
-            </form>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

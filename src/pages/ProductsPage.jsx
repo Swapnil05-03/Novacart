@@ -1,12 +1,14 @@
 import { useState, useEffect, useCallback, useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { SlidersHorizontal } from 'lucide-react'
+import { SlidersHorizontal, X, PackageSearch } from 'lucide-react'
 import { productService } from '@/services/productService'
 import { getBrandsForCategory, getRandomMixBrands } from '@/constants/featuredBrands'
 import { getDefinitionForCategory } from '@/data/categoryContent'
+import { resolveCuratedMatch } from '@/utils/curatedSearch'
 import { useDebounce } from '@/hooks/useDebounce'
 import { SORT_OPTIONS } from '@/constants'
 import ProductGrid from '@/components/product/ProductGrid'
+import ProductCard from '@/components/product/ProductCard'
 import ProductFilters from '@/components/product/ProductFilters'
 import CategoryBanner from '@/components/layout/CategoryBanner'
 import SubcategoryRow from '@/components/layout/SubcategoryRow'
@@ -14,6 +16,14 @@ import TrustBadges from '@/components/layout/TrustBadges'
 import Select from '@/components/ui/Select'
 import Modal from '@/components/ui/Modal'
 import Button from '@/components/ui/Button'
+import EmptyState from '@/components/ui/EmptyState'
+import Pagination from '@/components/ui/Pagination'
+import { ProductGridSkeleton } from '@/components/ui/Skeleton'
+
+// Real, paginated product grid shown whenever a global `search` query is
+// active (see SearchResults below) — separate from the curated
+// subcategory/brand discovery gallery used everywhere else on this page.
+const SEARCH_PAGE_SIZE = 12
 
 // NOTE ON SCOPE (intentional, by request):
 // This page still doesn't render a real, separately-paginated product
@@ -45,6 +55,7 @@ export default function ProductsPage() {
   const maxPrice = searchParams.get('maxPrice') ? Number(searchParams.get('maxPrice')) : null
   const minRating = searchParams.get('minRating') ? Number(searchParams.get('minRating')) : null
   const minDiscount = searchParams.get('minDiscount') ? Number(searchParams.get('minDiscount')) : null
+  const page = Number(searchParams.get('page')) || 1
   const selectedBrands = useMemo(
     () => (searchParams.get('brands') ? searchParams.get('brands').split(',') : []),
     [searchParams]
@@ -111,11 +122,72 @@ export default function ProductsPage() {
   )
 
   useEffect(() => {
-    if (debouncedSearch !== search) {
-      updateParams({ search: debouncedSearch || null })
+    if (debouncedSearch === search) return
+
+    const query = debouncedSearch.trim()
+    if (!query) {
+      updateParams({ search: null, page: null })
+      return
     }
+
+    // Typing something that matches a curated category/subcategory/brand
+    // tile (e.g. "tv", "fridge") should land exactly where clicking that
+    // tile would — same behavior as the header search bar — rather than
+    // falling through to a real-product search this catalog's seed data
+    // usually can't satisfy for a browse-style term.
+    const match = resolveCuratedMatch(query, categories)
+    if (match) {
+      setSearchInput('')
+      updateParams({
+        search: null,
+        category: match.categoryId,
+        subcategory: match.subcategory || null,
+        brands: match.brand || null,
+        page: null,
+      })
+      return
+    }
+
+    updateParams({ search: query, page: null })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedSearch])
+  }, [debouncedSearch, categories])
+
+  // Real, paginated search results — only fetched while a global `search`
+  // query is active. Runs alongside (and honors) every other filter/sort
+  // param already on the URL, exactly like the discovery gallery does.
+  const [searchResults, setSearchResults] = useState({ data: [], count: 0 })
+  const [searchLoading, setSearchLoading] = useState(false)
+
+  useEffect(() => {
+    if (!search) {
+      setSearchResults({ data: [], count: 0 })
+      return
+    }
+    let isMounted = true
+    setSearchLoading(true)
+    productService
+      .getProducts({
+        search,
+        categoryId,
+        minPrice,
+        maxPrice,
+        minRating,
+        minDiscount,
+        brands: selectedBrands,
+        sortBy,
+        page,
+        perPage: SEARCH_PAGE_SIZE,
+      })
+      .then(({ data, count }) => {
+        if (isMounted) setSearchResults({ data, count: count || 0 })
+      })
+      .catch(console.error)
+      .finally(() => isMounted && setSearchLoading(false))
+
+    return () => {
+      isMounted = false
+    }
+  }, [search, categoryId, minPrice, maxPrice, minRating, minDiscount, selectedBrands, sortBy, page])
 
   // Real products, used ONLY to power Add to Cart / Wishlist / "view
   // product" on the discovery cards above — never as their visual image.
@@ -194,21 +266,21 @@ export default function ProductsPage() {
     if ('categoryId' in updates) {
       mapped.category = updates.categoryId
       // Switching category should drop any subcategory filter, any
-      // "featured/trending/best-sellers" preset, AND any leftover free-text
-      // search — all three are easy to carry over from wherever the user
-      // arrived from (a subcategory chip, a "Today's Deals" link, or simply
-      // typing a search term earlier) and silently AND with the new
-      // category.
+      // "featured/trending/best-sellers" preset — both easy to carry over
+      // from wherever the user arrived from (a subcategory chip or a
+      // "Today's Deals" link) and silently AND with the new category.
+      // NOTE: the free-text `search` query is deliberately NOT cleared
+      // here — search + category is a supported combo (see SearchResults
+      // below), so switching category while a search is active should
+      // just narrow the existing search results, not discard them.
       mapped.subcategory = null
       mapped.gender = null
       mapped.filter = null
-      mapped.search = null
       // Selected brands are scoped to the previous category's brand list.
       // If we don't clear them here, a brand chosen under the old category
       // stays applied as a hidden filter after switching category, even
       // though it no longer appears as a checked option anywhere in the UI.
       mapped.brands = null
-      setSearchInput('')
     }
     if ('minPrice' in updates) mapped.minPrice = updates.minPrice
     if ('maxPrice' in updates) mapped.maxPrice = updates.maxPrice
@@ -217,6 +289,9 @@ export default function ProductsPage() {
     if ('selectedBrands' in updates) {
       mapped.brands = updates.selectedBrands.length ? updates.selectedBrands.join(',') : null
     }
+    // Any filter change starts back at page 1 of search results — staying
+    // on, say, page 4 after narrowing the filters could land past the end.
+    mapped.page = null
     // Lets a caller set `category` AND `subcategory` in one atomic URL
     // update — needed when selecting a tile from the merged "all
     // categories" gallery, where the category wasn't chosen yet. Must run
@@ -246,6 +321,13 @@ export default function ProductsPage() {
   const handleClearFilters = () => {
     setSearchInput('')
     setSearchParams({})
+  }
+
+  // Clears only the search query (and resets to page 1), leaving every
+  // other active filter/sort in place — used by the "Search: x ×" chip.
+  const handleClearSearch = () => {
+    setSearchInput('')
+    updateParams({ search: null, page: null })
   }
 
   const filters = { categoryId, minPrice, maxPrice, minRating, minDiscount, selectedBrands }
@@ -384,18 +466,39 @@ export default function ProductsPage() {
 
   return (
     <div className="pb-12">
-      <CategoryBanner category={activeCategory} />
+      {!search && <CategoryBanner category={activeCategory} />}
 
-      <SubcategoryRow
-        category={activeCategory}
-        activeSubcategory={subcategory}
-        onSelectSubcategory={handleSelectSubcategory}
-        activeGender={gender}
-        onSelectGender={handleSelectGender}
-      />
+      {!search && (
+        <SubcategoryRow
+          category={activeCategory}
+          activeSubcategory={subcategory}
+          onSelectSubcategory={handleSelectSubcategory}
+          activeGender={gender}
+          onSelectGender={handleSelectGender}
+        />
+      )}
 
       <div className="container-page">
-        <div className="flex flex-col sm:flex-row gap-3 mb-6">
+        {search && (
+          <div className="pt-6 sm:pt-8 mb-2">
+            <h1 className="text-xl sm:text-2xl font-semibold text-ink-900 dark:text-ink-50">
+              Search results for &quot;{search}&quot;
+            </h1>
+            <p className="mt-1 text-sm text-ink-500 dark:text-ink-400">
+              {searchLoading ? 'Searching…' : `${searchResults.count} product${searchResults.count === 1 ? '' : 's'} found`}
+            </p>
+            <button
+              type="button"
+              onClick={handleClearSearch}
+              className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-ink-200 dark:border-ink-700 bg-ink-50 dark:bg-ink-900 px-3 py-1.5 text-xs font-medium text-ink-600 dark:text-ink-300 hover:bg-ink-100 dark:hover:bg-ink-800 transition-colors"
+            >
+              Search: {search}
+              <X className="h-3.5 w-3.5" />
+            </button>
+          </div>
+        )}
+
+        <div className="flex flex-col sm:flex-row gap-3 mb-6 mt-6">
           <input
             type="text"
             value={searchInput}
@@ -406,7 +509,7 @@ export default function ProductsPage() {
           <div className="flex gap-3">
             <Select
               value={sortBy}
-              onChange={(e) => updateParams({ sort: e.target.value })}
+              onChange={(e) => updateParams({ sort: e.target.value, page: null })}
               options={SORT_OPTIONS}
               className="min-w-[180px]"
             />
@@ -434,24 +537,37 @@ export default function ProductsPage() {
           </div>
 
           <div>
-            <ProductGrid
-              loading={loading}
-              allBrands={brandsWithLinks}
-              allSubcategoryTiles={allSubcategoryTiles}
-              categoryPreviews={categoryPreviews}
-              onViewCategory={handleViewCategory}
-              onSelectBrand={handleSelectBrandFromGrid}
-              onSelectSubcategory={handleSelectSubcategory}
-              selectedBrands={selectedBrandDetails}
-              onRemoveBrand={handleRemoveBrand}
-              selectedSubcategory={selectedSubcategory}
-              onRemoveSubcategory={handleRemoveSubcategory}
-              emptyMessage={
-                activeCategory
-                  ? `We're still stocking up on ${activeCategory.name.toLowerCase()} — check back soon, or browse other categories in the meantime.`
-                  : 'Try adjusting your filters or search terms.'
-              }
-            />
+            {search ? (
+              <SearchResults
+                loading={searchLoading}
+                products={searchResults.data}
+                count={searchResults.count}
+                page={page}
+                query={search}
+                onPageChange={(p) => updateParams({ page: p })}
+                onClearSearch={handleClearSearch}
+                onBrowseAll={handleClearFilters}
+              />
+            ) : (
+              <ProductGrid
+                loading={loading}
+                allBrands={brandsWithLinks}
+                allSubcategoryTiles={allSubcategoryTiles}
+                categoryPreviews={categoryPreviews}
+                onViewCategory={handleViewCategory}
+                onSelectBrand={handleSelectBrandFromGrid}
+                onSelectSubcategory={handleSelectSubcategory}
+                selectedBrands={selectedBrandDetails}
+                onRemoveBrand={handleRemoveBrand}
+                selectedSubcategory={selectedSubcategory}
+                onRemoveSubcategory={handleRemoveSubcategory}
+                emptyMessage={
+                  activeCategory
+                    ? `We're still stocking up on ${activeCategory.name.toLowerCase()} — check back soon, or browse other categories in the meantime.`
+                    : 'Try adjusting your filters or search terms.'
+                }
+              />
+            )}
           </div>
         </div>
       </div>
@@ -473,6 +589,51 @@ export default function ProductsPage() {
           Show results
         </Button>
       </Modal>
+    </div>
+  )
+}
+
+// Real, paginated product-card grid for an active global search — as
+// opposed to ProductGrid above, which renders the curated
+// subcategory/brand discovery gallery used when no search is active.
+function SearchResults({ loading, products, count, page, query, onPageChange, onClearSearch, onBrowseAll }) {
+  if (loading) return <ProductGridSkeleton />
+
+  if (!products.length) {
+    return (
+      <EmptyState
+        icon={PackageSearch}
+        title="No products found"
+        description={`We couldn't find anything matching "${query}".`}
+        action={
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <Button variant="outline" onClick={onClearSearch}>
+              Clear Search
+            </Button>
+            <Button variant="brand" onClick={onBrowseAll}>
+              Browse All Products
+            </Button>
+          </div>
+        }
+      />
+    )
+  }
+
+  const totalPages = Math.max(1, Math.ceil(count / SEARCH_PAGE_SIZE))
+
+  return (
+    <div>
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
+
+      {totalPages > 1 && (
+        <div className="mt-6">
+          <Pagination currentPage={page} totalPages={totalPages} onPageChange={onPageChange} />
+        </div>
+      )}
     </div>
   )
 }

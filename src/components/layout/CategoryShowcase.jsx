@@ -8,7 +8,6 @@ import { useCountdown } from '@/hooks/useCountdown'
 import Button from '@/components/ui/Button'
 import SlideCarousel from '@/components/layout/SlideCarousel'
 import ScrollRow from '@/components/layout/ScrollRow'
-import CategoryTrustSection from '@/components/layout/CategoryTrustSection'
 import TrustBadges from '@/components/layout/TrustBadges'
 import ScrollableTileRow from '@/components/layout/ScrollableTileRow'
 import ProductCard from '@/components/product/ProductCard'
@@ -572,8 +571,6 @@ export default function CategoryShowcase({ activeCategory }) {
           tagLabel="Visit store"
           linkParam="brands"
         />
-
-        <CategoryTrustSection categoryName={activeCategory.name} />
 
         <div className="flex justify-center">
           <Link to={`${ROUTES.PRODUCTS}?category=${activeCategory.id}`}>
