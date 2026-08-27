@@ -248,6 +248,28 @@ export const productService = {
     return this._withRatingStats(data)
   },
 
+  // Fetches full product rows (same shape as everywhere else in the app —
+  // images, category, reviews) for a set of ids. Used by Nova AI to turn the
+  // lightweight {id, reason} list the backend returns into real product
+  // cards that share the exact same data/add-to-cart/view-product pipeline
+  // as the rest of NovaCart, instead of a second parallel product shape.
+  async getProductsByIds(ids) {
+    const cleanIds = [...new Set((ids || []).filter(Boolean))]
+    if (cleanIds.length === 0) return []
+
+    const { data, error } = await supabase
+      .from('products')
+      .select(PRODUCT_SELECT)
+      .in('id', cleanIds)
+      .eq('is_active', true)
+    if (error) throw error
+
+    const byId = new Map(data.map((p) => [p.id, this._withRatingStats(p)]))
+    // Preserve the order/ranking Nova AI decided on, not whatever order
+    // Supabase happens to return rows in.
+    return cleanIds.map((id) => byId.get(id)).filter(Boolean)
+  },
+
   async getRelatedProducts(categoryId, excludeId, limit = 4) {
     const { data, error } = await supabase
       .from('products')
