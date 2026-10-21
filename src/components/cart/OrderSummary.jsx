@@ -1,11 +1,31 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Tag, X } from 'lucide-react'
 import { formatCurrency } from '@/utils/helpers'
 import { useCart } from '@/context/CartContext'
+import { getStaticProductImages } from '@/data/productImages'
+import { getDefinitionForCategory } from '@/data/categoryContent'
+import { ROUTES } from '@/constants'
 import Button from '@/components/ui/Button'
+import LazyImage from '@/components/ui/LazyImage'
 
-export default function OrderSummary({ ctaLabel, onCtaClick, ctaLoading, showCoupon = true }) {
-  const { subtotal, discount, shippingFee, tax, total, coupon, applyCoupon, removeCoupon, itemCount } = useCart()
+function resolveItemImage(product) {
+  const categoryDefinition = getDefinitionForCategory(product.category?.name)
+  const subcategoryImage = product.subcategory
+    ? categoryDefinition.shopByCategoryImages?.[product.subcategory]
+    : null
+  const staticImages = getStaticProductImages(product.sku)
+  return (
+    subcategoryImage ||
+    staticImages[0] ||
+    product.images?.find((i) => i.is_primary)?.url ||
+    product.images?.[0]?.url
+  )
+}
+
+export default function OrderSummary({ ctaLabel, onCtaClick, ctaLoading, showCoupon = true, showItems = false }) {
+  const { items, subtotal, discount, shippingFee, tax, total, coupon, applyCoupon, removeCoupon, itemCount } =
+    useCart()
   const [couponInput, setCouponInput] = useState('')
 
   const handleApply = (e) => {
@@ -19,6 +39,34 @@ export default function OrderSummary({ ctaLabel, onCtaClick, ctaLoading, showCou
   return (
     <div className="rounded-2xl border border-ink-200 dark:border-ink-800 p-6 bg-elevated dark:bg-elevated-dark sticky top-24">
       <h3 className="text-base font-semibold text-ink-900 dark:text-white mb-5">Order Summary</h3>
+
+      {showItems && (
+        <ul className="mb-5 space-y-3 max-h-72 overflow-y-auto pr-1">
+          {items.map((item) => (
+            <li key={item.id} className="flex gap-3">
+              <Link to={ROUTES.PRODUCT_DETAIL(item.product.id)} className="shrink-0">
+                <LazyImage
+                  src={resolveItemImage(item.product)}
+                  alt={item.product.name}
+                  containerClassName="h-14 w-14 rounded-lg"
+                  className="h-14 w-14 object-cover"
+                />
+              </Link>
+              <div className="flex-1 min-w-0 flex flex-col justify-center">
+                <p className="text-sm font-medium text-ink-900 dark:text-white line-clamp-1">{item.product.name}</p>
+                <p className="text-xs text-ink-500 dark:text-ink-400">
+                  Qty {item.quantity} &times; {formatCurrency(item.product.price)}
+                </p>
+              </div>
+              <p className="price-mono text-sm font-medium text-ink-900 dark:text-white shrink-0 self-center">
+                {formatCurrency(item.product.price * item.quantity)}
+              </p>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {showItems && <div className="mb-5 border-t border-ink-200 dark:border-ink-800" />}
 
       {showCoupon && (
         <div className="mb-5">
