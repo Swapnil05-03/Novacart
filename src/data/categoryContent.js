@@ -1226,7 +1226,7 @@ const CATEGORY_DEFINITIONS = {
     dealsLabel: "Today's Best Deals",
     spotlightLabel: 'New Launches',
     promos: [
-      { title: 'Trade-In Bonus', subtitle: 'Get up to $200 extra on exchange', ctaLabel: 'Trade Now' },
+      { title: 'Trade-In Bonus', subtitle: 'Get up to ₹10,000 extra on exchange', ctaLabel: 'Trade Now' },
       { title: 'Premium Accessories', subtitle: 'Cases, chargers & more', ctaLabel: 'Explore Now' },
     ],
     tiles: ['iPhone', 'Galaxy', 'OPPO', 'POCO', 'Redmi', 'Infinix', 'Nothing', 'Pixel', 'OnePlus', 'Vivo', 'Realme', 'Phone Cases', 'Chargers', 'Earphones', 'Screen Guards'],
@@ -1476,7 +1476,7 @@ const CATEGORY_DEFINITIONS = {
     spotlightLabel: 'Trending Gadgets',
     promos: [
       { title: 'Audio Week Sale', subtitle: 'Up to 60% off on headphones', ctaLabel: 'Shop Now' },
-      { title: 'Smart Home Picks', subtitle: 'Starting at $19', ctaLabel: 'Explore Now' },
+      { title: 'Smart Home Picks', subtitle: 'Starting at ₹1,599', ctaLabel: 'Explore Now' },
     ],
     tiles: ['Headphones', 'Laptops', 'Smartwatches', 'Speakers', 'Cameras', 'Power Banks', 'Security Cameras', 'Gaming Gear', 'Tablets', 'Monitors', 'Printers', 'Routers', 'External Drives', 'Webcams', 'Drones'],
     brands: ['Sony', 'JBL', 'Bose', 'boAt', 'Dell', 'HP', 'Lenovo', 'Apple', 'Sennheiser', 'Logitech', 'ASUS', 'Acer', 'Canon', 'Nikon', 'GoPro'],
@@ -1585,7 +1585,7 @@ const CATEGORY_DEFINITIONS = {
     spotlightLabel: 'Designer Picks',
     promos: [
       { title: 'Home Refresh Sale', subtitle: 'Up to 45% off on decor', ctaLabel: 'Shop Now' },
-      { title: 'Lighting Collection', subtitle: 'Starting at $24', ctaLabel: 'Explore Now' },
+      { title: 'Lighting Collection', subtitle: 'Starting at ₹1,999', ctaLabel: 'Explore Now' },
     ],
     discounts: [35, 28, 20, 30, 38],
     tiles: ['Cushion Covers', 'Figurines & Vases', 'Storage', 'Lighting', 'Wall Decor', 'Rugs', 'Curtains', 'Kitchen Linen', 'Bedsheets', 'Mirrors', 'Clocks', 'Planters', 'Photo Frames', 'Door Mats', 'Shower Curtains'],
@@ -1696,7 +1696,7 @@ const CATEGORY_DEFINITIONS = {
     spotlightLabel: 'Customer Favorites',
     promos: [
       { title: 'Kitchen Upgrade Sale', subtitle: 'Up to 55% off on appliances', ctaLabel: 'Shop Now' },
-      { title: 'Cooling Essentials', subtitle: 'Starting at $99', ctaLabel: 'Explore Now' },
+      { title: 'Cooling Essentials', subtitle: 'Starting at ₹8,199', ctaLabel: 'Explore Now' },
     ],
     tiles: ['Air Conditioners', 'Refrigerators', 'Microwaves', 'Washing Machines', 'Water Purifiers', 'Mixers & Grinders', 'Vacuum Cleaners', 'Geysers', 'Dishwashers', 'Air Purifiers', 'Toasters', 'Electric Kettles', 'Induction Cooktops', 'Coffee Makers', 'Chimneys'],
     brands: ['Samsung', 'LG', 'Whirlpool', 'Bosch', 'IFB', 'Voltas', 'Haier', 'Panasonic', 'Godrej', 'Philips', 'Hitachi', 'Daikin', 'Havells', 'Bajaj', 'Prestige'],
@@ -1916,7 +1916,7 @@ const CATEGORY_DEFINITIONS = {
     spotlightLabel: 'Everyday Picks',
     promos: [
       { title: 'Pantry Refill Sale', subtitle: 'Up to 30% off groceries', ctaLabel: 'Shop Now' },
-      { title: 'Cleaning Essentials', subtitle: 'Starting at $5', ctaLabel: 'Explore Now' },
+      { title: 'Cleaning Essentials', subtitle: 'Starting at ₹419', ctaLabel: 'Explore Now' },
     ],
     tiles: ['Snacks', 'Beverages', 'Cleaning Supplies', 'Toiletries', 'Baby Care', 'Pet Supplies', 'Kitchen Essentials', 'Storage Containers', 'Breakfast Cereals', 'Spices & Masalas', 'Dairy & Bakery', 'Laundry Care', 'Paper Products', 'Air Fresheners', 'Disposables'],
     brands: ['Nestlé', 'Tata', 'ITC', 'Amul', 'Britannia', 'Colgate', 'Dettol', 'Surf Excel', 'Vim', 'Harpic', 'Lizol', 'Parle', "Haldiram's", 'Patanjali', 'Fortune'],
@@ -2026,7 +2026,7 @@ const CATEGORY_DEFINITIONS = {
     spotlightLabel: 'Top Rated Gear',
     promos: [
       { title: 'Car Care Sale', subtitle: 'Up to 60% off accessories', ctaLabel: 'Shop Now' },
-      { title: 'Helmet Collection', subtitle: 'Starting at $39', ctaLabel: 'Explore Now' },
+      { title: 'Helmet Collection', subtitle: 'Starting at ₹3,199', ctaLabel: 'Explore Now' },
     ],
     tiles: ['Cleaning Accessories', 'Tyre & Rim Care', 'Helmets', 'Car Vacuum Cleaners', 'Car Covers', 'Seat Covers', 'Dashboard Accessories', 'Car Perfumes', 'Car Chargers', 'Floor Mats', 'Sun Shades', 'Steering Covers', 'Tool Kits', 'Jump Starters', 'Dash Cams'],
     brands: ['3M', 'Turtle Wax', 'Michelin', "Meguiars", 'Armor All', 'Bridgestone', 'CEAT', 'Auravya', 'Apollo Tyres', 'Steelbird', 'Vega', 'Studds', 'Motul', 'Carbinic', 'Credicus'],
@@ -2252,7 +2252,7 @@ const CATEGORY_DEFINITIONS = {
     spotlightLabel: "Champion's Choice",
     promos: [
       { title: 'Cricket Season Sale', subtitle: 'Up to 30% off cricket gear', ctaLabel: 'Shop Now' },
-      { title: 'Trekking Gear Sale', subtitle: 'Starting at $19', ctaLabel: 'Explore Now' },
+      { title: 'Trekking Gear Sale', subtitle: 'Starting at ₹1,599', ctaLabel: 'Explore Now' },
     ],
     tiles: ['Cricket Gear', 'Badminton', 'Football', 'Tennis', 'Table Tennis', 'Basketball', 'Volleyball', 'Camping Equipment', 'Trekking Gear', 'Cycling Gear', 'Swimming Gear', 'Skating Gear', 'Fishing Gear', 'Hockey', 'Skiing'],
     brands: ['SG', 'Kookaburra', 'MRF', 'Li-Ning', 'Yonex', 'Nivia', 'Molten', 'Spalding', 'Head', 'Rival', 'Quechua', 'The North Face', 'Wildcraft', 'Dunlop', 'Forclaz'],
@@ -2362,7 +2362,7 @@ const CATEGORY_DEFINITIONS = {
     spotlightLabel: 'New Releases',
     promos: [
       { title: 'Reader Sale', subtitle: 'Up to 30% off bestsellers', ctaLabel: 'Shop Now' },
-      { title: 'Stationery Edit', subtitle: 'Starting at $4', ctaLabel: 'Explore Now' },
+      { title: 'Stationery Edit', subtitle: 'Starting at ₹329', ctaLabel: 'Explore Now' },
     ],
     tiles: ['Fiction', 'Notebooks', 'Pens & Pencils', "Kids' Books", 'Non-Fiction', 'Art Supplies', 'Planners', 'Comics & Manga', 'Bookmarks', 'Diaries', 'Sticky Notes', 'Highlighters', 'File Organizers', 'Greeting Cards', 'Calculators'],
     brands: ['Penguin', 'HarperCollins', 'Classmate', 'Camlin', 'Parker', 'Faber-Castell', 'Staedtler', 'Amar Chitra Katha', 'Scholastic', 'Oxford', 'Natraj', 'Doms', 'Reynolds', 'Cello', 'Navneet'],
@@ -2488,7 +2488,7 @@ const CATEGORY_DEFINITIONS = {
     spotlightLabel: 'Designer Spotlights',
     promos: [
       { title: 'Furnish & Save', subtitle: 'Up to 45% off furniture', ctaLabel: 'Shop Now' },
-      { title: 'Desk Setup Picks', subtitle: 'Starting at $79', ctaLabel: 'Explore Now' },
+      { title: 'Desk Setup Picks', subtitle: 'Starting at ₹6,599', ctaLabel: 'Explore Now' },
     ],
     tiles: ['Sofas', 'Beds', 'Desks & Chairs', 'Storage Units', 'Dining Sets', 'Bookshelves', 'TV Units', 'Outdoor Furniture', 'Wardrobes', 'Recliners', 'Coffee Tables', 'Bean Bags', 'Shoe Racks', 'Bar Stools', 'Kids Furniture'],
     brands: ['Durian', 'Fabindia', 'Fendi Casa', 'Godrej Interio', 'Haus Luxuriant', 'Herman Miller', 'IKEA', 'Kartell', 'Nilkamal', 'Pepperfry', 'Roche Bobois', 'Steelcase', 'Urban Ladder', 'Wakefit', 'Wooden Street'],
@@ -2760,7 +2760,7 @@ const CATEGORY_DEFINITIONS = {
     spotlightLabel: 'New This Week',
     promos: [
       { title: "Men's Wardrobe Sale", subtitle: 'Up to 35% off basics', ctaLabel: 'Shop Now' },
-      { title: "Women's Outerwear Picks", subtitle: 'Starting at $39', ctaLabel: 'Explore Now' },
+      { title: "Women's Outerwear Picks", subtitle: 'Starting at ₹3,199', ctaLabel: 'Explore Now' },
     ],
     // "Shop by Category" now renders as two distinct grouped rows — one
     // purely Men's sub-categories, one purely Women's — instead of a single
@@ -2890,7 +2890,7 @@ const CATEGORY_DEFINITIONS = {
     spotlightLabel: 'Athlete Favorites',
     promos: [
       { title: 'Training Gear Sale', subtitle: 'Up to 30% off equipment', ctaLabel: 'Shop Now' },
-      { title: 'Recovery Essentials', subtitle: 'Starting at $14', ctaLabel: 'Explore Now' },
+      { title: 'Recovery Essentials', subtitle: 'Starting at ₹1,159', ctaLabel: 'Explore Now' },
     ],
     tiles: ['Water Bottles', 'Yoga Mats', 'Resistance Bands', 'Dumbbells', 'Foam Rollers', 'Gym Bags', 'Jump Ropes', 'Fitness Trackers', 'Treadmills', 'Kettlebells', 'Pull-Up Bars', 'Massage Guns', 'Protein Shakers', 'Ab Rollers', 'Gym Gloves'],
     brands: ['HRX', 'Cultsport', 'Boldfit', 'Domyos', 'Kore', 'Everlast', 'Aurion', 'Strauss', 'Fitkit', 'GoFit', 'Decathlon', 'Cosco', 'Reebok', 'Under Armour', 'Nivia'],
@@ -3000,7 +3000,7 @@ const CATEGORY_DEFINITIONS = {
     spotlightLabel: 'Workspace Upgrade Picks',
     promos: [
       { title: 'Ergonomic Chair Sale', subtitle: 'Up to 35% off office chairs', ctaLabel: 'Shop Now' },
-      { title: 'Desk Setup Essentials', subtitle: 'Starting at $29', ctaLabel: 'Explore Now' },
+      { title: 'Desk Setup Essentials', subtitle: 'Starting at ₹2,399', ctaLabel: 'Explore Now' },
     ],
     tiles: ['Ergonomic Chairs', 'Executive Chairs', 'Office Desks', 'Standing Desks', 'Filing Cabinets', 'Bookshelves', 'Whiteboards', 'Desk Organizers', 'Monitor Stands', 'Laptop Stands', 'Footrests', 'Desk Lamps', 'Cable Management Boxes', 'Pen Holders', 'Document Trays'],
     brands: ['Godrej Interio', 'Featherlite', 'Nilkamal', 'Steelcase', 'Durian', 'Spacewood', 'VJ Interior', 'Bluebell', 'Adarsh', 'Solo', 'Bantex', 'Sundaram', 'Nilkamal Storage', 'Fellowes', 'Deli'],
