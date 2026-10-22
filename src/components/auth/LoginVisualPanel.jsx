@@ -51,7 +51,7 @@ export default function LoginVisualPanel() {
 
         {/* Benefits */}
         <div className="mt-10 grid w-full grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-2">
-          <Benefit icon={<Truck className="h-4 w-4" />} title="Free Shipping" subtitle="On orders over $499" />
+          <Benefit icon={<Truck className="h-4 w-4" />} title="Free Shipping" subtitle="On orders over ₹499" />
           <Benefit icon={<RotateCcw className="h-4 w-4" />} title="Free Returns" subtitle="30-day return policy" />
           <Benefit icon={<ShieldCheck className="h-4 w-4" />} title="Secure Checkout" subtitle="100% protected payments" />
         </div>

@@ -226,8 +226,8 @@ export function CartProvider({ children }) {
   }, [items])
 
   const discount = coupon ? (subtotal * coupon.percent) / 100 : 0
-  const shippingFee = subtotal > 100 || subtotal === 0 ? 0 : 9.99
-  const tax = Math.max(0, (subtotal - discount) * 0.08)
+  const shippingFee = subtotal >= 499 || subtotal === 0 ? 0 : 49
+  const tax = Math.max(0, (subtotal - discount) * 0.18)
   const total = Math.max(0, subtotal - discount + shippingFee + tax)
 
   const value = {

@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { Truck, RotateCcw, ShieldCheck, Tag, Headset } from 'lucide-react'
 
 const BADGES = [
-  { icon: Truck, title: 'Free Shipping', subtitle: 'On orders over $100' },
+  { icon: Truck, title: 'Free Shipping', subtitle: 'On orders over ₹499' },
   { icon: RotateCcw, title: '30-Day Returns', subtitle: 'Hassle-free returns' },
   { icon: ShieldCheck, title: 'Secure Checkout', subtitle: '100% protected' },
   { icon: Tag, title: 'Best Prices', subtitle: 'Guaranteed deals' },

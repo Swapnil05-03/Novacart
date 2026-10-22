@@ -78,7 +78,7 @@ export default function PromoBanner() {
             <h3 className="font-display text-3xl sm:text-4xl font-bold text-white leading-tight">
               On every order
               <br />
-              over $100
+              over ₹499
             </h3>
             <p className="text-sm text-ink-300 mt-2">
               No fine print, no surprise fees

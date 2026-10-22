@@ -135,7 +135,7 @@ export default function OrderSummary({ ctaLabel, onCtaClick, ctaLoading, showCou
 
       {subtotal > 0 && subtotal < 100 && (
         <p className="mt-3 text-xs text-center text-ink-400">
-          Add {formatCurrency(100 - subtotal)} more for free shipping
+          Add {formatCurrency(499 - subtotal)} more for free shipping
         </p>
       )}
     </div>

@@ -123,7 +123,7 @@ export default function ProductForm({ product, categories, onSuccess, onCancel }
 
       <div className="grid sm:grid-cols-3 gap-4">
         <Input
-          label="Price (USD)"
+          label="Price (₹)"
           type="number"
           step="0.01"
           required

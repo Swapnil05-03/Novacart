@@ -378,7 +378,7 @@ export default function ProductDetailPage() {
           </div>
 
           <div className="grid grid-cols-3 gap-3 mt-8 pt-6 border-t border-ink-200 dark:border-ink-800">
-            <Feature icon={Truck} text="Free shipping over $100" />
+            <Feature icon={Truck} text="Free shipping over ₹499" />
             <Feature icon={RotateCcw} text="30-day easy returns" />
             <Feature icon={ShieldCheck} text="Secure checkout" />
           </div>
